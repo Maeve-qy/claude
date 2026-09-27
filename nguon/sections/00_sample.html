@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../style.css">
+<title>Mẫu tham khảo giao diện</title></head>
+<body>
+<!--DEFS-->
+
+<!-- ============ TRANG MẪU: thể hiện mọi thành phần giao diện ============ -->
+<section class="page">
+  <div class="runhead">Túi dây rút có quai · <b>Hướng dẫn dễ hiểu</b></div>
+  <header class="ph">
+    <div class="kicker k-prep"><span class="badge">Phần 4</span> Chuẩn bị · Rập cắt</div>
+    <h1 class="title">Rập thân túi <span class="script">vẽ đúng tỉ lệ</span></h1>
+    <p class="lead">Trang mẫu minh họa cách trình bày: sơ đồ SVG đúng tỉ lệ (1 cm = 12 px), ảnh thật từ video có nhãn thời gian, hộp ghi chú và bảng.</p>
+  </header>
+
+  <div class="content">
+    <div class="cols-2-1 al-start">
+      <figure class="fig">
+        <svg viewBox="0 0 430 390" width="430" height="390"><g transform="translate(-40 0)">
+          <!-- thân vải ngoài: 30 x 25, khoét 5x5 ; gốc (80,40), 1cm = 12px -->
+          <polygon class="f-outer s-cut" points="80,40 440,40 440,280 380,280 380,340 140,340 140,280 80,280"/>
+          <!-- ô cắt bỏ -->
+          <rect x="80" y="280" width="60" height="60" class="f-discard" stroke="#E4572E" stroke-dasharray="3 3"/>
+          <rect x="380" y="280" width="60" height="60" class="f-discard" stroke="#E4572E" stroke-dasharray="3 3"/>
+          <text x="110" y="314" class="t-lbl t-sm t-mid t-coral">cắt bỏ</text>
+          <text x="410" y="314" class="t-lbl t-sm t-mid t-coral">cắt bỏ</text>
+          <!-- đường kẻ 5 cm và 7 cm (bút bay màu) -->
+          <line x1="80" y1="100" x2="440" y2="100" class="s-mark"/>
+          <line x1="80" y1="124" x2="440" y2="124" class="s-mark"/>
+          <!-- khe luồn dây 2 cm ở 2 bên -->
+          <rect x="80" y="100" width="12" height="24" class="f-gap"/>
+          <rect x="428" y="100" width="12" height="24" class="f-gap"/>
+          <!-- đường may sườn + đáy (cách mép 1cm) chừa khe -->
+          <path class="s-seam" d="M92 40 V100 M92 124 V280 H140 M428 40 V100 M428 124 V280 H380 M140 328 H380"/>
+          <use href="#sym-back" x="85" y="93"/><use href="#sym-back" x="85" y="117"/>
+          <!-- tâm & mốc 6 cm -->
+          <line x1="260" y1="40" x2="260" y2="54" class="s-mark"/>
+          <line x1="188" y1="40" x2="188" y2="52" class="s-mark"/>
+          <line x1="332" y1="40" x2="332" y2="52" class="s-mark"/>
+          <!-- canh sợi -->
+          <line x1="260" y1="170" x2="260" y2="270" class="s-dim"/>
+          <text x="268" y="224" class="t-lbl t-sm">canh sợi dọc</text>
+          <text x="260" y="160" class="t-lbl t-mid t-bold">VẢI NGOÀI × 2</text>
+          <!-- kích thước -->
+          <line x1="80" y1="22" x2="440" y2="22" class="s-dim"/>
+          <text x="260" y="18" class="t-dim t-mid">30 cm</text>
+          <line x1="50" y1="40" x2="50" y2="340" class="s-dim"/>
+          <text x="44" y="194" class="t-dim t-end">25 cm</text>
+          <line x1="470" y1="40" x2="470" y2="100" class="s-dim"/>
+          <text x="476" y="74" class="t-dim">5 cm</text>
+          <line x1="470" y1="100" x2="470" y2="124" class="s-dim"/>
+          <text x="476" y="116" class="t-dim">2 cm</text>
+          <line x1="80" y1="362" x2="140" y2="362" class="s-dim"/>
+          <text x="110" y="380" class="t-dim t-mid">5 cm</text>
+          <text x="300" y="36" class="t-lbl t-sm t-mark">6 cm</text>
+          <text x="198" y="36" class="t-lbl t-sm t-mark">6 cm</text>
+        </g></svg>
+        <figcaption><b>Rập thân ngoài</b> — nét tím: đường kẻ bằng bút bay màu; nét đứt hồng: đường may; ô vàng: khe luồn dây để hở.</figcaption>
+      </figure>
+      <div class="stack">
+        <figure class="photo" style="--h:62mm">
+          <img src="../assets/photo_pieces.jpg" style="object-position:50% 30%">
+          <span class="tc">Video 0:05</span>
+          <figcaption><b>Trong video:</b> thân 30 × 25 (khoét góc 5), quai 30 × 8, dây rút vàng chanh.</figcaption>
+        </figure>
+        <div class="note video"><div class="nt">Trong video</div><p>Kẻ 2 đường ngang cách mép trên <b>5 cm</b> và thêm <b>2 cm</b> nữa.</p></div>
+      </div>
+    </div>
+
+    <div class="legend">
+      <span><svg viewBox="0 0 26 10"><line x1="1" y1="5" x2="25" y2="5" class="s-cut"/></svg>đường cắt</span>
+      <span><svg viewBox="0 0 26 10"><line x1="1" y1="5" x2="25" y2="5" class="s-seam"/></svg>đường may</span>
+      <span><svg viewBox="0 0 26 10"><line x1="1" y1="5" x2="25" y2="5" class="s-fold"/></svg>đường gấp</span>
+      <span><svg viewBox="0 0 26 10"><line x1="1" y1="5" x2="25" y2="5" class="s-mark"/></svg>nét kẻ bút bay màu</span>
+      <span><svg viewBox="0 0 26 10"><line x1="3" y1="5" x2="23" y2="5" class="s-dim"/></svg>kích thước</span>
+    </div>
+
+    <div class="stats" style="--n:4">
+      <div class="stat"><div class="v">20<small> cm</small></div><div class="k">dài đáy</div></div>
+      <div class="stat"><div class="v">8<small> cm</small></div><div class="k">rộng đáy (sâu)</div></div>
+      <div class="stat"><div class="v">19<small> cm</small></div><div class="k">cao túi</div></div>
+      <div class="stat"><div class="v">56<small> cm</small></div><div class="k">vòng miệng</div></div>
+    </div>
+
+    <div class="cols">
+      <ol class="steps">
+        <li><b>Úp mặt phải vào nhau.</b> Canh trùng mép, kẹp 4 góc.</li>
+        <li><b>May sườn trái</b> từ mép trên xuống mốc 5 cm, lại mũi.</li>
+      </ol>
+      <div class="formula"><div class="f">Sâu đáy = 2 × (ô góc − đường may)</div><div class="ex">= 2 × (5 − 1) = <b>8 cm</b></div></div>
+    </div>
+    <div class="cols">
+      <div class="note tip"><div class="nt">Mẹo</div><p>Ủi rẽ đường may trước khi may góc đáy.</p></div>
+      <div class="note warn"><div class="nt">Chú ý</div><p>Không may qua đoạn 2 cm giữa 2 đường kẻ.</p></div>
+    </div>
+  </div>
+</section>
+</body></html>

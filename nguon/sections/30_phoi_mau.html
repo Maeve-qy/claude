@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../style.css">
+<title>Phần 3 · Phối màu</title>
+
+<style>
+/* ---- Phần 3 · Phối màu (tiền tố x30-) ---- */
+.x30-blk > h2{ margin-bottom:1.4mm; }
+.x30-h2s{ white-space:nowrap; font-size:10.4px; font-weight:600; color:var(--muted); letter-spacing:0; margin-left:1mm; }
+.x30-photo svg{ display:block; }
+.x30-pal{ padding:2.8mm 3.6mm; display:flex; flex-direction:column; gap:1.4mm; }
+.x30-pal .hd{ font-size:10.5px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--green-700); }
+.x30-g{ display:grid; grid-template-columns:22px 1fr; column-gap:6px; align-items:start; padding-top:1.4mm; border-top:1px dashed var(--line); }
+.x30-g .no{ width:20px; height:20px; border-radius:50%; background:var(--pink-500); color:#fff; font:800 11px/20px 'Nunito',sans-serif; text-align:center; margin-top:1px; }
+.x30-g .bd{ display:flex; flex-wrap:wrap; align-items:center; gap:4px 10px; }
+.x30-g .nm{ font-weight:700; font-size:12px; line-height:1.25; color:var(--ink); flex-basis:100%; }
+.x30-g .nm small{ font-weight:500; font-size:10.4px; color:var(--muted); }
+.x30-g.one .nm{ flex-basis:auto; margin-right:auto; }
+.x30-dots{ display:grid; grid-template-columns:repeat(2,13px); gap:3px; padding:4px; border-radius:7px; background:#FFF9EC; border:1px solid rgba(38,53,47,.18); flex:none; }
+.x30-dots .d{ width:13px; height:13px; border-radius:50%; display:block; }
+.x30-sw{ display:inline-flex; align-items:center; gap:5px; line-height:1.12; }
+.x30-sw > i{ width:22px; height:22px; border-radius:6px; border:1px solid rgba(38,53,47,.18); flex:none; }
+.x30-sw > i.dot{ width:18px; height:18px; border-radius:50%; }
+.x30-sw b{ display:block; font:800 10px/1.15 'Nunito',sans-serif; color:var(--ink); letter-spacing:.01em; }
+.x30-sw em{ display:block; font-style:normal; font-size:9.6px; color:var(--muted); }
+.x30-why{ display:flex; flex-direction:column; gap:2.4mm; }
+.x30-why .it{ display:grid; grid-template-columns:108px 1fr; column-gap:3mm; align-items:center; }
+.x30-why .it p{ margin:0; font-size:11.2px; line-height:1.42; }
+.x30-why .it p b{ color:var(--green-900); }
+.x30-rules{ display:grid; grid-template-columns:repeat(3,1fr); gap:3mm; }
+.x30-rule{ display:grid; grid-template-columns:64px 1fr; column-gap:2.6mm; align-items:start;
+  background:#fff; border:1px solid var(--line); border-radius:11px; padding:2.4mm 2.8mm 2.2mm 2.4mm; }
+.x30-rule .x30-ic{ display:block; }
+.x30-rule h3{ font-size:11.8px; margin:0 0 .6mm 0; line-height:1.25; }
+.x30-rule p{ margin:0; font-size:10.5px; line-height:1.42; color:var(--ink-2); }
+.x30-rule .rn{ display:inline-block; width:16px; height:16px; border-radius:50%; background:var(--lime-500); color:var(--green-900);
+  font:800 10px/16px 'Nunito',sans-serif; text-align:center; margin-right:4px; vertical-align:1px; }
+.x30-rule.tipcell{ grid-template-columns:1fr; background:var(--green-100); border-color:#CFE3CA; }
+.x30-rule.tipcell h3{ color:var(--green-700); }
+.x30-rule.tipcell svg{ display:block; margin:1mm 0 .8mm 0; }
+.x30-pair{ display:grid; grid-template-columns:1fr 1fr; column-gap:3mm; }
+.x30-pair .x30-g .nm small{ font-size:10px; }
+.x30-fig{ padding:2.2mm 3mm; }
+.x30-rlist{ display:flex; flex-direction:column; gap:1.5mm; }
+.x30-rl{ display:grid; grid-template-columns:48px 1fr; column-gap:3mm; align-items:center;
+  background:#fff; border:1px solid var(--line); border-radius:11px; padding:.9mm 3mm .9mm 1.2mm; }
+.x30-rl svg{ display:block; }
+.x30-rl p{ margin:0; font-size:11.1px; line-height:1.42; color:var(--ink-2); }
+.x30-rl p b{ color:var(--ink); }
+.x30-rl .rn{ display:inline-block; width:17px; height:17px; border-radius:50%; background:var(--lime-500); color:var(--green-900);
+  font:800 10.5px/17px 'Nunito',sans-serif; text-align:center; margin-right:5px; vertical-align:1px; }
+.x30-blk .note svg{ display:block; margin:1.4mm 0 1.2mm 0; }
+.x30-tipcol{ align-self:stretch; display:flex; }
+.x30-tipcol > .note{ flex:1; }
+/* trang 2 */
+.x30-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:3.6mm 4mm; }
+.x30-pc{ background:#fff; border:1px solid var(--line); border-radius:13px; padding:2.4mm 2.8mm 2.6mm; display:flex; flex-direction:column;
+  box-shadow:0 1px 0 rgba(38,53,47,.04), 0 6px 14px -10px rgba(38,53,47,.25); }
+.x30-art{ position:relative; border-radius:9px; height:32mm; display:flex; align-items:center; justify-content:center; margin-bottom:2mm; }
+.x30-art svg{ display:block; margin-top:1.2mm; }
+.x30-no{ position:absolute; left:2mm; top:2mm; width:21px; height:21px; border-radius:50%; background:var(--pink-500); color:#fff;
+  font:800 12px/21px 'Nunito',sans-serif; text-align:center; box-shadow:0 0 0 2px #fff; }
+.x30-tag{ position:absolute; right:1.4mm; top:1.4mm; font-size:9.2px; padding:0 6px; line-height:17px; }
+.x30-pc h3{ font-size:13.4px; margin:0 0 1.6mm 0; color:var(--green-900); }
+.x30-sws4{ display:grid; grid-template-columns:1fr 1fr; gap:1.6mm 2mm; margin-bottom:1.8mm; padding-bottom:1.8mm; border-bottom:1px dashed var(--line); }
+.x30-s{ display:flex; align-items:center; gap:5px; }
+.x30-s > i{ width:21px; height:21px; border-radius:6px; border:1px solid rgba(38,53,47,.18); flex:none; }
+.x30-s em{ display:block; font-style:normal; font-size:9.6px; line-height:1.1; color:var(--muted); font-weight:600; }
+.x30-s b{ display:block; font:800 10.4px/1.15 'Nunito',sans-serif; color:var(--ink); }
+.x30-txt{ font-size:10.6px; line-height:1.42; margin:0 0 1mm 0; color:var(--ink-2); }
+.x30-txt:last-child{ margin-bottom:0; }
+.x30-txt b{ color:var(--green-700); }
+.x30-avoid{ display:grid; grid-template-columns:repeat(3,1fr); gap:4mm; }
+.x30-av{ display:grid; grid-template-columns:61px 1fr; column-gap:2.6mm; align-items:center; background:var(--coral-100);
+  border:1px solid #F6CDBD; border-radius:11px; padding:2.2mm 3mm 2.2mm 2.2mm; }
+.x30-av h3{ font-size:11.8px; margin:0 0 .5mm 0; color:var(--coral-600); line-height:1.25; }
+.x30-av p{ margin:0; font-size:10.5px; line-height:1.4; color:var(--ink-2); }
+.x30-av svg{ display:block; }
+</style>
+
+</head>
+<body>
+<!--DEFS-->
+
+<section class="page">
+  <div class="runhead">Túi dây rút có quai · <b>Hướng dẫn dễ hiểu</b></div>
+  <header class="ph">
+    <div class="kicker k-prep"><span class="badge">Phần 3</span> Chuẩn bị · Phối màu</div>
+    <h1 class="title">Phối màu <span class="script">như trong video</span></h1>
+    <p class="lead">Túi nhỏ này chỉ có 4 “vai” màu: <b>vải ngoài</b>, <b>vải lót</b>, <b>dây rút</b> và <b>chỉ</b>. Trang này giải mã vì sao túi mẫu trông tươi mà vẫn hài hòa, rồi rút ra vài quy tắc dễ nhớ để bạn tự phối với vải mình có.</p>
+  </header>
+  <div class="content">
+    <div class="x30-blk">
+      <h2>Giải mã bảng màu của túi mẫu</h2>
+      <div class="cols al-start">
+        <figure class="photo x30-photo">
+          <svg viewBox="0 0 327 236" width="327" height="236"><defs><clipPath id="x30-hero-clip"><rect width="327" height="236" rx="12"/></clipPath></defs><g clip-path="url(#x30-hero-clip)"><image href="../assets/photo_hero_open.jpg" x="-9.43" y="-125.77" width="339.58" height="408.75" preserveAspectRatio="none"/></g><rect x=".5" y=".5" width="326" height="235" rx="12" fill="none" stroke="#E7E1D2"/><line x1="170" y1="218" x2="217.0" y2="183.9" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/><line x1="170" y1="218" x2="217.0" y2="183.9" stroke="#C9336A" stroke-width="1.3" stroke-linecap="round"/><circle cx="217.0" cy="183.9" r="3.4" fill="#fff" stroke="#C9336A" stroke-width="1.6"/><rect x="174" y="209" width="76.0" height="18" rx="9" fill="#fff" fill-opacity=".94" stroke="#F4A3BF"/><text x="186" y="221.8" class="t-lbl t-bold" style="stroke-width:0">vải ngoài</text><circle cx="170" cy="218" r="10" fill="#E0457B" stroke="#fff" stroke-width="2"/><text x="170" y="218.5" class="n-txt">1</text><line x1="24" y1="218" x2="71.1" y2="183.9" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/><line x1="24" y1="218" x2="71.1" y2="183.9" stroke="#C9336A" stroke-width="1.3" stroke-linecap="round"/><circle cx="71.1" cy="183.9" r="3.4" fill="#fff" stroke="#C9336A" stroke-width="1.6"/><rect x="28" y="209" width="100.0" height="18" rx="9" fill="#fff" fill-opacity=".94" stroke="#F4A3BF"/><text x="40" y="221.8" class="t-lbl t-bold" style="stroke-width:0">nơ · màu nhấn</text><circle cx="24" cy="218" r="10" fill="#E0457B" stroke="#fff" stroke-width="2"/><text x="24" y="218.5" class="n-txt">2</text><line x1="112" y1="17" x2="149.4" y2="33.0" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/><line x1="112" y1="17" x2="149.4" y2="33.0" stroke="#C9336A" stroke-width="1.3" stroke-linecap="round"/><circle cx="149.4" cy="33.0" r="3.4" fill="#fff" stroke="#C9336A" stroke-width="1.6"/><rect x="116" y="8" width="64.0" height="18" rx="9" fill="#fff" fill-opacity=".94" stroke="#F4A3BF"/><text x="128" y="20.8" class="t-lbl t-bold" style="stroke-width:0">vải lót</text><circle cx="112" cy="17" r="10" fill="#E0457B" stroke="#fff" stroke-width="2"/><text x="112" y="17.5" class="n-txt">3</text><line x1="306" y1="150" x2="300.3" y2="122.6" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/><line x1="306" y1="150" x2="300.3" y2="122.6" stroke="#C9336A" stroke-width="1.3" stroke-linecap="round"/><circle cx="300.3" cy="122.6" r="3.4" fill="#fff" stroke="#C9336A" stroke-width="1.6"/><rect x="238.0" y="141" width="64.0" height="18" rx="9" fill="#fff" fill-opacity=".94" stroke="#F4A3BF"/><text x="290" y="153.8" class="t-lbl t-bold t-end" style="stroke-width:0">dây rút</text><circle cx="306" cy="150" r="10" fill="#E0457B" stroke="#fff" stroke-width="2"/><text x="306" y="150.5" class="n-txt">4</text><line x1="214" y1="17" x2="223.9" y2="55.3" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/><line x1="214" y1="17" x2="223.9" y2="55.3" stroke="#C9336A" stroke-width="1.3" stroke-linecap="round"/><circle cx="223.9" cy="55.3" r="3.4" fill="#fff" stroke="#C9336A" stroke-width="1.6"/><rect x="218" y="8" width="64.0" height="18" rx="9" fill="#fff" fill-opacity=".94" stroke="#F4A3BF"/><text x="230" y="20.8" class="t-lbl t-bold" style="stroke-width:0">chỉ kem</text><circle cx="214" cy="17" r="10" fill="#E0457B" stroke="#fff" stroke-width="2"/><text x="214" y="17.5" class="n-txt">5</text></svg>
+          <span class="tc">Video 0:02</span>
+          <figcaption><b>Túi mẫu khi mở miệng</b> — số trên ảnh khớp bảng màu.</figcaption>
+        </figure>
+        
+      <div class="card x30-pal">
+        <div class="hd">Bảng màu · mã màu tham khảo</div>
+        <div class="x30-g"><div class="no">1</div><div class="bd">
+          <div class="nm">Vải ngoài <small>— caro in nơ</small></div>
+          <span class="x30-sw"><i style="background:#C9E86F"></i><span><b>#C9E86F</b><em>xanh chanh</em></span></span><span class="x30-sw"><i style="background:#FFFDF0"></i><span><b>#FFFDF0</b><em>trắng kem</em></span></span><span class="x30-sw"><i style="background:#F1DE6E"></i><span><b>#F1DE6E</b><em>sọc vàng nhạt</em></span></span>
+        </div></div>
+        <div class="x30-g one"><div class="no">2</div><div class="bd">
+          <div class="nm">Màu nhấn <small>— nơ in trên vải</small></div>
+          <span class="x30-sw"><i style="background:#E0457B"></i><span><b>#E0457B</b><em>hồng đậm</em></span></span>
+        </div></div>
+        <div class="x30-g"><div class="no">3</div><div class="bd">
+          <div class="nm">Vải lót <small>— nền kem, chấm bi pastel</small></div>
+          <span class="x30-sw"><i style="background:#FFF9EC"></i><span><b>#FFF9EC</b><em>nền kem</em></span></span><span class="x30-sw"><span class="x30-dots"><i class="d" style="background:#F4A3BF"></i><i class="d" style="background:#9ED9C3"></i><i class="d" style="background:#F2DC6B"></i><i class="d" style="background:#C6A8E8"></i></span><span><b>#F4A3BF · #9ED9C3</b><b>#F2DC6B · #C6A8E8</b><em>chấm bi pastel</em></span></span>
+        </div></div>
+        <div class="x30-pair">
+          <div class="x30-g"><div class="no">4</div><div class="bd">
+            <div class="nm">Dây rút <small>— dây tròn</small></div>
+            <span class="x30-sw"><i style="background:#E3EE3A"></i><span><b>#E3EE3A</b><em>vàng chanh neon</em></span></span>
+          </div></div>
+          <div class="x30-g"><div class="no">5</div><div class="bd">
+            <div class="nm">Chỉ may <small>— diễu</small></div>
+            <span class="x30-sw"><i style="background:#F3EBD8"></i><span><b>#F3EBD8</b><em>kem</em></span></span>
+          </div></div>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <div class="cols al-start">
+      <div class="x30-blk">
+        <h2>Quy tắc 60 – 30 – 10 <span class="x30-h2s">chính · phụ · nhấn</span></h2>
+        <figure class="fig x30-fig">
+          <svg viewBox="0 0 300 170" width="300" height="170"><defs><linearGradient id="x30-r-shade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#26352F" stop-opacity="0"/><stop offset=".55" stop-color="#26352F" stop-opacity=".05"/><stop offset="1" stop-color="#26352F" stop-opacity=".22"/></linearGradient></defs><g transform="translate(-12 2)"><ellipse cx="85" cy="123.5" rx="58" ry="4.2" fill="#26352F" opacity=".09"/>
+<path fill="url(#p-outer-s)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M63 26 C63 -6, 107 -6, 107 26 L101 26 C101 3, 69 3, 69 26 Z"/>
+<path fill="url(#p-lining-s)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M35 42 C35 27, 54 20.5, 85 20.5 C116 20.5, 135 27, 135 42 Z"/>
+<path fill="url(#x30-r-shade)" d="M35 42 C35 27, 54 20.5, 85 20.5 C116 20.5, 135 27, 135 42 Z"/>
+<path fill="none" stroke="#F3EBD8" stroke-width="1" stroke-dasharray="2.2 1.6" d="M38.5 38 C39 29, 56 23, 85 23 C114 23, 131 29, 131.5 38"/>
+<path fill="url(#p-outer-s)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M56 44 C56 -4, 114 -4, 114 44 L108 44 C108 5, 62 5, 62 44 Z"/>
+<path fill="url(#p-outer-s)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M48 60 C36 64, 31 76, 31 92 L31 114 Q31 122 39 122 L131 122 Q139 122 139 114 L139 92 C139 76, 134 64, 122 60 Z"/>
+<path fill="none" stroke="#26352F" stroke-opacity=".13" stroke-width="1" stroke-linecap="round" d="M60 61 C56 76, 55 92, 57 106 M85 61 L85 104 M110 61 C114 76, 115 92, 113 106 M72 61 C70 72, 70 82, 71 90 M98 61 C100 72, 100 82, 99 90"/>
+<path fill="url(#p-outer-s)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M48 52 L122 52 L122 60 L48 60 Z"/>
+<path fill="#26352F" fill-opacity=".07" d="M48 52 L122 52 L122 60 L48 60 Z"/>
+<path fill="none" stroke="#26352F" stroke-opacity=".22" stroke-width=".8" d="M51 52.6 V59.4 M55 52.6 V59.4 M59 52.6 V59.4 M63 52.6 V59.4 M67 52.6 V59.4 M71 52.6 V59.4 M75 52.6 V59.4 M79 52.6 V59.4 M83 52.6 V59.4 M87 52.6 V59.4 M91 52.6 V59.4 M95 52.6 V59.4 M99 52.6 V59.4 M103 52.6 V59.4 M107 52.6 V59.4 M111 52.6 V59.4 M115 52.6 V59.4 M119 52.6 V59.4"/>
+<path fill="url(#p-outer-s)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M34 41 Q40.38 36.80 46.75 41 Q53.12 45.20 59.50 41 Q65.88 36.80 72.25 41 Q78.62 45.20 85.00 41 Q91.38 36.80 97.75 41 Q104.12 45.20 110.50 41 Q116.88 36.80 123.25 41 Q129.62 45.20 136.00 41 C132 46, 126 50, 122 52 L48 52 C44 50, 38 46, 34 41 Z"/>
+<path fill="none" stroke="#26352F" stroke-opacity=".14" stroke-width="1" stroke-linecap="round" d="M46.75 43 L53 51 M72.25 43 L73 51 M97.75 43 L97 51 M123.25 43 L117 51 M59.5 45 L62 51 M110.5 45 L108 51 M85 45 L85 51"/>
+<path fill="none" stroke="#F3EBD8" stroke-width="1" stroke-dasharray="2.2 1.6" d="M36 43.2 Q42.12 39.20 48.25 43.2 Q54.38 47.20 60.50 43.2 Q66.62 39.20 72.75 43.2 Q78.88 47.20 85.00 43.2 Q91.12 39.20 97.25 43.2 Q103.38 47.20 109.50 43.2 Q115.62 39.20 121.75 43.2 Q127.88 47.20 134.00 43.2"/>
+<path fill="none" stroke="#F3EBD8" stroke-width="1" stroke-dasharray="2.2 1.6" d="M49 53.3 H121 M49 58.7 H121"/>
+<path d="M49 56 C38 58, 27 64, 25.5 80 L24.5 92" fill="none" stroke="#A9B21E" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M49 56 C38 58, 27 64, 25.5 80 L24.5 92" fill="none" stroke="#E3EE3A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24.5 96 L20.5 110 M24.5 96 L28 109" fill="none" stroke="#A9B21E" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24.5 96 L20.5 110 M24.5 96 L28 109" fill="none" stroke="#E3EE3A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="24.5" cy="94.5" r="4.60" fill="#E3EE3A" stroke="#A9B21E" stroke-width="1.1"/>
+<path d="M121 56 C132 58, 143 64, 144.5 80 L145.5 92" fill="none" stroke="#A9B21E" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M121 56 C132 58, 143 64, 144.5 80 L145.5 92" fill="none" stroke="#E3EE3A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M145.5 96 L149.5 110 M145.5 96 L142 109" fill="none" stroke="#A9B21E" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M145.5 96 L149.5 110 M145.5 96 L142 109" fill="none" stroke="#E3EE3A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="145.5" cy="94.5" r="4.60" fill="#E3EE3A" stroke="#A9B21E" stroke-width="1.1"/></g><path d="M84 35 L166 20 H171" fill="none" stroke="#C9336A" stroke-width="1.1"/><circle cx="84" cy="35" r="3" fill="#fff" stroke="#C9336A" stroke-width="1.5"/><text x="175" y="26" style="font:800 18px Nunito,sans-serif;fill:#C9336A">30%</text><text x="216" y="25" class="t-lbl t-bold">vải lót</text><text x="175" y="40" class="t-lbl t-sm t-muted">lộ ở miệng và khi mở túi</text><path d="M133.5 96.5 L166 66 H171" fill="none" stroke="#7F9A12" stroke-width="1.1"/><circle cx="133.5" cy="96.5" r="3" fill="#fff" stroke="#7F9A12" stroke-width="1.5"/><text x="175" y="72" style="font:800 18px Nunito,sans-serif;fill:#7F9A12">10%</text><text x="216" y="71" class="t-lbl t-bold">dây, chỉ, nơ in</text><text x="175" y="86" class="t-lbl t-sm t-muted">điểm nhấn nhỏ, tươi</text><path d="M98 113 L166 112 H171" fill="none" stroke="#2F5D50" stroke-width="1.1"/><circle cx="98" cy="113" r="3" fill="#fff" stroke="#2F5D50" stroke-width="1.5"/><text x="175" y="118" style="font:800 18px Nunito,sans-serif;fill:#2F5D50">60%</text><text x="216" y="117" class="t-lbl t-bold">vải ngoài</text><text x="175" y="132" class="t-lbl t-sm t-muted">phần thấy nhiều nhất</text><rect x="2" y="146" width="178" height="18" rx="4" class="f-outer-s"/><rect x="180" y="146" width="89" height="18" class="f-lining-s"/><rect x="269" y="146" width="29" height="18" rx="4" fill="#E3EE3A"/><rect x="265" y="146" width="6" height="18" fill="#E3EE3A"/><rect x="2" y="146" width="296" height="18" rx="4" fill="none" stroke="#4A5A53" stroke-width=".9"/><path d="M180 146 V164 M269 146 V164" stroke="#4A5A53" stroke-width=".9"/><text x="91" y="159" class="t-lbl t-mid t-bold">60% · vải ngoài</text><text x="224.5" y="159" class="t-lbl t-mid t-bold">30% · lót</text><text x="283.5" y="159" class="t-lbl t-mid t-bold t-sm">10%</text></svg>
+        </figure>
+      </div>
+      <div class="x30-blk">
+        <h2>Vì sao túi mẫu hài hòa?</h2>
+        
+        <div class="x30-why">
+          <div class="it"><svg viewBox="0 0 108 42" width="108" height="42"><defs><clipPath id="x30-e1-a"><circle cx="21" cy="21" r="19"/></clipPath><clipPath id="x30-e1-b"><circle cx="87" cy="21" r="19"/></clipPath></defs><image href="../assets/x30_bow.jpg" x="2" y="2" width="38" height="38" clip-path="url(#x30-e1-a)" preserveAspectRatio="xMidYMid slice"/><circle cx="21" cy="21" r="19" fill="none" stroke="#fff" stroke-width="2"/><circle cx="21" cy="21" r="20.2" fill="none" stroke="#E7E1D2" stroke-width=".8"/><image href="../assets/x30_dots.jpg" x="68" y="2" width="38" height="38" clip-path="url(#x30-e1-b)" preserveAspectRatio="xMidYMid slice"/><circle cx="87" cy="21" r="19" fill="none" stroke="#fff" stroke-width="2"/><circle cx="87" cy="21" r="20.2" fill="none" stroke="#E7E1D2" stroke-width=".8"/><line x1="45" y1="17" x2="63" y2="17" stroke="#E0457B" stroke-width="1.6" marker-start="url(#arr-pink)" marker-end="url(#arr-pink)"/><text x="54" y="35" class="t-lbl t-sm t-mid t-pink t-bold" style="stroke-width:0">nhắc</text></svg>
+            <p><b>Lót nhắc lại màu nơ.</b> Chấm hồng, tím của lót cùng tông ngọt với nơ hồng → mở túi ra thấy liền một bộ.</p></div>
+          <div class="it"><svg viewBox="0 0 108 42" width="108" height="42"><defs><clipPath id="x30-e2-a"><circle cx="21" cy="21" r="19"/></clipPath><clipPath id="x30-e2-b"><circle cx="87" cy="21" r="19"/></clipPath></defs><image href="../assets/x30_caro.jpg" x="2" y="2" width="38" height="38" clip-path="url(#x30-e2-a)" preserveAspectRatio="xMidYMid slice"/><circle cx="21" cy="21" r="19" fill="none" stroke="#fff" stroke-width="2"/><circle cx="21" cy="21" r="20.2" fill="none" stroke="#E7E1D2" stroke-width=".8"/><image href="../assets/x30_cord.jpg" x="68" y="2" width="38" height="38" clip-path="url(#x30-e2-b)" preserveAspectRatio="xMidYMid slice"/><circle cx="87" cy="21" r="19" fill="none" stroke="#fff" stroke-width="2"/><circle cx="87" cy="21" r="20.2" fill="none" stroke="#E7E1D2" stroke-width=".8"/><line x1="45" y1="17" x2="63" y2="17" stroke="#E0457B" stroke-width="1.6" marker-start="url(#arr-pink)" marker-end="url(#arr-pink)"/><text x="54" y="35" class="t-lbl t-sm t-mid t-pink t-bold" style="stroke-width:0">nhắc</text></svg>
+            <p><b>Dây nhắc lại màu chanh.</b> Dây vàng neon là bản “đậm, tươi” của nền caro → nổi vừa đủ, không lạc tông.</p></div>
+          <div class="it"><svg viewBox="0 0 108 42" width="108" height="42"><defs><clipPath id="x30-e3-a"><circle cx="21" cy="21" r="19"/></clipPath><clipPath id="x30-e3-b"><circle cx="84" cy="21" r="13"/></clipPath></defs><image href="../assets/x30_caro.jpg" x="2" y="2" width="38" height="38" clip-path="url(#x30-e3-a)" preserveAspectRatio="xMidYMid slice"/><circle cx="21" cy="21" r="19" fill="none" stroke="#fff" stroke-width="2"/><circle cx="21" cy="21" r="20.2" fill="none" stroke="#E7E1D2" stroke-width=".8"/><image href="../assets/x30_dots.jpg" x="71" y="8" width="26" height="26" clip-path="url(#x30-e3-b)" preserveAspectRatio="xMidYMid slice"/><circle cx="84" cy="21" r="13" fill="none" stroke="#fff" stroke-width="2"/><circle cx="84" cy="21" r="14.2" fill="none" stroke="#E7E1D2" stroke-width=".8"/><path d="M52 21 H62 M57 16 V26" stroke="#2F5D50" stroke-width="2.2" stroke-linecap="round"/></svg>
+            <p><b>1 họa tiết lớn + 1 họa tiết nhỏ.</b> Caro <span class="nowrap">ô <b>~2 cm</b></span> bên ngoài, chấm bi <span class="nowrap"><b>~0,8 cm</b></span> bên trong → không “giành” nhau.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="x30-blk">
+      <h2>5 nguyên tắc dễ nhớ khi tự phối</h2>
+      <div class="cols-2-1 al-start">
+        <div class="x30-rlist"><div class="x30-rl"><svg viewBox="0 0 48 45" width="48" height="45" class="x30-ic"><defs></defs><g transform="scale(.75)"><rect x=".5" y=".5" width="63" height="59" rx="11" fill="#FBF6EA" stroke="#F3EBD8"/><rect x="8" y="9" width="32" height="36" rx="4" class="f-outer-s" stroke="#4A5A53" stroke-width=".9"/><rect x="32" y="27" width="22" height="24" rx="3.5" fill="#FFF9EC" stroke="#4A5A53" stroke-width=".9"/><rect x="44" y="12" width="12" height="12" rx="3" fill="#E3EE3A" stroke="#A9B21E" stroke-width=".9"/><circle cx="11" cy="11" r="7.5" fill="#E0457B" stroke="#fff" stroke-width="1.5"/><path d="M9.6 8.4 11.6 7 V15" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></g></svg><p><span class="rn">1</span><b>Chỉ 1 họa tiết “chính”.</b> Họa tiết nổi nhất để ở vải ngoài; lót và dây trơn hoặc họa tiết rất nhỏ.</p></div><div class="x30-rl"><svg viewBox="0 0 48 45" width="48" height="45" class="x30-ic"><defs><pattern id="x30-i2-big" patternUnits="userSpaceOnUse" width="30" height="30"><rect width="30" height="30" fill="#FFF7EC"/><circle cx="15" cy="15" r="10" fill="#F4A3BF"/><circle cx="15" cy="15" r="4" fill="#E0457B"/></pattern></defs><g transform="scale(.75)"><rect x=".5" y=".5" width="63" height="59" rx="11" fill="#FBF6EA" stroke="#F3EBD8"/><path d="M11 22 C11 11, 23 11, 23 22" fill="none" stroke="#4A5A53" stroke-width="2.4"/><rect x="4" y="21" width="26" height="25" rx="3" fill="url(#p-outer-s)" stroke="#4A5A53" stroke-width=".9"/><path d="M41 22 C41 11, 53 11, 53 22" fill="none" stroke="#4A5A53" stroke-width="2.4"/><rect x="34" y="21" width="26" height="25" rx="3" fill="url(#x30-i2-big)" stroke="#4A5A53" stroke-width=".9"/><circle cx="27" cy="46" r="6" fill="#5E9B5A" stroke="#fff" stroke-width="1.2"/><path d="M24.3 46.2 26.2 48 29.6 44.3" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="57" cy="46" r="6" fill="#D9531F" stroke="#fff" stroke-width="1.2"/><path d="M54.8 43.8 59.2 48.2 M59.2 43.8 54.8 48.2" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></g></svg><p><span class="rn">2</span><b>Họa tiết nhỏ cho túi nhỏ.</b> Túi cao chưa tới 20 cm hợp hoa, nơ, ô caro cỡ <b>1–3 cm</b>; họa tiết to bị cắt vụn, không thấy trọn.</p></div><div class="x30-rl"><svg viewBox="0 0 48 45" width="48" height="45" class="x30-ic"><defs></defs><g transform="scale(.75)"><rect x=".5" y=".5" width="63" height="59" rx="11" fill="#FBF6EA" stroke="#F3EBD8"/><ellipse cx="32" cy="31" rx="26" ry="19" class="f-outer-s" stroke="#4A5A53" stroke-width=".9"/><ellipse cx="32" cy="31" rx="20.5" ry="14" fill="#FFF9EC" stroke="#4A5A53" stroke-width=".9"/><rect x="20" y="25" width="6" height="14" rx="2" transform="rotate(-25 23 32)" fill="#E0457B"/><rect x="20" y="22.5" width="6" height="5" rx="1.2" transform="rotate(-25 23 32)" fill="#C9A227"/><circle cx="38" cy="28" r="3.6" fill="none" stroke="#7A8781" stroke-width="1.8"/><path d="M40.5 30.5 46 36 M44 34 45.8 32.2" stroke="#7A8781" stroke-width="1.8" stroke-linecap="round"/></g></svg><p><span class="rn">3</span><b>Lót sáng màu.</b> Kem, trắng ngà, pastel giúp nhìn rõ chìa khóa, son, tai nghe trong lòng túi.</p></div><div class="x30-rl"><svg viewBox="0 0 48 45" width="48" height="45" class="x30-ic"><defs></defs><g transform="scale(.75)"><rect x=".5" y=".5" width="63" height="59" rx="11" fill="#FBF6EA" stroke="#F3EBD8"/><rect x="7" y="7" width="36" height="30" rx="4" class="f-outer-s" stroke="#4A5A53" stroke-width=".9"/><path d="M6 49 C18 40, 30 54, 44 45 S54 38, 57 30" fill="none" stroke="#A9B21E" stroke-width="5" stroke-linecap="round"/><path d="M6 49 C18 40, 30 54, 44 45 S54 38, 57 30" fill="none" stroke="#E3EE3A" stroke-width="3.4" stroke-linecap="round"/><circle cx="31" cy="15" r="3.2" fill="#E3EE3A" stroke="#fff" stroke-width="1.3"/><path d="M34 17.5 C44 22, 50 26, 54 29" fill="none" stroke="#E0457B" stroke-width="1.3" stroke-dasharray="2.5 2" marker-end="url(#arr-pink)"/></g></svg><p><span class="rn">4</span><b>Dây lấy màu từ vải.</b> Trùng 1 màu có trong họa tiết (như video: vàng chanh), hoặc tương phản vui: dây hồng trên caro xanh.</p></div><div class="x30-rl"><svg viewBox="0 0 48 45" width="48" height="45" class="x30-ic"><defs></defs><g transform="scale(.75)"><rect x=".5" y=".5" width="63" height="59" rx="11" fill="#FBF6EA" stroke="#F3EBD8"/><rect x="5" y="9" width="54" height="42" rx="2" class="f-outer-s"/><path d="M5 9 H59" stroke="#4A5A53" stroke-width="1.2"/><rect x="5" y="9" width="54" height="42" rx="2" fill="none" stroke="#4A5A53" stroke-width=".6" stroke-opacity=".5"/><path d="M7 12.5 H57" stroke="#8F8563" stroke-width="3.2" stroke-dasharray="4 2.4" /><path d="M7 12.5 H57" stroke="#FFF7DE" stroke-width="1.8" stroke-dasharray="4 2.4" /><path d="M7 30 H57" stroke="#8F8563" stroke-width="3.2" stroke-dasharray="4 2.4" /><path d="M7 30 H57" stroke="#FFF7DE" stroke-width="1.8" stroke-dasharray="4 2.4" /><path d="M7 39 H57" stroke="#8F8563" stroke-width="3.2" stroke-dasharray="4 2.4" /><path d="M7 39 H57" stroke="#FFF7DE" stroke-width="1.8" stroke-dasharray="4 2.4" /></g></svg><p><span class="rn">5</span><b>Chỉ diễu trùng màu nền.</b> 3 đường diễu lộ ra ngoài: chỉ trùng nền giấu mũi lệch. May đã thẳng tay mới nên dùng chỉ tương phản.</p></div></div>
+        <div class="x30-tipcol">
+          <div class="note tip"><div class="nt">Mẹo: thử “nheo mắt”</div>
+            <p>Đặt vải ngoài, vải lót, dây cạnh nhau rồi nheo mắt hoặc chụp ảnh đen trắng.</p>
+            <svg viewBox="0 0 188 92" width="188" height="92"><text x="0" y="19" class="t-lbl t-sm t-muted">màu</text><text x="0" y="45" class="t-lbl t-sm t-muted">đen</text><text x="0" y="56" class="t-lbl t-sm t-muted">trắng</text><rect x="46" y="3" width="32" height="24" rx="4" fill="#C9E86F" stroke="#26352F" stroke-opacity=".2"/><rect x="46" y="34" width="32" height="24" rx="4" fill="#D1D1D1" stroke="#26352F" stroke-opacity=".2"/><text x="62" y="71" class="t-lbl t-sm t-mid">Ngoài</text><rect x="82" y="3" width="32" height="24" rx="4" fill="#E0457B" stroke="#26352F" stroke-opacity=".2"/><rect x="82" y="34" width="32" height="24" rx="4" fill="#7A7A7A" stroke="#26352F" stroke-opacity=".2"/><text x="98" y="71" class="t-lbl t-sm t-mid">Nơ</text><rect x="118" y="3" width="32" height="24" rx="4" fill="#FFF9EC" stroke="#26352F" stroke-opacity=".2"/><rect x="118" y="34" width="32" height="24" rx="4" fill="#F9F9F9" stroke="#26352F" stroke-opacity=".2"/><text x="134" y="71" class="t-lbl t-sm t-mid">Lót</text><rect x="154" y="3" width="32" height="24" rx="4" fill="#E3EE3A" stroke="#26352F" stroke-opacity=".2"/><rect x="154" y="34" width="32" height="24" rx="4" fill="#D6D6D6" stroke="#26352F" stroke-opacity=".2"/><text x="170" y="71" class="t-lbl t-sm t-mid">Dây</text><rect x="79.5" y="31.5" width="37" height="29" rx="5.5" fill="none" stroke="#C9336A" stroke-width="1.6" stroke-dasharray="3 2"/><text x="98" y="86" class="t-lbl t-sm t-mid t-pink t-bold">đậm nhất</text></svg>
+            <p>Ô đậm hơn hẳn sẽ thành điểm nhấn (túi mẫu: <b>nơ hồng</b>). Mọi ô xám như nhau → túi nhạt nhòa; có ô gần đen → dễ gắt.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page">
+  <div class="runhead">Túi dây rút có quai · <b>Hướng dẫn dễ hiểu</b></div>
+  <header class="ph">
+    <div class="kicker k-prep"><span class="badge">Phần 3</span> Chuẩn bị · Phối màu</div>
+    <h1 class="title">6 bảng phối <span class="script">gợi ý cho bạn</span></h1>
+    <p class="lead">Cùng một dáng túi, đổi vải là đổi phong cách. Mỗi thẻ ghi đủ màu ngoài, lót, dây, chỉ.</p>
+  </header>
+  <div class="content">
+    <div class="x30-grid">
+      <div class="x30-pc">
+        <div class="x30-art" style="background:#F2F8DD"><span class="x30-no">1</span><span class="chip pink x30-tag">như video</span><svg viewBox="0 0 150 113" width="150" height="113"><defs><linearGradient id="x30-c1-shade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#26352F" stop-opacity="0"/><stop offset=".55" stop-color="#26352F" stop-opacity=".05"/><stop offset="1" stop-color="#26352F" stop-opacity=".22"/></linearGradient></defs><g transform="scale(.882)"><ellipse cx="85" cy="123.5" rx="58" ry="4.2" fill="#26352F" opacity=".09"/>
+<path fill="url(#p-outer-s)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M63 26 C63 -6, 107 -6, 107 26 L101 26 C101 3, 69 3, 69 26 Z"/>
+<path fill="url(#p-lining-s)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M35 42 C35 27, 54 20.5, 85 20.5 C116 20.5, 135 27, 135 42 Z"/>
+<path fill="url(#x30-c1-shade)" d="M35 42 C35 27, 54 20.5, 85 20.5 C116 20.5, 135 27, 135 42 Z"/>
+<path fill="none" stroke="#F3EBD8" stroke-width="1" stroke-dasharray="2.2 1.6" d="M38.5 38 C39 29, 56 23, 85 23 C114 23, 131 29, 131.5 38"/>
+<path fill="url(#p-outer-s)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M56 44 C56 -4, 114 -4, 114 44 L108 44 C108 5, 62 5, 62 44 Z"/>
+<path fill="url(#p-outer-s)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M48 60 C36 64, 31 76, 31 92 L31 114 Q31 122 39 122 L131 122 Q139 122 139 114 L139 92 C139 76, 134 64, 122 60 Z"/>
+<path fill="none" stroke="#26352F" stroke-opacity=".13" stroke-width="1" stroke-linecap="round" d="M60 61 C56 76, 55 92, 57 106 M85 61 L85 104 M110 61 C114 76, 115 92, 113 106 M72 61 C70 72, 70 82, 71 90 M98 61 C100 72, 100 82, 99 90"/>
+<path fill="url(#p-outer-s)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M48 52 L122 52 L122 60 L48 60 Z"/>
+<path fill="#26352F" fill-opacity=".07" d="M48 52 L122 52 L122 60 L48 60 Z"/>
+<path fill="none" stroke="#26352F" stroke-opacity=".22" stroke-width=".8" d="M51 52.6 V59.4 M55 52.6 V59.4 M59 52.6 V59.4 M63 52.6 V59.4 M67 52.6 V59.4 M71 52.6 V59.4 M75 52.6 V59.4 M79 52.6 V59.4 M83 52.6 V59.4 M87 52.6 V59.4 M91 52.6 V59.4 M95 52.6 V59.4 M99 52.6 V59.4 M103 52.6 V59.4 M107 52.6 V59.4 M111 52.6 V59.4 M115 52.6 V59.4 M119 52.6 V59.4"/>
+<path fill="url(#p-outer-s)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M34 41 Q40.38 36.80 46.75 41 Q53.12 45.20 59.50 41 Q65.88 36.80 72.25 41 Q78.62 45.20 85.00 41 Q91.38 36.80 97.75 41 Q104.12 45.20 110.50 41 Q116.88 36.80 123.25 41 Q129.62 45.20 136.00 41 C132 46, 126 50, 122 52 L48 52 C44 50, 38 46, 34 41 Z"/>
+<path fill="none" stroke="#26352F" stroke-opacity=".14" stroke-width="1" stroke-linecap="round" d="M46.75 43 L53 51 M72.25 43 L73 51 M97.75 43 L97 51 M123.25 43 L117 51 M59.5 45 L62 51 M110.5 45 L108 51 M85 45 L85 51"/>
+<path fill="none" stroke="#F3EBD8" stroke-width="1" stroke-dasharray="2.2 1.6" d="M36 43.2 Q42.12 39.20 48.25 43.2 Q54.38 47.20 60.50 43.2 Q66.62 39.20 72.75 43.2 Q78.88 47.20 85.00 43.2 Q91.12 39.20 97.25 43.2 Q103.38 47.20 109.50 43.2 Q115.62 39.20 121.75 43.2 Q127.88 47.20 134.00 43.2"/>
+<path fill="none" stroke="#F3EBD8" stroke-width="1" stroke-dasharray="2.2 1.6" d="M49 53.3 H121 M49 58.7 H121"/>
+<path d="M49 56 C38 58, 27 64, 25.5 80 L24.5 92" fill="none" stroke="#A9B21E" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M49 56 C38 58, 27 64, 25.5 80 L24.5 92" fill="none" stroke="#E3EE3A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24.5 96 L20.5 110 M24.5 96 L28 109" fill="none" stroke="#A9B21E" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24.5 96 L20.5 110 M24.5 96 L28 109" fill="none" stroke="#E3EE3A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="24.5" cy="94.5" r="4.60" fill="#E3EE3A" stroke="#A9B21E" stroke-width="1.1"/>
+<path d="M121 56 C132 58, 143 64, 144.5 80 L145.5 92" fill="none" stroke="#A9B21E" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M121 56 C132 58, 143 64, 144.5 80 L145.5 92" fill="none" stroke="#E3EE3A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M145.5 96 L149.5 110 M145.5 96 L142 109" fill="none" stroke="#A9B21E" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M145.5 96 L149.5 110 M145.5 96 L142 109" fill="none" stroke="#E3EE3A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="145.5" cy="94.5" r="4.60" fill="#E3EE3A" stroke="#A9B21E" stroke-width="1.1"/></g></svg></div>
+        <h3>Chanh &amp; nơ hồng</h3>
+        <div class="x30-sws4"><div class="x30-s"><i style="background:#C9E86F"></i><span><em>Ngoài</em><b>#C9E86F</b></span></div><div class="x30-s"><i style="background:#FFF9EC"></i><span><em>Lót</em><b>#FFF9EC</b></span></div><div class="x30-s"><i style="background:#E3EE3A"></i><span><em>Dây</em><b>#E3EE3A</b></span></div><div class="x30-s"><i style="background:#F3EBD8"></i><span><em>Chỉ</em><b>#F3EBD8</b></span></div></div>
+        <p class="x30-txt"><b>Vải:</b> cotton caro chanh in nơ; lót chấm bi pastel.</p>
+        <p class="x30-txt"><b>Hợp với:</b> đi chơi, đi học, quà tặng bạn gái.</p>
+      </div>
+      <div class="x30-pc">
+        <div class="x30-art" style="background:#EEF2E7"><span class="x30-no">2</span><svg viewBox="0 0 150 113" width="150" height="113"><defs><linearGradient id="x30-c2-shade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#26352F" stop-opacity="0"/><stop offset=".55" stop-color="#26352F" stop-opacity=".05"/><stop offset="1" stop-color="#26352F" stop-opacity=".22"/></linearGradient><pattern id="x30-c2-out" patternUnits="userSpaceOnUse" width="18" height="18"><rect width="18" height="18" fill="#F6F2E4"/><circle cx="4.50" cy="2.95" r="1.2" fill="#8FA67E"/><circle cx="5.97" cy="4.02" r="1.2" fill="#8FA67E"/><circle cx="5.41" cy="5.75" r="1.2" fill="#8FA67E"/><circle cx="3.59" cy="5.75" r="1.2" fill="#8FA67E"/><circle cx="3.03" cy="4.02" r="1.2" fill="#8FA67E"/><circle cx="4.5" cy="4.5" r=".75" fill="#EFD9A0"/><ellipse cx="7.5" cy="6.9" rx="1.5" ry=".62" transform="rotate(35 7.5 6.9)" fill="#6F8466"/><circle cx="13.50" cy="11.95" r="1.2" fill="#8FA67E"/><circle cx="14.97" cy="13.02" r="1.2" fill="#8FA67E"/><circle cx="14.41" cy="14.75" r="1.2" fill="#8FA67E"/><circle cx="12.59" cy="14.75" r="1.2" fill="#8FA67E"/><circle cx="12.03" cy="13.02" r="1.2" fill="#8FA67E"/><circle cx="13.5" cy="13.5" r=".75" fill="#EFD9A0"/><ellipse cx="16.5" cy="15.9" rx="1.5" ry=".62" transform="rotate(35 16.5 15.9)" fill="#6F8466"/><circle cx="13.5" cy="4.5" r=".6" fill="#A9BA99"/><circle cx="4.5" cy="13.5" r=".6" fill="#A9BA99"/></pattern></defs><g transform="scale(.882)"><ellipse cx="85" cy="123.5" rx="58" ry="4.2" fill="#26352F" opacity=".09"/>
+<path fill="url(#x30-c2-out)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M63 26 C63 -6, 107 -6, 107 26 L101 26 C101 3, 69 3, 69 26 Z"/>
+<path fill="#FBF6EA" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M35 42 C35 27, 54 20.5, 85 20.5 C116 20.5, 135 27, 135 42 Z"/>
+<path fill="url(#x30-c2-shade)" d="M35 42 C35 27, 54 20.5, 85 20.5 C116 20.5, 135 27, 135 42 Z"/>
+<path fill="none" stroke="#F3EBD8" stroke-width="1" stroke-dasharray="2.2 1.6" d="M38.5 38 C39 29, 56 23, 85 23 C114 23, 131 29, 131.5 38"/>
+<path fill="url(#x30-c2-out)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M56 44 C56 -4, 114 -4, 114 44 L108 44 C108 5, 62 5, 62 44 Z"/>
+<path fill="url(#x30-c2-out)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M48 60 C36 64, 31 76, 31 92 L31 114 Q31 122 39 122 L131 122 Q139 122 139 114 L139 92 C139 76, 134 64, 122 60 Z"/>
+<path fill="none" stroke="#26352F" stroke-opacity=".13" stroke-width="1" stroke-linecap="round" d="M60 61 C56 76, 55 92, 57 106 M85 61 L85 104 M110 61 C114 76, 115 92, 113 106 M72 61 C70 72, 70 82, 71 90 M98 61 C100 72, 100 82, 99 90"/>
+<path fill="url(#x30-c2-out)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M48 52 L122 52 L122 60 L48 60 Z"/>
+<path fill="#26352F" fill-opacity=".07" d="M48 52 L122 52 L122 60 L48 60 Z"/>
+<path fill="none" stroke="#26352F" stroke-opacity=".22" stroke-width=".8" d="M51 52.6 V59.4 M55 52.6 V59.4 M59 52.6 V59.4 M63 52.6 V59.4 M67 52.6 V59.4 M71 52.6 V59.4 M75 52.6 V59.4 M79 52.6 V59.4 M83 52.6 V59.4 M87 52.6 V59.4 M91 52.6 V59.4 M95 52.6 V59.4 M99 52.6 V59.4 M103 52.6 V59.4 M107 52.6 V59.4 M111 52.6 V59.4 M115 52.6 V59.4 M119 52.6 V59.4"/>
+<path fill="url(#x30-c2-out)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M34 41 Q40.38 36.80 46.75 41 Q53.12 45.20 59.50 41 Q65.88 36.80 72.25 41 Q78.62 45.20 85.00 41 Q91.38 36.80 97.75 41 Q104.12 45.20 110.50 41 Q116.88 36.80 123.25 41 Q129.62 45.20 136.00 41 C132 46, 126 50, 122 52 L48 52 C44 50, 38 46, 34 41 Z"/>
+<path fill="none" stroke="#26352F" stroke-opacity=".14" stroke-width="1" stroke-linecap="round" d="M46.75 43 L53 51 M72.25 43 L73 51 M97.75 43 L97 51 M123.25 43 L117 51 M59.5 45 L62 51 M110.5 45 L108 51 M85 45 L85 51"/>
+<path fill="none" stroke="#F3EBD8" stroke-width="1" stroke-dasharray="2.2 1.6" d="M36 43.2 Q42.12 39.20 48.25 43.2 Q54.38 47.20 60.50 43.2 Q66.62 39.20 72.75 43.2 Q78.88 47.20 85.00 43.2 Q91.12 39.20 97.25 43.2 Q103.38 47.20 109.50 43.2 Q115.62 39.20 121.75 43.2 Q127.88 47.20 134.00 43.2"/>
+<path fill="none" stroke="#F3EBD8" stroke-width="1" stroke-dasharray="2.2 1.6" d="M49 53.3 H121 M49 58.7 H121"/>
+<path d="M49 56 C38 58, 27 64, 25.5 80 L24.5 92" fill="none" stroke="#86684F" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M49 56 C38 58, 27 64, 25.5 80 L24.5 92" fill="none" stroke="#B08D6E" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24.5 96 L20.5 110 M24.5 96 L28 109" fill="none" stroke="#86684F" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24.5 96 L20.5 110 M24.5 96 L28 109" fill="none" stroke="#B08D6E" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="24.5" cy="94.5" r="4.60" fill="#B08D6E" stroke="#86684F" stroke-width="1.1"/>
+<path d="M121 56 C132 58, 143 64, 144.5 80 L145.5 92" fill="none" stroke="#86684F" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M121 56 C132 58, 143 64, 144.5 80 L145.5 92" fill="none" stroke="#B08D6E" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M145.5 96 L149.5 110 M145.5 96 L142 109" fill="none" stroke="#86684F" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M145.5 96 L149.5 110 M145.5 96 L142 109" fill="none" stroke="#B08D6E" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="145.5" cy="94.5" r="4.60" fill="#B08D6E" stroke="#86684F" stroke-width="1.1"/></g></svg></div>
+        <h3>Xanh rêu nhạt &amp; kem</h3>
+        <div class="x30-sws4"><div class="x30-s"><i style="background:#9CAF88"></i><span><em>Ngoài</em><b>#9CAF88</b></span></div><div class="x30-s"><i style="background:#FBF6EA"></i><span><em>Lót</em><b>#FBF6EA</b></span></div><div class="x30-s"><i style="background:#B08D6E"></i><span><em>Dây</em><b>#B08D6E</b></span></div><div class="x30-s"><i style="background:#F3EBD8"></i><span><em>Chỉ</em><b>#F3EBD8</b></span></div></div>
+        <p class="x30-txt"><b>Vải:</b> cotton hoa nhí xanh rêu nhạt nền kem; lót kem trơn.</p>
+        <p class="x30-txt"><b>Hợp với:</b> đi cà phê, đi làm, phong cách nhẹ nhàng.</p>
+      </div>
+      <div class="x30-pc">
+        <div class="x30-art" style="background:#F8ECE7"><span class="x30-no">3</span><svg viewBox="0 0 150 113" width="150" height="113"><defs><linearGradient id="x30-c3-shade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#26352F" stop-opacity="0"/><stop offset=".55" stop-color="#26352F" stop-opacity=".05"/><stop offset="1" stop-color="#26352F" stop-opacity=".22"/></linearGradient><pattern id="x30-c3-out" patternUnits="userSpaceOnUse" width="12" height="12"><rect width="12" height="12" fill="#F7EAE4"/><rect x="0" y="0" width="5" height="12" fill="#C98B7E" opacity=".4"/><rect x="0" y="0" width="12" height="5" fill="#C98B7E" opacity=".4"/><rect x="8.1" y="0" width=".8" height="12" fill="#A88A73" opacity=".85"/><rect x="0" y="8.1" width="12" height=".8" fill="#A88A73" opacity=".85"/></pattern></defs><g transform="scale(.882)"><ellipse cx="85" cy="123.5" rx="58" ry="4.2" fill="#26352F" opacity=".09"/>
+<path fill="url(#x30-c3-out)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M63 26 C63 -6, 107 -6, 107 26 L101 26 C101 3, 69 3, 69 26 Z"/>
+<path fill="#FBEDE8" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M35 42 C35 27, 54 20.5, 85 20.5 C116 20.5, 135 27, 135 42 Z"/>
+<path fill="url(#x30-c3-shade)" d="M35 42 C35 27, 54 20.5, 85 20.5 C116 20.5, 135 27, 135 42 Z"/>
+<path fill="none" stroke="#EFD9D1" stroke-width="1" stroke-dasharray="2.2 1.6" d="M38.5 38 C39 29, 56 23, 85 23 C114 23, 131 29, 131.5 38"/>
+<path fill="url(#x30-c3-out)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M56 44 C56 -4, 114 -4, 114 44 L108 44 C108 5, 62 5, 62 44 Z"/>
+<path fill="url(#x30-c3-out)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M48 60 C36 64, 31 76, 31 92 L31 114 Q31 122 39 122 L131 122 Q139 122 139 114 L139 92 C139 76, 134 64, 122 60 Z"/>
+<path fill="none" stroke="#26352F" stroke-opacity=".13" stroke-width="1" stroke-linecap="round" d="M60 61 C56 76, 55 92, 57 106 M85 61 L85 104 M110 61 C114 76, 115 92, 113 106 M72 61 C70 72, 70 82, 71 90 M98 61 C100 72, 100 82, 99 90"/>
+<path fill="url(#x30-c3-out)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M48 52 L122 52 L122 60 L48 60 Z"/>
+<path fill="#26352F" fill-opacity=".07" d="M48 52 L122 52 L122 60 L48 60 Z"/>
+<path fill="none" stroke="#26352F" stroke-opacity=".22" stroke-width=".8" d="M51 52.6 V59.4 M55 52.6 V59.4 M59 52.6 V59.4 M63 52.6 V59.4 M67 52.6 V59.4 M71 52.6 V59.4 M75 52.6 V59.4 M79 52.6 V59.4 M83 52.6 V59.4 M87 52.6 V59.4 M91 52.6 V59.4 M95 52.6 V59.4 M99 52.6 V59.4 M103 52.6 V59.4 M107 52.6 V59.4 M111 52.6 V59.4 M115 52.6 V59.4 M119 52.6 V59.4"/>
+<path fill="url(#x30-c3-out)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M34 41 Q40.38 36.80 46.75 41 Q53.12 45.20 59.50 41 Q65.88 36.80 72.25 41 Q78.62 45.20 85.00 41 Q91.38 36.80 97.75 41 Q104.12 45.20 110.50 41 Q116.88 36.80 123.25 41 Q129.62 45.20 136.00 41 C132 46, 126 50, 122 52 L48 52 C44 50, 38 46, 34 41 Z"/>
+<path fill="none" stroke="#26352F" stroke-opacity=".14" stroke-width="1" stroke-linecap="round" d="M46.75 43 L53 51 M72.25 43 L73 51 M97.75 43 L97 51 M123.25 43 L117 51 M59.5 45 L62 51 M110.5 45 L108 51 M85 45 L85 51"/>
+<path fill="none" stroke="#EFD9D1" stroke-width="1" stroke-dasharray="2.2 1.6" d="M36 43.2 Q42.12 39.20 48.25 43.2 Q54.38 47.20 60.50 43.2 Q66.62 39.20 72.75 43.2 Q78.88 47.20 85.00 43.2 Q91.12 39.20 97.25 43.2 Q103.38 47.20 109.50 43.2 Q115.62 39.20 121.75 43.2 Q127.88 47.20 134.00 43.2"/>
+<path fill="none" stroke="#EFD9D1" stroke-width="1" stroke-dasharray="2.2 1.6" d="M49 53.3 H121 M49 58.7 H121"/>
+<path d="M49 56 C38 58, 27 64, 25.5 80 L24.5 92" fill="none" stroke="#5A2536" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M49 56 C38 58, 27 64, 25.5 80 L24.5 92" fill="none" stroke="#7E3B4F" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24.5 96 L20.5 110 M24.5 96 L28 109" fill="none" stroke="#5A2536" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24.5 96 L20.5 110 M24.5 96 L28 109" fill="none" stroke="#7E3B4F" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="24.5" cy="94.5" r="4.60" fill="#7E3B4F" stroke="#5A2536" stroke-width="1.1"/>
+<path d="M121 56 C132 58, 143 64, 144.5 80 L145.5 92" fill="none" stroke="#5A2536" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M121 56 C132 58, 143 64, 144.5 80 L145.5 92" fill="none" stroke="#7E3B4F" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M145.5 96 L149.5 110 M145.5 96 L142 109" fill="none" stroke="#5A2536" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M145.5 96 L149.5 110 M145.5 96 L142 109" fill="none" stroke="#7E3B4F" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="145.5" cy="94.5" r="4.60" fill="#7E3B4F" stroke="#5A2536" stroke-width="1.1"/></g></svg></div>
+        <h3>Hồng đất &amp; nâu sữa</h3>
+        <div class="x30-sws4"><div class="x30-s"><i style="background:#C98B7E"></i><span><em>Ngoài</em><b>#C98B7E</b></span></div><div class="x30-s"><i style="background:#FBEDE8"></i><span><em>Lót</em><b>#FBEDE8</b></span></div><div class="x30-s"><i style="background:#7E3B4F"></i><span><em>Dây</em><b>#7E3B4F</b></span></div><div class="x30-s"><i style="background:#EFD9D1"></i><span><em>Chỉ</em><b>#EFD9D1</b></span></div></div>
+        <p class="x30-txt"><b>Vải:</b> cotton pha lanh caro nhỏ hồng đất, kẻ nâu sữa; lót kem hồng.</p>
+        <p class="x30-txt"><b>Hợp với:</b> dạo phố mùa thu, đi làm, tặng mẹ.</p>
+      </div>
+      <div class="x30-pc">
+        <div class="x30-art" style="background:#EAF2FA"><span class="x30-no">4</span><svg viewBox="0 0 150 113" width="150" height="113"><defs><linearGradient id="x30-c4-shade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#26352F" stop-opacity="0"/><stop offset=".55" stop-color="#26352F" stop-opacity=".05"/><stop offset="1" stop-color="#26352F" stop-opacity=".22"/></linearGradient><pattern id="x30-c4-out" patternUnits="userSpaceOnUse" width="14" height="14"><rect width="14" height="14" fill="#F8FBFE"/><rect x="0" y="0" width="6" height="14" fill="#A9CBEA" opacity=".55"/><rect x="0" y="0" width="14" height="6" fill="#A9CBEA" opacity=".55"/><rect x="10" y="0" width=".7" height="14" fill="#8FB5DA" opacity=".6"/></pattern></defs><g transform="scale(.882)"><ellipse cx="85" cy="123.5" rx="58" ry="4.2" fill="#26352F" opacity=".09"/>
+<path fill="url(#x30-c4-out)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M63 26 C63 -6, 107 -6, 107 26 L101 26 C101 3, 69 3, 69 26 Z"/>
+<path fill="#FFFBF2" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M35 42 C35 27, 54 20.5, 85 20.5 C116 20.5, 135 27, 135 42 Z"/>
+<path fill="url(#x30-c4-shade)" d="M35 42 C35 27, 54 20.5, 85 20.5 C116 20.5, 135 27, 135 42 Z"/>
+<path fill="none" stroke="#F7F3E8" stroke-width="1" stroke-dasharray="2.2 1.6" d="M38.5 38 C39 29, 56 23, 85 23 C114 23, 131 29, 131.5 38"/>
+<path fill="url(#x30-c4-out)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M56 44 C56 -4, 114 -4, 114 44 L108 44 C108 5, 62 5, 62 44 Z"/>
+<path fill="url(#x30-c4-out)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M48 60 C36 64, 31 76, 31 92 L31 114 Q31 122 39 122 L131 122 Q139 122 139 114 L139 92 C139 76, 134 64, 122 60 Z"/>
+<path fill="none" stroke="#26352F" stroke-opacity=".13" stroke-width="1" stroke-linecap="round" d="M60 61 C56 76, 55 92, 57 106 M85 61 L85 104 M110 61 C114 76, 115 92, 113 106 M72 61 C70 72, 70 82, 71 90 M98 61 C100 72, 100 82, 99 90"/>
+<path fill="url(#x30-c4-out)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M48 52 L122 52 L122 60 L48 60 Z"/>
+<path fill="#26352F" fill-opacity=".07" d="M48 52 L122 52 L122 60 L48 60 Z"/>
+<path fill="none" stroke="#26352F" stroke-opacity=".22" stroke-width=".8" d="M51 52.6 V59.4 M55 52.6 V59.4 M59 52.6 V59.4 M63 52.6 V59.4 M67 52.6 V59.4 M71 52.6 V59.4 M75 52.6 V59.4 M79 52.6 V59.4 M83 52.6 V59.4 M87 52.6 V59.4 M91 52.6 V59.4 M95 52.6 V59.4 M99 52.6 V59.4 M103 52.6 V59.4 M107 52.6 V59.4 M111 52.6 V59.4 M115 52.6 V59.4 M119 52.6 V59.4"/>
+<path fill="url(#x30-c4-out)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M34 41 Q40.38 36.80 46.75 41 Q53.12 45.20 59.50 41 Q65.88 36.80 72.25 41 Q78.62 45.20 85.00 41 Q91.38 36.80 97.75 41 Q104.12 45.20 110.50 41 Q116.88 36.80 123.25 41 Q129.62 45.20 136.00 41 C132 46, 126 50, 122 52 L48 52 C44 50, 38 46, 34 41 Z"/>
+<path fill="none" stroke="#26352F" stroke-opacity=".14" stroke-width="1" stroke-linecap="round" d="M46.75 43 L53 51 M72.25 43 L73 51 M97.75 43 L97 51 M123.25 43 L117 51 M59.5 45 L62 51 M110.5 45 L108 51 M85 45 L85 51"/>
+<path fill="none" stroke="#F7F3E8" stroke-width="1" stroke-dasharray="2.2 1.6" d="M36 43.2 Q42.12 39.20 48.25 43.2 Q54.38 47.20 60.50 43.2 Q66.62 39.20 72.75 43.2 Q78.88 47.20 85.00 43.2 Q91.12 39.20 97.25 43.2 Q103.38 47.20 109.50 43.2 Q115.62 39.20 121.75 43.2 Q127.88 47.20 134.00 43.2"/>
+<path fill="none" stroke="#F7F3E8" stroke-width="1" stroke-dasharray="2.2 1.6" d="M49 53.3 H121 M49 58.7 H121"/>
+<path d="M49 56 C38 58, 27 64, 25.5 80 L24.5 92" fill="none" stroke="#4F6C80" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M49 56 C38 58, 27 64, 25.5 80 L24.5 92" fill="none" stroke="#6F8FA6" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24.5 96 L20.5 110 M24.5 96 L28 109" fill="none" stroke="#4F6C80" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24.5 96 L20.5 110 M24.5 96 L28 109" fill="none" stroke="#6F8FA6" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="24.5" cy="94.5" r="4.60" fill="#6F8FA6" stroke="#4F6C80" stroke-width="1.1"/>
+<path d="M121 56 C132 58, 143 64, 144.5 80 L145.5 92" fill="none" stroke="#4F6C80" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M121 56 C132 58, 143 64, 144.5 80 L145.5 92" fill="none" stroke="#6F8FA6" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M145.5 96 L149.5 110 M145.5 96 L142 109" fill="none" stroke="#4F6C80" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M145.5 96 L149.5 110 M145.5 96 L142 109" fill="none" stroke="#6F8FA6" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="145.5" cy="94.5" r="4.60" fill="#6F8FA6" stroke="#4F6C80" stroke-width="1.1"/></g></svg></div>
+        <h3>Xanh phấn</h3>
+        <div class="x30-sws4"><div class="x30-s"><i style="background:#A9CBEA"></i><span><em>Ngoài</em><b>#A9CBEA</b></span></div><div class="x30-s"><i style="background:#FFFBF2"></i><span><em>Lót</em><b>#FFFBF2</b></span></div><div class="x30-s"><i style="background:#6F8FA6"></i><span><em>Dây</em><b>#6F8FA6</b></span></div><div class="x30-s"><i style="background:#F7F3E8"></i><span><em>Chỉ</em><b>#F7F3E8</b></span></div></div>
+        <p class="x30-txt"><b>Vải:</b> cotton caro/sọc xanh phấn; lót trắng ngà.</p>
+        <p class="x30-txt"><b>Hợp với:</b> bé đi học, đựng đồ em bé, đi biển.</p>
+      </div>
+      <div class="x30-pc">
+        <div class="x30-art" style="background:#F2EEFA"><span class="x30-no">5</span><svg viewBox="0 0 150 113" width="150" height="113"><defs><linearGradient id="x30-c5-shade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#26352F" stop-opacity="0"/><stop offset=".55" stop-color="#26352F" stop-opacity=".05"/><stop offset="1" stop-color="#26352F" stop-opacity=".22"/></linearGradient><pattern id="x30-c5-out" patternUnits="userSpaceOnUse" width="12" height="12"><rect width="12" height="12" fill="#F4F0FA"/><circle cx="3" cy="3" r="1.7" fill="#B9A2DE"/><circle cx="9" cy="9" r="1.7" fill="#B9A2DE"/></pattern></defs><g transform="scale(.882)"><ellipse cx="85" cy="123.5" rx="58" ry="4.2" fill="#26352F" opacity=".09"/>
+<path fill="url(#x30-c5-out)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M63 26 C63 -6, 107 -6, 107 26 L101 26 C101 3, 69 3, 69 26 Z"/>
+<path fill="#FFFDF8" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M35 42 C35 27, 54 20.5, 85 20.5 C116 20.5, 135 27, 135 42 Z"/>
+<path fill="url(#x30-c5-shade)" d="M35 42 C35 27, 54 20.5, 85 20.5 C116 20.5, 135 27, 135 42 Z"/>
+<path fill="none" stroke="#EAE3F4" stroke-width="1" stroke-dasharray="2.2 1.6" d="M38.5 38 C39 29, 56 23, 85 23 C114 23, 131 29, 131.5 38"/>
+<path fill="url(#x30-c5-out)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M56 44 C56 -4, 114 -4, 114 44 L108 44 C108 5, 62 5, 62 44 Z"/>
+<path fill="url(#x30-c5-out)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M48 60 C36 64, 31 76, 31 92 L31 114 Q31 122 39 122 L131 122 Q139 122 139 114 L139 92 C139 76, 134 64, 122 60 Z"/>
+<path fill="none" stroke="#26352F" stroke-opacity=".13" stroke-width="1" stroke-linecap="round" d="M60 61 C56 76, 55 92, 57 106 M85 61 L85 104 M110 61 C114 76, 115 92, 113 106 M72 61 C70 72, 70 82, 71 90 M98 61 C100 72, 100 82, 99 90"/>
+<path fill="url(#x30-c5-out)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M48 52 L122 52 L122 60 L48 60 Z"/>
+<path fill="#26352F" fill-opacity=".07" d="M48 52 L122 52 L122 60 L48 60 Z"/>
+<path fill="none" stroke="#26352F" stroke-opacity=".22" stroke-width=".8" d="M51 52.6 V59.4 M55 52.6 V59.4 M59 52.6 V59.4 M63 52.6 V59.4 M67 52.6 V59.4 M71 52.6 V59.4 M75 52.6 V59.4 M79 52.6 V59.4 M83 52.6 V59.4 M87 52.6 V59.4 M91 52.6 V59.4 M95 52.6 V59.4 M99 52.6 V59.4 M103 52.6 V59.4 M107 52.6 V59.4 M111 52.6 V59.4 M115 52.6 V59.4 M119 52.6 V59.4"/>
+<path fill="url(#x30-c5-out)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M34 41 Q40.38 36.80 46.75 41 Q53.12 45.20 59.50 41 Q65.88 36.80 72.25 41 Q78.62 45.20 85.00 41 Q91.38 36.80 97.75 41 Q104.12 45.20 110.50 41 Q116.88 36.80 123.25 41 Q129.62 45.20 136.00 41 C132 46, 126 50, 122 52 L48 52 C44 50, 38 46, 34 41 Z"/>
+<path fill="none" stroke="#26352F" stroke-opacity=".14" stroke-width="1" stroke-linecap="round" d="M46.75 43 L53 51 M72.25 43 L73 51 M97.75 43 L97 51 M123.25 43 L117 51 M59.5 45 L62 51 M110.5 45 L108 51 M85 45 L85 51"/>
+<path fill="none" stroke="#EAE3F4" stroke-width="1" stroke-dasharray="2.2 1.6" d="M36 43.2 Q42.12 39.20 48.25 43.2 Q54.38 47.20 60.50 43.2 Q66.62 39.20 72.75 43.2 Q78.88 47.20 85.00 43.2 Q91.12 39.20 97.25 43.2 Q103.38 47.20 109.50 43.2 Q115.62 39.20 121.75 43.2 Q127.88 47.20 134.00 43.2"/>
+<path fill="none" stroke="#EAE3F4" stroke-width="1" stroke-dasharray="2.2 1.6" d="M49 53.3 H121 M49 58.7 H121"/>
+<path d="M49 56 C38 58, 27 64, 25.5 80 L24.5 92" fill="none" stroke="#6A5F80" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M49 56 C38 58, 27 64, 25.5 80 L24.5 92" fill="none" stroke="#8C7FA3" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24.5 96 L20.5 110 M24.5 96 L28 109" fill="none" stroke="#6A5F80" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24.5 96 L20.5 110 M24.5 96 L28 109" fill="none" stroke="#8C7FA3" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="24.5" cy="94.5" r="4.60" fill="#8C7FA3" stroke="#6A5F80" stroke-width="1.1"/>
+<path d="M121 56 C132 58, 143 64, 144.5 80 L145.5 92" fill="none" stroke="#6A5F80" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M121 56 C132 58, 143 64, 144.5 80 L145.5 92" fill="none" stroke="#8C7FA3" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M145.5 96 L149.5 110 M145.5 96 L142 109" fill="none" stroke="#6A5F80" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M145.5 96 L149.5 110 M145.5 96 L142 109" fill="none" stroke="#8C7FA3" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="145.5" cy="94.5" r="4.60" fill="#8C7FA3" stroke="#6A5F80" stroke-width="1.1"/></g></svg></div>
+        <h3>Tím oải hương</h3>
+        <div class="x30-sws4"><div class="x30-s"><i style="background:#B9A2DE"></i><span><em>Ngoài</em><b>#B9A2DE</b></span></div><div class="x30-s"><i style="background:#FFFDF8"></i><span><em>Lót</em><b>#FFFDF8</b></span></div><div class="x30-s"><i style="background:#8C7FA3"></i><span><em>Dây</em><b>#8C7FA3</b></span></div><div class="x30-s"><i style="background:#EAE3F4"></i><span><em>Chỉ</em><b>#EAE3F4</b></span></div></div>
+        <p class="x30-txt"><b>Vải:</b> cotton chấm bi tím oải hương; lót trắng sữa.</p>
+        <p class="x30-txt"><b>Hợp với:</b> đựng mỹ phẩm, quà sinh nhật, đi chơi.</p>
+      </div>
+      <div class="x30-pc">
+        <div class="x30-art" style="background:#F0EADF"><span class="x30-no">6</span><span class="chip blue x30-tag">trông sang</span><svg viewBox="0 0 150 113" width="150" height="113"><defs><linearGradient id="x30-c6-shade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#26352F" stop-opacity="0"/><stop offset=".55" stop-color="#26352F" stop-opacity=".05"/><stop offset="1" stop-color="#26352F" stop-opacity=".22"/></linearGradient><pattern id="x30-c6-out" patternUnits="userSpaceOnUse" width="16" height="16"><rect width="16" height="16" fill="#E6D8BC"/><path d="M4 2.1 V5.9 M2.1 4 H5.9" stroke="#25365C" stroke-width="1" stroke-linecap="round"/><path d="M12 10.7 L13.3 12 L12 13.3 L10.7 12 Z" fill="#25365C"/></pattern></defs><g transform="scale(.882)"><ellipse cx="85" cy="123.5" rx="58" ry="4.2" fill="#26352F" opacity=".09"/>
+<path fill="url(#x30-c6-out)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M63 26 C63 -6, 107 -6, 107 26 L101 26 C101 3, 69 3, 69 26 Z"/>
+<path fill="#F2EAD9" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M35 42 C35 27, 54 20.5, 85 20.5 C116 20.5, 135 27, 135 42 Z"/>
+<path fill="url(#x30-c6-shade)" d="M35 42 C35 27, 54 20.5, 85 20.5 C116 20.5, 135 27, 135 42 Z"/>
+<path fill="none" stroke="#E3D5BA" stroke-width="1" stroke-dasharray="2.2 1.6" d="M38.5 38 C39 29, 56 23, 85 23 C114 23, 131 29, 131.5 38"/>
+<path fill="url(#x30-c6-out)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M56 44 C56 -4, 114 -4, 114 44 L108 44 C108 5, 62 5, 62 44 Z"/>
+<path fill="url(#x30-c6-out)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M48 60 C36 64, 31 76, 31 92 L31 114 Q31 122 39 122 L131 122 Q139 122 139 114 L139 92 C139 76, 134 64, 122 60 Z"/>
+<path fill="none" stroke="#26352F" stroke-opacity=".13" stroke-width="1" stroke-linecap="round" d="M60 61 C56 76, 55 92, 57 106 M85 61 L85 104 M110 61 C114 76, 115 92, 113 106 M72 61 C70 72, 70 82, 71 90 M98 61 C100 72, 100 82, 99 90"/>
+<path fill="url(#x30-c6-out)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M48 52 L122 52 L122 60 L48 60 Z"/>
+<path fill="#26352F" fill-opacity=".07" d="M48 52 L122 52 L122 60 L48 60 Z"/>
+<path fill="none" stroke="#26352F" stroke-opacity=".22" stroke-width=".8" d="M51 52.6 V59.4 M55 52.6 V59.4 M59 52.6 V59.4 M63 52.6 V59.4 M67 52.6 V59.4 M71 52.6 V59.4 M75 52.6 V59.4 M79 52.6 V59.4 M83 52.6 V59.4 M87 52.6 V59.4 M91 52.6 V59.4 M95 52.6 V59.4 M99 52.6 V59.4 M103 52.6 V59.4 M107 52.6 V59.4 M111 52.6 V59.4 M115 52.6 V59.4 M119 52.6 V59.4"/>
+<path fill="url(#x30-c6-out)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M34 41 Q40.38 36.80 46.75 41 Q53.12 45.20 59.50 41 Q65.88 36.80 72.25 41 Q78.62 45.20 85.00 41 Q91.38 36.80 97.75 41 Q104.12 45.20 110.50 41 Q116.88 36.80 123.25 41 Q129.62 45.20 136.00 41 C132 46, 126 50, 122 52 L48 52 C44 50, 38 46, 34 41 Z"/>
+<path fill="none" stroke="#26352F" stroke-opacity=".14" stroke-width="1" stroke-linecap="round" d="M46.75 43 L53 51 M72.25 43 L73 51 M97.75 43 L97 51 M123.25 43 L117 51 M59.5 45 L62 51 M110.5 45 L108 51 M85 45 L85 51"/>
+<path fill="none" stroke="#E3D5BA" stroke-width="1" stroke-dasharray="2.2 1.6" d="M36 43.2 Q42.12 39.20 48.25 43.2 Q54.38 47.20 60.50 43.2 Q66.62 39.20 72.75 43.2 Q78.88 47.20 85.00 43.2 Q91.12 39.20 97.25 43.2 Q103.38 47.20 109.50 43.2 Q115.62 39.20 121.75 43.2 Q127.88 47.20 134.00 43.2"/>
+<path fill="none" stroke="#E3D5BA" stroke-width="1" stroke-dasharray="2.2 1.6" d="M49 53.3 H121 M49 58.7 H121"/>
+<path d="M49 56 C38 58, 27 64, 25.5 80 L24.5 92" fill="none" stroke="#141F38" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M49 56 C38 58, 27 64, 25.5 80 L24.5 92" fill="none" stroke="#25365C" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24.5 96 L20.5 110 M24.5 96 L28 109" fill="none" stroke="#141F38" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24.5 96 L20.5 110 M24.5 96 L28 109" fill="none" stroke="#25365C" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="24.5" cy="94.5" r="4.60" fill="#25365C" stroke="#141F38" stroke-width="1.1"/>
+<path d="M121 56 C132 58, 143 64, 144.5 80 L145.5 92" fill="none" stroke="#141F38" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M121 56 C132 58, 143 64, 144.5 80 L145.5 92" fill="none" stroke="#25365C" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M145.5 96 L149.5 110 M145.5 96 L142 109" fill="none" stroke="#141F38" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M145.5 96 L149.5 110 M145.5 96 L142 109" fill="none" stroke="#25365C" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="145.5" cy="94.5" r="4.60" fill="#25365C" stroke="#141F38" stroke-width="1.1"/></g></svg></div>
+        <h3>Xanh tím than &amp; be cát</h3>
+        <div class="x30-sws4"><div class="x30-s"><i style="background:#E3D3B5"></i><span><em>Ngoài</em><b>#E3D3B5</b></span></div><div class="x30-s"><i style="background:#F2EAD9"></i><span><em>Lót</em><b>#F2EAD9</b></span></div><div class="x30-s"><i style="background:#25365C"></i><span><em>Dây</em><b>#25365C</b></span></div><div class="x30-s"><i style="background:#E3D5BA"></i><span><em>Chỉ</em><b>#E3D5BA</b></span></div></div>
+        <p class="x30-txt"><b>Vải:</b> vải bố mỏng (canvas) hoặc cotton pha lanh be in họa tiết xanh tím than; lót be.</p>
+        <p class="x30-txt"><b>Hợp với:</b> đi làm, quà tặng nam lẫn nữ.</p>
+      </div>
+    </div>
+
+    <div class="x30-blk">
+      <h2>3 kiểu phối nên tránh</h2>
+      <div class="x30-avoid"><div class="x30-av"><svg viewBox="0 0 61 48" width="61" height="48"><defs><pattern id="x30-a1-st" patternUnits="userSpaceOnUse" width="12" height="12" patternTransform="rotate(35)"><rect width="12" height="12" fill="#FFF3D6"/><rect width="6" height="12" fill="#E4572E"/></pattern><pattern id="x30-a1-fl" patternUnits="userSpaceOnUse" width="26" height="26"><rect width="26" height="26" fill="#2F6FB0"/><circle cx="13" cy="13" r="8" fill="#F2DC6B"/><circle cx="13" cy="13" r="3" fill="#E0457B"/></pattern></defs><g transform="scale(.8)"><rect x="6" y="8" width="38" height="44" rx="4" fill="url(#x30-a1-st)" stroke="#4A5A53" stroke-width=".9"/><rect x="28" y="16" width="38" height="40" rx="4" fill="url(#x30-a1-fl)" stroke="#4A5A53" stroke-width=".9"/><path d="M8 53 L64 13" stroke="#fff" stroke-width="5" stroke-linecap="round"/><path d="M8 53 L64 13" stroke="#D9531F" stroke-width="2.4" stroke-linecap="round"/><circle cx="66" cy="12" r="8" fill="#D9531F" stroke="#fff" stroke-width="1.6"/><path d="M63 9 69 15 M69 9 63 15" stroke="#fff" stroke-width="1.9" stroke-linecap="round"/></g></svg><div><h3>2 họa tiết lớn</h3><p>Sọc to + hoa to “đánh nhau”, rối mắt. Giữ 1 họa tiết chính.</p></div></div><div class="x30-av"><svg viewBox="0 0 61 48" width="61" height="48"><g transform="scale(.8)"><ellipse cx="36" cy="32" rx="30" ry="21" class="f-outer-s" stroke="#4A5A53" stroke-width=".9"/><ellipse cx="36" cy="32" rx="24" ry="15.5" fill="#1E2328" stroke="#4A5A53" stroke-width=".9"/><circle cx="42" cy="30" r="3.4" fill="none" stroke="#3A424A" stroke-width="1.7"/><path d="M44.4 32.4 49 37" stroke="#3A424A" stroke-width="1.7" stroke-linecap="round"/><rect x="24" y="27" width="5" height="12" rx="1.8" transform="rotate(-20 26.5 33)" fill="#3B2B33"/><path d="M8 53 L64 13" stroke="#fff" stroke-width="5" stroke-linecap="round"/><path d="M8 53 L64 13" stroke="#D9531F" stroke-width="2.4" stroke-linecap="round"/><circle cx="66" cy="12" r="8" fill="#D9531F" stroke="#fff" stroke-width="1.6"/><path d="M63 9 69 15 M69 9 63 15" stroke="#fff" stroke-width="1.9" stroke-linecap="round"/></g></svg><div><h3>Lót tối màu</h3><p>Lót đen, nâu đậm: khó tìm đồ nhỏ. Chọn lót sáng hơn vải ngoài.</p></div></div><div class="x30-av"><svg viewBox="0 0 61 48" width="61" height="48"><defs><pattern id="x30-a3-out" patternUnits="userSpaceOnUse" width="18" height="18"><rect width="18" height="18" fill="#F6F2E4"/><circle cx="4.50" cy="2.95" r="1.2" fill="#8FA67E"/><circle cx="5.97" cy="4.02" r="1.2" fill="#8FA67E"/><circle cx="5.41" cy="5.75" r="1.2" fill="#8FA67E"/><circle cx="3.59" cy="5.75" r="1.2" fill="#8FA67E"/><circle cx="3.03" cy="4.02" r="1.2" fill="#8FA67E"/><circle cx="4.5" cy="4.5" r=".75" fill="#EFD9A0"/><ellipse cx="7.5" cy="6.9" rx="1.5" ry=".62" transform="rotate(35 7.5 6.9)" fill="#6F8466"/><circle cx="13.50" cy="11.95" r="1.2" fill="#8FA67E"/><circle cx="14.97" cy="13.02" r="1.2" fill="#8FA67E"/><circle cx="14.41" cy="14.75" r="1.2" fill="#8FA67E"/><circle cx="12.59" cy="14.75" r="1.2" fill="#8FA67E"/><circle cx="12.03" cy="13.02" r="1.2" fill="#8FA67E"/><circle cx="13.5" cy="13.5" r=".75" fill="#EFD9A0"/><ellipse cx="16.5" cy="15.9" rx="1.5" ry=".62" transform="rotate(35 16.5 15.9)" fill="#6F8466"/><circle cx="13.5" cy="4.5" r=".6" fill="#A9BA99"/><circle cx="4.5" cy="13.5" r=".6" fill="#A9BA99"/></pattern><linearGradient id="x30-a3-shade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#26352F" stop-opacity="0"/><stop offset=".55" stop-color="#26352F" stop-opacity=".05"/><stop offset="1" stop-color="#26352F" stop-opacity=".22"/></linearGradient></defs><g transform="scale(.8)"><g transform="translate(-2 3) scale(.44)"><ellipse cx="85" cy="123.5" rx="58" ry="4.2" fill="#26352F" opacity=".09"/>
+<path fill="url(#x30-a3-out)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M63 26 C63 -6, 107 -6, 107 26 L101 26 C101 3, 69 3, 69 26 Z"/>
+<path fill="#FBF6EA" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M35 42 C35 27, 54 20.5, 85 20.5 C116 20.5, 135 27, 135 42 Z"/>
+<path fill="url(#x30-a3-shade)" d="M35 42 C35 27, 54 20.5, 85 20.5 C116 20.5, 135 27, 135 42 Z"/>
+<path fill="url(#x30-a3-out)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M56 44 C56 -4, 114 -4, 114 44 L108 44 C108 5, 62 5, 62 44 Z"/>
+<path fill="url(#x30-a3-out)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M48 60 C36 64, 31 76, 31 92 L31 114 Q31 122 39 122 L131 122 Q139 122 139 114 L139 92 C139 76, 134 64, 122 60 Z"/>
+<path fill="none" stroke="#26352F" stroke-opacity=".13" stroke-width="1" stroke-linecap="round" d="M60 61 C56 76, 55 92, 57 106 M85 61 L85 104 M110 61 C114 76, 115 92, 113 106 M72 61 C70 72, 70 82, 71 90 M98 61 C100 72, 100 82, 99 90"/>
+<path fill="url(#x30-a3-out)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M48 52 L122 52 L122 60 L48 60 Z"/>
+<path fill="#26352F" fill-opacity=".07" d="M48 52 L122 52 L122 60 L48 60 Z"/>
+<path fill="none" stroke="#26352F" stroke-opacity=".22" stroke-width=".8" d="M51 52.6 V59.4 M55 52.6 V59.4 M59 52.6 V59.4 M63 52.6 V59.4 M67 52.6 V59.4 M71 52.6 V59.4 M75 52.6 V59.4 M79 52.6 V59.4 M83 52.6 V59.4 M87 52.6 V59.4 M91 52.6 V59.4 M95 52.6 V59.4 M99 52.6 V59.4 M103 52.6 V59.4 M107 52.6 V59.4 M111 52.6 V59.4 M115 52.6 V59.4 M119 52.6 V59.4"/>
+<path fill="url(#x30-a3-out)" stroke="#4A5A53" stroke-width=".9" stroke-linejoin="round" d="M34 41 Q40.38 36.80 46.75 41 Q53.12 45.20 59.50 41 Q65.88 36.80 72.25 41 Q78.62 45.20 85.00 41 Q91.38 36.80 97.75 41 Q104.12 45.20 110.50 41 Q116.88 36.80 123.25 41 Q129.62 45.20 136.00 41 C132 46, 126 50, 122 52 L48 52 C44 50, 38 46, 34 41 Z"/>
+<path fill="none" stroke="#26352F" stroke-opacity=".14" stroke-width="1" stroke-linecap="round" d="M46.75 43 L53 51 M72.25 43 L73 51 M97.75 43 L97 51 M123.25 43 L117 51 M59.5 45 L62 51 M110.5 45 L108 51 M85 45 L85 51"/>
+<path d="M49 56 C38 58, 27 64, 25.5 80 L24.5 92" fill="none" stroke="#FF4D1A" stroke-width="3.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M49 56 C38 58, 27 64, 25.5 80 L24.5 92" fill="none" stroke="#FF4D1A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24.5 96 L20.5 110 M24.5 96 L28 109" fill="none" stroke="#FF4D1A" stroke-width="3.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24.5 96 L20.5 110 M24.5 96 L28 109" fill="none" stroke="#FF4D1A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="24.5" cy="94.5" r="3.35" fill="#FF4D1A" stroke="#FF4D1A" stroke-width="1.1"/>
+<path d="M121 56 C132 58, 143 64, 144.5 80 L145.5 92" fill="none" stroke="#FF4D1A" stroke-width="3.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M121 56 C132 58, 143 64, 144.5 80 L145.5 92" fill="none" stroke="#FF4D1A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M145.5 96 L149.5 110 M145.5 96 L142 109" fill="none" stroke="#FF4D1A" stroke-width="3.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M145.5 96 L149.5 110 M145.5 96 L142 109" fill="none" stroke="#FF4D1A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="145.5" cy="94.5" r="3.35" fill="#FF4D1A" stroke="#FF4D1A" stroke-width="1.1"/></g><path d="M8 53 L64 13" stroke="#fff" stroke-width="5" stroke-linecap="round"/><path d="M8 53 L64 13" stroke="#D9531F" stroke-width="2.4" stroke-linecap="round"/><circle cx="66" cy="12" r="8" fill="#D9531F" stroke="#fff" stroke-width="1.6"/><path d="M63 9 69 15 M69 9 63 15" stroke="#fff" stroke-width="1.9" stroke-linecap="round"/></g></svg><div><h3>Dây mảnh, lạc tông</h3><p>Dây Ø 2 mm dễ tuột nút, màu lạ với vải. Dùng dây Ø 4–6 mm.</p></div></div></div>
+    </div>
+
+    <div class="cols">
+      <div class="note tip"><div class="nt">Mẹo khi đi mua</div>
+        <p>Mang theo 1 mẩu vải ngoài, so màu dây và chỉ <b>dưới ánh sáng ban ngày</b>. Không có chỉ trùng hẳn: chọn <b>đậm hơn nền 1 bậc</b>.</p></div>
+      <div class="note info"><div class="nt">Về mã màu</div>
+        <p>Mã dạng <b>#C9E86F</b> chỉ để tham khảo; màu in, màu vải thật luôn lệch ít nhiều. Hãy đặt vải cạnh nhau, nhìn bằng mắt.</p></div>
+    </div>
+  </div>
+</section>
+</body></html>

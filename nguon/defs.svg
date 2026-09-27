@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+  <defs>
+    <!-- ===== VẢI NGOÀI (mặt phải): caro chanh + nơ hồng — giống vải trong video ===== -->
+    <pattern id="p-outer" patternUnits="userSpaceOnUse" width="60" height="60">
+      <rect width="60" height="60" fill="#FFFFF3"/>
+      <rect x="0" y="0" width="15" height="60" fill="#BFE35A" opacity=".45"/>
+      <rect x="30" y="0" width="15" height="60" fill="#BFE35A" opacity=".45"/>
+      <rect x="0" y="0" width="60" height="15" fill="#BFE35A" opacity=".45"/>
+      <rect x="0" y="30" width="60" height="15" fill="#BFE35A" opacity=".45"/>
+      <rect x="21" y="0" width="1.6" height="60" fill="#F1DE6E"/>
+      <rect x="51" y="0" width="1.6" height="60" fill="#F1DE6E"/>
+      <rect x="0" y="21" width="60" height="1.6" fill="#F1DE6E"/>
+      <rect x="0" y="51" width="60" height="1.6" fill="#F1DE6E"/>
+      <path d="M0 0c-2-2.4-4.6-2.2-4.4.2.2 1.8 2.6 1.6 4.4-.2zM0 0c2-2.4 4.6-2.2 4.4.2-.2 1.8-2.6 1.6-4.4-.2zM0 0l-1.8 3.6M0 0l1.8 3.6" fill="none" stroke="#E0457B" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" transform="translate(45 8) scale(1.25)"/>
+      <path d="M0 0c-2-2.4-4.6-2.2-4.4.2.2 1.8 2.6 1.6 4.4-.2zM0 0c2-2.4 4.6-2.2 4.4.2-.2 1.8-2.6 1.6-4.4-.2zM0 0l-1.8 3.6M0 0l1.8 3.6" fill="none" stroke="#E0457B" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" transform="translate(15 38) scale(1.25)"/>
+    </pattern>
+    <!-- bản thu nhỏ để tô hình minh họa nhỏ (túi mini, icon) -->
+    <pattern id="p-outer-s" href="#p-outer" patternTransform="scale(.5)"/>
+    <pattern id="p-lining-s" href="#p-lining" patternTransform="scale(.6)"/>
+    <!-- VẢI NGOÀI (mặt trái): nhạt, in mờ -->
+    <pattern id="p-outer-ws" patternUnits="userSpaceOnUse" width="60" height="60">
+      <rect width="60" height="60" fill="#F7F9EC"/>
+      <rect x="0" y="0" width="15" height="60" fill="#D5E99A" opacity=".3"/>
+      <rect x="30" y="0" width="15" height="60" fill="#D5E99A" opacity=".3"/>
+      <rect x="0" y="0" width="60" height="15" fill="#D5E99A" opacity=".3"/>
+      <rect x="0" y="30" width="60" height="15" fill="#D5E99A" opacity=".3"/>
+    </pattern>
+    <!-- VẢI LÓT (mặt phải): kem chấm bi pastel — giống lót trong video -->
+    <pattern id="p-lining" patternUnits="userSpaceOnUse" width="28" height="28">
+      <rect width="28" height="28" fill="#FFF9EC"/>
+      <circle cx="4" cy="5" r="2.3" fill="#F4A3BF"/>
+      <circle cx="18" cy="4" r="2.3" fill="#9ED9C3"/>
+      <circle cx="11" cy="14" r="2.3" fill="#F2DC6B"/>
+      <circle cx="25" cy="14" r="2.3" fill="#C6A8E8"/>
+      <circle cx="4" cy="23" r="2.3" fill="#9ED9C3"/>
+      <circle cx="18" cy="23" r="2.3" fill="#F4A3BF"/>
+    </pattern>
+    <!-- VẢI LÓT (mặt trái) -->
+    <pattern id="p-lining-ws" patternUnits="userSpaceOnUse" width="28" height="28">
+      <rect width="28" height="28" fill="#FBF4E4"/>
+      <circle cx="4" cy="5" r="2.3" fill="#F4A3BF" opacity=".22"/>
+      <circle cx="18" cy="4" r="2.3" fill="#9ED9C3" opacity=".22"/>
+      <circle cx="11" cy="14" r="2.3" fill="#F2DC6B" opacity=".22"/>
+      <circle cx="25" cy="14" r="2.3" fill="#C6A8E8" opacity=".22"/>
+      <circle cx="4" cy="23" r="2.3" fill="#9ED9C3" opacity=".22"/>
+      <circle cx="18" cy="23" r="2.3" fill="#F4A3BF" opacity=".22"/>
+    </pattern>
+    <!-- PHẦN CẮT BỎ (ô vuông góc 5×5) -->
+    <pattern id="p-hatch" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(45)">
+      <rect width="7" height="7" fill="#FFF3EE"/>
+      <line x1="0" y1="0" x2="0" y2="7" stroke="#E4572E" stroke-width="1.6" opacity=".55"/>
+    </pattern>
+
+    <!-- ===== MŨI TÊN ===== -->
+    <!-- mũi tên kích thước (xanh dương), dùng cho marker-start & marker-end -->
+    <marker id="arr" viewBox="0 0 10 10" refX="9.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+      <path d="M0 1.2 10 5 0 8.8z" fill="#2F6FB0"/>
+    </marker>
+    <!-- mũi tên quy trình (xanh lá đậm) -->
+    <marker id="arr-flow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+      <path d="M0 0 10 5 0 10 2.5 5z" fill="#2F5D50"/>
+    </marker>
+    <!-- mũi tên thao tác (hồng): gấp, lật, kéo, luồn -->
+    <marker id="arr-pink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+      <path d="M0 0 10 5 0 10 2.5 5z" fill="#E0457B"/>
+    </marker>
+    <!-- mũi tên hướng may (đỏ hồng đậm, nhỏ) -->
+    <marker id="arr-seam" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+      <path d="M0 0 10 5 0 10z" fill="#D81B60"/>
+    </marker>
+
+    <!-- ===== BIỂU TƯỢNG DÙNG LẠI ===== -->
+    <!-- ký hiệu LẠI MŨI (backstitch): đặt tại điểm đầu/cuối đường may bằng <use href="#sym-back" x=".." y=".."/> -->
+    <symbol id="sym-back" viewBox="-7 -7 14 14" width="14" height="14" overflow="visible">
+      <circle r="5.6" fill="#fff" stroke="#D81B60" stroke-width="1.6"/>
+      <path d="M-2.6 -1.2 2.6 -1.2M-2.6 1.4 2.6 1.4" stroke="#D81B60" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+    <!-- nơ hồng trang trí -->
+    <symbol id="sym-bow" viewBox="-6 -5 12 10" width="12" height="10" overflow="visible">
+      <path d="M0 0c-2-2.4-4.6-2.2-4.4.2.2 1.8 2.6 1.6 4.4-.2zM0 0c2-2.4 4.6-2.2 4.4.2-.2 1.8-2.6 1.6-4.4-.2zM0 0l-1.8 3.6M0 0l1.8 3.6" fill="none" stroke="#E0457B" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <!-- kẹp vải (clip) nhỏ -->
+    <symbol id="sym-clip" viewBox="0 0 12 18" width="12" height="18" overflow="visible">
+      <rect x="0.5" y="0.5" width="11" height="17" rx="2.5" fill="#7ED957" stroke="#3E8E2F"/>
+      <rect x="3" y="3" width="6" height="7" rx="1" fill="#E8F8DE" stroke="#3E8E2F" stroke-width=".8"/>
+    </symbol>
+  </defs>
+</svg>

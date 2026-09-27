@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../style.css">
+<title>Phần 2 · Chọn vải, vật liệu và dụng cụ</title>
+<style>
+  /* ---- chỉ dùng cho Phần 2 ---- */
+  .p20 .ph{ margin-bottom:3mm; }
+  .p20 > .content{ gap:3.7mm; }
+  .p20 .lead{ margin-top:1.6mm; }
+  .p20 .vgrid{ display:grid; grid-template-columns:repeat(4,1fr); gap:3.2mm; }
+  .p20 .vgrid figcaption{ font-size:10.1px; line-height:1.36; margin-top:1.2mm; }
+  .p20 table.fab{ font-size:10.5px; line-height:1.36; }
+  .p20 table.fab th{ padding:1.4mm 2mm; font-size:10.2px; }
+  .p20 table.fab td{ padding:.45mm 2mm; vertical-align:middle; }
+  .p20 table.fab td.sw-c{ width:12mm; padding:.45mm 1mm .45mm 2mm; }
+  .p20 table.fab td.sw-c svg{ display:block; }
+  .p20 table.fab .nm{ display:block; font-weight:700; color:var(--green-900); font-size:11.2px; white-space:nowrap; }
+  .p20 table.fab .nm i{ font-style:normal; font-weight:600; color:var(--muted); }
+  .p20 table.fab .sub{ display:block; font-size:10px; color:var(--ink-2); white-space:nowrap; }
+  .p20 .nw{ white-space:nowrap; }
+  .p20 .chip{ font-size:10px; padding:0 6px; }
+  .p20 .mt{ display:inline-flex; gap:2px; vertical-align:-1px; margin-right:5px; }
+  .p20 .mt i{ width:6px; height:10px; border-radius:1.5px; background:#E7E1D2; display:block; }
+  .p20 .mt.m1 i:nth-child(-n+1), .p20 .mt.m2 i:nth-child(-n+2), .p20 .mt.m3 i:nth-child(-n+3),
+  .p20 .mt.m4 i:nth-child(-n+4){ background:var(--green-500); }
+  .p20 .gsm{ font:800 10.6px/1.3 'Nunito','Be Vietnam Pro',sans-serif; color:var(--green-900); white-space:nowrap; }
+  .p20 .pl{ color:var(--green-700); font-weight:800; }
+  .p20 .mi{ color:var(--coral-600); font-weight:800; }
+  .p20 .card{ padding:3mm 3.6mm; }
+  .p20 .card h3{ font-size:12.4px; margin-bottom:1.4mm; }
+  .p20 .avoid li{ font-size:10.8px; line-height:1.42; margin-bottom:1.7mm; }
+  .p20 .avoid li:last-child{ margin-bottom:0; }
+  .p20 .test{ display:grid; grid-template-columns:72px 1fr; gap:3mm; align-items:center; margin-bottom:1.6mm; font-size:10.7px; line-height:1.42; }
+  .p20 .test:last-child{ margin-bottom:0; }
+  .p20 .test svg{ display:block; }
+  .p20 .prep{ display:grid; grid-template-columns:repeat(4,1fr); gap:3mm; }
+  .p20 .prep .card{ padding:2mm 2mm 2.2mm 2mm; }
+  .p20 .prep svg{ display:block; margin:0 auto 1.2mm auto; }
+  .p20 .prep h3{ font-size:11.4px; margin:0 0 .5mm .6mm; }
+  .p20 .prep p{ font-size:10.1px; line-height:1.4; margin:0 0 0 .6mm; }
+  .p20 .tools{ display:grid; grid-template-columns:repeat(4,1fr); gap:1.8mm; }
+  .p20 .tool{ display:grid; grid-template-columns:38px 1fr; gap:2mm; align-items:center; background:#fff;
+    border:1px solid var(--line); border-radius:10px; padding:1.1mm 2mm; }
+  .p20 .tool svg{ display:block; }
+  .p20 .tool b{ display:block; font-size:11px; line-height:1.28; color:var(--green-900); }
+  .p20 .tool span{ display:block; font-size:9.9px; line-height:1.34; color:var(--ink-2); }
+  .p20 .tool.wide{ grid-column:span 3; background:var(--pink-100); border-color:#F6CADA; grid-template-columns:58px 1fr; }
+  .p20 .tool.wide span{ font-size:10.2px; }
+  .p20 .tool.wide span b{ display:inline; font-size:inherit; }
+  .p20 table.qty{ font-size:10.6px; }
+  .p20 table.qty td{ padding:.75mm 2.2mm; vertical-align:middle; }
+  .p20 table.qty th{ padding:1.5mm 2.2mm; }
+  .p20 table.qty .nm{ display:block; font-weight:700; color:var(--green-900); font-size:11.2px; }
+  .p20 table.qty .sub{ display:block; font-size:9.9px; color:var(--ink-2); line-height:1.3; }
+  .p20 table.qty td.v{ font:800 11.6px/1.3 'Nunito','Be Vietnam Pro',sans-serif; color:var(--pink-600); white-space:nowrap; text-align:right; }
+  .p20 .cordlist li{ font-size:10.5px; line-height:1.4; margin-bottom:.9mm; }
+  .p20 .cordlist li:last-child{ margin-bottom:0; }
+  .p20 .checks3{ display:grid; grid-template-columns:repeat(3,1fr); gap:0 4mm; }
+  .p20 .checks3 li{ font-size:10.6px; line-height:1.4; margin-bottom:1.3mm; }
+  .p20 .formula .f{ font-size:13px; }
+  /* icon nét vẽ */
+  .ic{ fill:none; stroke:#2F5D50; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
+  .ic .f1{ fill:#E7F1E4; } .ic .f2{ fill:#FDEAF1; } .ic .f3{ fill:#FFF3C4; } .ic .f4{ fill:#E7F0FA; }
+  .ic .fw{ fill:#fff; } .ic .fc{ fill:#FDEDE6; } .ic .fl{ fill:#F2F8DD; } .ic .fwood{ fill:#F3E3C3; }
+  .ic text{ stroke:none; }
+  .icl{ fill:#2F5D50; font:800 9.2px 'Nunito',sans-serif; }
+  .s-grain{ fill:none; stroke:#2F5D50; stroke-width:1.3; marker-start:url(#p20-ga); marker-end:url(#p20-ga); }
+  .s-pinkarr{ fill:none; stroke:#E0457B; stroke-width:1.6; stroke-linecap:round; marker-end:url(#arr-pink); }
+</style>
+</head>
+<body>
+<!--DEFS-->
+<svg width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+  <defs>
+    <!-- mẫu vải tự vẽ cho bảng "Nên dùng" -->
+    <pattern id="p20-poplin" patternUnits="userSpaceOnUse" width="12" height="12">
+      <rect width="12" height="12" fill="#FCE3EC" stroke="none"/>
+      <path d="M0 3H12M0 9H12" stroke="#F6C8D8" stroke-width=".6"/>
+      <path d="M3 0V12M9 0V12" stroke="#F8D3E0" stroke-width=".6"/>
+      <circle cx="3" cy="3" r="1.5" fill="#fff" stroke="none"/><circle cx="3" cy="3" r=".55" fill="#E0457B" stroke="none"/>
+      <circle cx="9" cy="9" r="1.5" fill="#fff" stroke="none"/><circle cx="9" cy="9" r=".55" fill="#8DB832" stroke="none"/>
+    </pattern>
+    <pattern id="p20-twill" patternUnits="userSpaceOnUse" width="5" height="5">
+      <rect width="5" height="5" fill="#CFE3C8" stroke="none"/>
+      <path d="M-1 1L1 -1M0 5L5 0M4 6L6 4" stroke="#A3C497" stroke-width="1.1"/>
+    </pattern>
+    <pattern id="p20-kate" patternUnits="userSpaceOnUse" width="4" height="4">
+      <rect width="4" height="4" fill="#FFF0B8" stroke="none"/>
+      <path d="M0 .5H4" stroke="#F3DD90" stroke-width=".5"/>
+    </pattern>
+    <pattern id="p20-linen" patternUnits="userSpaceOnUse" width="22" height="22">
+      <rect width="22" height="22" fill="#EEE5D0" stroke="none"/>
+      <path d="M0 2.5H22" stroke="#D9CBAA" stroke-width=".7"/>
+      <path d="M0 7H22" stroke="#D3C29E" stroke-width="1.3"/>
+      <path d="M0 11.5H22" stroke="#DDD0B2" stroke-width=".6"/>
+      <path d="M0 15.5H22" stroke="#D5C5A2" stroke-width="1"/>
+      <path d="M0 19.5H22" stroke="#DED2B6" stroke-width=".6"/>
+      <path d="M3 0V22" stroke="#D7C8A6" stroke-width=".8"/>
+      <path d="M9.5 0V22" stroke="#CFBE98" stroke-width="1.4"/>
+      <path d="M14.5 0V22" stroke="#DCCFB1" stroke-width=".6"/>
+      <path d="M18.5 0V22" stroke="#D3C3A0" stroke-width="1"/>
+      <path d="M4 7H10M13 15.5H19" stroke="#C4B086" stroke-width="2"/>
+    </pattern>
+    <pattern id="p20-canvas" patternUnits="userSpaceOnUse" width="6" height="6">
+      <rect width="6" height="6" fill="#DCCDA8" stroke="none"/>
+      <rect width="3" height="3" fill="#CDBB8F" stroke="none"/><rect x="3" y="3" width="3" height="3" fill="#CDBB8F" stroke="none"/>
+      <path d="M0 3H6M3 0V6" stroke="#C0AC7F" stroke-width=".5"/>
+    </pattern>
+    <pattern id="p20-lanh" patternUnits="userSpaceOnUse" width="18" height="18">
+      <rect width="18" height="18" fill="#F7F2E6" stroke="none"/>
+      <path d="M0 3H18M0 10H18M0 15H18" stroke="#E5DAC2" stroke-width=".7"/>
+      <path d="M4 0V18M12 0V18" stroke="#E8DFCA" stroke-width=".7"/>
+      <path d="M6 10H11M1 3H4M13 15H17" stroke="#D8CAA9" stroke-width="1.5"/>
+    </pattern>
+    <pattern id="p20-keo" patternUnits="userSpaceOnUse" width="5" height="5">
+      <rect width="5" height="5" fill="#CFE0F3" fill-opacity=".6" stroke="none"/>
+      <circle cx="2.5" cy="2.5" r=".9" fill="#2F6FB0" fill-opacity=".55" stroke="none"/>
+    </pattern>
+    <pattern id="p20-braid" patternUnits="userSpaceOnUse" width="6" height="14">
+      <rect width="6" height="14" fill="#E3EE3A" stroke="none"/>
+      <path d="M0 0L3 7L0 14M3 0L6 7L3 14" stroke="#BCC81E" stroke-width=".9" fill="none"/>
+    </pattern>
+    <pattern id="p20-rope" patternUnits="userSpaceOnUse" width="6" height="14">
+      <rect width="6" height="14" fill="#F3EBD8" stroke="none"/>
+      <path d="M0 14C2 10 4 4 6 0" stroke="#C4B288" stroke-width="1.2" fill="none"/>
+    </pattern>
+    <linearGradient id="p20-sheen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+      <stop offset=".42" stop-color="#fff" stop-opacity=".75"/>
+      <stop offset=".62" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="p20-satin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#EE8FB0"/>
+      <stop offset=".42" stop-color="#FCE0EA"/>
+      <stop offset=".58" stop-color="#FCE0EA"/>
+      <stop offset="1" stop-color="#E36C97"/>
+    </linearGradient>
+    <marker id="p20-ga" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+      <path d="M0 0 10 5 0 10 2.5 5z" fill="#2F5D50"/>
+    </marker>
+    <!-- kéo (dùng lại) 40x40 -->
+    <g id="p20-scissors">
+      <path class="f4" d="M12 13.5L36 24L13 16.5Z"/>
+      <path class="f4" d="M12 26.5L36 16L13 23.5Z"/>
+      <circle class="f2" cx="8" cy="11" r="4.6"/>
+      <circle class="f2" cx="8" cy="29" r="4.6"/>
+      <circle cx="26.9" cy="20" r="1.1" fill="#2F5D50"/>
+    </g>
+  </defs>
+</svg>
+
+<!-- =================================================================== -->
+<!-- TRANG 1 — CHỌN VẢI                                                  -->
+<!-- =================================================================== -->
+<section class="page p20">
+  <div class="runhead">Túi dây rút có quai · <b>Hướng dẫn dễ hiểu</b></div>
+  <header class="ph">
+    <div class="kicker k-prep"><span class="badge">Phần 2</span> Chuẩn bị · Chọn vải &amp; vật liệu</div>
+    <h1 class="title">Chọn vải <span class="script">mềm, mỏng vừa</span></h1>
+    <p class="lead">Nhận ra loại vải trong video, chọn vải thay thế ngay tại tiệm và xử lý vải đúng cách trước khi cắt.</p>
+  </header>
+
+  <div class="content">
+    <!-- (a) Vải trong video -->
+    <div>
+      <h2>Vải trong video là loại gì?</h2>
+      <div class="vgrid">
+        <figure class="photo" style="--h:23mm">
+          <img src="../assets/x20_outer_face.jpg" style="object-position:50% 50%">
+          <span class="tc">Video 0:05</span>
+          <figcaption><b>Vải ngoài:</b> cotton dệt thoi in caro xanh chanh, nơ hồng.</figcaption>
+        </figure>
+        <figure class="photo" style="--h:23mm">
+          <img src="../assets/x20_outer_ws.jpg" style="object-position:50% 35%">
+          <span class="tc">Video 0:06</span>
+          <figcaption><b>Mặt trái</b> trắng ngà (in 1 mặt); vải mỏng–vừa, mềm.</figcaption>
+        </figure>
+        <figure class="photo" style="--h:23mm">
+          <img src="../assets/x20_lining.jpg" style="object-position:50% 50%">
+          <span class="tc">Video 0:13</span>
+          <figcaption><b>Vải lót:</b> cotton kem chấm bi pastel, mỏng, mềm.</figcaption>
+        </figure>
+        <figure class="photo" style="--h:23mm">
+          <img src="../assets/photo_hero.jpg" style="object-position:50% 58%">
+          <span class="tc">Video 0:01</span>
+          <figcaption><b>Túi mềm</b>, không đứng cứng → <b>không dùng keo dựng</b>.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- (b) Nên dùng -->
+    <div>
+      <h2>Nên dùng: bảng chọn vải ngoài &amp; vải lót</h2>
+      <table class="tbl fab">
+        <tr><th>Mẫu</th><th>Loại vải · <span style="font-weight:600">cảm giác tay</span></th><th>Dùng cho</th><th>Độ dày (gsm)</th><th>Ưu (+) / nhược (−)</th></tr>
+        <tr>
+          <td class="sw-c"><svg viewBox="0 0 46 40" width="37" height="32"><path d="M1 3Q1 1 3 1H41Q43 1 43 3V35L41.5 37.5L40 35L38.5 37.5L37 35L35.5 37.5L34 35L32.5 37.5L31 35L29.5 37.5L28 35L26.5 37.5L25 35L23.5 37.5L22 35L20.5 37.5L19 35L17.5 37.5L16 35L14.5 37.5L13 35L11.5 37.5L10 35L8.5 37.5L7 35L5.5 37.5L4 35L2.5 37.5L1 35Z" transform="translate(1.4 1.4)" fill="rgba(38,53,47,.13)"/><path d="M1 3Q1 1 3 1H41Q43 1 43 3V35L41.5 37.5L40 35L38.5 37.5L37 35L35.5 37.5L34 35L32.5 37.5L31 35L29.5 37.5L28 35L26.5 37.5L25 35L23.5 37.5L22 35L20.5 37.5L19 35L17.5 37.5L16 35L14.5 37.5L13 35L11.5 37.5L10 35L8.5 37.5L7 35L5.5 37.5L4 35L2.5 37.5L1 35Z" fill="url(#p20-poplin)" stroke="rgba(38,53,47,.3)" stroke-width=".8"/></svg></td>
+          <td><span class="nm">Cotton poplin</span><span class="sub">mịn, mát, hơi giòn tay</span></td>
+          <td class="nw"><span class="chip">Ngoài</span> <span class="chip pink">Lót</span></td>
+          <td class="nw"><span class="mt m2"><i></i><i></i><i></i><i></i><i></i></span><span class="gsm">100–130</span></td>
+          <td><span class="pl">+</span> Dễ cắt, dễ ủi, ít trượt, nhiều họa tiết; gần giống vải video nhất. <span class="mi">−</span> Dễ nhăn.</td>
+        </tr>
+        <tr>
+          <td class="sw-c"><svg viewBox="0 0 46 40" width="37" height="32"><path d="M1 3Q1 1 3 1H41Q43 1 43 3V35L41.5 37.5L40 35L38.5 37.5L37 35L35.5 37.5L34 35L32.5 37.5L31 35L29.5 37.5L28 35L26.5 37.5L25 35L23.5 37.5L22 35L20.5 37.5L19 35L17.5 37.5L16 35L14.5 37.5L13 35L11.5 37.5L10 35L8.5 37.5L7 35L5.5 37.5L4 35L2.5 37.5L1 35Z" transform="translate(1.4 1.4)" fill="rgba(38,53,47,.13)"/><path d="M1 3Q1 1 3 1H41Q43 1 43 3V35L41.5 37.5L40 35L38.5 37.5L37 35L35.5 37.5L34 35L32.5 37.5L31 35L29.5 37.5L28 35L26.5 37.5L25 35L23.5 37.5L22 35L20.5 37.5L19 35L17.5 37.5L16 35L14.5 37.5L13 35L11.5 37.5L10 35L8.5 37.5L7 35L5.5 37.5L4 35L2.5 37.5L1 35Z" fill="url(#p20-twill)" stroke="rgba(38,53,47,.3)" stroke-width=".8"/></svg></td>
+          <td><span class="nm">Kaki mỏng <i>(cotton twill)</i></span><span class="sub">thớ chéo, dày dặn, mềm</span></td>
+          <td class="nw"><span class="chip">Ngoài</span></td>
+          <td class="nw"><span class="mt m3"><i></i><i></i><i></i><i></i><i></i></span><span class="gsm">150–200</span></td>
+          <td><span class="pl">+</span> Bền, túi đầy đặn hơn. <span class="mi">−</span> Chân quai dày: dùng kim 90/14, may chậm.</td>
+        </tr>
+        <tr>
+          <td class="sw-c"><svg viewBox="0 0 46 40" width="37" height="32"><path d="M1 3Q1 1 3 1H41Q43 1 43 3V35L41.5 37.5L40 35L38.5 37.5L37 35L35.5 37.5L34 35L32.5 37.5L31 35L29.5 37.5L28 35L26.5 37.5L25 35L23.5 37.5L22 35L20.5 37.5L19 35L17.5 37.5L16 35L14.5 37.5L13 35L11.5 37.5L10 35L8.5 37.5L7 35L5.5 37.5L4 35L2.5 37.5L1 35Z" transform="translate(1.4 1.4)" fill="rgba(38,53,47,.13)"/><path d="M1 3Q1 1 3 1H41Q43 1 43 3V35L41.5 37.5L40 35L38.5 37.5L37 35L35.5 37.5L34 35L32.5 37.5L31 35L29.5 37.5L28 35L26.5 37.5L25 35L23.5 37.5L22 35L20.5 37.5L19 35L17.5 37.5L16 35L14.5 37.5L13 35L11.5 37.5L10 35L8.5 37.5L7 35L5.5 37.5L4 35L2.5 37.5L1 35Z" fill="url(#p20-kate)" stroke="rgba(38,53,47,.3)" stroke-width=".8"/><path d="M1 3Q1 1 3 1H41Q43 1 43 3V35L41.5 37.5L40 35L38.5 37.5L37 35L35.5 37.5L34 35L32.5 37.5L31 35L29.5 37.5L28 35L26.5 37.5L25 35L23.5 37.5L22 35L20.5 37.5L19 35L17.5 37.5L16 35L14.5 37.5L13 35L11.5 37.5L10 35L8.5 37.5L7 35L5.5 37.5L4 35L2.5 37.5L1 35Z" fill="url(#p20-sheen)"/></svg></td>
+          <td><span class="nm">Kate <i>(poly-cotton)</i></span><span class="sub">mịn, hơi trơn, ít nhăn</span></td>
+          <td class="nw"><span class="chip">Ngoài</span> <span class="chip pink">Lót</span></td>
+          <td class="nw"><span class="mt m1"><i></i><i></i><i></i><i></i><i></i></span><span class="gsm">90–120</span></td>
+          <td><span class="pl">+</span> Rẻ, ít co, ít nhăn, nhiều màu. <span class="mi">−</span> Hơi bí; ủi nhiệt vừa kẻo bóng vải.</td>
+        </tr>
+        <tr>
+          <td class="sw-c"><svg viewBox="0 0 46 40" width="37" height="32"><path d="M1 3Q1 1 3 1H41Q43 1 43 3V35L41.5 37.5L40 35L38.5 37.5L37 35L35.5 37.5L34 35L32.5 37.5L31 35L29.5 37.5L28 35L26.5 37.5L25 35L23.5 37.5L22 35L20.5 37.5L19 35L17.5 37.5L16 35L14.5 37.5L13 35L11.5 37.5L10 35L8.5 37.5L7 35L5.5 37.5L4 35L2.5 37.5L1 35Z" transform="translate(1.4 1.4)" fill="rgba(38,53,47,.13)"/><path d="M1 3Q1 1 3 1H41Q43 1 43 3V35L41.5 37.5L40 35L38.5 37.5L37 35L35.5 37.5L34 35L32.5 37.5L31 35L29.5 37.5L28 35L26.5 37.5L25 35L23.5 37.5L22 35L20.5 37.5L19 35L17.5 37.5L16 35L14.5 37.5L13 35L11.5 37.5L10 35L8.5 37.5L7 35L5.5 37.5L4 35L2.5 37.5L1 35Z" fill="url(#p20-linen)" stroke="rgba(38,53,47,.3)" stroke-width=".8"/></svg></td>
+          <td><span class="nm">Cotton pha lanh</span><span class="sub">thô mộc, sợi to nhỏ không đều</span></td>
+          <td class="nw"><span class="chip">Ngoài</span></td>
+          <td class="nw"><span class="mt m3"><i></i><i></i><i></i><i></i><i></i></span><span class="gsm">150–200</span></td>
+          <td><span class="pl">+</span> Đẹp tự nhiên, dáng vừa đứng. <span class="mi">−</span> Tưa mép nhiều → nên zigzag mép trước khi ráp.</td>
+        </tr>
+        <tr>
+          <td class="sw-c"><svg viewBox="0 0 46 40" width="37" height="32"><path d="M1 3Q1 1 3 1H41Q43 1 43 3V35L41.5 37.5L40 35L38.5 37.5L37 35L35.5 37.5L34 35L32.5 37.5L31 35L29.5 37.5L28 35L26.5 37.5L25 35L23.5 37.5L22 35L20.5 37.5L19 35L17.5 37.5L16 35L14.5 37.5L13 35L11.5 37.5L10 35L8.5 37.5L7 35L5.5 37.5L4 35L2.5 37.5L1 35Z" transform="translate(1.4 1.4)" fill="rgba(38,53,47,.13)"/><path d="M1 3Q1 1 3 1H41Q43 1 43 3V35L41.5 37.5L40 35L38.5 37.5L37 35L35.5 37.5L34 35L32.5 37.5L31 35L29.5 37.5L28 35L26.5 37.5L25 35L23.5 37.5L22 35L20.5 37.5L19 35L17.5 37.5L16 35L14.5 37.5L13 35L11.5 37.5L10 35L8.5 37.5L7 35L5.5 37.5L4 35L2.5 37.5L1 35Z" fill="url(#p20-canvas)" stroke="rgba(38,53,47,.3)" stroke-width=".8"/></svg></td>
+          <td><span class="nm">Vải bố mỏng <i>(canvas)</i></span><span class="sub">chắc, hơi cứng tay</span></td>
+          <td class="nw"><span class="chip">Ngoài</span></td>
+          <td class="nw"><span class="mt m4"><i></i><i></i><i></i><i></i><i></i></span><span class="gsm">180–220</span></td>
+          <td><span class="pl">+</span> Rất bền, túi tự đứng. <span class="mi">−</span> Miệng nhún ít bèo; chỉ chọn loại <b>≤ 220 gsm</b>.</td>
+        </tr>
+        <tr>
+          <td class="sw-c"><svg viewBox="0 0 46 40" width="37" height="32"><path d="M1 3Q1 1 3 1H41Q43 1 43 3V35L41.5 37.5L40 35L38.5 37.5L37 35L35.5 37.5L34 35L32.5 37.5L31 35L29.5 37.5L28 35L26.5 37.5L25 35L23.5 37.5L22 35L20.5 37.5L19 35L17.5 37.5L16 35L14.5 37.5L13 35L11.5 37.5L10 35L8.5 37.5L7 35L5.5 37.5L4 35L2.5 37.5L1 35Z" transform="translate(1.4 1.4)" fill="rgba(38,53,47,.13)"/><path d="M1 3Q1 1 3 1H41Q43 1 43 3V35L41.5 37.5L40 35L38.5 37.5L37 35L35.5 37.5L34 35L32.5 37.5L31 35L29.5 37.5L28 35L26.5 37.5L25 35L23.5 37.5L22 35L20.5 37.5L19 35L17.5 37.5L16 35L14.5 37.5L13 35L11.5 37.5L10 35L8.5 37.5L7 35L5.5 37.5L4 35L2.5 37.5L1 35Z" fill="url(#p20-lanh)" stroke="rgba(38,53,47,.3)" stroke-width=".8"/></svg></td>
+          <td><span class="nm">Lanh mỏng <i>(linen)</i></span><span class="sub">mát, hơi thô, rủ</span></td>
+          <td class="nw"><span class="chip pink">Lót</span></td>
+          <td class="nw"><span class="mt m2"><i></i><i></i><i></i><i></i><i></i></span><span class="gsm">100–140</span></td>
+          <td><span class="pl">+</span> Thoáng, nhìn sang. <span class="mi">−</span> Dễ nhăn, tưa mép, giá cao hơn cotton.</td>
+        </tr>
+      </table>
+      <p class="tiny muted" style="margin:1.1mm 0 0 0"><b>gsm</b> = gam/m² (số càng lớn, vải càng dày); tiệm ít ghi gsm → dùng 3 phép thử bên dưới. Lót nên <b>mỏng bằng hoặc mỏng hơn</b> vải ngoài.</p>
+    </div>
+
+    <!-- (c) + (d) -->
+    <div class="cols-5-7 al-start">
+      <div class="card">
+        <h3>Nên tránh ở lần may đầu</h3>
+        <ul class="no avoid">
+          <li><b>Thun, vải co giãn</b> (cả kaki thun): giãn khi may → đường may gợn sóng, miệng méo.</li>
+          <li><b>Voan, chiffon:</b> mỏng, trơn, xổ sợi nhanh, khó cắt thẳng.</li>
+          <li><b>Satin trơn bóng:</b> 2 lớp trượt lệch khi may, dễ lộ vết kim.</li>
+          <li><b>Vải quá dày</b> (jean dày, nỉ, simili): chân quai có <b>6 lớp</b> (ngoài + quai 4 lớp + lót) → dễ gãy kim, miệng khó nhún.</li>
+        </ul>
+      </div>
+      <div class="card soft">
+        <h3>3 phép thử nhanh ngay tại tiệm vải</h3>
+        <div class="test">
+          <svg class="ic" viewBox="0 0 72 52" width="72" height="52">
+            <path class="fl" d="M21 10L30 6L39 9L49 5L54 14L51 23L56 32L49 41L39 38L30 44L22 38L15 39L17 29L12 21Z"/>
+            <path d="M24 15L31 23L27 33M40 13L37 24L43 33M31 23L37 24M19 26L27 33M46 21L37 24" stroke="#8DB832" stroke-width="1"/>
+            <line class="s-pinkarr" x1="1" y1="24" x2="9" y2="24"/>
+            <line class="s-pinkarr" x1="71" y1="24" x2="62" y2="24"/>
+            <text x="35" y="51" class="t-lbl t-sm t-mid t-pink">vò 5 giây</text>
+          </svg>
+          <div><b>Vò nhàu:</b> nắm chặt góc vải 5 giây rồi thả. Nếp mờ dần → ít nhăn, túi luôn gọn. Nhăn nhúm sâu → phải ủi thường xuyên.</div>
+        </div>
+        <div class="test">
+          <svg class="ic" viewBox="0 0 72 52" width="72" height="52">
+            <path d="M19 19L31 24M17 22L28 36" stroke="#E8C94A" stroke-width="1.2" stroke-dasharray="2 2"/>
+            <circle class="f3" cx="12" cy="12" r="7.5"/>
+            <rect class="fw" x="8.8" y="19" width="6.4" height="3.8" rx="1"/>
+            <path d="M12 1V2.4M1 12H2.4M4.2 4.2L5.2 5.2M19.8 4.2L18.8 5.2" stroke="#E8B400" stroke-width="1.3"/>
+            <g fill="#EDC3AE" stroke="#C9967E" stroke-width="1">
+              <rect x="40" y="18" width="5.5" height="19" rx="2.75"/><rect x="46.5" y="15" width="5.5" height="22" rx="2.75"/>
+              <rect x="53" y="17" width="5.5" height="20" rx="2.75"/><rect x="59.5" y="21" width="5" height="16" rx="2.5"/>
+              <rect x="39" y="31" width="26" height="18" rx="6"/>
+            </g>
+            <rect x="32" y="11" width="38" height="39" rx="3" fill="#F2F8DD" fill-opacity=".62"/>
+          </svg>
+          <div><b>Soi đèn:</b> để tay sau vải, soi lên đèn. Thấy rõ ngón tay → vải mỏng: chọn lót nền nhạt cho khỏi lộ (như video). Chỉ thấy mờ → dày vừa đẹp.</div>
+        </div>
+        <div class="test">
+          <svg class="ic" viewBox="0 0 72 52" width="72" height="52">
+            <rect class="fl" x="3" y="5" width="40" height="42" stroke="none"/>
+            <path d="M3 10H43M3 15H43M3 20H43M3 25H43M3 30H43M3 35H43M3 40H43" stroke="#C9DF8A" stroke-width=".9"/>
+            <path d="M8 5V47M13 5V47M18 5V47M23 5V47M28 5V47M33 5V47M38 5V47" stroke="#DCEBB4" stroke-width=".9"/>
+            <rect x="3" y="5" width="40" height="42" stroke="#2F5D50"/>
+            <path d="M43 10H48M43 15H47M43 20H49M43 30H48M43 35H49M43 40H47" stroke="#8DB832" stroke-width="1"/>
+            <path d="M43 25C50 25 52 19 58 19C63 19 65 22 70 21" stroke="#8DB832" stroke-width="1.3"/>
+            <line class="s-pinkarr" x1="53" y1="36" x2="68" y2="31"/>
+          </svg>
+          <div><b>Kéo sợi mép:</b> vuốt nhẹ mép cắt. Sợi tuột dài → vải tưa: <b>zigzag</b> mép sườn + đáy trước khi ráp. Ít tưa → <b>không cần vắt sổ</b> (túi có lót kín).</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- (e) Xử lý vải trước khi cắt -->
+    <div>
+      <h2>Xử lý vải trước khi cắt</h2>
+      <div class="prep">
+        <div class="card">
+          <svg class="ic" viewBox="0 0 140 56" width="140" height="56">
+            <path class="f4" d="M4 21H40L36 39H8Z"/>
+            <path d="M9 26Q12 23.5 15 26T21 26T27 26T33 26" stroke="#2F6FB0" stroke-width="1"/>
+            <path class="f4" d="M22 2C25 6 26 8 26 9.5A4 4 0 0 1 18 9.5C18 8 19 6 22 2Z"/>
+            <line x1="44" y1="29" x2="53" y2="29" class="s-flow"/>
+            <path class="f2" d="M58 39C60 31 63 27 68 27H91C93 27 94 28 94 30V39Z"/>
+            <path d="M69 27V24C69 22 70 21 72 21H88C90 21 91 22 91 24V27"/>
+            <path d="M56.5 39H95.5"/>
+            <line x1="99" y1="29" x2="108" y2="29" class="s-flow"/>
+            <use href="#p20-scissors" transform="translate(110 10) scale(.72)"/>
+            <text x="22" y="53" class="t-lbl t-sm t-mid">giặt</text>
+            <text x="76" y="53" class="t-lbl t-sm t-mid">phơi, ủi</text>
+            <text x="124" y="53" class="t-lbl t-sm t-mid">cắt</text>
+          </svg>
+          <h3>Giặt &amp; ủi trước khi cắt</h3>
+          <p>Cotton co <b>2–5%</b> (30 cm hụt 0,6–1,5 cm). Giặt, phơi, ủi (là) phẳng rồi mới cắt.</p>
+        </div>
+        <div class="card">
+          <svg class="ic" viewBox="0 0 140 56" width="140" height="56">
+            <rect x="13" y="1" width="125" height="54" fill="#FAFBEF" stroke="none"/>
+            <path d="M40 1V55M100 1V55M125 1V55" stroke="#ECF2D2" stroke-width="1"/>
+            <rect x="3" y="1" width="10" height="54" fill="#D4EA8F" stroke="none"/>
+            <text transform="translate(11.6 28) rotate(-90)" class="t-lbl t-sm t-mid t-green">biên vải</text>
+            <rect x="3" y="1" width="135" height="54" stroke="#B9C4A0" stroke-width="1"/>
+            <polygon class="fl" points="70,8 115,8 115,38 107.5,38 107.5,45.5 77.5,45.5 77.5,38 70,38" stroke="#26352F" stroke-width="1.2"/>
+            <line x1="92.5" y1="12" x2="92.5" y2="42" class="s-grain"/>
+            <line x1="13" y1="15" x2="70" y2="15" class="s-dim"/>
+            <line x1="13" y1="33" x2="70" y2="33" class="s-dim"/>
+            <text x="41.5" y="12" class="t-dim t-mid">a</text>
+            <text x="41.5" y="30" class="t-dim t-mid">a</text>
+          </svg>
+          <h3>Canh sợi dọc</h3>
+          <p>Sợi dọc song song <b>biên vải</b>. Đo từ biên tới mép mảnh ở 2 đầu: <b class="nw">a = a</b> là thẳng canh.</p>
+        </div>
+        <div class="card">
+          <svg class="ic" viewBox="0 0 140 56" width="140" height="56">
+            <polygon class="fl" points="6,11 39,11 39,33 33.5,33 33.5,38.5 11.5,38.5 11.5,33 6,33"/>
+            <use href="#sym-bow" x="-6" y="-5" width="12" height="10" transform="translate(22.5 23) scale(1.7)"/>
+            <polygon class="fl" points="52,11 85,11 85,33 79.5,33 79.5,38.5 57.5,38.5 57.5,33 52,33"/>
+            <use href="#sym-bow" x="-6" y="-5" width="12" height="10" transform="translate(68.5 23) scale(1.7)"/>
+            <polygon class="fl" points="100,11 133,11 133,33 127.5,33 127.5,38.5 105.5,38.5 105.5,33 100,33"/>
+            <use href="#sym-bow" x="-6" y="-5" width="12" height="10" transform="translate(116.5 24) scale(1.7) rotate(180)"/>
+            <path d="M6 11H39M52 11H85M100 11H133" stroke="#7C4DFF" stroke-width="2.2"/>
+            <g stroke="none"><circle cx="39" cy="11" r="5.5" fill="#5E9B5A"/><circle cx="85" cy="11" r="5.5" fill="#5E9B5A"/><circle cx="133" cy="11" r="5.5" fill="#D9531F"/></g>
+            <path d="M36.5 11.2L38.3 13L41.6 9.4M82.5 11.2L84.3 13L87.6 9.4" stroke="#fff" stroke-width="1.5"/>
+            <path d="M131 9L135 13M135 9L131 13" stroke="#fff" stroke-width="1.5"/>
+            <text x="22.5" y="52" class="t-lbl t-sm t-mid">trước</text>
+            <text x="68.5" y="52" class="t-lbl t-sm t-mid">sau</text>
+            <text x="116.5" y="52" class="t-lbl t-sm t-mid t-coral">nơ ngược</text>
+          </svg>
+          <h3>Nơ đứng thẳng</h3>
+          <p>Xếp <b>cả 2 thân</b> cùng chiều, đầu nơ hướng về <b>miệng túi</b> (cạnh tím).</p>
+        </div>
+        <div class="card">
+          <svg class="ic" viewBox="0 0 140 56" width="140" height="56">
+            <g style="stroke:none"><polygon class="f-outer-ws" points="36,6 84,6 84,38 76,38 76,46 44,46 44,38 36,38"/>
+            <polygon points="36,18.8 84,18.8 84,38 76,38 76,46 44,46 44,38 36,38" fill="url(#p20-keo)"/></g>
+            <polygon points="36,18.8 84,18.8 84,38 76,38 76,46 44,46 44,38 36,38" stroke="#2F6FB0" stroke-width=".8" stroke-dasharray="3 2"/>
+            <polygon points="36,6 84,6 84,38 76,38 76,46 44,46 44,38 36,38" stroke="#26352F" stroke-width="1.2"/>
+            <path d="M26 6H33M26 18.8H33M29.5 6V18.8" stroke="#2F6FB0" stroke-width="1"/>
+            <text x="24" y="15.8" class="t-dim t-sm t-end">8 cm</text>
+            <path d="M84 12.4H90M80 30H90" stroke="#7A8781" stroke-width=".8"/>
+            <text x="92" y="15.5" class="t-lbl t-sm">không keo</text>
+            <text x="92" y="33" class="t-lbl t-sm" style="fill:#2F6FB0">keo mỏng</text>
+            <text x="92" y="44" class="t-lbl t-sm t-muted">(mặt trái)</text>
+          </svg>
+          <h3>Keo dựng: tùy chọn</h3>
+          <p>Video <b>không</b> dùng. Muốn túi đứng: ép keo vào mặt trái, chừa <b>8&nbsp;cm</b> miệng cho kênh dây mềm, rút êm.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================================================================== -->
+<!-- TRANG 2 — VẬT LIỆU & DỤNG CỤ                                        -->
+<!-- =================================================================== -->
+<section class="page p20">
+  <div class="runhead">Túi dây rút có quai · <b>Hướng dẫn dễ hiểu</b></div>
+  <header class="ph">
+    <div class="kicker k-prep"><span class="badge">Phần 2</span> Chuẩn bị · Chọn vải &amp; vật liệu</div>
+    <h1 class="title">Vật liệu &amp; dụng cụ <span class="script">gom đủ rồi hãy may</span></h1>
+  </header>
+
+  <div class="content">
+    <!-- định lượng -->
+    <div>
+      <h2>Cần mua bao nhiêu? Bảng định lượng cho 1 túi</h2>
+      <div class="cols-7-5 al-start">
+        <div class="stack" style="gap:1.6mm">
+          <figure class="fig" style="padding:1.4mm 2mm 1.4mm 2mm">
+            <svg viewBox="0 0 352 115" width="352" height="115">
+              <!-- VẢI NGOÀI 60 x 33, 1 cm = 2,3 px, gốc (44,22) -->
+              <rect x="44" y="22" width="138" height="75.9" class="f-outer-s"/>
+              <rect x="44" y="68" width="11.5" height="11.5" class="f-discard"/>
+              <rect x="101.5" y="68" width="23" height="11.5" class="f-discard"/>
+              <rect x="170.5" y="68" width="11.5" height="11.5" class="f-discard"/>
+              <path class="s-cut" d="M44 22H182V97.9H44Z M113 22V68 M44 68H55.5V79.5 M101.5 79.5V68H124.5V79.5 M170.5 79.5V68H182 M44 79.5H182 M113 79.5V97.9"/>
+              <text x="78.5" y="41" class="t-lbl t-sm t-bold t-mid">thân 1</text>
+              <text x="78.5" y="55" class="t-dim t-sm t-mid">30 × 25</text>
+              <text x="147.5" y="41" class="t-lbl t-sm t-bold t-mid">thân 2</text>
+              <text x="147.5" y="55" class="t-dim t-sm t-mid">30 × 25</text>
+              <text x="78.5" y="92" class="t-lbl t-sm t-bold t-mid">quai 30 × 8</text>
+              <text x="147.5" y="92" class="t-lbl t-sm t-bold t-mid">quai 30 × 8</text>
+              <line x1="44" y1="13" x2="182" y2="13" class="s-dim"/>
+              <text x="113" y="9.5" class="t-dim t-mid">60 cm</text>
+              <line x1="36" y1="22" x2="36" y2="97.9" class="s-dim"/>
+              <text transform="translate(31 60) rotate(-90)" class="t-dim t-mid">33 cm</text>
+              <text x="113" y="111" class="t-lbl t-bold t-mid t-green">VẢI NGOÀI</text>
+              <!-- VẢI LÓT 60 x 25, gốc (208,22) -->
+              <rect x="208" y="22" width="138" height="57.5" class="f-lining-s"/>
+              <rect x="208" y="68" width="11.5" height="11.5" class="f-discard"/>
+              <rect x="265.5" y="68" width="23" height="11.5" class="f-discard"/>
+              <rect x="334.5" y="68" width="11.5" height="11.5" class="f-discard"/>
+              <path class="s-cut" d="M208 22H346V79.5H208Z M277 22V68 M208 68H219.5V79.5 M265.5 79.5V68H288.5V79.5 M334.5 79.5V68H346"/>
+              <text x="242.5" y="41" class="t-lbl t-sm t-bold t-mid">lót 1</text>
+              <text x="242.5" y="55" class="t-dim t-sm t-mid">30 × 25</text>
+              <text x="311.5" y="41" class="t-lbl t-sm t-bold t-mid">lót 2</text>
+              <text x="311.5" y="55" class="t-dim t-sm t-mid">30 × 25</text>
+              <line x1="208" y1="13" x2="346" y2="13" class="s-dim"/>
+              <text x="277" y="9.5" class="t-dim t-mid">60 cm</text>
+              <line x1="200" y1="22" x2="200" y2="79.5" class="s-dim"/>
+              <text transform="translate(195 50.75) rotate(-90)" class="t-dim t-mid">25 cm</text>
+              <rect x="222" y="87" width="10" height="10" class="f-discard" stroke="#E4572E" stroke-width=".8"/>
+              <text x="236" y="95.5" class="t-lbl t-sm t-coral">ô cắt bỏ 5 × 5 cm</text>
+              <text x="277" y="111" class="t-lbl t-bold t-mid t-green">VẢI LÓT</text>
+            </svg>
+            <figcaption><b>Đúng tỉ lệ</b>, gồm đường may 1&nbsp;cm; biên dọc cạnh 60&nbsp;cm → quai đúng canh sợi dọc. <b>Mua 0,5&nbsp;m khổ 1,5&nbsp;m:</b> 2&nbsp;thân cạnh nhau theo khổ vải, 2&nbsp;quai dựng đứng bên cạnh (cạnh 30&nbsp;cm dọc biên) → vẫn dư.</figcaption>
+          </figure>
+          <div class="formula" style="padding:2mm 3.6mm">
+            <div class="f">Dây = vòng miệng + 2 đuôi × 12 cm</div>
+            <div class="ex">= 2 × (30 − 2 × 1) + 24 = 56 + 24 = <b>80 cm</b>/sợi (ít nhất 70)</div>
+          </div>
+        </div>
+        <table class="tbl qty">
+          <tr><th>Vật liệu</th><th style="text-align:right">Cần</th></tr>
+          <tr><td><span class="nm">Vải ngoài</span><span class="sub">hoặc 1 tấm 50 × 55 (fat quarter)</span></td><td class="v">60 × 33 cm</td></tr>
+          <tr><td><span class="nm">Vải lót</span><span class="sub">hoặc 30 × 50 cm</span></td><td class="v">60 × 25 cm</td></tr>
+          <tr><td><span class="nm">Mua lẻ (mỗi loại)</span><span class="sub">khổ 1,4–1,6 m · đủ khoảng 3 túi</span></td><td class="v">0,4–0,5 m</td></tr>
+          <tr><td><span class="nm">Dây rút</span><span class="sub">tròn, Ø 4–6 mm · tổng 1,6 m</span></td><td class="v">2 × 80 cm</td></tr>
+          <tr><td><span class="nm">Chỉ may</span><span class="sub">polyester màu kem</span></td><td class="v">1 cuộn</td></tr>
+          <tr><td><span class="nm">Keo dựng</span><span class="sub">keo vải mỏng, ép mặt trái</span></td><td class="v">tùy chọn</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- dây rút -->
+    <div class="cols">
+      <div class="card">
+        <h3>Chọn dây rút <span class="muted" style="font-weight:600;font-size:10.4px">· nhìn ngang và mặt cắt</span></h3>
+        <svg class="ic" viewBox="0 0 290 116" width="290" height="116" style="display:block">
+          <rect x="10" y="4" width="76" height="14" rx="7" fill="url(#p20-braid)" stroke="#A9B21E" stroke-width="1"/>
+          <rect x="107" y="4" width="76" height="14" rx="7" fill="url(#p20-rope)" stroke="#B8A77E" stroke-width="1"/>
+          <path d="M204 6H280L276 11L280 16H204Z" fill="url(#p20-satin)" stroke="#C9336A" stroke-width="1"/>
+          <!-- mặt cắt: 1 mm = 5 px -->
+          <circle cx="48" cy="44" r="12.5" fill="#E3EE3A" stroke="#A9B21E" stroke-width="1.2"/>
+          <circle cx="48" cy="44" r="7.5" fill="#F6F9B8" stroke="#BCC81E" stroke-width=".9"/>
+          <g fill="#E8EE7A" stroke="#BCC81E" stroke-width=".7"><circle cx="45.5" cy="42" r="2.2"/><circle cx="50.5" cy="42" r="2.2"/><circle cx="48" cy="46.8" r="2.2"/></g>
+          <line x1="70" y1="31.5" x2="70" y2="56.5" class="s-dim"/>
+          <text x="74" y="48" class="t-dim t-sm">Ø 5 mm</text>
+          <text x="23" y="33" class="t-lbl t-sm t-muted t-end">lõi</text>
+          <path d="M24 31L42 40" stroke="#7A8781" stroke-width=".7"/>
+          <g fill="#F3EBD8" stroke="#B8A77E" stroke-width=".9">
+            <circle cx="145" cy="36" r="4.4"/><circle cx="150.7" cy="38.3" r="4.4"/><circle cx="153" cy="44" r="4.4"/><circle cx="150.7" cy="49.7" r="4.4"/>
+            <circle cx="145" cy="52" r="4.4"/><circle cx="139.3" cy="49.7" r="4.4"/><circle cx="137" cy="44" r="4.4"/><circle cx="139.3" cy="38.3" r="4.4"/>
+            <circle cx="145" cy="44" r="4"/>
+          </g>
+          <rect x="217" y="42.5" width="50" height="3" rx="1.5" fill="#E0457B" stroke="none"/>
+          <line x1="217" y1="53" x2="267" y2="53" class="s-dim"/>
+          <text x="242" y="64" class="t-dim t-sm t-mid">~10 mm, rất mỏng</text>
+          <text x="48" y="80" class="t-lbl t-bold t-mid">Dù / polyester</text>
+          <text x="145" y="80" class="t-lbl t-bold t-mid">Cotton tết</text>
+          <text x="242" y="80" class="t-lbl t-bold t-mid">Satin / ruy băng</text>
+          <text x="48" y="93" class="t-lbl t-sm t-mid">mềm, bền, rút êm</text>
+          <text x="48" y="105" class="t-lbl t-sm t-mid">hơ lửa: hết tưa</text>
+          <text x="145" y="93" class="t-lbl t-sm t-mid">mộc, giữ nút chắc</text>
+          <text x="145" y="105" class="t-lbl t-sm t-mid">đầu dây dễ tưa</text>
+          <text x="242" y="93" class="t-lbl t-sm t-mid">bóng nhưng trơn</text>
+          <text x="242" y="105" class="t-lbl t-sm t-mid">nút dễ tuột, dễ xoắn</text>
+        </svg>
+        <div class="note video" style="margin-top:1.6mm;padding:1.8mm 3mm"><p class="small" style="margin:0"><b>Trong video:</b> 2 dây dù tròn vàng neon, khoảng Ø&nbsp;5&nbsp;mm, thắt nút đơn ở đầu — dễ dùng nhất.</p></div>
+      </div>
+      <div class="card blue">
+        <h3>Cỡ dây: vì sao Ø ≤ 6 mm?</h3>
+        <svg class="ic" viewBox="0 0 290 84" width="290" height="84" style="display:block;margin:0 auto">
+          <!-- mặt cắt kênh luồn dây (phóng to, 1 mm ≈ 4 px) -->
+          <path d="M8 40H48Q88 0 128 40H168" stroke="#8DB832" stroke-width="3"/>
+          <path d="M8 42H48Q88 82 128 42H168" stroke="#E2CF9C" stroke-width="3"/>
+          <circle cx="76" cy="41" r="12" fill="#E3EE3A" stroke="#A9B21E" stroke-width="1.2"/>
+          <circle cx="100" cy="41" r="12" fill="#E3EE3A" stroke="#A9B21E" stroke-width="1.2"/>
+          <path d="M48 32V50M128 32V50" stroke="#D81B60" stroke-width="1.7" stroke-dasharray="3 2"/>
+          <circle cx="48" cy="60" r="6.5" class="n-circle" stroke="none"/><text x="48" y="60" class="n-txt">2</text>
+          <circle cx="128" cy="60" r="6.5" class="n-circle" stroke="none"/><text x="128" y="60" class="n-txt">3</text>
+          <line x1="48" y1="77" x2="128" y2="77" class="s-dim"/>
+          <text x="88" y="73" class="t-dim t-sm t-mid">kênh 2 cm</text>
+          <text x="70" y="12" class="t-lbl t-sm t-mid">dây 1</text>
+          <text x="106" y="12" class="t-lbl t-sm t-mid">dây 2</text>
+          <path d="M184 18H202" stroke="#8DB832" stroke-width="3"/><text x="208" y="21.5" class="t-lbl t-sm">vải ngoài</text>
+          <path d="M184 36H202" stroke="#E2CF9C" stroke-width="3"/><text x="208" y="39.5" class="t-lbl t-sm">vải lót</text>
+          <path d="M193 48V62" stroke="#D81B60" stroke-width="1.7" stroke-dasharray="3 2"/><text x="208" y="58.5" class="t-lbl t-sm">đường diễu kênh</text>
+          <circle cx="193" cy="74" r="6" fill="#E3EE3A" stroke="#A9B21E" stroke-width="1"/><text x="208" y="77.5" class="t-lbl t-sm">dây Ø 6 mm</text>
+        </svg>
+        <p class="small" style="margin:1mm 0 0 0">Mỗi sợi chạy trọn vòng miệng → trong kênh luôn có <b>2 lượt dây</b>. Kênh là ống 2 lớp vải, mỗi lớp rộng 2 cm; mở tròn ra, chu vi 2 × 2 = 4 cm → đường kính ≈ 4 ÷ 3,14 ≈ <b>12,7 mm</b> → mỗi dây <b>Ø ≤ 6 mm</b> (5 mm rút êm nhất). Dây to hơn: nới kênh lên 2,5 cm.</p>
+      </div>
+    </div>
+
+    <!-- dụng cụ -->
+    <div>
+      <h2>Dụng cụ cần có</h2>
+      <div class="tools">
+        <div class="tool">
+          <svg class="ic" viewBox="0 0 40 40" width="38" height="38">
+            <rect class="f1" x="3" y="30" width="34" height="5" rx="1.5"/>
+            <path d="M5 32.5H18" stroke="#D81B60" stroke-width="1" stroke-dasharray="2 1.5"/>
+            <path class="fw" d="M35 30V12A4 4 0 0 0 31 8H11A4 4 0 0 0 7 12V21H13V15H27V30Z"/>
+            <rect class="f3" x="29" y="18" width="4" height="6" rx="1"/>
+            <line x1="10" y1="21" x2="10" y2="27"/><path d="M7.5 27.5H12.5"/>
+            <rect class="f2" x="18" y="3.5" width="5" height="4.5" rx="1"/>
+          </svg>
+          <div><b>Máy may</b><span>Có mũi thẳng + zigzag là đủ.</span></div>
+        </div>
+        <div class="tool">
+          <svg class="ic" viewBox="0 0 40 40" width="38" height="38">
+            <rect class="f1" x="3" y="3" width="6" height="11" rx="1"/>
+            <path class="fw" d="M4.5 14L5.5 34L6 37L6.5 34L7.5 14Z"/>
+            <ellipse cx="6" cy="31" rx=".45" ry="1.5" stroke-width=".8"/>
+            <text x="11" y="19" class="icl">80/12</text>
+            <text x="11" y="31" class="icl" style="fill:#7A8781">90/14</text>
+          </svg>
+          <div><b>Kim máy mới</b><span>80/12 cho cotton; 90/14 vải dày.</span></div>
+        </div>
+        <div class="tool">
+          <svg class="ic" viewBox="0 0 40 40" width="38" height="38"><use href="#p20-scissors"/></svg>
+          <div><b>Kéo cắt vải</b><span>Chỉ dùng cắt vải để luôn sắc.</span></div>
+        </div>
+        <div class="tool">
+          <svg class="ic" viewBox="0 0 40 40" width="38" height="38">
+            <rect class="f3" x="3" y="4" width="34" height="8" rx="1.5"/>
+            <path d="M8 4V7M12 4V6M16 4V7M20 4V6M24 4V7M28 4V6M32 4V7" stroke-width="1"/>
+            <path class="f4" d="M5 16H11V31H35V37H5Z"/>
+            <path d="M5 20H7M5 24H7.5M5 28H7M15 37V35M19 37V34.5M23 37V35M27 37V34.5M31 37V35" stroke-width="1"/>
+          </svg>
+          <div><b>Thước kẻ + ê ke</b><span>Kẻ thẳng, lấy góc vuông chuẩn.</span></div>
+        </div>
+        <div class="tool">
+          <svg class="ic" viewBox="0 0 40 40" width="38" height="38">
+            <rect class="f3" x="14" y="26" width="23" height="5.5"/>
+            <path d="M24 26V28M28 26V28.5M32 26V28" stroke-width="1"/>
+            <rect x="35.5" y="24" width="2.5" height="9.5" rx=".8" fill="#2F5D50" stroke="none"/>
+            <circle class="f2" cx="16" cy="19" r="12"/>
+            <circle class="fw" cx="16" cy="19" r="3.5"/>
+          </svg>
+          <div><b>Thước dây</b><span>Đo vòng miệng, đo dây rút.</span></div>
+        </div>
+        <div class="tool">
+          <svg class="ic" viewBox="0 0 40 40" width="38" height="38">
+            <path class="f4" d="M12.1 32.1L7.9 27.9L25.9 9.9L30.1 14.1Z"/>
+            <path d="M7.9 27.9L12.1 32.1L6.5 34.2Z" fill="#7C4DFF"/>
+            <path d="M25.9 9.9L30.1 14.1L34.4 9.9L30.1 5.6Z" fill="#2F6FB0"/>
+            <path class="f2" d="M23 37.5H38L30.5 26Z"/>
+          </svg>
+          <div><b>Bút bay màu</b><span>Hoặc phấn may: kẻ vạch lên vải.</span></div>
+        </div>
+        <div class="tool">
+          <svg class="ic" viewBox="0 0 40 40" width="38" height="38">
+            <rect x="4" y="6" width="13" height="26" rx="3" fill="#7ED957" stroke="#3E8E2F"/>
+            <rect x="7" y="10" width="7" height="9" rx="1" fill="#E8F8DE" stroke="#3E8E2F" stroke-width=".9"/>
+            <path d="M33 12L24 36" stroke="#6E7F78" stroke-width="1.3"/>
+            <circle cx="34" cy="9" r="3.4" fill="#E0457B" stroke="none"/>
+          </svg>
+          <div><b>Kẹp vải / ghim</b><span>Giữ 2 lớp không xê dịch.</span></div>
+        </div>
+        <div class="tool">
+          <svg class="ic" viewBox="0 0 40 40" width="38" height="38">
+            <path class="f4" d="M4 31C6 22 9 17 14 17H33C35 17 36 18 36 20V31Z"/>
+            <path d="M15 17V14C15 11.5 16.5 10 19 10H30C32 10 33 11 33 13V17"/>
+            <rect class="fw" x="3" y="31" width="34" height="3" rx="1"/>
+            <circle cx="27" cy="24" r="2.2" fill="#E0457B" stroke="none"/>
+          </svg>
+          <div><b>Bàn ủi + khăn ủi</b><span>Ủi rẽ đường may; khăn chống bóng.</span></div>
+        </div>
+        <div class="tool">
+          <svg class="ic" viewBox="0 0 40 40" width="38" height="38">
+            <circle cx="7.5" cy="13" r="3.5"/>
+            <path d="M7.5 9.5H31M7.5 16.5H31"/>
+            <rect class="f3" x="28" y="7.5" width="9" height="11" rx="2.5"/>
+            <path class="f1" d="M4 29C4 26.5 6 26 8 26H33L37 29L33 32H8C6 32 4 31.5 4 29Z"/>
+            <rect x="8" y="28" width="8" height="2" rx="1" fill="#fff" stroke-width=".9"/>
+          </svg>
+          <div><b>Kim băng</b><span>Hoặc que luồn: kéo dây qua kênh.</span></div>
+        </div>
+        <div class="tool">
+          <svg class="ic" viewBox="0 0 40 40" width="38" height="38">
+            <g transform="rotate(-38 20 20)">
+              <rect class="f2" x="2" y="16.5" width="17" height="7" rx="3.5"/>
+              <rect class="fw" x="19" y="17.5" width="3" height="5"/>
+              <path d="M22 20H30M30 20L37 16.8M30 20L36 22.5"/>
+              <circle cx="36" cy="22.5" r="1.8" fill="#E0457B" stroke="none"/>
+            </g>
+          </svg>
+          <div><b>Dụng cụ tháo chỉ</b><span>Gỡ đường may lỗi, không rách vải.</span></div>
+        </div>
+        <div class="tool">
+          <svg class="ic" viewBox="0 0 40 40" width="38" height="38">
+            <rect class="fc" x="12" y="17" width="16" height="20" rx="3"/>
+            <rect class="fw" x="12" y="12.5" width="16" height="5.5" rx="1.5"/>
+            <path d="M20 2.5C23 6 24 8 24 9.5C24 11 22.5 12 20 12C17.5 12 16 11 16 9.5C16 8 17 6 20 2.5Z" fill="#F7B32B" stroke="#D9531F" stroke-width="1"/>
+            <path d="M20 7C21 8.2 21.4 9 21.4 9.8C21.4 10.6 20.8 11 20 11C19.2 11 18.6 10.6 18.6 9.8C18.6 9 19 8.2 20 7Z" fill="#FFE58A" stroke="none"/>
+          </svg>
+          <div><b>Bật lửa</b><span>Hơ đầu dây dù cho khỏi tưa.</span></div>
+        </div>
+        <div class="tool">
+          <svg class="ic" viewBox="0 0 40 40" width="38" height="38">
+            <path class="fwood" d="M31 3L34 5L9 37.5L7.8 36.8Z"/>
+            <path class="fwood" d="M36 7L38.5 9.5L13.5 38.5L12.5 37.6Z"/>
+          </svg>
+          <div><b>Que tù / đũa</b><span>Đẩy 4 góc đáy ra cho vuông.</span></div>
+        </div>
+        <div class="tool">
+          <svg class="ic" viewBox="0 0 40 40" width="38" height="38">
+            <path class="fw" d="M6 35L30.5 7.5L33 10Z"/>
+            <ellipse cx="30.4" cy="9.6" rx=".6" ry="1.6" transform="rotate(45 30.4 9.6)" stroke-width=".8"/>
+            <path d="M30.5 9.5C37 12 33 22 26 20C20 18 17 25 21 30" stroke="#E0457B" stroke-width="1.3"/>
+          </svg>
+          <div><b>Kim khâu tay</b><span>Khâu kín khe lộn (nếu khâu tay).</span></div>
+        </div>
+        <div class="tool wide">
+          <svg class="ic" viewBox="0 0 60 40" width="58" height="39">
+            <path d="M40 10H14Q5 10 5 20" stroke="#8DB832" stroke-width="3.2"/>
+            <path d="M5 20Q5 30 14 30H40" stroke="#E2CF9C" stroke-width="3.2"/>
+            <path d="M9 16.5H25" stroke="#8DB832" stroke-width="2"/>
+            <path d="M9 23.5H25" stroke="#E2CF9C" stroke-width="2"/>
+            <circle cx="5" cy="20" r="1.8" fill="#D81B60" stroke="none"/>
+            <circle cx="51" cy="20" r="7.5" fill="#5E9B5A" stroke="none"/>
+            <path d="M47.4 20.2L50 22.8L54.8 17.4" stroke="#fff" stroke-width="1.8"/>
+          </svg>
+          <div><b>Máy vắt sổ? Không cần.</b><span>Túi có lót kín: mọi mép vải thô nằm giữa vải ngoài và lót; quai gấp 4 lớp cũng giấu mép. Chỉ khi vải rất tưa (lanh dệt thưa, vải thô) mới <b>zigzag</b> mép sườn + đáy của cả ngoài lẫn lót trước khi ráp (rộng 3–4 mm, dài 1,5–2 mm); đoạn khe dây chỉ zigzag mảnh cho khỏi cộm. Không có zigzag: cắt bằng kéo răng cưa.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- checklist -->
+    <div class="card lime" style="padding:2.6mm 4mm 1.4mm 4mm">
+      <h3>Trước khi ngồi vào máy — đánh dấu từng ô</h3>
+      <ul class="checks checks3">
+        <li>Vải đã giặt, phơi khô, <b>ủi phẳng</b>.</li>
+        <li><b>Kim mới</b> 80/12 (chỗ dày: 90/14).</li>
+        <li><b>Suốt chỉ dưới</b> đầy, cùng chỉ trên.</li>
+        <li><b>May thử</b> 2 lớp vải vụn; chỉnh độ căng chỉ cho 2 mặt đều.</li>
+        <li>Mũi <b>2,5 mm</b> khi ráp, <b>3 mm</b> khi diễu.</li>
+        <li>Bàn ủi cắm sẵn: may đường nào, ủi đường đó.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+</body></html>

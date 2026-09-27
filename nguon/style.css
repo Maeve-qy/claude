@@ -1,0 +1,224 @@
+/* ==========================================================
+   Túi dây rút có quai — Phần hướng dẫn dễ hiểu
+   Design system dùng chung cho mọi trang mới (A4, in PDF)
+   ========================================================== */
+@import url("fonts/fonts.css");
+
+@page { size: A4; margin: 0; }
+
+:root{
+  --ink:#26352F; --ink-2:#4A5A53; --muted:#7A8781;
+  --green-900:#1F4A3D; --green-700:#2F5D50; --green-500:#5E9B5A; --green-100:#E7F1E4;
+  --lime-600:#8DB832; --lime-500:#A8CF45; --lime-300:#D4EA8F; --lime-100:#F2F8DD;
+  --pink-600:#C9336A; --pink-500:#E0457B; --pink-300:#F4A3BF; --pink-100:#FDEAF1;
+  --cream-50:#FFFDF7; --cream-100:#FBF6EA; --cream-200:#F3EBD8; --line:#E7E1D2;
+  --cord:#E3EE3A; --cord-dark:#A9B21E;
+  --blue-600:#2F6FB0; --blue-100:#E7F0FA;
+  --coral-600:#D9531F; --coral-100:#FDEDE6;
+  --violet-500:#7C4DFF; --violet-100:#F0EBFF;
+  --seam:#D81B60;
+  --content-w:178mm;
+}
+
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; background:#fff; }
+body{
+  font-family:'Be Vietnam Pro', 'DejaVu Sans', sans-serif;
+  color:var(--ink); font-size:12.6px; line-height:1.55;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  font-variant-numeric: lining-nums;
+}
+
+/* ---------- PAGE ---------- */
+.page{
+  width:210mm; height:297mm; position:relative; overflow:hidden;
+  padding:17mm 16mm 19mm 16mm;               /* đáy 19mm: chừa chỗ số trang */
+  background:var(--cream-50);
+  break-after:page; page-break-after:always;
+  display:flex; flex-direction:column;
+}
+.page:last-child{ break-after:auto; page-break-after:auto; }
+/* dải caro chanh trên đầu trang — gợi vải trong video */
+.page > svg.band{ position:absolute; left:0; top:0; width:210mm; height:6.5mm; display:block; }
+.page::after{ /* đường chỉ may chạy dưới dải caro */
+  content:""; position:absolute; left:0; right:0; top:8mm; height:0;
+  border-top:1.6px dashed var(--pink-300);
+}
+.runhead{
+  position:absolute; top:10mm; right:16mm; font-size:8.6px; letter-spacing:.06em;
+  color:var(--muted); text-transform:uppercase; font-weight:600;
+}
+.runhead b{ color:var(--pink-500); font-weight:700; }
+.page > .content{ flex:1; display:flex; flex-direction:column; gap:4.2mm; min-height:0; }
+.spacer{ flex:1; }
+
+/* ---------- HEADER ---------- */
+.ph{ margin:0 0 4mm 0; }
+.kicker{ display:flex; align-items:center; gap:8px; font-size:10.5px; font-weight:700;
+  letter-spacing:.09em; text-transform:uppercase; color:var(--green-700); margin-bottom:2mm; }
+.kicker .badge{ display:inline-flex; align-items:center; height:22px; padding:0 11px; border-radius:11px;
+  background:var(--green-700); color:#fff; letter-spacing:.06em; font-size:10.5px; }
+.kicker.k-sew .badge{ background:var(--pink-500); }
+.kicker.k-fin .badge{ background:var(--blue-600); }
+.kicker.k-prep .badge{ background:var(--green-700); }
+h1.title{ font-size:25px; line-height:1.18; font-weight:800; color:var(--green-900); margin:0; letter-spacing:-.01em; }
+h1.title .script{ font-family:'Pacifico', cursive; font-weight:400; color:var(--pink-500); font-size:.92em; letter-spacing:0; }
+.lead{ margin:2.2mm 0 0 0; font-size:13.2px; color:var(--ink-2); max-width:165mm; }
+.ph::after{ content:""; display:block; margin-top:3.2mm; border-top:1.6px dashed var(--lime-500); }
+
+h2{ font-size:15px; line-height:1.3; font-weight:800; color:var(--green-700); margin:0 0 1.6mm 0;
+  display:flex; align-items:center; gap:7px; }
+h2::before{ content:""; width:9px; height:9px; border-radius:2.5px; background:var(--lime-500);
+  box-shadow: 3px 3px 0 var(--pink-300); flex:none; }
+h3{ font-size:13px; font-weight:700; color:var(--ink); margin:0 0 1mm 0; }
+p{ margin:0 0 1.6mm 0; }
+b,strong{ font-weight:700; color:var(--green-900); }
+.muted{ color:var(--muted); }
+.small{ font-size:11px; line-height:1.45; }
+.tiny{ font-size:9.8px; line-height:1.4; }
+.center{ text-align:center; }
+.nowrap{ white-space:nowrap; }
+.hl{ box-shadow: inset 0 -0.5em 0 var(--lime-300); padding:0 1px; }
+.hl-pink{ box-shadow: inset 0 -0.5em 0 var(--pink-100); padding:0 1px; }
+.num{ font-family:'Nunito','Be Vietnam Pro',sans-serif; font-weight:800; }
+ul,ol{ margin:0; padding-left:5mm; }
+li{ margin:0 0 1mm 0; }
+
+/* ---------- LAYOUT ---------- */
+.cols{ display:grid; grid-template-columns:1fr 1fr; gap:5mm; }
+.cols-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:4mm; }
+.cols-4{ display:grid; grid-template-columns:repeat(4,1fr); gap:3.5mm; }
+.cols-7-5{ display:grid; grid-template-columns:7fr 5fr; gap:5mm; }
+.cols-5-7{ display:grid; grid-template-columns:5fr 7fr; gap:5mm; }
+.cols-2-1{ display:grid; grid-template-columns:2fr 1fr; gap:5mm; }
+.cols-1-2{ display:grid; grid-template-columns:1fr 2fr; gap:5mm; }
+.stack{ display:flex; flex-direction:column; gap:3mm; }
+.row{ display:flex; gap:3mm; align-items:center; }
+.al-start{ align-items:start; }
+.al-center{ align-items:center; }
+
+/* ---------- CARDS ---------- */
+.card{ background:#fff; border:1px solid var(--line); border-radius:12px; padding:3.6mm 4mm;
+  box-shadow:0 1px 0 rgba(38,53,47,.04), 0 6px 14px -10px rgba(38,53,47,.25); }
+.card.soft{ background:var(--cream-100); box-shadow:none; }
+.card.lime{ background:var(--lime-100); border-color:#DCEBB4; box-shadow:none; }
+.card.pink{ background:var(--pink-100); border-color:#F6CADA; box-shadow:none; }
+.card.blue{ background:var(--blue-100); border-color:#CFE0F3; box-shadow:none; }
+.card > h3:first-child, .card > h2:first-child{ margin-top:0; }
+
+/* ---------- STEPS ---------- */
+ol.steps{ list-style:none; padding:0; margin:0; counter-reset:st; }
+ol.steps > li{ position:relative; padding:0 0 0 30px; margin:0 0 2.4mm 0; counter-increment:st; min-height:22px; }
+ol.steps > li::before{ content:counter(st); position:absolute; left:0; top:-1px; width:21px; height:21px; border-radius:50%;
+  background:var(--lime-500); color:var(--green-900); font:800 12px/21px 'Nunito',sans-serif; text-align:center;
+  box-shadow: 0 0 0 2.5px #fff, 0 0 0 3.6px var(--lime-300); }
+ol.steps.pink > li::before{ background:var(--pink-500); color:#fff; box-shadow:0 0 0 2.5px #fff, 0 0 0 3.6px var(--pink-300); }
+ol.steps > li > b:first-child{ color:var(--ink); }
+/* bắt đầu từ số N: style="counter-reset:st N-1" (vd: counter-reset:st 3 → bắt đầu 4) */
+
+/* ---------- NOTES / CALLOUTS ---------- */
+.note{ border-radius:11px; padding:3mm 3.6mm 2.6mm 3.6mm; border:1px solid; position:relative; font-size:12px; line-height:1.5; }
+.note .nt{ font-weight:800; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; margin-bottom:1mm; display:flex; align-items:center; gap:6px; }
+.note .nt::before{ content:""; width:16px; height:16px; border-radius:50%; flex:none; background-position:center; background-repeat:no-repeat; background-size:10px 10px; }
+.note p:last-child, .note ul:last-child{ margin-bottom:0; }
+.note.tip{ background:var(--green-100); border-color:#CFE3CA; } .note.tip .nt{ color:var(--green-700); }
+.note.tip .nt::before{ background-color:var(--green-700); background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'><path d='M5 1a3 3 0 0 0-1.7 5.4V7.6h3.4V6.4A3 3 0 0 0 5 1zM3.6 8.4h2.8v.9H3.6z' fill='white'/></svg>"); }
+.note.warn{ background:var(--coral-100); border-color:#F6CDBD; } .note.warn .nt{ color:var(--coral-600); }
+.note.warn .nt::before{ background-color:var(--coral-600); background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'><path d='M4.2 1.5h1.6l-.3 4.8h-1zM4.2 7.3h1.6v1.4H4.2z' fill='white'/></svg>"); }
+.note.info{ background:var(--blue-100); border-color:#CFE0F3; } .note.info .nt{ color:var(--blue-600); }
+.note.info .nt::before{ background-color:var(--blue-600); background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'><path d='M4.2 1.3h1.6v1.5H4.2zM4.2 3.8h1.6v4.9H4.2z' fill='white'/></svg>"); }
+.note.video{ background:var(--lime-100); border-color:#DCEBB4; } .note.video .nt{ color:#5C7F12; }
+.note.video .nt::before{ background-color:var(--lime-600); background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'><path d='M3.3 2l4.4 3-4.4 3z' fill='white'/></svg>"); }
+.note.pinknote{ background:var(--pink-100); border-color:#F6CADA; } .note.pinknote .nt{ color:var(--pink-600); }
+.note.pinknote .nt::before{ background-color:var(--pink-500); background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'><path d='M5 8.6 1.6 5.3a2 2 0 0 1 3.4-2.1 2 2 0 0 1 3.4 2.1z' fill='white'/></svg>"); }
+
+/* ---------- PHOTOS (ảnh thật trích từ video) ---------- */
+figure{ margin:0; }
+.photo{ position:relative; }
+.photo img{ display:block; width:100%; height:var(--h,55mm); object-fit:cover; border-radius:12px;
+  border:1px solid var(--line); background:#eee; }
+.photo .tc{ position:absolute; top:2.2mm; left:2.2mm; background:rgba(31,74,61,.88); color:#fff; font:700 9.5px/1 'Nunito',sans-serif;
+  padding:4px 7px 4px 6px; border-radius:20px; letter-spacing:.03em; display:flex; align-items:center; gap:4px; }
+.photo .tc::before{ content:""; width:0; height:0; border-left:6px solid var(--lime-300); border-top:3.6px solid transparent; border-bottom:3.6px solid transparent; }
+.photo .pn{ position:absolute; top:2mm; right:2mm; width:22px; height:22px; border-radius:50%; background:var(--pink-500); color:#fff;
+  font:800 12px/22px 'Nunito',sans-serif; text-align:center; box-shadow:0 0 0 2px #fff; }
+.photo figcaption, .fig figcaption{ font-size:10.6px; line-height:1.42; color:var(--ink-2); margin-top:1.5mm; }
+.photo figcaption b, .fig figcaption b{ color:var(--green-700); }
+
+/* ---------- DIAGRAM FIGURES ---------- */
+.fig{ background:#fff; border:1px solid var(--line); border-radius:12px; padding:3mm; }
+.fig.bare{ background:transparent; border:0; padding:0; }
+.fig svg{ display:block; margin:0 auto; max-width:100%; height:auto; overflow:visible; }
+
+/* ---------- CHIPS / STATS ---------- */
+.chip{ display:inline-block; padding:1px 8px; border-radius:20px; background:var(--lime-100); border:1px solid #DCEBB4;
+  font:800 11.5px/1.6 'Nunito','Be Vietnam Pro',sans-serif; color:var(--green-900); white-space:nowrap; }
+.chip.pink{ background:var(--pink-100); border-color:#F6CADA; color:var(--pink-600); }
+.chip.blue{ background:var(--blue-100); border-color:#CFE0F3; color:var(--blue-600); }
+.chip.violet{ background:var(--violet-100); border-color:#DDD1FF; color:#5B35D5; }
+.stats{ display:grid; grid-template-columns:repeat(var(--n,4),1fr); gap:3mm; }
+.stat{ background:#fff; border:1px solid var(--line); border-radius:12px; padding:2.6mm 3mm; text-align:center; }
+.stat .v{ font:800 20px/1.1 'Nunito',sans-serif; color:var(--green-900); }
+.stat .v small{ font-size:12px; font-weight:800; color:var(--green-700); }
+.stat .k{ font-size:10.4px; color:var(--ink-2); margin-top:1mm; line-height:1.3; }
+
+/* ---------- TABLES ---------- */
+table.tbl{ width:100%; border-collapse:separate; border-spacing:0; font-size:11.3px; line-height:1.4;
+  border:1px solid var(--line); border-radius:11px; overflow:hidden; background:#fff; }
+.tbl th{ background:var(--green-700); color:#fff; font-weight:700; text-align:left; padding:2mm 2.4mm; font-size:10.8px; }
+.tbl td{ padding:1.7mm 2.4mm; border-top:1px solid var(--line); vertical-align:top; }
+.tbl tr:nth-child(even) td{ background:var(--cream-100); }
+.tbl td.c, .tbl th.c{ text-align:center; }
+.tbl.pinkhead th{ background:var(--pink-500); }
+.tbl.bluehead th{ background:var(--blue-600); }
+
+/* ---------- FORMULA ---------- */
+.formula{ background:#fff; border:1.5px dashed var(--blue-600); border-radius:12px; padding:2.6mm 3.6mm; }
+.formula .f{ font:800 14px/1.5 'Nunito','Be Vietnam Pro',sans-serif; color:var(--blue-600); }
+.formula .ex{ font-size:11.5px; color:var(--ink-2); }
+.formula .ex b{ color:var(--blue-600); }
+
+/* ---------- CHECKLIST ---------- */
+ul.checks{ list-style:none; padding:0; margin:0; }
+ul.checks li{ position:relative; padding-left:24px; margin-bottom:1.6mm; }
+ul.checks li::before{ content:""; position:absolute; left:0; top:1px; width:14px; height:14px; border:1.8px solid var(--green-700); border-radius:4px; background:#fff; }
+ul.ok, ul.no{ list-style:none; padding:0; margin:0; }
+ul.ok li, ul.no li{ position:relative; padding-left:21px; margin-bottom:1.2mm; }
+ul.ok li::before, ul.no li::before{ content:""; position:absolute; left:0; top:2px; width:15px; height:15px; border-radius:50%; background-repeat:no-repeat; background-position:center; background-size:9px 9px; }
+ul.ok li::before{ background-color:var(--green-500); background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'><path d='M1.5 5.2 4 7.6 8.6 2.6' stroke='white' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>"); }
+ul.no li::before{ background-color:var(--coral-600); background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'><path d='M2.4 2.4l5.2 5.2M7.6 2.4 2.4 7.6' stroke='white' stroke-width='1.8' stroke-linecap='round'/></svg>"); }
+
+/* ---------- LEGEND (quy ước nét vẽ) ---------- */
+.legend{ display:flex; flex-wrap:wrap; gap:2mm 5mm; font-size:10.4px; color:var(--ink-2); align-items:center; }
+.legend span{ display:inline-flex; align-items:center; gap:5px; }
+.legend svg{ width:26px; height:10px; }
+
+/* ---------- SWATCHES ---------- */
+.sw{ display:inline-block; width:16px; height:16px; border-radius:5px; border:1px solid rgba(0,0,0,.12); vertical-align:-3px; }
+
+/* ==========================================================
+   SVG — quy ước nét vẽ kỹ thuật (dùng class trên phần tử SVG)
+   Đặt width/height của <svg> = kích thước viewBox (1 đơn vị ≈ 1px)
+   ========================================================== */
+.s-cut{ fill:none; stroke:#26352F; stroke-width:1.4; stroke-linejoin:round; }
+.s-seam{ fill:none; stroke:var(--seam); stroke-width:1.7; stroke-dasharray:5 3.2; stroke-linecap:round; }
+.s-fold{ fill:none; stroke:#6E7F78; stroke-width:1.1; stroke-dasharray:9 3 2 3; }
+.s-mark{ fill:none; stroke:var(--violet-500); stroke-width:1.3; }
+.s-dim{ fill:none; stroke:var(--blue-600); stroke-width:1; marker-start:url(#arr); marker-end:url(#arr); }
+.s-dim1{ fill:none; stroke:var(--blue-600); stroke-width:1; marker-end:url(#arr); }
+.s-ext{ fill:none; stroke:var(--blue-600); stroke-width:.7; stroke-dasharray:2 2; }
+.s-flow{ fill:none; stroke:var(--green-700); stroke-width:2; marker-end:url(#arr-flow); stroke-linecap:round; }
+.s-move{ fill:none; stroke:var(--pink-500); stroke-width:1.8; marker-end:url(#arr-pink); stroke-linecap:round; stroke-dasharray:6 4; }
+.s-cord{ fill:none; stroke:var(--cord); stroke-width:5.5; stroke-linecap:round; stroke-linejoin:round; }
+.s-cord-edge{ fill:none; stroke:var(--cord-dark); stroke-width:7.5; stroke-linecap:round; stroke-linejoin:round; }
+.f-outer{ fill:url(#p-outer); } .f-outer-s{ fill:url(#p-outer-s); } .f-lining-s{ fill:url(#p-lining-s); } .f-outer-ws{ fill:url(#p-outer-ws); }
+.f-lining{ fill:url(#p-lining); } .f-lining-ws{ fill:url(#p-lining-ws); }
+.f-discard{ fill:url(#p-hatch); }
+.f-gap{ fill:#FFE58A; opacity:.85; }
+.t-dim{ fill:var(--blue-600); font:800 11.5px 'Nunito','Be Vietnam Pro',sans-serif; paint-order:stroke; stroke:#fff; stroke-width:3.2px; stroke-linejoin:round; }
+.t-lbl{ fill:#26352F; font:600 11px 'Be Vietnam Pro',sans-serif; paint-order:stroke; stroke:#fff; stroke-width:3px; stroke-linejoin:round; }
+.t-bold{ font-weight:800; }
+.t-sm{ font-size:9.6px; }
+.t-seam{ fill:var(--seam); } .t-mark{ fill:#5B35D5; } .t-pink{ fill:var(--pink-600); } .t-green{ fill:var(--green-700); } .t-muted{ fill:var(--muted); } .t-coral{ fill:var(--coral-600); }
+.t-mid{ text-anchor:middle; } .t-end{ text-anchor:end; }
+.n-circle{ fill:var(--pink-500); } .n-txt{ fill:#fff; font:800 11px 'Nunito',sans-serif; text-anchor:middle; dominant-baseline:central; }

@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../style.css">
+<title>Phần 4 · Kích thước, rập &amp; công thức</title>
+<style>
+  /* ---- chỉ dùng cho Phần 4 (40_kich_thuoc) ---- */
+  .p40 .x40-plate{ fill:#fff; opacity:.9; stroke:#E7E1D2; stroke-width:1; }
+  .p40 .x40-foot{ fill:#F4A3BF; fill-opacity:.55; stroke:#E0457B; stroke-width:1; stroke-dasharray:3 2; }
+  .p40 .x40-ch{ fill:none; stroke:var(--blue-600); stroke-width:1; }
+  .p40 .x40-tick{ fill:none; stroke:var(--blue-600); stroke-width:1.4; }
+  .p40 .x40-strap{ fill:none; stroke:#8DB832; stroke-width:3.2; stroke-linecap:round; stroke-linejoin:round; }
+  .p40 .x40-stitch{ stroke:var(--seam); stroke-width:1.3; stroke-dasharray:2.4 1.8; }
+  .p40 .x40-crop{ fill:none; stroke:#B9B2A0; stroke-width:1; stroke-dasharray:1.5 3; }
+  .p40 .x40-ghost{ fill:none; stroke:var(--seam); stroke-width:1.3; stroke-dasharray:1.5 2.6; opacity:.8; }
+  .p40 .x40-p{ fill:var(--pink-500); stroke:#fff; stroke-width:1.6; }
+  .p40 .x40-allow{ fill:#F6F0E1; }
+  .p40 .x40-zside{ fill:#DCE9F7; }
+  .p40 .x40-zbot{ fill:#FBDCE7; }
+  .p40 .x40-hidden{ fill:none; stroke:#9AA59F; stroke-width:.9; stroke-dasharray:3 2.5; }
+  .p40 .x40-top{ fill:none; stroke:#5E7F2A; stroke-width:.9; stroke-dasharray:2.2 1.6; }
+  .p40 .x40-legend{ gap:1.2mm 4.2mm; font-size:10px; margin-top:1mm; padding-top:1.5mm; border-top:1px dashed var(--line); }
+  .p40 .x40-sw-hatch{ background:repeating-linear-gradient(45deg,#FFF3EE 0 2.6px,#EFA58E 2.6px 3.8px); border-color:#E4572E; }
+  .p40 .sw{ width:14px; height:14px; border-radius:4px; vertical-align:-2px; }
+  .p40 .fig figcaption{ margin-top:1mm; }
+  .p40 .x40-fh{ display:flex; align-items:center; gap:6px; font-size:12px; line-height:1.3; font-weight:800; color:var(--green-900); margin:0 0 1.4mm 0; }
+  .p40 .x40-fh .lt{ flex:none; display:inline-flex; align-items:center; justify-content:center; min-width:19px; height:19px; padding:0 5px; border-radius:10px;
+      background:var(--pink-500); color:#fff; font:800 11px/1 'Nunito',sans-serif; }
+  .p40 .x40-fh .sub{ font-weight:600; color:var(--muted); font-size:10.4px; }
+  .p40 .tbl td{ font-size:11px; }
+  .p40 .x40-cut td{ padding:1.05mm 2.2mm; vertical-align:middle; }
+  .p40 .x40-cut th{ padding:1.5mm 2.2mm; }
+  .p40 .x40-cut td:first-child{ white-space:nowrap; }
+  .p40 .x40-cut .lt{ display:inline-flex; width:16px; height:16px; border-radius:50%; background:var(--pink-500); color:#fff; align-items:center; justify-content:center;
+      font:800 10px/1 'Nunito',sans-serif; margin-right:4px; vertical-align:1px; }
+  .p40 .sw.caro{ background:linear-gradient(90deg,rgba(168,207,69,.55) 50%,transparent 50%) 0 0/7px 7px, linear-gradient(rgba(168,207,69,.55) 50%,transparent 50%) 0 0/7px 7px, #FFFFF3; }
+  .p40 .sw.dots{ background:radial-gradient(circle,#F4A3BF 0 1.6px,transparent 1.9px) 0 0/6px 6px, radial-gradient(circle,#9ED9C3 0 1.6px,transparent 1.9px) 3px 3px/6px 6px, #FFF9EC; }
+  .p40 .sw.cord{ background:#E3EE3A; border-color:#A9B21E; border-radius:50%; }
+  .p40 .formula{ padding:2.2mm 3.2mm; }
+  .p40 .formula .f{ font-size:13.4px; line-height:1.45; }
+  .p40 .formula .f .v{ color:var(--pink-600); }
+  .p40 .formula .ex{ font-size:11px; line-height:1.45; margin-top:.6mm; }
+  .p40 .formula .ft{ font-size:10px; font-weight:800; letter-spacing:.07em; text-transform:uppercase; color:var(--blue-600); margin-bottom:.4mm; display:flex; gap:6px; align-items:center; }
+  .p40 .formula .ft .lt, .p40 .x40-fh .lt{ text-transform:none; }
+  .p40 .x40-g2{ display:grid; grid-template-columns:1fr 1.18fr; gap:0 2.4mm; font:800 11.9px/1.62 'Nunito','Be Vietnam Pro',sans-serif; color:var(--blue-600); }
+  .p40 .x40-exb{ border-color:var(--green-500); background:var(--lime-100); }
+  .p40 .x40-exb .ft{ color:var(--green-700); }
+  .p40 .x40-exb .x40-g2{ color:var(--green-900); }
+  .p40 .x40-exb .x40-g2 b{ color:var(--pink-600); }
+  .p40 .x40-size .lt{ display:inline-flex; width:17px; height:17px; border-radius:50%; background:var(--pink-500); color:#fff; align-items:center; justify-content:center;
+      font:800 10px/1 'Nunito',sans-serif; margin-right:3px; vertical-align:1px; }
+  .p40 .formula .f small{ font:600 10px 'Be Vietnam Pro',sans-serif; color:var(--ink-2); }
+  .p40 .x40-use{ font-size:9.6px; font-weight:600; color:var(--muted); margin-left:2px; }
+  .p40 .x40-size tr.hi td{ background:#E9F4C8 !important; color:var(--green-900); }
+  .p40 .x40-size tr.hi td:first-child{ font-weight:800; box-shadow:inset 3px 0 0 var(--lime-600); }
+  .p40 .formula .ft .lt{ display:inline-flex; min-width:17px; height:17px; padding:0 4px; border-radius:9px; background:var(--pink-500); color:#fff; align-items:center; justify-content:center;
+      font:800 10px/1 'Nunito',sans-serif; letter-spacing:0; }
+  .p40 .note{ font-size:11.2px; line-height:1.45; padding:2.4mm 3.2mm 2.2mm 3.2mm; }
+  .p40 .x40-size th, .p40 .x40-size td{ text-align:center; padding:1.1mm 1.4mm; vertical-align:middle; }
+  .p40 .x40-size th{ padding:1.3mm 1.4mm; line-height:1.25; }
+  .p40 .x40-size th:first-child, .p40 .x40-size td:first-child{ text-align:left; }
+  .p40 .x40-size th small{ display:block; font-weight:600; font-size:9.4px; opacity:.9; }
+  .p40 .x40-size td{ font-family:'Nunito','Be Vietnam Pro',sans-serif; font-weight:800; font-size:11.4px; color:var(--ink-2); }
+  .p40 .x40-size td:first-child{ font-family:'Be Vietnam Pro',sans-serif; font-weight:600; font-size:10.8px; color:var(--ink); }
+  .p40 .x40-fl{ list-style:none; margin:0; padding:0; }
+  .p40 .x40-fl li{ font:800 12.2px/1.5 'Nunito','Be Vietnam Pro',sans-serif; color:var(--blue-600); margin:0 0 .5mm 0; }
+  .p40 .x40-fl li span{ font:600 10.2px/1.3 'Be Vietnam Pro',sans-serif; color:var(--ink-2); }
+  .p40 .x40-ex{ list-style:none; margin:0; padding:0; counter-reset:ex; }
+  .p40 .x40-ex li{ font:800 12px/1.5 'Nunito','Be Vietnam Pro',sans-serif; color:var(--green-900); margin:0 0 .5mm 0; }
+  .p40 .x40-ex li b{ color:var(--pink-600); }
+  .p40 .x40-ex li span{ font:600 10.2px/1.3 'Be Vietnam Pro',sans-serif; color:var(--ink-2); }
+  .p40 .card h3{ font-size:12px; margin-bottom:1mm; }
+  .p40 .x40-sym{ display:flex; flex-wrap:wrap; gap:1.2mm 2mm; margin-top:2mm; font-size:11px; color:var(--ink-2); }
+  .p40 .x40-sym .chip{ font-size:11px; }
+</style>
+</head>
+<body>
+<!--DEFS-->
+
+<!-- ============ PHẦN 4 · TRANG 1: RẬP ĐỦ CÁC CHI TIẾT (vẽ đúng tỉ lệ, 1 cm = 8 px) ============ -->
+<section class="page p40">
+  <div class="runhead">Túi dây rút có quai · <b>Hướng dẫn dễ hiểu</b></div>
+  <header class="ph">
+    <div class="kicker k-prep"><span class="badge">Phần 4</span> Chuẩn bị · Kích thước &amp; công thức</div>
+    <h1 class="title">Rập đủ các chi tiết <span class="script">vẽ đúng tỉ lệ</span></h1>
+    <p class="lead">Hình a–c vẽ <b>cùng một tỉ lệ</b> (thước ở hình d). Số ghi trên hình là <b>kích thước cắt</b>, đã gồm đường may <b>1 cm</b>: bạn cắt đúng số, không cộng thêm.</p>
+  </header>
+  <div class="content">
+    <figure class="fig">
+      <svg viewBox="0 0 645 302" width="645" height="302" role="img" aria-label="Rập thân ngoài và thân lót"><circle cx="67" cy="12" r="9" class="n-circle"/><text x="67" y="12.5" class="n-txt">a</text><text x="82" y="16.5" class="t-lbl t-bold t-green">THÂN VẢI NGOÀI × 2 <tspan class="t-muted" font-weight="600">· nhìn mặt phải</tspan></text><circle cx="381" cy="12" r="9" class="n-circle"/><text x="381" y="12.5" class="n-txt">b</text><text x="396" y="16.5" class="t-lbl t-bold t-green">THÂN VẢI LÓT × 2 <tspan class="t-muted" font-weight="600">· cùng rập thân ngoài</tspan></text><polygon points="58,70 298,70 298,230 258,230 258,270 98,270 98,230 58,230" class="f-outer s-cut"/><rect x="58" y="230" width="40" height="40" class="f-discard" stroke="#E4572E" stroke-width="1" stroke-dasharray="3 3"/><text x="78" y="253.5" class="t-lbl t-sm t-mid t-coral">cắt bỏ</text><rect x="258" y="230" width="40" height="40" class="f-discard" stroke="#E4572E" stroke-width="1" stroke-dasharray="3 3"/><text x="278" y="253.5" class="t-lbl t-sm t-mid t-coral">cắt bỏ</text><line x1="58" y1="110" x2="298" y2="110" class="s-mark"/><line x1="58" y1="126" x2="298" y2="126" class="s-mark"/><rect x="58" y="110" width="8" height="16" class="f-gap"/><rect x="290" y="110" width="8" height="16" class="f-gap"/><path d="M66 70 V110 M66 126 V230 M290 70 V110 M290 126 V230 M98 262 H258 M66 78 H290" class="s-seam"/><use href="#sym-back" x="59" y="103"/><use href="#sym-back" x="59" y="119"/><use href="#sym-back" x="283" y="103"/><use href="#sym-back" x="283" y="119"/><rect x="114" y="70" width="16" height="24" class="x40-foot"/><rect x="226" y="70" width="16" height="24" class="x40-foot"/><line x1="178" y1="70" x2="178" y2="83" class="s-mark" stroke-width="1.8"/><line x1="130" y1="70" x2="130" y2="81" class="s-mark" stroke-width="1.8"/><line x1="226" y1="70" x2="226" y2="81" class="s-mark" stroke-width="1.8"/><text x="178" y="94" class="t-lbl t-sm t-mid t-mark t-bold">tâm</text><text x="122" y="104" class="t-lbl t-sm t-mid t-pink t-bold">chân quai</text><text x="72" y="121.5" class="t-lbl t-sm t-bold">← khe luồn dây 2 cm: không may</text><text x="284" y="106" class="t-lbl t-sm t-end t-mark t-bold">vạch A</text><text x="284" y="138" class="t-lbl t-sm t-end t-mark t-bold">vạch B</text><rect x="140" y="142.9" width="76" height="19" rx="5" class="x40-plate"/><text x="178" y="156.4" class="t-lbl t-mid t-bold">cắt 2 mảnh</text><line x1="178" y1="169.2" x2="178" y2="215.6" class="s-dim" stroke-width="1.3"/><text x="184" y="195.9" class="t-lbl t-sm">canh sợi dọc</text><polygon points="372,70 612,70 612,230 572,230 572,270 412,270 412,230 372,230" class="f-lining s-cut"/><rect x="372" y="230" width="40" height="40" class="f-discard" stroke="#E4572E" stroke-width="1" stroke-dasharray="3 3"/><text x="392" y="253.5" class="t-lbl t-sm t-mid t-coral">cắt bỏ</text><rect x="572" y="230" width="40" height="40" class="f-discard" stroke="#E4572E" stroke-width="1" stroke-dasharray="3 3"/><text x="592" y="253.5" class="t-lbl t-sm t-mid t-coral">cắt bỏ</text><rect x="452" y="262" width="80" height="8" class="f-gap"/><path d="M380 70 V230 M604 70 V230 M412 262 H452 M532 262 H572 M380 78 H604" class="s-seam"/><use href="#sym-back" x="445" y="255"/><use href="#sym-back" x="525" y="255"/><text x="386" y="121.5" class="t-lbl t-sm t-bold">sườn may liền, không chừa khe</text><rect x="417" y="231.9" width="150" height="17" rx="5" class="x40-plate"/><text x="492" y="243.9" class="t-lbl t-sm t-mid t-bold t-coral">khe lộn: chỉ chừa ở 1 mảnh</text><rect x="454" y="142.9" width="76" height="19" rx="5" class="x40-plate"/><text x="492" y="156.4" class="t-lbl t-mid t-bold">cắt 2 mảnh</text><line x1="492" y1="169.2" x2="492" y2="215.6" class="s-dim" stroke-width="1.3"/><text x="498" y="195.9" class="t-lbl t-sm">canh sợi dọc</text><line x1="58" y1="66" x2="58" y2="34" class="s-ext"/><line x1="298" y1="66" x2="298" y2="34" class="s-ext"/><line x1="58" y1="38" x2="298" y2="38" class="s-dim"/><text x="178" y="34" class="t-dim t-mid">30 cm</text><line x1="114" y1="67" x2="114" y2="51" class="s-ext"/><line x1="130" y1="67" x2="130" y2="51" class="s-ext"/><line x1="178" y1="67" x2="178" y2="51" class="s-ext"/><line x1="226" y1="67" x2="226" y2="51" class="s-ext"/><line x1="242" y1="67" x2="242" y2="51" class="s-ext"/><line x1="114" y1="55" x2="242" y2="55" class="x40-ch"/><path d="M111 58 L117 52" class="x40-tick"/><path d="M127 58 L133 52" class="x40-tick"/><path d="M175 58 L181 52" class="x40-tick"/><path d="M223 58 L229 52" class="x40-tick"/><path d="M239 58 L245 52" class="x40-tick"/><text x="122" y="51" class="t-dim t-mid">2</text><text x="154" y="51" class="t-dim t-mid">6 cm</text><text x="202" y="51" class="t-dim t-mid">6 cm</text><text x="234" y="51" class="t-dim t-mid">2</text><line x1="54" y1="70" x2="33" y2="70" class="s-ext"/><line x1="54" y1="270" x2="33" y2="270" class="s-ext"/><line x1="38" y1="70" x2="38" y2="270" class="s-dim"/><text x="33" y="174" class="t-dim t-end">25 cm</text><line x1="302" y1="70" x2="318" y2="70" class="s-ext"/><line x1="302" y1="110" x2="318" y2="110" class="s-ext"/><line x1="302" y1="126" x2="318" y2="126" class="s-ext"/><line x1="302" y1="230" x2="318" y2="230" class="s-ext"/><line x1="302" y1="270" x2="318" y2="270" class="s-ext"/><line x1="314" y1="70" x2="314" y2="110" class="s-dim"/><text x="319" y="94" class="t-dim">5 cm</text><line x1="314" y1="110" x2="314" y2="126" class="s-dim"/><text x="319" y="122.5" class="t-dim">2 cm</text><line x1="314" y1="230" x2="314" y2="270" class="s-dim"/><text x="319" y="254" class="t-dim">5 cm</text><line x1="258" y1="274" x2="258" y2="290" class="s-ext"/><line x1="298" y1="274" x2="298" y2="290" class="s-ext"/><line x1="258" y1="286" x2="298" y2="286" class="s-dim"/><text x="278" y="299" class="t-dim t-mid">5 cm</text><line x1="130" y1="288" x2="130" y2="271" class="s-dim1"/><line x1="130" y1="244" x2="130" y2="261" class="s-dim1"/><text x="136" y="287" class="t-dim">1 cm <tspan class="t-lbl t-sm t-seam" font-weight="700">= đường may</tspan></text><line x1="372" y1="66" x2="372" y2="34" class="s-ext"/><line x1="612" y1="66" x2="612" y2="34" class="s-ext"/><line x1="372" y1="38" x2="612" y2="38" class="s-dim"/><text x="492" y="34" class="t-dim t-mid">30 cm</text><line x1="616" y1="70" x2="630" y2="70" class="s-ext"/><line x1="616" y1="270" x2="630" y2="270" class="s-ext"/><line x1="626" y1="70" x2="626" y2="270" class="s-dim"/><text x="0" y="0" class="t-dim t-mid" transform="translate(639 170) rotate(-90)">25 cm</text><line x1="452" y1="273" x2="452" y2="290" class="s-ext"/><line x1="532" y1="273" x2="532" y2="290" class="s-ext"/><line x1="452" y1="286" x2="532" y2="286" class="s-dim"/><text x="492" y="299" class="t-dim t-mid">8–10 cm</text></svg>
+      <div class="legend x40-legend">
+        <span><svg viewBox="0 0 26 10"><line x1="1" y1="5" x2="25" y2="5" class="s-cut"/></svg>đường cắt</span>
+        <span><svg viewBox="0 0 26 10"><line x1="1" y1="5" x2="25" y2="5" class="s-seam"/></svg>đường may (cách mép 1 cm)</span>
+        <span><svg viewBox="0 0 26 10"><line x1="1" y1="5" x2="25" y2="5" class="s-fold"/></svg>đường gấp</span>
+        <span><svg viewBox="0 0 26 10"><line x1="1" y1="5" x2="25" y2="5" class="s-mark"/></svg>vạch bút bay màu</span>
+        <span><svg viewBox="0 0 26 10"><line x1="3" y1="5" x2="23" y2="5" class="s-dim"/></svg>kích thước</span>
+        <span><svg viewBox="0 0 26 14" style="height:14px"><use href="#sym-back" x="6" y="0"/></svg>lại mũi</span>
+        <span><i class="sw" style="background:#FFE58A"></i>chỗ để hở</span>
+        <span><i class="sw x40-sw-hatch"></i>cắt bỏ</span>
+        <span><i class="sw" style="background:#F9CFDD;border-color:#E0457B"></i>chân quai</span>
+      </div>
+    </figure>
+
+    <div class="cols-7-5 al-start">
+      <figure class="fig">
+        <svg viewBox="0 0 355 254" width="355" height="254" role="img" aria-label="Rập quai và dây rút"><circle cx="10" cy="10" r="9" class="n-circle"/><text x="10" y="10.5" class="n-txt">c</text><text x="25" y="14.5" class="t-lbl t-bold t-green">QUAI × 2 <tspan class="t-muted" font-weight="600">· chiều 30 cm theo canh sợi dọc</tspan></text><line x1="52" y1="40" x2="52" y2="28" class="s-ext"/><line x1="292" y1="40" x2="292" y2="28" class="s-ext"/><line x1="52" y1="32" x2="292" y2="32" class="s-dim"/><text x="172" y="28" class="t-dim t-mid">30 cm</text><rect x="52" y="44" width="240" height="64" class="f-outer s-cut"/><line x1="52" y1="60" x2="292" y2="60" class="s-fold"/><line x1="52" y1="76" x2="292" y2="76" class="s-fold" stroke-width="1.3"/><line x1="52" y1="92" x2="292" y2="92" class="s-fold"/><rect x="228" y="45.5" width="60" height="12.5" rx="3" class="x40-plate"/><rect x="242" y="61.5" width="46" height="12.5" rx="3" class="x40-plate"/><rect x="228" y="77.5" width="60" height="12.5" rx="3" class="x40-plate"/><text x="286" y="56" class="t-lbl t-sm t-end">nếp gấp mép</text><text x="286" y="72" class="t-lbl t-sm t-end t-bold">nếp giữa</text><text x="286" y="88" class="t-lbl t-sm t-end">nếp gấp mép</text><line x1="48" y1="44" x2="33" y2="44" class="s-ext"/><line x1="48" y1="108" x2="33" y2="108" class="s-ext"/><line x1="38" y1="44" x2="38" y2="108" class="s-dim"/><text x="33" y="80" class="t-dim t-end">8 cm</text><line x1="296" y1="44" x2="314" y2="44" class="s-ext"/><line x1="296" y1="60" x2="314" y2="60" class="s-ext"/><line x1="296" y1="76" x2="314" y2="76" class="s-ext"/><line x1="296" y1="92" x2="314" y2="92" class="s-ext"/><line x1="296" y1="108" x2="314" y2="108" class="s-ext"/><line x1="310" y1="44" x2="310" y2="108" class="x40-ch"/><path d="M307 47 L313 41" class="x40-tick"/><path d="M307 63 L313 57" class="x40-tick"/><path d="M307 79 L313 73" class="x40-tick"/><path d="M307 95 L313 89" class="x40-tick"/><path d="M307 111 L313 105" class="x40-tick"/><text x="315" y="56" class="t-dim">2</text><text x="315" y="72" class="t-dim">2</text><text x="315" y="88" class="t-dim">2</text><text x="315" y="104" class="t-dim">2</text><text x="12" y="124" class="t-lbl t-sm t-muted t-bold">Mặt cắt quai (phóng to ×2):</text><line x1="14" y1="150" x2="142" y2="150" class="x40-strap"/><line x1="46" y1="143" x2="46" y2="157" class="s-fold"/><line x1="78" y1="143" x2="78" y2="157" class="s-fold"/><line x1="110" y1="143" x2="110" y2="157" class="s-fold"/><text x="78" y="139" class="t-dim t-mid">8 cm</text><text x="78" y="172" class="t-lbl t-sm t-mid">ủi 3 nếp</text><line x1="152" y1="150" x2="174" y2="150" class="s-flow"/><path d="M216 146 H189 Q183 150 189 154 H247 Q253 150 247 146 H220" class="x40-strap"/><text x="218" y="139" class="t-dim t-mid">4 cm</text><text x="218" y="172" class="t-lbl t-sm t-mid">① gấp 2 mép vào</text><line x1="260" y1="150" x2="282" y2="150" class="s-flow"/><path d="M304 147.6 H330 Q335 145.4 330 143 H303 Q296 150 303 157 H330 Q335 154.6 330 152.4 H304" class="x40-strap"/><line x1="305" y1="141" x2="305" y2="159" class="x40-stitch"/><line x1="328" y1="141" x2="328" y2="159" class="x40-stitch"/><text x="316" y="137" class="t-dim t-mid">2 cm</text><text x="316" y="172" class="t-lbl t-sm t-mid">② gập đôi</text><text x="316" y="184" class="t-lbl t-sm t-mid t-seam">may mí 2 cạnh</text><circle cx="10" cy="200" r="9" class="n-circle"/><text x="10" y="200.5" class="n-txt">d</text><text x="25" y="204.5" class="t-lbl t-bold t-green">DÂY RÚT × 2 <tspan class="t-muted" font-weight="600">· 80 cm/sợi, dây tròn Ø 4–6 mm</tspan></text><path d="M40 233 C 30 238, 26 246, 34 250" class="s-cord-edge" style="stroke-width:6"/><path d="M40 233 C 30 238, 26 246, 34 250" class="s-cord" style="stroke-width:4.2"/><ellipse cx="98" cy="229" rx="60" ry="10.5" transform="rotate(-3 98 229)" class="s-cord-edge" style="stroke-width:6"/><ellipse cx="98" cy="229" rx="60" ry="10.5" transform="rotate(-3 98 229)" class="s-cord" style="stroke-width:4.2"/><ellipse cx="106" cy="232" rx="57" ry="9.5" transform="rotate(2.5 106 232)" class="s-cord-edge" style="stroke-width:6"/><ellipse cx="106" cy="232" rx="57" ry="9.5" transform="rotate(2.5 106 232)" class="s-cord" style="stroke-width:4.2"/><ellipse cx="94" cy="234" rx="55" ry="8.5" transform="rotate(-1 94 234)" class="s-cord-edge" style="stroke-width:6"/><ellipse cx="94" cy="234" rx="55" ry="8.5" transform="rotate(-1 94 234)" class="s-cord" style="stroke-width:4.2"/><path d="M151 236 C 166 243, 182 244, 196 238" class="s-cord-edge" style="stroke-width:6"/><path d="M151 236 C 166 243, 182 244, 196 238" class="s-cord" style="stroke-width:4.2"/><circle cx="34" cy="250" r="2.6" fill="#C9D32A"/><circle cx="196" cy="238" r="2.6" fill="#C9D32A"/><text x="286" y="224" class="t-lbl t-sm t-mid t-muted">thước tỉ lệ (hình a–c)</text><rect x="246" y="233" width="40" height="6" fill="#26352F"/><rect x="246" y="233" width="80" height="6" fill="none" stroke="#26352F" stroke-width="1"/><text x="246" y="251" class="t-lbl t-sm t-mid">0</text><text x="286" y="251" class="t-lbl t-sm t-mid">5</text><text x="326" y="251" class="t-lbl t-sm t-mid">10 cm</text></svg>
+      </figure>
+      <figure class="photo" style="--h:61.6mm">
+        <img src="../assets/photo_pieces.jpg" alt="Các mảnh vải đã cắt trong video" style="object-position:50% 6%">
+        <span class="tc">Video 0:05</span>
+        <figcaption><b>Trong video:</b> thân ghi “rộng 30 × cao 25”, 2 góc ghi <b>5</b>, 2 vạch ghi <b>5</b> và <b>2</b>; quai ghi <b>30 × 8</b>; cuộn dây vàng.</figcaption>
+      </figure>
+    </div>
+
+    <table class="tbl x40-cut">
+      <colgroup><col style="width:34mm"><col style="width:9mm"><col style="width:48mm"><col></colgroup>
+      <tr><th>Chi tiết</th><th class="c">SL</th><th>Kích thước cắt</th><th>Đánh dấu &amp; ghi chú</th></tr>
+      <tr><td><span class="lt">a</span><i class="sw caro"></i> <b>Thân vải ngoài</b></td><td class="c"><b>2</b></td><td><b>30 × 25 cm</b> · khoét góc <b>5 × 5</b></td>
+          <td>Mặt phải: vạch A <b>5 cm</b>, vạch B <b>7 cm</b>, tâm và 2 mốc <b>6 cm</b>; khe dây 2 cm ở cả 2 sườn.</td></tr>
+      <tr><td><span class="lt">b</span><i class="sw dots"></i> <b>Thân vải lót</b></td><td class="c"><b>2</b></td><td><b>30 × 25 cm</b> · khoét góc <b>5 × 5</b></td>
+          <td>Không kẻ vạch. Chỉ đánh dấu khe lộn <b>8–10 cm</b> (1 mảnh).</td></tr>
+      <tr><td><span class="lt">c</span><i class="sw caro"></i> <b>Quai</b></td><td class="c"><b>2</b></td><td><b>30 × 8 cm</b> (vải ngoài)</td>
+          <td>Gấp 4 lớp thành dải <b>2 × 30 cm</b>. Không cần vắt sổ.</td></tr>
+      <tr><td><span class="lt">d</span><i class="sw cord"></i> <b>Dây rút</b></td><td class="c"><b>2</b></td><td><b>80 cm</b>/sợi · Ø 4–6 mm</td>
+          <td>Mua tổng <b>1,6 m</b>. Dây polyester: hơ lửa đầu dây cho khỏi tưa.</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ============ PHẦN 4 · TRANG 2: CÔNG THỨC (vì sao 30 × 25 → 18 × 10 × 18) ============ -->
+<section class="page p40">
+  <div class="runhead">Túi dây rút có quai · <b>Hướng dẫn dễ hiểu</b></div>
+  <header class="ph">
+    <div class="kicker k-prep"><span class="badge">Phần 4</span> Chuẩn bị · Kích thước &amp; công thức</div>
+    <h1 class="title">Vì sao 30 × 25 thành túi <span class="script">18 × 10 × 18</span>?</h1>
+    <div class="x40-sym">
+      <span><span class="chip blue">c = 5</span> ô khoét góc</span>
+      <span><span class="chip blue">s = 1</span> đường may</span>
+      <span><span class="chip blue">W × Hc = 30 × 25</span> cỡ cắt thân</span>
+      <span><span class="chip pink">L × D × H</span> dài đáy × sâu đáy × cao (cm)</span>
+    </div>
+  </header>
+  <div class="content">
+    <div class="cols-7-5 al-start">
+      <figure class="fig">
+        <div class="x40-fh"><span class="lt">a</span> Góc đáy: khoét 5 × 5 thì đáy sâu bao nhiêu?</div>
+        <svg viewBox="0 0 355 160" width="355" height="160" role="img" aria-label="Hình học góc đáy"><text x="92" y="14" class="t-lbl t-mid t-bold t-green">① Góc dưới, trải phẳng</text><polygon points="50,50 134,50 134,134 110,134 110,74 50,74" class="f-outer-ws"/><path d="M50 50 H134 V134" class="x40-crop"/><rect x="50" y="74" width="60" height="60" class="f-discard" stroke="#E4572E" stroke-width="1" stroke-dasharray="3 3"/><path d="M50 50 V74 H110 V134 H134" class="s-cut"/><line x1="62" y1="50" x2="62" y2="74" class="s-seam"/><line x1="110" y1="122" x2="134" y2="122" class="s-seam"/><path d="M62 74 V122 H110" class="x40-ghost"/><circle cx="62" cy="122" r="4" class="x40-p"/><text x="69" y="117" class="t-lbl t-bold t-pink">P</text><text x="88.4" y="93.2" class="t-lbl t-sm t-mid t-coral t-bold">ô khoét</text><text x="67" y="45" class="t-lbl t-sm t-seam t-bold">may sườn</text><text x="138" y="126" class="t-lbl t-sm t-seam t-bold">may đáy</text><line x1="50" y1="137" x2="50" y2="149" class="s-ext"/><line x1="110" y1="137" x2="110" y2="149" class="s-ext"/><line x1="50" y1="145" x2="110" y2="145" class="s-dim"/><text x="80" y="158" class="t-dim t-mid">c = 5</text><line x1="47" y1="74" x2="34" y2="74" class="s-ext"/><line x1="47" y1="134" x2="34" y2="134" class="s-ext"/><line x1="38" y1="74" x2="38" y2="134" class="s-dim"/><text x="33" y="108" class="t-dim t-end">5</text><line x1="142" y1="110" x2="170" y2="110" class="s-flow"/><text x="156" y="102" class="t-lbl t-sm t-mid t-bold">bóp góc</text><text x="258" y="14" class="t-lbl t-mid t-bold t-green">② Bóp góc, ép dẹt</text><polygon points="186,50 330,50 306,74 210,74" class="f-outer-ws"/><line x1="186" y1="50" x2="330" y2="50" class="x40-crop"/><path d="M186 50 L210 74 H306 L330 50" class="s-cut"/><polygon points="210,74 306,74 258,122" class="f-discard" stroke="#E4572E" stroke-width="1" stroke-dasharray="3 3"/><line x1="258" y1="50" x2="258" y2="74" class="s-seam"/><line x1="258" y1="74" x2="258" y2="122" class="x40-ghost"/><line x1="198" y1="62" x2="318" y2="62" class="s-seam" style="stroke-width:2.3"/><use href="#sym-back" x="191" y="55"/><use href="#sym-back" x="311" y="55"/><circle cx="258" cy="122" r="4" class="x40-p"/><text x="250" y="126" class="t-lbl t-bold t-pink t-end">P</text><line x1="198" y1="59" x2="198" y2="32" class="s-ext"/><line x1="318" y1="59" x2="318" y2="32" class="s-ext"/><line x1="198" y1="36" x2="318" y2="36" class="s-dim"/><text x="258" y="32" class="t-dim t-mid">10 cm = D</text><line x1="210" y1="77" x2="210" y2="89" class="s-ext"/><line x1="306" y1="77" x2="306" y2="89" class="s-ext"/><line x1="210" y1="85" x2="306" y2="85" class="s-dim"/><text x="258" y="99" class="t-dim t-mid">8 cm</text><line x1="323" y1="62" x2="344" y2="62" class="s-ext"/><line x1="310" y1="74" x2="344" y2="74" class="s-ext"/><line x1="264" y1="122" x2="344" y2="122" class="s-ext"/><line x1="340" y1="62" x2="340" y2="122" class="x40-ch"/><path d="M337 65 L343 59" class="x40-tick"/><path d="M337 77 L343 71" class="x40-tick"/><path d="M337 125 L343 119" class="x40-tick"/><text x="345" y="72" class="t-dim">1</text><text x="345" y="102" class="t-dim">4</text><text x="205" y="78" class="t-lbl t-sm t-end t-bold">mép thô</text><text x="264" y="138" class="t-lbl t-sm t-mid t-bold">đường may góc cách P: 4 + 1 = 5 cm = c</text></svg>
+      </figure>
+      <div class="stack">
+        <div class="formula">
+          <div class="ft"><span class="lt">a</span> Sâu đáy</div>
+          <div class="f">D = 2 × c = 2 × 5 = <span class="v">10 cm</span></div>
+          <div class="ex">P: chỗ đường may sườn gặp đường may đáy. Bóp góc, P thành đỉnh tam giác vuông cân; đường may góc cách P <b>5 cm</b> nên dài <b>10 cm</b>. Nhớ: <b>ô khoét = ½ sâu đáy</b>.</div>
+        </div>
+        <div class="note warn"><div class="nt">Đừng tính nhầm 8 cm</div>
+          <p>2 × (5 − 1) = 8 cm chỉ là <b>mép vải thô</b>. Tài liệu cũ ghi túi 20 × 8 × 19: cỡ đó phải khoét góc <b class="nowrap">4 × 4</b>.</p></div>
+      </div>
+    </div>
+
+    <div class="cols-7-5 al-start">
+      <div class="stack">
+        <figure class="fig">
+          <div class="x40-fh"><span class="lt">b·c</span> Mảnh thân = mặt trước + ½ hông + ½ đáy</div>
+          <svg viewBox="0 0 355 226" width="355" height="226" role="img" aria-label="Mảnh thân chia vùng"><polygon points="52,34 250,34 250,166 217,166 217,199 85,199 85,166 52,166" class="x40-allow"/><rect x="52" y="166" width="33.0" height="33.0" class="f-discard" stroke="#E4572E" stroke-width="1" stroke-dasharray="3 3"/><rect x="217" y="166" width="33.0" height="33.0" class="f-discard" stroke="#E4572E" stroke-width="1" stroke-dasharray="3 3"/><rect x="91.6" y="40.6" width="118.8" height="118.8" class="f-outer"/><rect x="58.6" y="40.6" width="33.0" height="118.8" class="x40-zside"/><rect x="210.4" y="40.6" width="33.0" height="118.8" class="x40-zside"/><rect x="91.6" y="159.4" width="118.8" height="33.0" class="x40-zbot"/><path d="M91.6 40.6 V159.4 H210.4 V40.6" class="s-fold" style="stroke-width:1.3"/><polygon points="52,34 250,34 250,166 217,166 217,199 85,199 85,166 52,166" class="s-cut"/><path d="M58.6 34 V159.4 H91.6 V192.4 H210.4 V159.4 H243.4 V34 M52 40.6 H250" class="s-seam"/><rect x="105" y="78.36" width="92" height="38" rx="5" class="x40-plate"/><text x="151" y="93.36" class="t-lbl t-mid t-bold t-green">MẶT TRƯỚC</text><text x="151" y="109.36" class="t-dim t-mid" style="font-size:14px">18 × 18</text><text x="0" y="0" class="t-lbl t-mid t-bold" style="fill:#2F6FB0" transform="translate(79.1 100) rotate(-90)">½ hông · 5 cm</text><text x="0" y="0" class="t-lbl t-mid t-bold" style="fill:#2F6FB0" transform="translate(230.9 100) rotate(-90)">½ hông · 5 cm</text><text x="151" y="179.9" class="t-lbl t-sm t-mid t-bold" style="fill:#C9336A">½ đáy · 5 cm</text><line x1="52" y1="31" x2="52" y2="16" class="s-ext"/><line x1="58.6" y1="31" x2="58.6" y2="16" class="s-ext"/><line x1="91.6" y1="31" x2="91.6" y2="16" class="s-ext"/><line x1="210.4" y1="31" x2="210.4" y2="16" class="s-ext"/><line x1="243.4" y1="31" x2="243.4" y2="16" class="s-ext"/><line x1="250" y1="31" x2="250" y2="16" class="s-ext"/><line x1="52" y1="20" x2="250" y2="20" class="x40-ch"/><path d="M49 23 L55 17" class="x40-tick"/><path d="M55.6 23 L61.6 17" class="x40-tick"/><path d="M88.6 23 L94.6 17" class="x40-tick"/><path d="M207.4 23 L213.4 17" class="x40-tick"/><path d="M240.4 23 L246.4 17" class="x40-tick"/><path d="M247 23 L253 17" class="x40-tick"/><text x="55.3" y="16" class="t-dim t-mid">1</text><text x="75.1" y="16" class="t-dim t-mid">5</text><text x="151" y="16" class="t-dim t-mid">18</text><text x="226.9" y="16" class="t-dim t-mid">5</text><text x="246.7" y="16" class="t-dim t-mid">1</text><text x="256" y="24" class="t-dim">= 30</text><line x1="49" y1="34" x2="26" y2="34" class="s-ext"/><line x1="49" y1="40.6" x2="26" y2="40.6" class="s-ext"/><line x1="49" y1="159.4" x2="26" y2="159.4" class="s-ext"/><line x1="82" y1="192.4" x2="26" y2="192.4" class="s-ext"/><line x1="82" y1="199" x2="26" y2="199" class="s-ext"/><line x1="30" y1="34" x2="30" y2="199" class="x40-ch"/><path d="M27 37 L33 31" class="x40-tick"/><path d="M27 43.6 L33 37.6" class="x40-tick"/><path d="M27 162.4 L33 156.4" class="x40-tick"/><path d="M27 195.4 L33 189.4" class="x40-tick"/><path d="M27 202 L33 196" class="x40-tick"/><text x="25" y="41.3" class="t-dim t-end">1</text><text x="25" y="104" class="t-dim t-end">18</text><text x="25" y="179.9" class="t-dim t-end">5</text><text x="25" y="199.7" class="t-dim t-end">1</text><text x="30" y="215" class="t-dim t-mid">= 25</text><text x="256" y="53.8" class="t-lbl t-sm t-muted">viền kem:</text><text x="256" y="65.8" class="t-lbl t-sm t-muted">đường may</text><text x="256" y="77.8" class="t-lbl t-sm t-muted">1 cm</text></svg>
+        </figure>
+        <div class="formula">
+          <div class="ft"><span class="lt">b</span> Dài đáy <span class="lt">c</span> Chiều cao</div>
+          <div class="f">L = (W − 2s) − D = 28 − 10 = <span class="v">18 cm</span></div>
+          <div class="f">H = (Hc − 2s) − D ÷ 2 = 23 − 5 = <span class="v">18 cm</span></div>
+          <div class="ex">Trừ đường may còn 28 × 23; trừ tiếp phần góp vào hông, đáy.</div>
+        </div>
+      </div>
+      <div class="stack">
+        <figure class="fig">
+          <div class="x40-fh"><span class="lt">d</span> Túi thành phẩm ≈ 3,2 lít</div>
+          <svg viewBox="0 0 246 196" width="246" height="196" role="img" aria-label="Túi thành phẩm dạng hộp"><path d="M79.39 60.89 V51.89 A32.2 33.81 0 0 1 143.79 51.89 V60.89" fill="none" stroke="#7FA82A" stroke-width="10.5" stroke-linecap="butt" opacity=".75"/><path d="M79.39 60.89 V51.89 A32.2 33.81 0 0 1 143.79 51.89 V60.89" fill="none" stroke="#DDEFA2" stroke-width="8" opacity=".75"/><path d="M79.39 60.89 V51.89 A32.2 33.81 0 0 1 143.79 51.89 V60.89" fill="none" stroke="#E0457B" stroke-width=".8" stroke-dasharray="2 1.6" opacity=".75"/><polygon points="46,76 128.8,76 152.99,60.89 70.19,60.89" class="f-lining-s"/><polygon points="46,76 128.8,76 152.99,60.89 70.19,60.89" fill="#26352F" opacity=".10"/><path d="M46 158.8 L70.19 143.69 L152.99 143.69 M70.19 143.69 L70.19 60.89" class="x40-hidden"/><polygon points="128.8,76 152.99,60.89 152.99,143.69 128.8,158.8" class="f-outer"/><polygon points="128.8,76 152.99,60.89 152.99,143.69 128.8,158.8" fill="#2F6FB0" opacity=".16"/><rect x="46" y="76" width="82.8" height="82.8" class="f-outer"/><path d="M46 94.4 H128.8 L152.99 79.29" class="x40-top"/><path d="M46 103.6 H128.8 L152.99 88.49" class="x40-top"/><path d="M46 77.8 H128.8 L152.99 62.69" class="x40-top"/><line x1="140.89" y1="68.44" x2="140.89" y2="86.84" class="s-seam" style="stroke-width:1.2"/><line x1="140.89" y1="96.04" x2="140.89" y2="151.24" class="s-seam" style="stroke-width:1.2"/><path d="M46 76 L128.8 76 L128.8 158.8 L46 158.8 Z M128.8 76 L152.99 60.89 L152.99 143.69 L128.8 158.8 M46 76 L70.19 60.89 L152.99 60.89" class="s-cut" style="stroke-width:1.2"/><path d="M55.2 76 V67 A32.2 33.81 0 0 1 119.6 67 V76" fill="none" stroke="#7FA82A" stroke-width="10.5" stroke-linecap="butt"/><path d="M55.2 76 V67 A32.2 33.81 0 0 1 119.6 67 V76" fill="none" stroke="#DDEFA2" stroke-width="8"/><path d="M55.2 76 V67 A32.2 33.81 0 0 1 119.6 67 V76" fill="none" stroke="#E0457B" stroke-width=".8" stroke-dasharray="2 1.6"/><path d="M140.89 91.44 C 150.89 95.44, 150.89 113.44, 151.89 135.44" class="s-cord-edge" style="stroke-width:4.4"/><path d="M140.89 91.44 C 150.89 95.44, 150.89 113.44, 151.89 135.44" class="s-cord" style="stroke-width:2.8"/><path d="M140.89 91.44 C 154.89 93.44, 158.89 109.44, 157.89 135.44" class="s-cord-edge" style="stroke-width:4.4"/><path d="M140.89 91.44 C 154.89 93.44, 158.89 109.44, 157.89 135.44" class="s-cord" style="stroke-width:2.8"/><circle cx="155.39" cy="136.44" r="5" fill="#E3EE3A" stroke="#A9B21E" stroke-width="1.2"/><line x1="46" y1="161.8" x2="46" y2="174.8" class="s-ext"/><line x1="128.8" y1="161.8" x2="128.8" y2="174.8" class="s-ext"/><line x1="46" y1="170.8" x2="128.8" y2="170.8" class="s-dim"/><text x="87.4" y="183.8" class="t-dim t-mid">L = 18 cm</text><line x1="43" y1="76" x2="30" y2="76" class="s-ext"/><line x1="43" y1="158.8" x2="30" y2="158.8" class="s-ext"/><line x1="34" y1="76" x2="34" y2="158.8" class="s-dim"/><text x="0" y="0" class="t-dim t-mid" transform="translate(29 117.4) rotate(-90)">H = 18 cm</text><line x1="133.3" y1="166.54" x2="157.49" y2="151.43" class="s-dim"/><text x="0" y="0" class="t-dim t-mid" transform="translate(150.89 168.44) rotate(-32)">D = 10</text><line x1="161.99" y1="60.89" x2="161.99" y2="79.29" class="s-dim"/><line x1="161.99" y1="79.29" x2="161.99" y2="88.49" class="x40-ch"/><text x="167.99" y="74.09" class="t-dim">bèo 4</text><text x="167.99" y="88.89" class="t-dim">kênh 2</text><line x1="154.99" y1="79.29" x2="164.99" y2="79.29" class="s-ext"/><line x1="154.99" y1="88.49" x2="164.99" y2="88.49" class="s-ext"/><text x="166.89" y="131.44" class="t-lbl t-sm t-bold">dây 80 cm</text><text x="166.89" y="143.44" class="t-lbl t-sm t-bold">× 2 sợi</text><text x="155.79" y="40" class="t-lbl t-sm t-bold t-green">quai 2 cm</text><text x="155.79" y="52" class="t-lbl t-sm t-bold t-green">lộ 28 cm</text></svg>
+        </figure>
+        <div class="formula">
+          <div class="ft"><span class="lt">e</span> Miệng, dây <span class="lt">f</span> Quai, kênh</div>
+          <div class="f">Miệng = 2 × 28 = <span class="v">56 cm</span></div>
+          <div class="f">Dây = 56 + 2 × 12<small> đuôi</small> = <span class="v">80 cm</span></div>
+          <div class="f">Quai 8 ÷ 4 = <span class="v">2</span> · lộ 30 − 2 = <span class="v">28</span></div>
+          <div class="f">Bèo 5 − 1 = <span class="v">4</span> · kênh 7 − 5 = <span class="v">2</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stack" style="gap:2.6mm">
+      <table class="tbl bluehead x40-size">
+        <tr><th><span class="lt">g</span> Đổi cỡ túi (cm)</th><th>Thành phẩm<small>L × D × H</small></th><th>Cắt thân<small>W × Hc</small></th><th>Ô góc<small>c × c</small></th>
+            <th>Vạch A / B<small>(bèo)</small></th><th>Quai cắt</th><th>Mốc quai<small>từ tâm</small></th><th>Dây<small>mỗi sợi</small></th></tr>
+        <tr><td>Mini <span class="x40-use">son, tai nghe</span></td><td>14 × 6 × 13</td><td>22 × 18</td><td>3 × 3</td><td>4 / 6 (3)</td><td>26 × 8</td><td>± 4,5</td><td>64</td></tr>
+        <tr class="hi"><td>Chuẩn <span class="x40-use">như video</span></td><td>18 × 10 × 18</td><td>30 × 25</td><td>5 × 5</td><td>5 / 7 (4)</td><td>30 × 8</td><td>± 6</td><td>80</td></tr>
+        <tr><td>Lớn <span class="x40-use">hộp cơm, bình nước</span></td><td>24 × 12 × 24</td><td>38 × 32</td><td>6 × 6</td><td>6 / 8 (5)</td><td>40 × 8</td><td>± 7,5</td><td>96</td></tr>
+      </table>
+      <div class="cols">
+        <div class="formula">
+          <div class="ft">Công thức ngược · từ túi muốn có ra số cắt</div>
+          <div class="x40-g2">
+            <div>c = D ÷ 2</div><div>A = bèo + s · B = A + 2</div>
+            <div>W = L + D + 2s</div><div>Quai rộng = 4 × bản quai</div>
+            <div>Hc = H + D÷2 + 2s</div><div>Quai dài = lộ + 2s</div>
+            <div>Mốc ≈ ± W ÷ 5</div><div>Dây = 2(W − 2s) + 24</div>
+          </div>
+        </div>
+        <div class="formula x40-exb">
+          <div class="ft">Ví dụ · cỡ Lớn 24 × 12 × 24, bèo 5, quai lộ 38</div>
+          <div class="x40-g2">
+            <div>c = 12 ÷ 2 = <b>6</b></div><div>A = 5 + 1 = <b>6</b> · B = <b>8</b></div>
+            <div>W = 24+12+2 = <b>38</b></div><div>Quai rộng 4 × 2 = <b>8</b></div>
+            <div>Hc = 24+6+2 = <b>32</b></div><div>Quai dài 38 + 2 = <b>40</b></div>
+            <div>Mốc 38 ÷ 5 ≈ <b>± 7,5</b></div><div>Dây 2 × 36 + 24 = <b>96</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body></html>

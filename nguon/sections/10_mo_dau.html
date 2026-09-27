@@ -1,0 +1,860 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../style.css">
+<title>Phần 1 · Hiểu mẫu túi</title>
+<style>
+/* ---- riêng phần 10 (mở đầu) ---- */
+.m10-cover{ position:relative; }
+.m10-cover h1.title{ font-size:33px; line-height:1.12; }
+.m10-cover h1.title .script{ font-size:.96em; line-height:1.3; }
+.m10-cover .lead{ max-width:138mm; }
+.m10-stamp{ position:absolute; right:0; top:-1mm; width:30mm; height:30mm; }
+.tcx{ display:inline-block; background:rgba(31,74,61,.9); color:#fff; font:800 9.6px/1 'Nunito',sans-serif; padding:3px 7px; border-radius:20px; vertical-align:1px; letter-spacing:.03em; }
+.nb{ display:inline-block; width:15px; height:15px; border-radius:50%; background:var(--pink-500); color:#fff; font:800 9.5px/15px 'Nunito',sans-serif; text-align:center; vertical-align:1px; }
+.lt{ display:inline-block; width:17px; height:17px; border-radius:50%; background:var(--green-700); color:#fff; font:800 10.5px/17px 'Nunito',sans-serif; text-align:center; font-style:normal; flex:none; }
+
+.m10-hero{ display:grid; grid-template-columns:1.18fr 1fr; gap:3mm; }
+.m10-hero .rt{ display:flex; flex-direction:column; gap:3mm; }
+.photo .cap{ position:absolute; left:2.2mm; right:2.2mm; bottom:2.2mm; background:rgba(255,253,247,.94); border-radius:9px;
+  padding:1.3mm 2.4mm; font-size:10.4px; line-height:1.38; color:var(--ink); box-shadow:0 2px 8px -4px rgba(38,53,47,.35); }
+.photo .cap.top{ top:2.2mm; bottom:auto; left:auto; right:2.2mm; max-width:52%; }
+.photo .cap b{ color:var(--pink-600); }
+
+.m10-gold{ display:grid; grid-template-columns:repeat(5,1fr); gap:2.4mm; }
+.m10-gold .g{ background:#fff; border:1px solid #DCEBB4; border-radius:11px; padding:2mm 1.4mm 1.8mm; text-align:center; position:relative; }
+.m10-gold .g svg{ display:block; margin:0 auto .8mm; }
+.m10-gold .g .v{ font:800 16px/1.15 'Nunito',sans-serif; color:var(--pink-600); }
+.m10-gold .g .v small{ font-size:11px; color:var(--pink-500); }
+.m10-gold .g .k{ font-size:10px; line-height:1.3; color:var(--ink-2); margin-top:.6mm; }
+.mtc{ display:inline-block; margin-top:1mm; background:rgba(31,74,61,.88); color:#fff; font:800 8.8px/1 'Nunito',sans-serif; padding:3px 6px; border-radius:10px; letter-spacing:.03em; }
+.h2sub{ font-size:11px; font-weight:600; color:var(--ink-2); letter-spacing:0; }
+
+.m10-fix{ display:grid; grid-template-columns:repeat(3,1fr); gap:3.4mm; margin-top:1mm; }
+.m10-fix .fx{ display:flex; gap:2.2mm; align-items:flex-start; }
+.m10-fix .fx svg{ flex:none; background:#fff; border-radius:8px; border:1px solid #F6CDBD; }
+.m10-fix .fx h4{ margin:0 0 .6mm; font-size:11.8px; color:var(--coral-600); }
+.m10-fix .fx p{ margin:0; font-size:10.8px; line-height:1.42; }
+.m10-fix .old{ color:var(--muted); text-decoration:line-through; text-decoration-color:rgba(217,83,31,.6); }
+
+.m10-parts{ display:flex; flex-wrap:wrap; gap:1.4mm 2.4mm; justify-content:center; margin-top:1.6mm; font-size:10.8px; }
+.m10-parts em{ font-style:normal; }
+.m10-parts span{ display:inline-flex; align-items:center; gap:5px; background:var(--cream-100); border:1px solid var(--line); border-radius:20px; padding:1px 9px 1px 2px; }
+.m10-row2{ display:grid; grid-template-columns:1.62fr 1fr; gap:4mm; align-items:start; }
+
+.m10-gloss{ display:grid; grid-template-columns:repeat(3,1fr); gap:2.2mm 2.6mm; }
+.m10-gloss .gi{ display:flex; gap:2.2mm; align-items:center; background:#fff; border:1px solid var(--line); border-radius:10px; padding:1.3mm 2.2mm; }
+.m10-gloss .gi svg{ flex:none; }
+.m10-gloss .gi > div > b{ display:block; font-size:11.6px; line-height:1.25; color:var(--green-900); margin-bottom:.3mm; }
+.m10-gloss .gi span{ display:block; font-size:10.1px; line-height:1.36; color:var(--ink-2); }
+
+.m10-read{ display:grid; grid-template-columns:1.25fr 1fr 1fr 1fr; gap:2.6mm; align-items:stretch; }
+.m10-read .note{ font-size:10.8px; line-height:1.42; padding:2.4mm 3mm 2.2mm; }
+.m10-read .ptx{ font-size:10.4px; line-height:1.4; margin-top:1.2mm; color:var(--ink-2); }
+
+/* nét riêng cho sơ đồ của phần này */
+.g-guide{ fill:none; stroke:#9AA7A1; stroke-width:.9; stroke-dasharray:3 3; }
+.ld{ fill:none; stroke:#4A5A53; stroke-width:.8; }
+.ldot{ fill:#4A5A53; }
+.s-top{ fill:none; stroke:#D81B60; stroke-width:1.3; stroke-dasharray:3.2 2.2; stroke-linecap:round; }
+.s-cord-sm{ fill:none; stroke:#E3EE3A; stroke-width:3.4; stroke-linecap:round; stroke-linejoin:round; }
+.s-cord-edge-sm{ fill:none; stroke:#A9B21E; stroke-width:5.4; stroke-linecap:round; stroke-linejoin:round; }
+.c-green{ fill:#2F5D50; }
+.l-out-e{ fill:none; stroke:#6E9A2E; stroke-width:5.2; stroke-linecap:round; stroke-linejoin:round; }
+.l-out{ fill:none; stroke:#C7E56A; stroke-width:3; stroke-linecap:round; stroke-linejoin:round; }
+.l-lin-e{ fill:none; stroke:#D7839F; stroke-width:5.2; stroke-linecap:round; stroke-linejoin:round; }
+.l-lin{ fill:none; stroke:#FCE0EA; stroke-width:3; stroke-linecap:round; stroke-linejoin:round; }
+.st{ fill:none; stroke:#D81B60; stroke-width:1.8; stroke-linecap:round; }
+.fold-soft{ fill:none; stroke:#2F5D50; stroke-opacity:.26; stroke-width:1.1; stroke-linecap:round; }
+.gather{ fill:none; stroke:#4E7A1E; stroke-opacity:.45; stroke-width:1; stroke-linecap:round; }
+.t-big{ font:800 22px 'Nunito',sans-serif; fill:#E0457B; }
+.t-cap{ font:800 9.6px 'Be Vietnam Pro',sans-serif; letter-spacing:.08em; }
+.node{ fill:#fff; stroke-width:1.8; }
+.node.prep{ stroke:#2F5D50; } .node.sew{ stroke:#E0457B; } .node.done{ fill:#FDEAF1; stroke:#E0457B; stroke-width:2.2; }
+.road-prep{ fill:none; stroke:#A8CF45; stroke-width:3; stroke-dasharray:8 5; stroke-linecap:round; }
+.road-sew{ fill:none; stroke:#F4A3BF; stroke-width:3; stroke-dasharray:8 5; stroke-linecap:round; }
+.chev{ fill:none; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; }
+</style>
+</head>
+<body>
+<!--DEFS-->
+
+<!-- =====================================================================
+     TRANG 1 — MỞ ĐẦU PHẦN HƯỚNG DẪN MỚI
+     ===================================================================== -->
+<section class="page">
+  <div class="runhead">Túi dây rút có quai · <b>Hướng dẫn dễ hiểu</b></div>
+  <header class="ph m10-cover">
+    <div class="kicker k-prep"><span class="badge">Phần 1</span> Chuẩn bị · Hiểu mẫu túi</div>
+    <h1 class="title">May túi dây rút có quai<br><span class="script">dễ như chơi</span></h1>
+    <p class="lead">Phần này viết lại toàn bộ cách may cho thật dễ hiểu. Mỗi bước đều <b>đối chiếu với từng cảnh trong video</b>: ảnh thật trích từ video có nhãn giây (ví dụ <span class="tcx">▸ Video 0:05</span>), hình vẽ đúng tỉ lệ, ghi đủ số đo. <b>Chỗ nào khác với bản cũ phía sau (kể cả kích thước: bản cũ ghi 20 × 8 × 19 cm là sai), bạn hãy làm theo phần này.</b></p>
+    <svg class="m10-stamp deco" viewBox="0 0 114 114" width="114" height="114">
+      <circle cx="57" cy="57" r="55" fill="#F2F8DD" stroke="#A8CF45" stroke-width="1.5"/>
+      <circle cx="57" cy="57" r="48" fill="none" stroke="#F4A3BF" stroke-width="1.6" stroke-dasharray="4 3"/>
+      <text x="57" y="40" class="t-cap t-mid t-green">THEO VIDEO</text>
+      <text x="57" y="66" class="t-big t-mid">56 giây</text>
+      <text x="57" y="83" class="t-lbl t-sm t-mid t-green t-bold">9 bước may</text>
+      <use href="#sym-bow" x="51" y="88"/>
+    </svg>
+  </header>
+
+  <div class="content">
+    <!-- ảnh lớn -->
+    <div class="m10-hero">
+      <figure class="photo" style="--h:84mm">
+        <img src="../assets/photo_hero.jpg" style="object-position:50% 18%">
+        <span class="tc">Video 0:01</span>
+        <div class="cap top"><b>Thành phẩm trong video:</b> rút dây là miệng túi nhún bèo, quai xách nhỏ xinh.</div>
+      </figure>
+      <div class="rt">
+        <figure class="photo" style="--h:40.5mm">
+          <img src="../assets/photo_hero_open.jpg" style="object-position:50% 60%">
+          <span class="tc">Video 0:02</span>
+          <div class="cap">Nới dây ra: bên trong là <b>lót chấm bi</b>, hai bên có <b>2 nút dây</b> vàng chanh.</div>
+        </figure>
+        <figure class="photo" style="--h:40.5mm">
+          <img src="../assets/photo_carry.jpg" style="object-position:50% 37%">
+          <span class="tc">Video 0:55</span>
+          <div class="cap">Kéo 2 dây về 2 phía là miệng rút kín. Túi đựng khoảng <b>3,2 lít</b>: khăn giấy, son, sạc, ví nhỏ.</div>
+        </figure>
+      </div>
+    </div>
+
+    <!-- số liệu -->
+    <div class="stats" style="grid-template-columns:1.8fr 1fr 1.25fr 1fr">
+      <div class="stat"><div class="v">18 × 10 × 18<small> cm</small></div><div class="k">thành phẩm: dài đáy × sâu đáy × cao</div></div>
+      <div class="stat"><div class="v">56<small> cm</small></div><div class="k">vòng miệng túi</div></div>
+      <div class="stat"><div class="v">~1<small> giờ </small>45<small> phút</small></div><div class="k">thời gian may (người mới)</div></div>
+      <div class="stat"><div class="v">Người mới</div><div class="k">độ khó: chỉ cần mũi may thẳng</div></div>
+    </div>
+
+    <!-- 5 con số vàng -->
+    <div class="card lime" style="padding:3mm 3.4mm 3mm">
+      <h2>5 con số vàng trong video <span class="h2sub">— nhớ 5 con số này là cắt và gắn quai đúng như video</span></h2>
+      <div class="m10-gold">
+        <div class="g">
+          <svg viewBox="0 0 108 60" width="108" height="60">
+            <polygon points="34,16 82,16 82,48 74,48 74,56 42,56 42,48 34,48" class="f-outer-s s-cut"/>
+            <line x1="34" y1="8" x2="82" y2="8" class="s-dim"/>
+            <text x="87" y="12" class="t-dim t-sm">30</text>
+            <line x1="26" y1="16" x2="26" y2="56" class="s-dim"/>
+            <text x="21" y="40" class="t-dim t-sm t-end">25</text>
+          </svg>
+          <div class="v">30 × 25<small> cm</small></div>
+          <div class="k">thân túi: rộng × cao<br>(cắt 2 ngoài + 2 lót)</div>
+          <span class="mtc">▸ Video 0:05</span>
+        </div>
+        <div class="g">
+          <svg viewBox="0 0 108 60" width="108" height="60">
+            <polygon points="24,4 98,4 98,56 49,56 49,31 24,31" class="f-outer-s s-cut"/>
+            <rect x="24" y="31" width="25" height="25" class="f-discard" stroke="#E4572E" stroke-dasharray="3 2.5"/>
+            <line x1="15" y1="31" x2="15" y2="56" class="s-dim"/>
+            <text x="11" y="47" class="t-dim t-sm t-end">5</text>
+            <path d="M60 44 L52 44" class="s-dim1"/>
+            <text x="78" y="39" class="t-lbl t-sm t-mid t-coral t-bold">khoét</text>
+            <text x="78" y="51" class="t-lbl t-sm t-mid t-coral t-bold">5 × 5</text>
+          </svg>
+          <div class="v">5 × 5<small> cm</small></div>
+          <div class="k">ô khoét bỏ ở<br>2 góc đáy</div>
+          <span class="mtc">▸ Video 0:05</span>
+        </div>
+        <div class="g">
+          <svg viewBox="0 0 108 60" width="108" height="60">
+            <rect x="8" y="4" width="78" height="56" class="f-outer-s"/>
+            <path d="M8,60 V4 H86 V60" class="s-cut"/>
+            <line x1="8" y1="24" x2="86" y2="24" class="s-mark"/>
+            <line x1="8" y1="32" x2="86" y2="32" class="s-mark"/>
+            <rect x="8" y="24" width="4" height="8" class="f-gap"/>
+            <rect x="82" y="24" width="4" height="8" class="f-gap"/>
+            <line x1="94" y1="4" x2="94" y2="24" class="s-dim"/>
+            <path d="M91,24 H97 M94,24 V32 M91,32 H97" fill="none" stroke="#2F6FB0" stroke-width="1"/>
+            <text x="99" y="18" class="t-dim t-sm">5</text>
+            <text x="99" y="34" class="t-dim t-sm">2</text>
+            <text x="47" y="50" class="t-lbl t-sm t-mid t-mark">2 vạch kẻ</text>
+          </svg>
+          <div class="v">5<small> cm</small> + 2<small> cm</small></div>
+          <div class="k">2 vạch cách mép trên<br>5 cm và 7 cm</div>
+          <span class="mtc">▸ Video 0:05</span>
+        </div>
+        <div class="g">
+          <svg viewBox="0 0 108 60" width="108" height="60">
+            <rect x="10" y="5" width="78" height="21" class="f-outer-s s-cut"/>
+            <line x1="94" y1="5" x2="94" y2="26" class="s-dim"/>
+            <text x="99" y="19" class="t-dim t-sm">8</text>
+            <path d="M49,29 V37" stroke="#E0457B" stroke-width="1.6" fill="none"/>
+            <polygon points="45,36 53,36 49,42" fill="#E0457B"/>
+            <rect x="10" y="45" width="78" height="5.2" class="f-outer-s s-cut"/>
+            <text x="99" y="51" class="t-dim t-sm">2</text>
+            <text x="56" y="39" class="t-lbl t-sm t-pink">gấp 4 lớp</text>
+          </svg>
+          <div class="v">30 × 8<small> cm</small></div>
+          <div class="k">dải quai (cắt 2),<br>gấp còn rộng 2 cm</div>
+          <span class="mtc">▸ Video 0:05</span>
+        </div>
+        <div class="g">
+          <svg viewBox="0 0 108 60" width="108" height="60">
+            <rect x="4" y="30" width="100" height="30" class="f-outer-s"/>
+            <path d="M4,60 V30 H104 V60" class="s-cut"/>
+            <path d="M30,31 C30,12 40,6 54,6 C68,6 78,12 78,31 L72,31 C72,17 64,12 54,12 C44,12 36,17 36,31 Z" fill="#A8CF45" stroke="#26352F" stroke-width="1"/>
+            <line x1="54" y1="30" x2="54" y2="40" class="s-mark"/>
+            <line x1="36" y1="30" x2="36" y2="40" class="s-mark"/>
+            <line x1="72" y1="30" x2="72" y2="40" class="s-mark"/>
+            <line x1="36" y1="45" x2="54" y2="45" class="s-dim"/>
+            <line x1="54" y1="45" x2="72" y2="45" class="s-dim"/>
+            <text x="45" y="57" class="t-lbl t-sm t-mid t-mark t-bold">6</text>
+            <text x="63" y="57" class="t-lbl t-sm t-mid t-mark t-bold">6</text>
+          </svg>
+          <div class="v">6 | 6<small> cm</small></div>
+          <div class="k">mốc quai: đo từ tâm<br>mép trên ra mỗi bên</div>
+          <span class="mtc">▸ Video 0:24</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 chỗ bản cũ viết chưa đúng -->
+    <div class="note warn" style="padding:2.8mm 3.4mm 2.8mm">
+      <div class="nt">3 chỗ bản cũ phía sau viết chưa đúng — hãy làm theo trang này</div>
+      <div class="m10-fix">
+        <div class="fx">
+          <svg viewBox="0 0 46 44" width="46" height="44">
+            <path d="M12,13 H38 Q42,13 42,11 Q42,9 38,9 H10 Q4,9 4,16 Q4,23 10,23 H38 Q42,23 42,21 Q42,19 38,19 H12" fill="none" stroke="#8DB832" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M8,6.5 V25.5 M38,6.5 V25.5" stroke="#D81B60" stroke-width="1.2" stroke-dasharray="2 1.4"/>
+            <line x1="4" y1="31" x2="42" y2="31" class="s-dim"/>
+            <text x="23" y="41.5" class="t-dim t-sm t-mid">2 cm</text>
+          </svg>
+          <div><h4>Quai</h4>
+            <p><span class="old">gấp 3, rộng 2,6–2,7 cm</span><br>Đúng: gấp 2 mép vào giữa rồi gập đôi → rộng <b>2 cm</b>, dày <b>4 lớp</b>.</p></div>
+        </div>
+        <div class="fx">
+          <svg viewBox="0 0 46 44" width="46" height="44">
+            <rect x="4" y="4" width="38" height="36" class="f-outer-s s-cut"/>
+            <path d="M4,7 H42 M4,18 H42 M4,25 H42" class="s-top"/>
+          </svg>
+          <div><h4>Đường diễu</h4>
+            <p><span class="old">chỉ 2 đường</span><br>Đúng: <b>3 đường</b> — <span class="nb">1</span> may mí sát miệng + <span class="nb">2</span> <span class="nb">3</span> tạo kênh dây.</p></div>
+        </div>
+        <div class="fx">
+          <svg viewBox="0 0 46 44" width="46" height="44">
+            <rect x="1" y="26" width="44" height="17" class="f-outer-s"/>
+            <path d="M1,43 V26 H45 V43" class="s-cut"/>
+            <path d="M7,27 C7,12 14,6 23,6 C32,6 39,12 39,27 L35,27 C35,15 30,10 23,10 C16,10 11,15 11,27 Z" fill="#A8CF45" stroke="#26352F" stroke-width=".9"/>
+            <path d="M23,26 V34 M11,26 V36 M35,26 V36" stroke="#7C4DFF" stroke-width="1.4"/>
+            <circle cx="11" cy="37.5" r="1.8" fill="#7C4DFF"/><circle cx="35" cy="37.5" r="1.8" fill="#7C4DFF"/>
+          </svg>
+          <div><h4>Vị trí chân quai</h4>
+            <p><span class="old">mốc 6 cm là tâm chân quai</span><br>Đúng: <b>mép trong</b> chân quai chạm mốc 6 cm, quai nằm <b>phía ngoài</b> mốc.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     TRANG 2 — CẤU TẠO TÚI
+     ===================================================================== -->
+<section class="page">
+  <div class="runhead">Túi dây rút có quai · <b>Hướng dẫn dễ hiểu</b></div>
+  <header class="ph">
+    <div class="kicker k-prep"><span class="badge">Phần 1</span> Chuẩn bị · Hiểu mẫu túi</div>
+    <h1 class="title">Cấu tạo túi <span class="script">nhìn là hiểu</span></h1>
+    <p class="lead">Túi gồm <b>8 chi tiết</b> và <b>2 lớp vải</b>. Biết mỗi chi tiết nằm ở đâu thì lúc may sẽ không bị rối.</p>
+  </header>
+
+  <div class="content">
+    <!-- (a) hình phân rã -->
+    <figure class="fig" style="padding:2.6mm 3mm 2.4mm">
+      <svg viewBox="0 0 644 264" width="644" height="264">
+        <!-- đường gióng theo chiều sâu -->
+        <line x1="44" y1="116" x2="408" y2="79" class="g-guide"/>
+        <line x1="144.8" y1="93.3" x2="508.8" y2="56.3" class="g-guide"/>
+        <line x1="128" y1="202.1" x2="492" y2="165.1" class="g-guide"/>
+
+        <!-- P4: vải ngoài – sau (thấy mặt trái) -->
+        <g transform="matrix(0.8 -0.18 0 1 408 79)">
+          <path d="M29.4,-8 C29.4,-44 46,-56 63,-56 C80,-56 96.6,-44 96.6,-8 L88.2,-8 C88.2,-38 78,-47.6 63,-47.6 C48,-47.6 37.8,-38 37.8,-8 Z" class="f-outer s-cut"/>
+          <path d="M33.6,-8 V0 M92.4,-8 V0" class="g-guide"/>
+          <polygon points="0,0 126,0 126,84 105,84 105,105 21,105 21,84 0,84" class="f-outer-ws s-cut"/>
+          <rect x="0" y="21" width="4.2" height="8.4" class="f-gap"/>
+          <rect x="121.8" y="21" width="4.2" height="8.4" class="f-gap"/>
+        </g>
+        <!-- P3: lót – sau (thấy mặt phải) -->
+        <g transform="matrix(0.8 -0.18 0 1 300 90)">
+          <polygon points="0,0 126,0 126,84 105,84 105,105 21,105 21,84 0,84" class="f-lining s-cut"/>
+          <rect x="44" y="100.8" width="38" height="4.2" class="f-gap"/>
+        </g>
+        <!-- P2: lót – trước (thấy mặt trái) -->
+        <g transform="matrix(0.8 -0.18 0 1 152 105)">
+          <polygon points="0,0 126,0 126,84 105,84 105,105 21,105 21,84 0,84" class="f-lining-ws s-cut"/>
+        </g>
+        <!-- P1: vải ngoài – trước (thấy mặt phải) -->
+        <g transform="matrix(0.8 -0.18 0 1 44 116)">
+          <path d="M29.4,-8 C29.4,-44 46,-56 63,-56 C80,-56 96.6,-44 96.6,-8 L88.2,-8 C88.2,-38 78,-47.6 63,-47.6 C48,-47.6 37.8,-38 37.8,-8 Z" class="f-outer s-cut"/>
+          <path d="M33.6,-8 V0 M92.4,-8 V0" class="g-guide"/>
+          <polygon points="0,0 126,0 126,84 105,84 105,105 21,105 21,84 0,84" class="f-outer s-cut"/>
+          <line x1="0" y1="21" x2="126" y2="21" class="s-mark"/>
+          <line x1="0" y1="29.4" x2="126" y2="29.4" class="s-mark"/>
+          <rect x="0" y="21" width="4.2" height="8.4" class="f-gap"/>
+          <rect x="121.8" y="21" width="4.2" height="8.4" class="f-gap"/>
+        </g>
+
+        <!-- nhãn chữ cái -->
+        <circle cx="58.4" cy="164.8" r="8.5" class="c-green"/><text x="58.4" y="164.8" class="n-txt">A</text>
+        <circle cx="166.4" cy="153.8" r="8.5" class="c-green"/><text x="166.4" y="153.8" class="n-txt">B</text>
+        <circle cx="314.4" cy="138.8" r="8.5" class="c-green"/><text x="314.4" y="138.8" class="n-txt">B</text>
+        <circle cx="422.4" cy="127.8" r="8.5" class="c-green"/><text x="422.4" y="127.8" class="n-txt">A</text>
+        <circle cx="54" cy="82" r="8.5" class="c-green"/><text x="54" y="82" class="n-txt">C</text>
+        <circle cx="418" cy="45" r="8.5" class="c-green"/><text x="418" y="45" class="n-txt">C</text>
+
+        <!-- ghi chú trên hình -->
+        <text x="349" y="197" class="t-lbl t-sm t-mid">khe lộn</text>
+        <path d="M349,188 L350,181" class="ld"/>
+        <text x="276" y="150" class="t-lbl t-sm t-mid t-muted">lòng</text>
+        <text x="276" y="162" class="t-lbl t-sm t-mid t-muted">túi</text>
+        <text x="152" y="36" class="t-lbl t-sm t-mark">vạch 5 cm và 7 cm (kẻ trên mặt phải)</text>
+        <path d="M149,39 L127.8,125" class="ld"/><circle cx="127.2" cy="126.7" r="1.9" class="ldot"/>
+        <text x="152" y="50" class="t-lbl t-sm">ô vàng = khe luồn dây ở 2 sườn</text>
+        <path d="M151,54 L143.6,117.5" class="ld"/><circle cx="143.2" cy="118.9" r="1.9" class="ldot"/>
+
+        <!-- D: dây rút -->
+        <g>
+          <path d="M530,206 C556,214 612,204 626,180 C640,154 604,132 576,146 C548,160 552,194 584,190 C618,186 634,128 606,104 C584,86 546,98 546,122" class="s-cord-edge"/>
+          <path d="M530,206 C556,214 612,204 626,180 C640,154 604,132 576,146 C548,160 552,194 584,190 C618,186 634,128 606,104 C584,86 546,98 546,122" class="s-cord"/>
+          <path d="M540,214 C572,224 624,212 634,186" class="s-cord-edge"/>
+          <path d="M540,214 C572,224 624,212 634,186" class="s-cord"/>
+        </g>
+        <circle cx="538" cy="96" r="8.5" class="c-green"/><text x="538" y="96" class="n-txt">D</text>
+
+        <!-- nhãn dưới mỗi lớp -->
+        <text x="94.4" y="236" class="t-lbl t-bold t-mid">Vải ngoài – trước</text>
+        <text x="202.4" y="236" class="t-lbl t-bold t-mid">Lót – trước</text>
+        <text x="350.4" y="236" class="t-lbl t-bold t-mid">Lót – sau</text>
+        <text x="458.4" y="236" class="t-lbl t-bold t-mid">Vải ngoài – sau</text>
+        <text x="584" y="236" class="t-lbl t-bold t-mid">Dây rút × 2</text>
+        <path d="M44,243 V248 H253 V243 M300,243 V248 H509 V243" fill="none" stroke="#2F5D50" stroke-width="1.2"/>
+        <text x="148.5" y="260" class="t-lbl t-sm t-mid t-green t-bold">= thành TRƯỚC của túi</text>
+        <text x="404.5" y="260" class="t-lbl t-sm t-mid t-green t-bold">= thành SAU của túi</text>
+      </svg>
+      <div class="m10-parts">
+        <span><i class="lt">A</i><em>Thân vải ngoài × 2 · <b>30 × 25 cm</b>, khoét góc 5 × 5</em></span>
+        <span><i class="lt">B</i><em>Thân vải lót × 2 · <b>30 × 25 cm</b>, khoét góc 5 × 5</em></span>
+        <span><i class="lt">C</i><em>Quai × 2 · cắt <b>30 × 8 cm</b></em></span>
+        <span><i class="lt">D</i><em>Dây rút × 2 · <b>80 cm</b>/sợi (khuyến nghị)</em></span>
+      </div>
+      <figcaption><b>Hình phân rã</b> — các lớp được “tách rời”, nhìn nghiêng từ phía trước túi. Vải ngoài quay mặt phải ra ngoài; lót quay mặt phải (chấm bi) vào lòng túi, nên hình thấy <b>mặt trái (màu nhạt)</b> ở lót trước và vải ngoài sau. Ô vàng: khe để hở.</figcaption>
+    </figure>
+
+    <div class="m10-row2">
+      <!-- (b) túi thành phẩm nhìn chính diện -->
+      <figure class="fig" style="padding:2.4mm 2.6mm 2.2mm">
+        <svg viewBox="0 28 376 376" width="376" height="376">
+          <!-- tỉ lệ 8 px = 1 cm · miệng y=127 · đường ② y=159 (4 cm) · đường ③ y=175 (6 cm) · đáy y=271 (18 cm) · thân x 116→260 (18 cm) -->
+          <!-- kích thước bên trái: cao 18 cm + 4 cm / 2 cm -->
+          <line x1="8" y1="127" x2="99" y2="127" class="s-ext"/>
+          <line x1="8" y1="271" x2="112" y2="271" class="s-ext"/>
+          <line x1="12" y1="127" x2="12" y2="271" class="s-dim"/>
+          <text transform="translate(8 199) rotate(-90)" class="t-dim t-mid">cao 18 cm</text>
+          <line x1="80" y1="159" x2="126" y2="159" class="s-ext"/>
+          <line x1="80" y1="175" x2="126" y2="175" class="s-ext"/>
+          <line x1="84" y1="127" x2="84" y2="159" class="s-dim"/>
+          <line x1="84" y1="159" x2="84" y2="175" class="s-dim"/>
+          <text x="78" y="141" class="t-dim t-end">4 cm</text>
+          <text x="78" y="153" class="t-lbl t-sm t-end">phần bèo</text>
+          <text x="78" y="171" class="t-dim t-end">2 cm</text>
+          <text x="78" y="185" class="t-lbl t-sm t-end">kênh dây</text>
+          <!-- bóng đổ -->
+          <ellipse cx="188" cy="273" rx="82" ry="4.5" fill="#26352F" fill-opacity=".08"/>
+          <!-- quai sau -->
+          <path transform="translate(6 -9)" d="M142,140 C140,72 158,46 188,46 C218,46 236,72 234,140 L222,140 C223,82 208,58 188,58 C168,58 153,82 154,140 Z" class="f-outer-s s-cut"/>
+          <!-- lót thành sau (thấy qua miệng túi) -->
+          <path d="M106,113 Q116.25,106 126.5,112 Q136.75,118 147,112 Q157.25,106 167.5,112 Q177.75,118 188,112 Q198.25,106 208.5,112 Q218.75,118 229,112 Q239.25,106 249.5,112 Q259.75,118 270,113 L262,140 L114,140 Z" class="f-lining s-cut"/>
+          <!-- quai trước -->
+          <path d="M142,140 C140,72 158,46 188,46 C218,46 236,72 234,140 L222,140 C223,82 208,58 188,58 C168,58 153,82 154,140 Z" class="f-outer-s s-cut"/>
+          <!-- thân túi trước -->
+          <path d="M274,127 Q263.25,120 252.5,127 Q241.75,134 231,127 Q220.25,120 209.5,127 Q198.75,134 188,127 Q177.25,120 166.5,127 Q155.75,134 145,127 Q134.25,120 123.5,127 Q112.75,134 102,127 C104,140 118,152 130,159 L130,175 C121,181 116,194 116,210 L116,262 Q116,271 125,271 L251,271 Q260,271 260,262 L260,210 C260,194 255,181 246,175 L246,159 C258,152 272,140 274,127 Z" class="f-outer s-cut"/>
+          <!-- nếp bèo & nếp thân -->
+          <path d="M134.25,125 Q136,142 138,158 M177.25,125 Q177,142 178,158 M220.25,125 Q220,142 219,158 M263.25,125 Q256,142 242,158 M155.75,131 Q157,145 158,158 M198.75,131 Q198,145 198,158 M241.75,131 Q240,145 235,158 M112.75,131 Q120,145 134,158" class="fold-soft"/>
+          <path d="M136,160 q-1.6,7 0,14 M144,160 q1.6,7 0,14 M152,160 q-1.6,7 0,14 M160,160 q1.6,7 0,14 M168,160 q-1.6,7 0,14 M176,160 q1.6,7 0,14 M184,160 q-1.6,7 0,14 M196,160 q-1.6,7 0,14 M214,160 q-1.6,7 0,14 M222,160 q1.6,7 0,14 M230,160 q-1.6,7 0,14 M238,160 q1.6,7 0,14" class="gather"/>
+          <path d="M152,184 Q148,214 144,250 M188,188 Q189,220 188,254 M224,184 Q228,214 232,250 M128,198 Q125,226 125,254 M248,198 Q251,226 251,254" class="fold-soft"/>
+          <!-- 3 đường diễu -->
+          <path transform="translate(0 3.5)" d="M274,127 Q263.25,120 252.5,127 Q241.75,134 231,127 Q220.25,120 209.5,127 Q198.75,134 188,127 Q177.25,120 166.5,127 Q155.75,134 145,127 Q134.25,120 123.5,127 Q112.75,134 102,127" class="s-top"/>
+          <path d="M130,159 H246 M130,175 H246" class="s-top"/>
+          <circle cx="188" cy="131" r="6.5" class="n-circle"/><text x="188" y="131" class="n-txt">1</text>
+          <circle cx="170" cy="159" r="6.5" class="n-circle"/><text x="170" y="159" class="n-txt">2</text>
+          <circle cx="206" cy="175" r="6.5" class="n-circle"/><text x="206" y="175" class="n-txt">3</text>
+          <!-- khe dây ở 2 sườn -->
+          <ellipse cx="130" cy="167" rx="3" ry="7.5" class="f-gap"/>
+          <ellipse cx="246" cy="167" rx="3" ry="7.5" class="f-gap"/>
+          <!-- dây rút + nút -->
+          <path d="M129,164 C125,172 122,180 117,192 C110,208 104,224 99,242 M130,170 C127,177 125,185 121,196 C114,212 108,228 103,242 M99,255 Q96,268 91,280 M103,255 Q105,268 108,279" class="s-cord-edge-sm"/>
+          <path d="M129,164 C125,172 122,180 117,192 C110,208 104,224 99,242 M130,170 C127,177 125,185 121,196 C114,212 108,228 103,242 M99,255 Q96,268 91,280 M103,255 Q105,268 108,279" class="s-cord-sm"/>
+          <ellipse cx="101" cy="248" rx="6.5" ry="7.5" fill="#E3EE3A" stroke="#A9B21E" stroke-width="1.4"/>
+          <path d="M247,164 C251,172 254,180 259,192 C266,208 272,224 277,242 M246,170 C249,177 251,185 255,196 C262,212 268,228 273,242 M277,255 Q280,268 285,280 M273,255 Q271,268 268,279" class="s-cord-edge-sm"/>
+          <path d="M247,164 C251,172 254,180 259,192 C266,208 272,224 277,242 M246,170 C249,177 251,185 255,196 C262,212 268,228 273,242 M277,255 Q280,268 285,280 M273,255 Q271,268 268,279" class="s-cord-sm"/>
+          <ellipse cx="275" cy="248" rx="6.5" ry="7.5" fill="#E3EE3A" stroke="#A9B21E" stroke-width="1.4"/>
+
+          <!-- chú thích trái -->
+          <text x="30" y="76" class="t-lbl t-bold">Quai</text>
+          <text x="30" y="88" class="t-lbl t-sm">rộng 2 cm</text>
+          <path d="M82,82 L142,92" class="ld"/><circle cx="143" cy="92" r="2" class="ldot"/>
+          <text x="30" y="112" class="t-lbl t-bold">Lót chấm bi</text>
+          <path d="M98,110 L112,118" class="ld"/><circle cx="113" cy="119" r="2" class="ldot"/>
+          <text x="30" y="245" class="t-lbl t-bold">Nút dây</text>
+          <text x="30" y="257" class="t-lbl t-sm">buộc 2 đầu</text>
+          <path d="M78,242 L92,247" class="ld"/><circle cx="93.5" cy="247.6" r="2" class="ldot"/>
+
+          <!-- chú thích phải -->
+          <path d="M286,128 H291 V176 H286" fill="none" stroke="#D81B60" stroke-width="1.3"/>
+          <text x="298" y="145" class="t-lbl t-bold t-seam">3 đường diễu</text>
+          <circle cx="305" cy="162" r="6.5" class="n-circle"/><text x="305" y="162" class="n-txt">1</text>
+          <circle cx="321" cy="162" r="6.5" class="n-circle"/><text x="321" y="162" class="n-txt">2</text>
+          <circle cx="337" cy="162" r="6.5" class="n-circle"/><text x="337" y="162" class="n-txt">3</text>
+          <text x="298" y="206" class="t-lbl t-bold t-sm">Khe luồn dây</text>
+          <text x="298" y="218" class="t-lbl t-sm">ở 2 sườn túi</text>
+          <path d="M296,202 L252,168.5" class="ld"/><circle cx="250.5" cy="167.5" r="2" class="ldot"/>
+          <text x="298" y="242" class="t-lbl t-bold t-sm">Dây rút</text>
+          <text x="298" y="254" class="t-lbl t-sm">Ø 4–6 mm</text>
+          <path d="M296,238 L277,232" class="ld"/><circle cx="275.5" cy="231.5" r="2" class="ldot"/>
+
+          <!-- đáy nhìn từ dưới lên: 18 × 10 cm, cùng tỉ lệ 8 px = 1 cm, thẳng hàng với thân túi -->
+          <text x="188" y="294" class="t-lbl t-bold t-mid">Đáy vuông, nhìn từ dưới lên</text>
+          <rect x="116" y="301" width="144" height="80" class="f-outer s-cut"/>
+          <path d="M116,341 H260" class="s-seam"/>
+          <path d="M116,301 V381 M260,301 V381" class="s-seam"/>
+          <line x1="116" y1="392" x2="260" y2="392" class="s-dim"/>
+          <rect x="167" y="384" width="42" height="16" rx="3" fill="#fff"/>
+          <text x="188" y="396" class="t-dim t-mid">18 cm</text>
+          <line x1="274" y1="301" x2="274" y2="381" class="s-dim"/>
+          <text x="280" y="340" class="t-dim">10 cm</text>
+          <text x="280" y="352" class="t-lbl t-sm t-muted">sâu đáy</text>
+          <text x="108" y="344" class="t-lbl t-sm t-end">đường may đáy</text>
+          <text x="104" y="373" class="t-lbl t-sm t-end">đường may góc</text>
+          <path d="M106,368 L115,362" class="ld"/>
+        </svg>
+        <figcaption><b>Túi thành phẩm</b> (vẽ đúng tỉ lệ: cao <b>18 cm</b>, đáy <b>18 × 10 cm</b>). Mỗi dây chạy trọn 1 vòng kênh, 2 đầu ra cùng một khe; dây kia ra khe đối diện → kéo 2 nút về 2 phía là miệng túi rút kín.</figcaption>
+      </figure>
+
+      <!-- (c) mặt cắt thành túi gần miệng -->
+      <div class="stack" style="gap:3mm">
+        <figure class="fig" style="padding:2.4mm 2.2mm 2.2mm">
+          <svg viewBox="0 13 226 279" width="226" height="279">
+            <!-- kích thước -->
+            <line x1="44" y1="32" x2="86" y2="32" class="s-ext"/>
+            <line x1="44" y1="136" x2="80" y2="136" class="s-ext"/>
+            <line x1="44" y1="188" x2="80" y2="188" class="s-ext"/>
+            <line x1="56" y1="32" x2="56" y2="136" class="s-dim"/>
+            <line x1="56" y1="136" x2="56" y2="188" class="s-dim"/>
+            <text x="51" y="84" class="t-dim t-end">4 cm</text>
+            <text x="51" y="96" class="t-lbl t-sm t-end">phần bèo</text>
+            <text x="51" y="161" class="t-dim t-end">2 cm</text>
+            <text x="51" y="173" class="t-lbl t-sm t-end">kênh dây</text>
+            <!-- lớp vải -->
+            <path d="M86,272 V188 C80,180 80,170 80,162 C80,154 80,144 86,136 V70 C86,64 80,64 80,58 V42 C80,35 84,32 90,32" class="l-out-e"/>
+            <path d="M94,272 V188 C100,180 100,170 100,162 C100,154 100,144 94,136 V70 C94,64 100,64 100,58 V42 C100,35 96,32 90,32" class="l-lin-e"/>
+            <path d="M86,272 V188 C80,180 80,170 80,162 C80,154 80,144 86,136 V70 C86,64 80,64 80,58 V42 C80,35 84,32 90,32" class="l-out"/>
+            <path d="M94,272 V188 C100,180 100,170 100,162 C100,154 100,144 94,136 V70 C94,64 100,64 100,58 V42 C100,35 96,32 90,32" class="l-lin"/>
+            <!-- mép đường may miệng gấp vào trong -->
+            <path d="M87,37 V58" class="l-out-e" style="stroke-width:4"/><path d="M87,37 V58" class="l-out" style="stroke-width:2.2"/>
+            <path d="M93,37 V58" class="l-lin-e" style="stroke-width:4"/><path d="M93,37 V58" class="l-lin" style="stroke-width:2.2"/>
+            <circle cx="90" cy="34.5" r="2.2" fill="#D81B60"/>
+            <!-- dây rút -->
+            <circle cx="90" cy="162" r="6.5" fill="#E3EE3A" stroke="#A9B21E" stroke-width="1.5"/>
+            <!-- 3 đường diễu -->
+            <path d="M75,38.5 H105" class="st"/><circle cx="75" cy="38.5" r="1.7" fill="#D81B60"/><circle cx="105" cy="38.5" r="1.7" fill="#D81B60"/>
+            <path d="M81,136 H99" class="st"/><circle cx="81" cy="136" r="1.7" fill="#D81B60"/><circle cx="99" cy="136" r="1.7" fill="#D81B60"/>
+            <path d="M81,188 H99" class="st"/><circle cx="81" cy="188" r="1.7" fill="#D81B60"/><circle cx="99" cy="188" r="1.7" fill="#D81B60"/>
+            <!-- ký hiệu cắt ngang (còn tiếp xuống đáy) -->
+            <polygon points="72,252 108,244 108,251 72,259" fill="#fff"/>
+            <path d="M72,252 L108,244 M72,259 L108,251" stroke="#7A8781" stroke-width="1"/>
+            <text x="90" y="288" class="t-lbl t-sm t-mid t-muted">còn tiếp xuống đáy túi</text>
+            <!-- chú thích phải -->
+            <text x="114" y="24" class="t-lbl t-sm">đường may miệng</text>
+            <path d="M112,22 L93,32" class="ld"/>
+            <circle cx="119" cy="40" r="6.5" class="n-circle"/><text x="119" y="40" class="n-txt">1</text>
+            <text x="129" y="43.5" class="t-lbl t-sm">may mí 0,2–0,3 cm</text>
+            <text x="114" y="66" class="t-lbl t-sm">mép vải thô giấu kín</text>
+            <text x="114" y="78" class="t-lbl t-sm t-green t-bold">nên không cần vắt sổ</text>
+            <path d="M112,63 L95,55" class="ld"/><circle cx="94.5" cy="54.5" r="1.8" class="ldot"/>
+            <circle cx="119" cy="136" r="6.5" class="n-circle"/><text x="119" y="136" class="n-txt">2</text>
+            <text x="129" y="139.5" class="t-lbl t-sm">diễu cách miệng 4 cm</text>
+            <text x="114" y="160" class="t-lbl t-sm t-bold">dây rút Ø 4–6 mm</text>
+            <text x="114" y="172" class="t-lbl t-sm">chạy giữa 2 lớp vải</text>
+            <path d="M112,164 L98,163" class="ld"/>
+            <circle cx="119" cy="188" r="6.5" class="n-circle"/><text x="119" y="188" class="n-txt">3</text>
+            <text x="129" y="191.5" class="t-lbl t-sm">diễu cách miệng 6 cm</text>
+            <!-- tên lớp -->
+            <text x="78" y="226" class="t-lbl t-sm t-bold t-end">vải ngoài</text>
+            <text x="78" y="238" class="t-lbl t-sm t-end t-muted">(phía ngoài túi)</text>
+            <text x="102" y="226" class="t-lbl t-sm t-bold">vải lót</text>
+            <text x="102" y="238" class="t-lbl t-sm t-muted">(lòng túi)</text>
+          </svg>
+          <figcaption><b>Mặt cắt thành túi gần miệng</b> (phóng to). Mép vải thô nằm kẹp giữa vải ngoài và lót.</figcaption>
+        </figure>
+        <figure class="photo" style="--h:25mm">
+          <img src="../assets/x10_slot.jpg" style="object-position:50% 50%">
+          <span class="tc">Video 0:46</span>
+          <span class="nb" style="position:absolute;right:3mm;top:5.1mm">3</span>
+          <span class="nb" style="position:absolute;right:3mm;top:17.3mm">2</span>
+          <figcaption>Khe dây nằm gọn giữa đường <span class="nb">2</span> và <span class="nb">3</span> (túi đang úp ngược: miệng túi ở phía dưới ảnh).</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     TRANG 3 — LỘ TRÌNH 9 BƯỚC + THUẬT NGỮ
+     ===================================================================== -->
+<section class="page">
+  <div class="runhead">Túi dây rút có quai · <b>Hướng dẫn dễ hiểu</b></div>
+  <header class="ph">
+    <div class="kicker k-prep"><span class="badge">Phần 1</span> Chuẩn bị · Hiểu mẫu túi</div>
+    <h1 class="title">Lộ trình 9 bước <span class="script">&amp; từ cần biết</span></h1>
+  </header>
+
+  <div class="content">
+    <!-- (a) lộ trình -->
+    <figure class="fig" style="padding:2.4mm 3mm 2mm">
+      <svg viewBox="0 0 644 314" width="644" height="314">
+        <!-- đường chỉ nối -->
+        <path d="M70,36 H606 Q634,36 634,64 V88" class="road-prep"/>
+        <path d="M634,88 V112 Q634,140 606,140 H38 Q10,140 10,168 V216 Q10,244 38,244 H574" class="road-sew"/>
+        <!-- mũi tên hướng đi -->
+        <g class="chev" stroke="#8DB832">
+          <path d="M129,31 L134,36 L129,41 M255,31 L260,36 L255,41 M381,31 L386,36 L381,41 M507,31 L512,36 L507,41"/>
+        </g>
+        <g class="chev" stroke="#E0457B">
+          <path d="M629,87 L634,92 L639,87"/>
+          <path d="M515,135 L510,140 L515,145 M389,135 L384,140 L389,145 M263,135 L258,140 L263,145 M137,135 L132,140 L137,145"/>
+          <path d="M5,190 L10,195 L15,190"/>
+          <path d="M129,239 L134,244 L129,249 M255,239 L260,244 L255,249 M381,239 L386,244 L381,249 M507,239 L512,244 L507,249"/>
+        </g>
+
+        <!-- ===== HÀNG 1: CHUẨN BỊ ===== -->
+        <!-- P1 -->
+        <rect x="45" y="11" width="50" height="50" rx="14" class="node prep"/>
+        <g transform="translate(48 14)">
+          <path d="M15,17 C15,5 29,5 29,17" fill="none" stroke="#8DB832" stroke-width="3" stroke-linecap="round"/>
+          <path d="M9,17 H35 L32,22 C37,28 37,36 33,40 H11 C7,36 7,28 12,22 Z" class="f-outer-s" stroke="#26352F" stroke-width="1"/>
+          <path d="M12,22 H32" class="s-top"/>
+          <path d="M12,22 Q7,28 8,36 M32,22 Q37,28 36,36" fill="none" stroke="#C9D22A" stroke-width="2" stroke-linecap="round"/>
+        </g>
+        <text x="70" y="76" class="t-lbl t-cap t-mid t-green">PHẦN 1</text>
+        <text x="70" y="89" class="t-lbl t-bold t-mid">Hiểu mẫu túi</text>
+        <text x="70" y="101" class="t-lbl t-sm t-mid t-pink t-bold">bạn đang đọc</text>
+        <!-- P2 -->
+        <rect x="171" y="11" width="50" height="50" rx="14" class="node prep"/>
+        <g transform="translate(174 14)">
+          <rect x="4" y="8" width="21" height="25" rx="2" class="f-outer-s" stroke="#26352F" stroke-width="1" transform="rotate(-9 14.5 20.5)"/>
+          <rect x="18" y="9" width="21" height="25" rx="2" class="f-lining-s" stroke="#26352F" stroke-width="1" transform="rotate(9 28.5 21.5)"/>
+          <path d="M6,38 C14,44 30,30 39,38" fill="none" stroke="#A9B21E" stroke-width="4.4" stroke-linecap="round"/>
+          <path d="M6,38 C14,44 30,30 39,38" fill="none" stroke="#E3EE3A" stroke-width="2.6" stroke-linecap="round"/>
+        </g>
+        <text x="196" y="76" class="t-lbl t-cap t-mid t-green">PHẦN 2</text>
+        <text x="196" y="89" class="t-lbl t-bold t-mid">Chọn vải &amp; vật liệu</text>
+        <text x="196" y="101" class="t-lbl t-sm t-mid t-muted">đọc trước</text>
+        <!-- P3 -->
+        <rect x="297" y="11" width="50" height="50" rx="14" class="node prep"/>
+        <g transform="translate(300 14)">
+          <circle cx="14" cy="16" r="9.5" class="f-outer-s" stroke="#26352F" stroke-width="1"/>
+          <circle cx="30" cy="16" r="9.5" class="f-lining-s" stroke="#26352F" stroke-width="1"/>
+          <circle cx="22" cy="30" r="9.5" fill="#E3EE3A" stroke="#A9B21E" stroke-width="1.4"/>
+        </g>
+        <text x="322" y="76" class="t-lbl t-cap t-mid t-green">PHẦN 3</text>
+        <text x="322" y="89" class="t-lbl t-bold t-mid">Phối màu</text>
+        <text x="322" y="101" class="t-lbl t-sm t-mid t-muted">đọc trước</text>
+        <!-- P4 -->
+        <rect x="423" y="11" width="50" height="50" rx="14" class="node prep"/>
+        <g transform="translate(426 14)">
+          <line x1="7" y1="10" x2="37" y2="10" class="s-dim"/>
+          <rect x="3" y="17" width="38" height="13" rx="2" fill="#FFE58A" stroke="#26352F" stroke-width="1"/>
+          <path d="M7,17 v5 M11,17 v3 M15,17 v5 M19,17 v3 M23,17 v5 M27,17 v3 M31,17 v5 M35,17 v3" stroke="#26352F" stroke-width=".9"/>
+          <path d="M12,36 H32 M12,40 H32" stroke="#2F6FB0" stroke-width="1.8" stroke-linecap="round"/>
+        </g>
+        <text x="448" y="76" class="t-lbl t-cap t-mid t-green">PHẦN 4</text>
+        <text x="448" y="89" class="t-lbl t-bold t-mid">Kích thước &amp; công thức</text>
+        <text x="448" y="101" class="t-lbl t-sm t-mid t-muted">đọc trước</text>
+        <!-- P5 -->
+        <rect x="549" y="11" width="50" height="50" rx="14" class="node prep"/>
+        <g transform="translate(552 14)">
+          <polygon points="3,5 31,5 31,23 26,23 26,28 8,28 8,23 3,23" class="f-outer-s" stroke="#26352F" stroke-width="1"/>
+          <g stroke="#2F5D50" stroke-width="1.8" fill="none" stroke-linecap="round">
+            <path d="M27,33 L41,17 M33,35 L39,15"/>
+            <circle cx="24.5" cy="36" r="3.4"/><circle cx="33" cy="39" r="3.4"/>
+          </g>
+        </g>
+        <text x="574" y="76" class="t-lbl t-cap t-mid t-green">PHẦN 5</text>
+        <text x="574" y="89" class="t-lbl t-bold t-mid">Đo, vẽ &amp; cắt vải</text>
+        <text x="574" y="101" class="t-lbl t-sm t-mid t-muted">≈ 20 phút</text>
+
+        <!-- ===== HÀNG 2: BƯỚC 1 → 5 (phải sang trái) ===== -->
+        <!-- B1 -->
+        <rect x="549" y="115" width="50" height="50" rx="14" class="node sew"/>
+        <g transform="translate(552 118)">
+          <polygon points="4,6 40,6 40,30 34,30 34,36 10,36 10,30 4,30" class="f-outer-ws" stroke="#26352F" stroke-width="1"/>
+          <path d="M5.8,6 V11 M5.8,15 V30 M38.2,6 V11 M38.2,15 V30 M10,34.2 H34" class="s-top"/>
+          <rect x="4" y="11" width="3.4" height="4" class="f-gap"/><rect x="36.6" y="11" width="3.4" height="4" class="f-gap"/>
+        </g>
+        <text x="574" y="180" class="t-lbl t-cap t-mid t-pink">BƯỚC 1</text>
+        <text x="574" y="193" class="t-lbl t-bold t-mid">May thân ngoài</text>
+        <text x="574" y="205" class="t-lbl t-sm t-mid t-muted">10 phút</text>
+        <!-- B2 -->
+        <rect x="423" y="115" width="50" height="50" rx="14" class="node sew"/>
+        <g transform="translate(426 118)">
+          <path d="M6,38 V20 L22,5 L38,20 V38 Z" class="f-outer-ws" stroke="#26352F" stroke-width="1"/>
+          <path d="M22,6 V38" class="s-top" style="stroke-opacity:.55"/>
+          <path d="M6,32 H38" class="s-top"/>
+        </g>
+        <text x="448" y="180" class="t-lbl t-cap t-mid t-pink">BƯỚC 2</text>
+        <text x="448" y="193" class="t-lbl t-bold t-mid">May góc đáy</text>
+        <text x="448" y="205" class="t-lbl t-sm t-mid t-muted">5 phút</text>
+        <!-- B3 -->
+        <rect x="297" y="115" width="50" height="50" rx="14" class="node sew"/>
+        <g transform="translate(300 118)">
+          <polygon points="4,6 40,6 40,30 34,30 34,36 10,36 10,30 4,30" class="f-lining-ws" stroke="#26352F" stroke-width="1"/>
+          <path d="M5.8,6 V30 M38.2,6 V30 M10,34.2 H17 M27,34.2 H34" class="s-top"/>
+          <rect x="17" y="32.5" width="10" height="3.5" class="f-gap"/>
+        </g>
+        <text x="322" y="180" class="t-lbl t-cap t-mid t-pink">BƯỚC 3</text>
+        <text x="322" y="193" class="t-lbl t-bold t-mid">May lớp lót</text>
+        <text x="322" y="205" class="t-lbl t-sm t-mid t-muted">10 phút</text>
+        <!-- B4 -->
+        <rect x="171" y="115" width="50" height="50" rx="14" class="node sew"/>
+        <g transform="translate(174 118)">
+          <g transform="rotate(-35 22 22)">
+            <rect x="-1" y="17.5" width="46" height="9" rx="1.5" class="f-outer-s" stroke="#26352F" stroke-width="1"/>
+            <path d="M0,19.4 H44 M0,24.6 H44" class="s-top" style="stroke-width:1"/>
+          </g>
+        </g>
+        <text x="196" y="180" class="t-lbl t-cap t-mid t-pink">BƯỚC 4</text>
+        <text x="196" y="193" class="t-lbl t-bold t-mid">May quai</text>
+        <text x="196" y="205" class="t-lbl t-sm t-mid t-muted">15 phút</text>
+        <!-- B5 -->
+        <rect x="45" y="115" width="50" height="50" rx="14" class="node sew"/>
+        <g transform="translate(48 118)">
+          <rect x="3" y="7" width="38" height="33" class="f-outer-s" stroke="#26352F" stroke-width="1"/>
+          <path d="M22,7 V12" stroke="#7C4DFF" stroke-width="1.4"/>
+          <path d="M9,7 V21 C9,29 14,33 22,33 C30,33 35,29 35,21 V7 H31 V21 C31,26 27.5,29 22,29 C16.5,29 13,26 13,21 V7 Z" fill="#C7E56A" stroke="#6E9A2E" stroke-width="1"/>
+          <rect x="7.5" y="3" width="7" height="10" rx="1.6" fill="#7ED957" stroke="#3E8E2F" stroke-width=".8"/>
+          <rect x="29.5" y="3" width="7" height="10" rx="1.6" fill="#7ED957" stroke="#3E8E2F" stroke-width=".8"/>
+        </g>
+        <text x="70" y="180" class="t-lbl t-cap t-mid t-pink">BƯỚC 5</text>
+        <text x="70" y="193" class="t-lbl t-bold t-mid">Gắn quai</text>
+        <text x="70" y="205" class="t-lbl t-sm t-mid t-muted">8 phút</text>
+
+        <!-- ===== HÀNG 3: BƯỚC 6 → 9 + XONG ===== -->
+        <!-- B6 -->
+        <rect x="45" y="219" width="50" height="50" rx="14" class="node sew"/>
+        <g transform="translate(48 222)">
+          <path d="M4,9 H40 V38 Q40,40 38,40 H6 Q4,40 4,38 Z" class="f-lining-ws" stroke="#26352F" stroke-width="1"/>
+          <path d="M10,9 H34 V33 H10 Z" class="f-outer-s" stroke="#26352F" stroke-width="1"/>
+          <path d="M4,12 H40" class="s-top"/>
+          <path d="M22,1 V7" stroke="#E0457B" stroke-width="1.8" stroke-linecap="round"/>
+          <polygon points="18.5,5 25.5,5 22,9.5" fill="#E0457B"/>
+        </g>
+        <text x="70" y="284" class="t-lbl t-cap t-mid t-pink">BƯỚC 6</text>
+        <text x="70" y="297" class="t-lbl t-bold t-mid">Ráp miệng túi</text>
+        <text x="70" y="309" class="t-lbl t-sm t-mid t-muted">12 phút</text>
+        <!-- B7 -->
+        <rect x="171" y="219" width="50" height="50" rx="14" class="node sew"/>
+        <g transform="translate(174 222)">
+          <path d="M6,5 H38 V33 H6 Z" class="f-lining-ws" stroke="#26352F" stroke-width="1"/>
+          <rect x="16" y="31" width="12" height="4" class="f-gap"/>
+          <path d="M22,11 V36" stroke="#E0457B" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <polygon points="17.5,35 26.5,35 22,42" fill="#E0457B"/>
+        </g>
+        <text x="196" y="284" class="t-lbl t-cap t-mid t-pink">BƯỚC 7</text>
+        <text x="196" y="297" class="t-lbl t-bold t-mid">Lộn túi, đóng khe</text>
+        <text x="196" y="309" class="t-lbl t-sm t-mid t-muted">8 phút</text>
+        <!-- B8 -->
+        <rect x="297" y="219" width="50" height="50" rx="14" class="node sew"/>
+        <g transform="translate(300 222)">
+          <rect x="4" y="5" width="36" height="35" rx="3" class="f-outer-s" stroke="#26352F" stroke-width="1"/>
+          <path d="M4,8 H40 M4,19 H40 M4,26 H40" class="s-top"/>
+        </g>
+        <text x="322" y="284" class="t-lbl t-cap t-mid t-pink">BƯỚC 8</text>
+        <text x="322" y="297" class="t-lbl t-bold t-mid">Ủi &amp; diễu 3 đường</text>
+        <text x="322" y="309" class="t-lbl t-sm t-mid t-muted">10 phút</text>
+        <!-- B9 -->
+        <rect x="423" y="219" width="50" height="50" rx="14" class="node sew"/>
+        <g transform="translate(426 222)">
+          <rect x="2" y="12" width="40" height="18" class="f-outer-s"/>
+          <path d="M2,14 H42 M2,28 H42" class="s-top"/>
+          <path d="M4,21 H30" class="s-cord-edge-sm"/><path d="M4,21 H30" class="s-cord-sm"/>
+          <ellipse cx="35" cy="21" rx="6" ry="2.8" fill="#fff" stroke="#7A8781" stroke-width="1.2"/>
+          <path d="M16,6 H30" stroke="#E0457B" stroke-width="1.8" stroke-linecap="round"/>
+          <polygon points="29,2.5 29,9.5 35,6" fill="#E0457B"/>
+        </g>
+        <text x="448" y="284" class="t-lbl t-cap t-mid t-pink">BƯỚC 9</text>
+        <text x="448" y="297" class="t-lbl t-bold t-mid">Luồn 2 dây</text>
+        <text x="448" y="309" class="t-lbl t-sm t-mid t-muted">7 phút</text>
+        <!-- XONG -->
+        <rect x="546" y="216" width="56" height="56" rx="16" class="node done"/>
+        <g transform="translate(552 222)">
+          <path d="M15,15 C15,3 29,3 29,15" fill="none" stroke="#8DB832" stroke-width="3" stroke-linecap="round"/>
+          <path d="M10,14 Q13,11 16,14 Q19,17 22,14 Q25,11 28,14 Q31,17 34,14 L31,21 H13 Z" class="f-outer-s" stroke="#26352F" stroke-width="1"/>
+          <path d="M13,21 H31 C38,26 38,36 34,40 H10 C6,36 6,26 13,21 Z" class="f-outer-s" stroke="#26352F" stroke-width="1"/>
+          <path d="M13,21 H31" class="s-top"/>
+          <path d="M13,21 Q7,27 7,35 M31,21 Q37,27 37,35" fill="none" stroke="#C9D22A" stroke-width="2" stroke-linecap="round"/>
+          <path d="M3,4 l1,3 3,1 -3,1 -1,3 -1,-3 -3,-1 3,-1z M41,5 l1,3 3,1 -3,1 -1,3 -1,-3 -3,-1 3,-1z" fill="#E0457B"/>
+        </g>
+        <text x="574" y="288" class="t-lbl t-bold t-mid t-pink">Hoàn thành!</text>
+        <text x="574" y="302" class="t-lbl t-sm t-mid t-bold">tổng ≈ 1 giờ 45 phút</text>
+      </svg>
+      <figcaption>Đi theo đường chỉ: <b>viền xanh</b> = 5 phần chuẩn bị · <b>viền hồng</b> = 9 bước may · thời gian ước tính cho người mới.</figcaption>
+    </figure>
+
+    <!-- (b) thuật ngữ -->
+    <div>
+      <h2>12 từ cần biết trước khi may</h2>
+      <div class="m10-gloss">
+        <div class="gi">
+          <svg viewBox="0 0 60 44" width="60" height="44">
+            <polygon points="3,4 57,4 57,16 32,41 3,41" class="f-outer" stroke="#26352F" stroke-width="1"/>
+            <polygon points="57,16 32,41 32,16" class="f-outer-ws" stroke="#26352F" stroke-width="1"/>
+            <text x="17" y="33" class="t-lbl t-sm t-mid t-bold">phải</text>
+            <text x="41" y="24.5" class="t-lbl t-sm t-mid t-muted" style="stroke-width:2.4px">trái</text>
+          </svg>
+          <div><b>Mặt phải / mặt trái</b><span>Mặt phải: hoa văn rõ, lộ ra ngoài. Mặt trái: mặt sau, màu nhạt.</span></div>
+        </div>
+        <div class="gi">
+          <svg viewBox="0 0 60 44" width="60" height="44">
+            <rect x="3" y="12" width="54" height="32" class="f-outer-ws"/>
+            <path d="M3,12 H57" class="s-cut"/>
+            <path d="M3,24 H57" class="s-seam"/>
+            <line x1="50" y1="12" x2="50" y2="24" class="s-dim"/>
+            <text x="45" y="21.5" class="t-dim t-sm t-end">1 cm</text>
+            <text x="3" y="9" class="t-lbl t-sm t-muted">mép vải</text>
+          </svg>
+          <div><b>Đường may 1 cm</b><span>Đường chỉ cách mép vải 1&nbsp;cm. Khuyến nghị dùng 1&nbsp;cm cho mọi đường ráp.</span></div>
+        </div>
+        <div class="gi">
+          <svg viewBox="0 0 60 44" width="60" height="44">
+            <rect x="3" y="4" width="54" height="36" class="f-outer-ws"/>
+            <path d="M18,31 H57" class="s-seam"/>
+            <path d="M8,10 H25" stroke="#E0457B" stroke-width="1.6" fill="none"/><polygon points="24,6.5 24,13.5 29,10" fill="#E0457B"/>
+            <path d="M30,18 H13" stroke="#E0457B" stroke-width="1.6" fill="none"/><polygon points="14,14.5 14,21.5 9,18" fill="#E0457B"/>
+            <use href="#sym-back" x="4" y="24"/>
+          </svg>
+          <div><b>Lại mũi</b><span>May tới rồi lùi 3–4 mũi ở đầu, cuối đường may để khóa chỉ.</span></div>
+        </div>
+        <div class="gi">
+          <svg viewBox="0 0 60 44" width="60" height="44">
+            <rect x="3" y="12" width="54" height="30" class="f-outer"/>
+            <path d="M3,12 H57" class="s-cut"/>
+            <path d="M3,15.5 H57" class="s-seam" style="stroke-width:1.4"/>
+            <text x="30" y="8" class="t-lbl t-sm t-mid t-seam t-bold">0,1–0,3 cm</text>
+          </svg>
+          <div><b>May mí</b><span>May một đường thật sát mép: đường chỉ cách mép 0,1–0,3 cm.</span></div>
+        </div>
+        <div class="gi">
+          <svg viewBox="0 0 60 44" width="60" height="44">
+            <rect x="3" y="4" width="54" height="38" rx="3" class="f-outer s-cut"/>
+            <path d="M3,7.5 H57 M3,20 H57 M3,28 H57" class="s-top" style="stroke-width:1.5"/>
+          </svg>
+          <div><b>Diễu</b><span>Đường may lộ ra mặt ngoài để cố định, làm đẹp. Túi này diễu 3 đường.</span></div>
+        </div>
+        <div class="gi">
+          <svg viewBox="0 0 60 44" width="60" height="44">
+            <path d="M14,4 H40 Q48,4 48,13 H10 Q10,7 14,4 Z" fill="#DDE5E1" stroke="#4A5A53" stroke-width="1"/>
+            <path d="M22,4 Q22,-1 30,-1 Q38,-1 38,4" fill="none" stroke="#4A5A53" stroke-width="1.4"/>
+            <path d="M3,26 H57" class="l-out-e" style="stroke-width:4.4"/><path d="M3,26 H57" class="l-out" style="stroke-width:2.4"/>
+            <path d="M30,26 Q30,31 24,31 H12 M30,26 Q30,31 36,31 H48" class="l-out-e" style="stroke-width:4"/>
+            <path d="M30,26 Q30,31 24,31 H12 M30,26 Q30,31 36,31 H48" class="l-out" style="stroke-width:2.2"/>
+            <circle cx="30" cy="26" r="1.8" fill="#D81B60"/>
+            <path d="M22,38 H10 M38,38 H50" stroke="#E0457B" stroke-width="1.5" fill="none"/>
+            <polygon points="11,35 11,41 6,38" fill="#E0457B"/><polygon points="49,35 49,41 54,38" fill="#E0457B"/>
+          </svg>
+          <div><b>Ủi rẽ</b><span>Tách 2 mép vải thừa sang 2 bên rồi ủi (là) phẳng.</span></div>
+        </div>
+        <div class="gi">
+          <svg viewBox="0 0 60 44" width="60" height="44">
+            <path d="M8,42 V22 L30,3 L52,22 V42 Z" class="f-outer-ws" stroke="#26352F" stroke-width="1"/>
+            <path d="M30,4 V42" class="s-top" style="stroke-opacity:.5"/>
+            <path d="M8,35 H52" class="s-seam"/>
+            <rect x="16" y="21.5" width="28" height="11" rx="3" fill="#fff" fill-opacity=".9"/>
+            <text x="30" y="30" class="t-dim t-sm t-mid">10 cm</text>
+          </svg>
+          <div><b>Góc đáy</b><span>Bóp góc cho đường sườn trùng đường đáy, may ngang 10 cm → đáy vuông.</span></div>
+        </div>
+        <div class="gi">
+          <svg viewBox="0 0 60 44" width="60" height="44">
+            <rect x="3" y="4" width="54" height="28" class="f-lining-ws s-cut"/>
+            <path d="M3,29 H20 M40,29 H57" class="s-seam"/>
+            <rect x="20" y="27" width="20" height="5" class="f-gap"/>
+            <path d="M30,10 V36" stroke="#E0457B" stroke-width="1.8" stroke-linecap="round"/>
+            <polygon points="26,35 34,35 30,42" fill="#E0457B"/>
+          </svg>
+          <div><b>Khe lộn</b><span>Đoạn chừa hở giữa đáy lót (nên 8–10 cm) để lộn túi; lộn xong may kín.</span></div>
+        </div>
+        <div class="gi">
+          <svg viewBox="0 0 60 44" width="60" height="44">
+            <rect x="3" y="3" width="26" height="39" class="f-outer-ws"/>
+            <rect x="31" y="3" width="26" height="39" class="f-outer-ws"/>
+            <path d="M30,3 V15 M30,27 V42" class="s-seam"/>
+            <rect x="27" y="15" width="6" height="12" class="f-gap"/>
+            <path d="M30,21 Q42,21 54,30" class="s-cord-edge-sm"/><path d="M30,21 Q42,21 54,30" class="s-cord-sm"/>
+          </svg>
+          <div><b>Khe luồn dây</b><span>Đoạn 2 cm để hở ở 2 sườn vải ngoài, cho dây chui vào.</span></div>
+        </div>
+        <div class="gi">
+          <svg viewBox="0 0 60 44" width="60" height="44">
+            <rect x="3" y="4" width="54" height="36" class="f-outer s-cut"/>
+            <rect x="3" y="15" width="54" height="13" fill="#fff" fill-opacity=".45"/>
+            <path d="M3,21.5 H57" stroke="#A9B21E" stroke-width="5" stroke-dasharray="6 3" fill="none"/>
+            <path d="M3,21.5 H57" stroke="#E3EE3A" stroke-width="3" stroke-dasharray="6 3" fill="none"/>
+            <path d="M3,15 H57 M3,28 H57" class="s-top" style="stroke-width:1.5"/>
+          </svg>
+          <div><b>Kênh luồn dây</b><span>Ống rộng 2 cm giữa đường diễu <span class="nb" style="display:inline-block">2</span> và <span class="nb" style="display:inline-block">3</span>; dây chạy bên trong.</span></div>
+        </div>
+        <div class="gi">
+          <svg viewBox="0 0 60 44" width="60" height="44">
+            <path d="M3,8 Q7,3 11,8 Q15,13 19,8 Q23,3 27,8 Q31,13 35,8 Q39,3 43,8 Q47,13 51,8 Q55,3 57,6 L50,30 H10 Z" class="f-outer" stroke="#26352F" stroke-width="1"/>
+            <path d="M14,10 L16,28 M24,10 L24,28 M33,11 L32,28 M43,10 L42,28" class="fold-soft"/>
+            <rect x="10" y="30" width="40" height="8" class="f-outer" stroke="#26352F" stroke-width="1"/>
+            <path d="M13,31 q-1,3 0,6 M18,31 q1,3 0,6 M23,31 q-1,3 0,6 M28,31 q1,3 0,6 M33,31 q-1,3 0,6 M38,31 q1,3 0,6 M43,31 q-1,3 0,6 M47,31 q1,3 0,6" class="gather"/>
+          </svg>
+          <div><b>Phần bèo</b><span>Dải vải 4 cm phía trên kênh, nhún xòe ra khi rút dây.</span></div>
+        </div>
+        <div class="gi">
+          <svg viewBox="0 0 60 44" width="60" height="44">
+            <rect x="3" y="4" width="46" height="38" class="f-outer-ws"/>
+            <path d="M49,4 V42" class="s-cut"/>
+            <path d="M44,6 L53,10 L44,14 L53,18 L44,22 L53,26 L44,30 L53,34 L44,38 L53,42" fill="none" stroke="#D81B60" stroke-width="1.3" stroke-linejoin="round"/>
+          </svg>
+          <div><b>Vắt sổ / zigzag</b><span>Bọc mép cho vải khỏi tưa. Túi có lót kín nên <b>không bắt buộc</b>.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- (c) cách đọc -->
+    <div class="card soft" style="padding:2.6mm 3.2mm 2.4mm">
+      <h2>Cách đọc hướng dẫn này</h2>
+      <div class="m10-read">
+        <div>
+          <figure class="photo" style="--h:13mm">
+            <img src="../assets/x10_read.jpg" style="object-position:50% 50%">
+            <span class="tc">Video 0:05</span>
+          </figure>
+          <div class="ptx"><b>Video 0:05</b> = giây thứ 5 của video. Tua tới đó để xem thao tác thật.</div>
+        </div>
+        <div class="note video"><div class="nt">Trong video</div><p>Việc video làm thật, đúng từng con số — làm y như vậy.</p></div>
+        <div class="note tip"><div class="nt">Mẹo</div><p>Khuyến nghị thêm (video không nói) để may dễ, đẹp hơn.</p></div>
+        <div class="note warn"><div class="nt">Chú ý</div><p>Lỗi người mới hay mắc và cách tránh.</p></div>
+      </div>
+      <div class="legend" style="margin-top:2mm; gap:1.4mm 3.4mm">
+        <span><svg viewBox="0 0 26 10"><line x1="1" y1="5" x2="25" y2="5" class="s-cut"/></svg>mép vải</span>
+        <span><svg viewBox="0 0 26 10"><line x1="1" y1="5" x2="25" y2="5" class="s-seam"/></svg>đường may</span>
+        <span><svg viewBox="0 0 26 10"><line x1="1" y1="5" x2="25" y2="5" class="s-fold"/></svg>đường gấp</span>
+        <span><svg viewBox="0 0 26 10"><line x1="1" y1="5" x2="25" y2="5" class="s-mark"/></svg>vạch bút bay màu</span>
+        <span><svg viewBox="0 0 26 10"><line x1="3" y1="5" x2="23" y2="5" class="s-dim"/></svg>kích thước</span>
+        <span><svg viewBox="0 0 26 10"><line x1="1" y1="5" x2="17" y2="5" class="s-move"/></svg>thao tác</span>
+        <span><svg viewBox="0 0 14 14" style="width:14px;height:14px"><use href="#sym-back" x="0" y="0"/></svg>lại mũi</span>
+        <span><svg viewBox="0 0 16 16" style="width:15px;height:15px"><circle cx="8" cy="8" r="7.5" class="n-circle"/><text x="8" y="8" class="n-txt">1</text></svg>thứ tự</span>
+        <span><svg viewBox="0 0 18 14" style="width:18px;height:14px"><rect x="0.5" y="0.5" width="17" height="13" rx="2" class="f-gap" /></svg>khe để hở</span>
+        <span><svg viewBox="0 0 18 14" style="width:18px;height:14px"><rect x="0.5" y="0.5" width="17" height="13" rx="2" class="f-discard" stroke="#E4572E" stroke-width=".8"/></svg>phần cắt bỏ</span>
+        <span><svg viewBox="0 0 18 14" style="width:18px;height:14px"><rect x="0.5" y="0.5" width="17" height="13" rx="2" class="f-outer" stroke="#26352F" stroke-width=".8"/></svg><svg viewBox="0 0 18 14" style="width:18px;height:14px"><rect x="0.5" y="0.5" width="17" height="13" rx="2" class="f-outer-ws" stroke="#26352F" stroke-width=".8"/></svg>vải ngoài: mặt phải | trái</span>
+        <span><svg viewBox="0 0 18 14" style="width:18px;height:14px"><rect x="0.5" y="0.5" width="17" height="13" rx="2" class="f-lining" stroke="#26352F" stroke-width=".8"/></svg><svg viewBox="0 0 18 14" style="width:18px;height:14px"><rect x="0.5" y="0.5" width="17" height="13" rx="2" class="f-lining-ws" stroke="#26352F" stroke-width=".8"/></svg>lót: mặt phải | trái</span>
+      </div>
+    </div>
+  </div>
+</section>
+</body></html>
