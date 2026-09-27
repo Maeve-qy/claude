@@ -1,0 +1,86 @@
+<style>
+.ftbl td{ vertical-align:middle; font-size:10.6px; padding:1.2mm 2mm; }
+.ftbl td.swc{ padding:1mm 1.4mm; width:15mm; }
+.ftbl .from{ font-size:9.6px; color:var(--muted); line-height:1.3; margin-top:.3mm; }
+.ftbl .dots i{ width:6.5px; height:6.5px; }
+.rules{ display:grid; grid-template-columns:repeat(3,1fr); gap:3mm; }
+.rules .r{ border-radius:12px; padding:2.6mm 3mm; font-size:11px; line-height:1.45; }
+.rules .r b.h{ display:block; font-family:'Lora',serif; font-size:13px; margin-bottom:.8mm; }
+.lbl{ display:grid; grid-template-columns:repeat(4,1fr); gap:1.4mm 3mm; font-size:10.8px; }
+.lbl span b{ display:inline-block; min-width:11mm; font:800 11px 'Nunito'; color:var(--terra-700); background:#fff; border:1px solid var(--line); border-radius:6px; text-align:center; padding:0 3px; margin-right:4px; }
+.tests{ display:grid; grid-template-columns:repeat(3,1fr); gap:3mm; }
+.test{ background:#fff; border:1px solid var(--line); border-radius:12px; padding:2.6mm 3mm; display:flex; flex-direction:column; gap:1.6mm; }
+.test h3{ font-family:'Lora',serif; font-size:13.5px; color:var(--denim-900); margin:0; display:flex; gap:6px; align-items:center; }
+.test h3 i{ font:800 11px/20px 'Nunito'; font-style:normal; width:20px; height:20px; border-radius:50%; background:var(--denim-700); color:#fff; text-align:center; }
+.test .pair{ display:grid; grid-template-columns:1fr 1fr; gap:1.4mm; }
+.test .pair svg{ width:100%; height:auto; background:var(--cream-100); border-radius:8px; }
+.test p{ font-size:10.8px; line-height:1.45; margin:0; }
+.test.wide{ flex-direction:row; align-items:center; gap:4mm; }
+.test.wide .pair{ flex:none; width:62mm; }
+.test.wide h3{ margin-bottom:1mm; }
+</style>
+<section class="page" data-group="prep" data-badge="Phần 1" data-title="Chọn vải">
+  <div class="runhead">Khăn lau từ vải cũ · <b>Phần 1 · Chọn vải</b></div>
+  <header class="ph">
+    <div class="kicker"><span class="badge">Phần 1</span> Chọn vải</div>
+    <h1 class="title">Loại vải nào <em>lau tốt?</em></h1>
+    <p class="lead">Khăn lau cần 3 thứ: <b>thấm nước</b>, <b>bền khi vắt</b> và <b>ít rụng xơ</b>. Sợi tự nhiên (cotton, lanh) và microfiber đạt cả ba. Cột <b>“Tưa sợi”</b> quyết định bạn phải xử lý mép kỹ đến đâu (xem Phần 3).</p>
+  </header>
+  <div class="content">
+    {{blk:fabric_table}}
+    <div class="rules">
+      <div class="r" style="background:var(--denim-100)"><b class="h" style="color:var(--denim-700)">Lau ướt, lau nước</b>Khăn bông, cotton, lanh, microfiber. Mặt lau nên là vải thấm nhất.</div>
+      <div class="r" style="background:var(--mustard-100)"><b class="h" style="color:var(--mustard-700)">Lau khô, lau bụi</b>Flannel, nỉ polyester, thun cotton. Nỉ hút bụi tốt nhưng không lau nước.</div>
+      <div class="r" style="background:var(--terra-100)"><b class="h" style="color:var(--terra-700)">Chà mạnh, lau sàn</b>Jeans, kaki, canvas làm mặt chà; ghép với khăn bông để vừa chà vừa thấm.</div>
+    </div>
+    <div class="card soft">
+      <h2>Đọc mã sợi trên nhãn mác</h2>
+      <div class="lbl">
+        <span><b>CO</b>cotton (bông)</span><span><b>LI</b>lanh (linen)</span><span><b>CV · VI</b>viscose, rayon</span><span><b>WO</b>len</span>
+        <span><b>PES · PL</b>polyester</span><span><b>PA</b>nylon</span><span><b>EL · EA</b>thun co giãn</span><span><b>AC</b>acrylic</span>
+      </div>
+      <p class="small" style="margin:1.6mm 0 0">Ưu tiên nhãn <b>100% CO</b> hoặc <b>LI</b>. Vải pha polyester (ví dụ 65% PES / 35% CO) thấm kém hơn: dùng làm lớp sau hoặc lau khô. Có trên 5% EL thì vải giãn nhiều, khó may phẳng.</p>
+    </div>
+  </div>
+</section>
+
+<section class="page" data-group="prep" data-badge="Phần 1" data-title="Thử vải trong 1 phút">
+  <div class="runhead">Khăn lau từ vải cũ · <b>Phần 1 · Chọn vải</b></div>
+  <header class="ph">
+    <div class="kicker"><span class="badge">Phần 1</span> Chọn vải</div>
+    <h1 class="title">Thử vải <em>trong 1 phút</em></h1>
+    <p class="lead">Quần áo cũ thường mất nhãn. Ba phép thử dưới đây chỉ cần một cốc nước và khăn giấy. Nên làm <b>sau khi giặt</b>: vải mới còn hồ, lớp hoàn tất trên bề mặt làm nước đọng giọt dù vải là cotton.</p>
+  </header>
+  <div class="content">
+    <div class="tests">
+      <div class="test"><h3><i>1</i>Thử thấm</h3><div class="pair">{{fig:test_drop_ok}}{{fig:test_drop_bad}}</div>
+        <p>Trải phẳng vải, nhỏ 1 giọt nước. Giọt <b>lặn mất trong vòng 5 giây</b> → dùng làm mặt lau ướt. Sau 30 giây vẫn còn giọt tròn → vải kỵ nước (thường là polyester hoặc vải có phủ).</p></div>
+      <div class="test"><h3><i>2</i>Thử ra màu</h3><div class="pair">{{fig:test_bleed_ok}}{{fig:test_bleed_bad}}</div>
+        <p>Làm ướt 1 góc vải, đặt lên khăn giấy trắng, chà mạnh 10 lần. Giấy loang màu → giặt riêng bằng nước lạnh vài lần đến khi hết ra màu; chỉ dùng cho khăn lau sàn màu tối.</p></div>
+      <div class="test"><h3><i>3</i>Thử tưa sợi</h3><div class="pair">{{fig:test_fray_ok}}{{fig:test_fray_bad}}</div>
+        <p>Cắt 1 mép dài 5 cm, vò mép giữa 2 ngón tay 10 lần. Sợi tuột dài hơn 3 mm → vải tưa nhiều: mép phải được giấu kín (may lộn, gấp mép đôi, bo viền) hoặc khóa bằng vắt sổ / zigzag.</p></div>
+    </div>
+    <div class="test wide"><div class="pair">{{fig:test_wet_ok}}{{fig:test_wet_bad}}</div>
+      <div><h3><i>4</i>Thử độ bền khi ướt</h3>
+      <p>Nhúng ướt một mẩu vải, vắt, rồi kéo mạnh bằng 2 tay theo cả chiều dọc và chiều ngang. Vải giữ nguyên → đạt. Vải rách, giãn nhão hoặc mủn → loại (thường gặp ở viscose, rayon, vải đã mục). Khăn lau bị vắt hằng ngày nên phép thử này quan trọng hơn vẻ ngoài của vải.</p></div>
+    </div>
+    <div class="cols al-start">
+      <div class="card">
+        <h2>Không có nhãn? Thử đốt 1 sợi</h2>
+        <p class="small">Rút vài sợi vải, kẹp bằng nhíp, đốt <b>ngoài trời, cạnh bát nước</b>, tránh xa tóc và vải khác.</p>
+        <table class="tbl" style="font-size:10.6px">
+          <tr><th>Loại sợi</th><th>Khi cháy</th><th>Sau khi tắt</th></tr>
+          <tr><td><b>Cotton, lanh</b></td><td>Cháy đều như giấy, mùi giấy cháy</td><td>Tro xám, mịn, bóp là vụn</td></tr>
+          <tr><td><b>Viscose, rayon</b></td><td>Giống cotton</td><td>Tro rất ít — thử thêm độ bền khi ướt</td></tr>
+          <tr><td><b>Polyester, nylon</b></td><td>Co rút, chảy nhựa, khói đen, mùi hóa chất</td><td>Hạt cứng, đen, không bóp vỡ</td></tr>
+          <tr><td><b>Len</b></td><td>Cháy chậm, mùi tóc cháy</td><td>Tro đen, xốp, bóp vỡ</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <h2>Vải nên tránh</h2>
+        {{blk:avoid_list}}
+      </div>
+    </div>
+    <div class="note tip"><div class="nt">Mẹo</div><p>Vải <b>đã giặt nhiều lần</b> (áo cũ, khăn tắm cũ) là vải tốt nhất để làm khăn lau: đã co hết, không còn ra màu, sợi đã mềm và thấm hơn vải mới.</p></div>
+  </div>
+</section>

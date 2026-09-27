@@ -1,0 +1,53 @@
+<style>
+.prep4{ display:grid; grid-template-columns:repeat(4,1fr); gap:3mm; }
+.prep4 .c4{ background:#fff; border:1px solid var(--line); border-radius:12px; padding:2.6mm 3mm; font-size:10.8px; line-height:1.45; }
+.prep4 .c4 .hd{ display:flex; align-items:center; gap:6px; margin-bottom:1.2mm; }
+.prep4 .c4 .hd i{ font:800 12px/22px 'Nunito'; font-style:normal; width:22px; height:22px; border-radius:50%; background:var(--denim-700); color:#fff; text-align:center; flex:none; }
+.prep4 .c4 .hd b{ font-family:'Lora',serif; font-size:13px; color:var(--denim-900); line-height:1.2; }
+.prep4 ul{ padding-left:4mm; } .prep4 li{ margin-bottom:.6mm; }
+.iron{ display:inline-flex; gap:2px; vertical-align:-1px; }
+.iron i{ width:5px; height:5px; border-radius:50%; background:var(--terra-600); display:block; }
+</style>
+<section class="page" data-group="prep" data-badge="Phần 1" data-title="Sơ chế vải &amp; tìm canh sợi">
+  <div class="runhead">Khăn lau từ vải cũ · <b>Phần 1 · Sơ chế vải</b></div>
+  <header class="ph">
+    <div class="kicker"><span class="badge">Phần 1</span> Sơ chế vải</div>
+    <h1 class="title">Sơ chế vải <em>&amp; tìm canh sợi</em></h1>
+    <p class="lead">Bốn việc làm trước khi đặt kéo. Bỏ qua bước giặt co và cắt lệch canh sợi là hai lý do chính khiến khăn <b>nhỏ đi, méo xéo</b> sau vài lần giặt.</p>
+  </header>
+  <div class="content">
+    <div class="prep4">
+      <div class="c4"><div class="hd"><i>1</i><b>Giặt co trước</b></div>
+        <ul><li>Giặt và phơi/sấy <b>đúng như cách bạn sẽ giặt khăn</b> sau này.</li><li>Cotton, lanh, khăn bông: nước 40–60°C. Jeans: 30–40°C, lộn trái, giặt riêng. Nỉ, microfiber: 30–40°C, không nước xả.</li><li>Quần áo cũ đã co hết; <b>vải thừa mới</b> thì bắt buộc giặt.</li></ul></div>
+      <div class="c4"><div class="hd"><i>2</i><b>Tháo &amp; cắt bỏ</b></div>
+        <ul><li>Cúc, khóa kéo, đinh tán, nhãn mác, đường may dày.</li><li>Chỗ mòn mỏng (đầu gối, nách, khuỷu tay), vết ố mốc, lỗ thủng.</li><li>Hình in nổi trên áo thun.</li></ul></div>
+      <div class="c4"><div class="hd"><i>3</i><b>Ủi phẳng</b></div>
+        <ul><li><span class="iron"><i></i><i></i><i></i></span> Cotton, lanh: nóng + hơi nước, ủi khi vải còn ẩm.</li><li><span class="iron"><i></i><i></i></span> Thun cotton, vải pha: ấn bàn ủi, không kéo.</li><li><span class="iron"><i></i></span> Polyester, nỉ, microfiber: nhiệt thấp, lót vải mỏng.</li></ul></div>
+      <div class="c4"><div class="hd"><i>4</i><b>Tìm canh sợi dọc</b></div>
+        <ul><li><b>Áo sơ mi:</b> dọc thân, song song nẹp cúc.</li><li><b>Áo thun:</b> theo cột chữ V của mặt vải.</li><li><b>Jeans:</b> dọc giữa ống quần.</li><li><b>Khăn tắm:</b> dọc theo mép biên (chiều dài khăn).</li></ul></div>
+    </div>
+    <div class="cols al-start">
+      <figure class="fig">{{fig:grain_woven}}<figcaption><b>3 hướng của vải dệt thoi.</b> Cắt khăn theo <b>canh dọc</b> (hoặc canh ngang) để khăn giữ vuông. Canh xéo giãn nhiều, chỉ dùng khi bo viền đường cong.</figcaption></figure>
+      <div class="stack">
+        <figure class="fig">{{fig:off_grain}}</figure>
+        <div class="formula">
+          <div class="f">Cỡ sau giặt ≈ Cỡ cắt × (1 − % co)</div>
+          <div class="ex">Vải chưa giặt co {{shrink.pct}}%: miếng cắt <b>{{shrink.cut}} cm</b> → còn khoảng <b>{{shrink.after}} cm</b>, khăn hụt {{shrink.loss}} cm mỗi chiều. Vì vậy phải giặt co trước khi cắt, không bù bằng cách cắt to hơn.</div>
+        </div>
+      </div>
+    </div>
+    <div class="cols al-center">
+      <figure class="fig">{{fig:pull_thread}}</figure>
+      <div>
+        <h2>Rút sợi để có đường cắt thẳng</h2>
+        <p class="small">Dùng cho vải dệt thoi trơn màu (cotton, lanh) khi không có sọc, caro để dóng theo:</p>
+        <ol class="steps denim small">
+          <li>Cắt 1 vết nhỏ 1 cm ở mép vải.</li>
+          <li>Nhón lấy 1 sợi ngang, kéo nhẹ — vải sẽ nhăn lại dọc theo sợi.</li>
+          <li>Kéo hết sợi (đứt thì nhón đầu mới kéo tiếp). Để lại một <b>khe hở thẳng</b>.</li>
+          <li>Cắt dọc theo khe hở: đó là đường thẳng canh sợi tuyệt đối.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>

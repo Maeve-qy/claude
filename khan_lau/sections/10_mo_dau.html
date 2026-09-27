@@ -1,0 +1,93 @@
+<style>
+.gallery{ display:grid; grid-template-columns:repeat(3,1fr); gap:3.4mm; }
+.gcard{ background:#fff; border:1px solid var(--line); border-radius:13px; overflow:hidden; display:flex; flex-direction:column; }
+.gart{ position:relative; background:#F8F2E6; height:36mm; display:flex; align-items:center; justify-content:center; }
+.gart svg{ width:100%; height:100%; }
+.gno{ position:absolute; top:2.2mm; left:2.2mm; background:var(--terra-600); color:#fff; font:800 10px/1 'Nunito'; padding:4px 8px; border-radius:10px; letter-spacing:.04em; }
+.gbody{ padding:2.4mm 3mm 2.8mm; }
+.gbody h3{ font-family:'Lora',serif; font-size:13.6px; color:var(--denim-900); margin:0 0 .6mm; line-height:1.25; }
+.guse{ font-size:10.6px; color:var(--ink-2); margin-bottom:1.4mm; }
+.gmeta{ display:grid; grid-template-columns:1fr; gap:.5mm; font-size:10.3px; }
+.gmeta b{ display:inline-block; width:19mm; color:var(--muted); font-weight:600; font-size:9.6px; text-transform:uppercase; letter-spacing:.04em; }
+.why{ display:grid; grid-template-columns:repeat(4,1fr); gap:3mm; }
+.why div{ background:var(--cream-100); border-radius:11px; padding:2.6mm 3mm; font-size:11px; line-height:1.45; }
+.why b{ display:block; font-family:'Lora',serif; font-size:13px; color:var(--terra-700); margin-bottom:.6mm; }
+.lgrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:2mm 3mm; background:#fff; border:1px solid var(--line); border-radius:12px; padding:3mm 3.4mm; }
+.lg{ display:flex; align-items:center; gap:2.6mm; font-size:10.4px; line-height:1.3; }
+.lg .lgs{ flex:none; width:64px; height:24px; display:flex; align-items:center; justify-content:center; background:var(--cream-100); border-radius:7px; }
+.lg b{ display:block; font-size:11px; color:var(--ink); } .lg span{ color:var(--ink-2); }
+dl.gl{ margin:0; display:grid; grid-template-columns:29mm 1fr; gap:.9mm 2.4mm; font-size:10.6px; line-height:1.38; }
+dl.gl dt{ font-weight:700; color:var(--terra-700); } dl.gl dd{ margin:0; color:var(--ink-2); }
+.road{ display:grid; grid-template-columns:repeat(6,1fr); gap:2mm; position:relative; }
+.road .rs{ background:#fff; border:1px solid var(--line); border-radius:12px; padding:2.4mm 2mm 2.6mm; text-align:center; position:relative; }
+.road .rs svg{ display:block; margin:0 auto 1mm; }
+.road .rs b{ display:block; font-size:11px; line-height:1.25; color:var(--denim-900); }
+.road .rs span{ display:block; font-size:9.6px; color:var(--muted); margin-top:.6mm; font-weight:600; letter-spacing:.04em; text-transform:uppercase; }
+.road .rs:not(:last-child)::after{ content:"›"; position:absolute; right:-2.9mm; top:40%; font:800 16px/1 'Nunito'; color:var(--terra-500); }
+</style>
+<section class="page" data-group="intro" data-badge="Mở đầu" data-title="6 mẫu khăn trong sổ tay">
+  <div class="runhead">Khăn lau từ vải cũ · <b>Mở đầu</b></div>
+  <header class="ph">
+    <div class="kicker"><span class="badge">Mở đầu</span> Bạn sẽ làm được gì</div>
+    <h1 class="title">6 mẫu khăn <em>từ dễ đến khó</em></h1>
+    <p class="lead">Mỗi mẫu dạy thêm một kỹ thuật mới. Người mới nên làm <b>Mẫu 1 → Mẫu 2</b> trước, sau đó chọn mẫu mình cần. Tất cả đều may được bằng <b>máy may gia đình</b> (mũi thẳng + zigzag), không bắt buộc có máy vắt sổ.</p>
+  </header>
+  <div class="content">
+    {{blk:gallery}}
+    <h2>Đọc sổ tay theo thứ tự</h2>
+    <div class="road">
+      <div class="rs">{{icon:shirt}}<b>Chọn &amp; sơ chế vải</b><span>Phần 1</span></div>
+      <div class="rs">{{icon:palette}}<b>Phối màu</b><span>Phần 2</span></div>
+      <div class="rs">{{icon:tools}}<b>Dụng cụ &amp; kỹ thuật</b><span>Phần 3</span></div>
+      <div class="rs">{{icon:formula}}<b>Công thức &amp; kích thước</b><span>Phần 4</span></div>
+      <div class="rs">{{icon:needle}}<b>May theo mẫu</b><span>Mẫu 1–6</span></div>
+      <div class="rs">{{icon:wash}}<b>Giặt, bảo quản, sửa lỗi</b><span>Hoàn thiện</span></div>
+    </div>
+    <div class="why">
+      <div><b>Tiết kiệm</b>1 áo sơ mi cũ cho 1 khăn lau bàn và {{combo.somi_o}} ô ghép 12 cm; 1 khăn tắm cũ cho {{combo.khantam_m5}} mặt khăn lau nhà.</div>
+      <div><b>Bền hơn khăn mua</b>Vải cotton đã giặt nhiều lần không co, không ra màu, càng dùng càng mềm và thấm.</div>
+      <div><b>Đúng việc</b>Mỗi loại vải hợp một việc: khăn bông thấm nước, jeans để chà, vải lanh lau kính không để xơ.</div>
+      <div><b>Ít rác</b>Cả vải vụn 8–12 cm vẫn dùng được: ghép thành khăn, làm lớp ruột.</div>
+    </div>
+  </div>
+</section>
+<section class="page" data-group="intro" data-badge="Mở đầu" data-title="Quy ước ký hiệu &amp; thuật ngữ">
+  <div class="runhead">Khăn lau từ vải cũ · <b>Mở đầu</b></div>
+  <header class="ph">
+    <div class="kicker"><span class="badge">Mở đầu</span> Đọc hình cho đúng</div>
+    <h1 class="title">Quy ước ký hiệu <em>&amp; thuật ngữ</em></h1>
+    <p class="lead">Mọi sơ đồ trong sổ tay dùng chung một bộ nét vẽ. Mọi kích thước tính bằng <b>cm</b>, ghi theo thứ tự <b>ngang × dọc</b>; chiều dọc là chiều <b>canh sợi dọc</b> của vải.</p>
+  </header>
+  <div class="content">
+    {{fig:legend_grid}}
+    <div class="cols al-start">
+      <div class="card">
+        <h2>Thuật ngữ may cơ bản</h2>
+        <dl class="gl">
+          <dt>Mặt phải / mặt trái</dt><dd>Mặt phải là mặt đẹp, quay ra ngoài; mặt trái là mặt trong, thường nhạt màu hơn.</dd>
+          <dt>Canh sợi dọc</dt><dd>Chiều sợi chạy song song với biên vải, ít giãn nhất. Trên áo: chạy từ vai xuống gấu.</dd>
+          <dt>Đường may (chừa)</dt><dd>Khoảng cách từ mép vải đến đường may. Trong sổ tay này <b>luôn là {{sa}} cm</b>.</dd>
+          <dt>Thành phẩm</dt><dd>Kích thước khăn sau khi may xong.</dd>
+          <dt>May lộn</dt><dd>Úp 2 mặt phải vào nhau, may quanh, lộn ra để giấu mép vải vào trong.</dd>
+          <dt>Khe lộn</dt><dd>Đoạn chừa không may để lộn khăn ra mặt phải.</dd>
+          <dt>Lại mũi</dt><dd>May lùi 3–4 mũi ở đầu và cuối đường may để chỉ không tuột.</dd>
+          <dt>Rập</dt><dd>Miếng bìa cứng đúng kích thước cắt, đặt lên vải để vẽ theo.</dd>
+        </dl>
+      </div>
+      <div class="card">
+        <h2>Thuật ngữ xử lý mép</h2>
+        <dl class="gl">
+          <dt>Diễu</dt><dd>Đường may chạy song song mép, nhìn thấy ở mặt phải; giữ mép phẳng và đóng khe lộn.</dd>
+          <dt>Chần</dt><dd>Đường may xuyên qua các lớp để các lớp không xô lệch khi giặt.</dd>
+          <dt>Xoay góc</dt><dd>Tới góc: dừng máy, kim cắm xuống vải, nâng chân vịt, xoay vải 90°, hạ chân vịt, may tiếp.</dd>
+          <dt>Cắt góc</dt><dd>Cắt xéo phần vải thừa ở góc để góc khăn sau khi lộn được vuông, không cộm.</dd>
+          <dt>Gấp mép đôi</dt><dd>Gấp mép vải 2 lần cho mép thô nằm kín bên trong rồi may.</dd>
+          <dt>Vắt sổ</dt><dd>May bọc mép vải bằng máy vắt sổ (3–4 chỉ) để vải không tưa sợi.</dd>
+          <dt>Zigzag khóa mép</dt><dd>Mũi răng cưa trên máy may thường, dùng thay vắt sổ.</dd>
+          <dt>Bo viền</dt><dd>Bọc kín mép khăn bằng một dải vải gấp đôi.</dd>
+        </dl>
+      </div>
+    </div>
+    <figure class="fig">{{fig:anatomy_bag}}<figcaption><b>Cấu tạo một chiếc khăn may lộn.</b> Mép vải thô không lộ ra ngoài mà nằm kín giữa 2 lớp; đường diễu cách mép {{ts}} cm kẹp chặt phần chừa nên mép không bung, không tưa — vì vậy khăn may lộn <b>không cần vắt sổ</b>.</figcaption></figure>
+  </div>
+</section>

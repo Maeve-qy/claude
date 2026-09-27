@@ -1,0 +1,940 @@
+{
+ "meta": {
+  "title": "Khăn lau từ vải cũ",
+  "subtitle": "Hướng dẫn chi tiết cắt may khăn lau bàn, khăn bếp, khăn lau nhà từ quần áo không dùng và vải thừa",
+  "author": "Hướng dẫn tự làm tại nhà",
+  "version": "1.0",
+  "seam_allowance": 1,
+  "topstitch": 0.5,
+  "units": "cm",
+  "dims_order": "ngang × dọc (dọc = chiều canh sợi dọc)"
+ },
+ "garments": [
+  {
+   "id": "somi",
+   "name": "Áo sơ mi dài tay (cỡ M–L)",
+   "fabric": "cotton_det_thoi",
+   "pieces": [
+    {
+     "id": "than_sau",
+     "name": "Thân sau (dưới cầu vai)",
+     "w": 50,
+     "h": 55,
+     "qty": 1
+    },
+    {
+     "id": "vat_truoc",
+     "name": "Vạt trước (bỏ nẹp cúc, túi)",
+     "w": 24,
+     "h": 50,
+     "qty": 2
+    },
+    {
+     "id": "tay",
+     "name": "Tay áo (rạch đường sườn tay, bỏ măng sét)",
+     "w": 25,
+     "h": 45,
+     "qty": 2
+    }
+   ]
+  },
+  {
+   "id": "aothun",
+   "name": "Áo thun cổ tròn (cỡ M–L)",
+   "fabric": "thun_cotton",
+   "pieces": [
+    {
+     "id": "than_truoc",
+     "name": "Thân trước (dưới nách)",
+     "w": 48,
+     "h": 45,
+     "qty": 1
+    },
+    {
+     "id": "than_sau",
+     "name": "Thân sau (dưới nách)",
+     "w": 48,
+     "h": 45,
+     "qty": 1
+    },
+    {
+     "id": "tay",
+     "name": "Tay ngắn",
+     "w": 18,
+     "h": 16,
+     "qty": 2
+    }
+   ]
+  },
+  {
+   "id": "jeans",
+   "name": "Quần jeans người lớn",
+   "fabric": "jeans",
+   "pieces": [
+    {
+     "id": "ong",
+     "name": "Mảnh ống quần (rạch 2 đường sườn, bỏ lưng, túi, gấu)",
+     "w": 20,
+     "h": 70,
+     "qty": 4
+    }
+   ]
+  },
+  {
+   "id": "khantam",
+   "name": "Khăn tắm cũ 70 × 140 cm",
+   "fabric": "khan_bong",
+   "pieces": [
+    {
+     "id": "than",
+     "name": "Phần thân (bỏ 2 viền dệt đầu khăn và mép biên)",
+     "w": 66,
+     "h": 125,
+     "qty": 1
+    }
+   ]
+  },
+  {
+   "id": "vogoi",
+   "name": "Vỏ gối 50 × 70 cm",
+   "fabric": "cotton_det_thoi",
+   "pieces": [
+    {
+     "id": "mat",
+     "name": "Mỗi mặt vỏ gối (tháo đường may)",
+     "w": 48,
+     "h": 68,
+     "qty": 2
+    }
+   ]
+  }
+ ],
+ "fabrics": [
+  {
+   "id": "cotton_det_thoi",
+   "name": "Cotton dệt thoi",
+   "from": "Áo sơ mi, vỏ gối, ga giường, khăn trải bàn, vải thừa may áo",
+   "absorb": 4,
+   "durable": 4,
+   "dry": 3,
+   "fray": "vừa",
+   "fray_level": 2,
+   "best": "Mặt khăn lau bàn, khăn bếp, mặt ghép mảnh",
+   "note": "Loại dễ may nhất. Giặt nóng được.",
+   "swatch": "gingham_blue"
+  },
+  {
+   "id": "thun_cotton",
+   "name": "Thun cotton (vải dệt kim)",
+   "from": "Áo thun, áo phông, đồ ngủ cotton",
+   "absorb": 4,
+   "durable": 3,
+   "dry": 3,
+   "fray": "hầu như không",
+   "fray_level": 0,
+   "best": "Giẻ lau bụi, lau kính, lớp ruột, dải bo viền",
+   "note": "Chọn loại 100% cotton; cắt bỏ hình in nổi.",
+   "swatch": "jersey_heather"
+  },
+  {
+   "id": "khan_bong",
+   "name": "Vải bông khăn tắm (terry)",
+   "from": "Khăn tắm, khăn mặt, áo choàng tắm cũ",
+   "absorb": 5,
+   "durable": 4,
+   "dry": 1,
+   "fray": "rất nhiều (rụng xơ bông)",
+   "fray_level": 3,
+   "best": "Mặt thấm khăn lau nhà, mặt lau vỏ bàn lau, khăn tay",
+   "note": "Mép cắt phải được bọc kín hoặc khóa mép.",
+   "swatch": "terry_white"
+  },
+  {
+   "id": "jeans",
+   "name": "Jeans, kaki, canvas",
+   "from": "Quần jeans, áo khoác jean, quần kaki, túi vải bố",
+   "absorb": 3,
+   "durable": 5,
+   "dry": 1,
+   "fray": "nhiều",
+   "fray_level": 3,
+   "best": "Mặt chà khăn lau nhà, lưng và túi vỏ bàn lau, giẻ lau xe",
+   "note": "Dùng kim 100/16. Bỏ phần đầu gối đã mỏng.",
+   "swatch": "denim"
+  },
+  {
+   "id": "lanh",
+   "name": "Vải lanh (linen), cotton pha lanh",
+   "from": "Áo sơ mi linen, khăn trải bàn, rèm cũ",
+   "absorb": 4,
+   "durable": 4,
+   "dry": 5,
+   "fray": "nhiều",
+   "fray_level": 3,
+   "best": "Khăn lau kính, lau ly chén (ít để lại xơ)",
+   "note": "Khô nhanh nhất, càng giặt càng mềm.",
+   "swatch": "linen"
+  },
+  {
+   "id": "flannel",
+   "name": "Flannel (vải cotton chải lông)",
+   "from": "Áo sơ mi caro dạ, đồ ngủ flannel",
+   "absorb": 4,
+   "durable": 3,
+   "dry": 2,
+   "fray": "vừa",
+   "fray_level": 2,
+   "best": "Lau bụi, đánh bóng đồ gỗ, lau giày",
+   "note": "Mềm, không xước bề mặt.",
+   "swatch": "flannel_red"
+  },
+  {
+   "id": "fleece",
+   "name": "Nỉ polyester (fleece)",
+   "from": "Áo nỉ lông cừu, chăn nỉ mỏng",
+   "absorb": 2,
+   "durable": 4,
+   "dry": 4,
+   "fray": "không",
+   "fray_level": 0,
+   "best": "Lau bụi khô (hút bụi nhờ tĩnh điện)",
+   "note": "Thấm nước kém; ủi nhiệt thấp.",
+   "swatch": "fleece_green"
+  },
+  {
+   "id": "microfiber",
+   "name": "Microfiber (khăn sợi siêu nhỏ cũ)",
+   "from": "Khăn microfiber cũ, khăn lau xe",
+   "absorb": 5,
+   "durable": 4,
+   "dry": 4,
+   "fray": "ít",
+   "fray_level": 1,
+   "best": "Mặt lau vỏ bàn lau, lau kính, lau bếp",
+   "note": "Không dùng nước xả vải; ủi nhiệt thấp.",
+   "swatch": "microfiber_yellow"
+  }
+ ],
+ "avoid": [
+  {
+   "name": "Polyester trơn, satin, voan, lụa",
+   "why": "Không thấm, trơn, đẩy nước đi chứ không hút."
+  },
+  {
+   "name": "Vải có lớp phủ chống thấm",
+   "why": "Áo mưa, áo gió, vải dù: nước đọng lại thành giọt."
+  },
+  {
+   "name": "Vải nhũ, kim tuyến, đính sequin, hình in nổi dày",
+   "why": "Gây xước bề mặt, bong tróc vào đồ ăn."
+  },
+  {
+   "name": "Len, vải nhiều thun co giãn (legging, đồ bơi)",
+   "why": "Co rút, giãn méo, thấm kém."
+  },
+  {
+   "name": "Rayon, viscose",
+   "why": "Thấm tốt nhưng rất yếu khi ướt, vắt dễ rách. Chỉ dùng làm lớp ruột."
+  },
+  {
+   "name": "Vải mốc đen, mục, mỏng rách",
+   "why": "Mốc không giặt sạch; vải mục rách khi vắt."
+  }
+ ],
+ "palettes": [
+  {
+   "id": "navy",
+   "name": "Bếp xanh navy",
+   "scheme": "Trung tính + 1 màu nhấn",
+   "colors": [
+    [
+     "Kem",
+     "#F4EEE1"
+    ],
+    [
+     "Trắng",
+     "#FFFFFF"
+    ],
+    [
+     "Navy",
+     "#22385C"
+    ],
+    [
+     "Xanh jeans nhạt",
+     "#7C9CC0"
+    ]
+   ],
+   "source": "Áo sơ mi trắng, áo sọc navy, quần jeans bạc màu"
+  },
+  {
+   "id": "datnung",
+   "name": "Đất nung ấm",
+   "scheme": "Tương đồng (màu nóng)",
+   "colors": [
+    [
+     "Đất nung",
+     "#C8643B"
+    ],
+    [
+     "Cam đào",
+     "#E89A6B"
+    ],
+    [
+     "Be cát",
+     "#E8D5B5"
+    ],
+    [
+     "Nâu socola",
+     "#6B4331"
+    ]
+   ],
+   "source": "Áo kaki be, sơ mi cam gạch, khăn tắm nâu"
+  },
+  {
+   "id": "bacha",
+   "name": "Chanh bạc hà",
+   "scheme": "Tương đồng (màu mát)",
+   "colors": [
+    [
+     "Bạc hà",
+     "#9ED8C3"
+    ],
+    [
+     "Xanh ngọc",
+     "#3C9D8E"
+    ],
+    [
+     "Vàng chanh",
+     "#E8E36B"
+    ],
+    [
+     "Trắng kem",
+     "#FAF7EC"
+    ]
+   ],
+   "source": "Áo thun xanh ngọc, váy hoa nhí vàng, vỏ gối trắng"
+  },
+  {
+   "id": "jeansdo",
+   "name": "Jeans & đỏ gạch",
+   "scheme": "Bổ túc (xanh ↔ cam đỏ)",
+   "colors": [
+    [
+     "Denim",
+     "#3B5F8A"
+    ],
+    [
+     "Denim nhạt",
+     "#9DB4CF"
+    ],
+    [
+     "Đỏ gạch",
+     "#C2452D"
+    ],
+    [
+     "Trắng",
+     "#FFFFFF"
+    ]
+   ],
+   "source": "Quần jeans đậm và nhạt, áo caro đỏ"
+  },
+  {
+   "id": "vuonrau",
+   "name": "Vườn rau",
+   "scheme": "Đơn sắc (một màu, nhiều độ đậm nhạt)",
+   "colors": [
+    [
+     "Xanh rêu",
+     "#4E6B3A"
+    ],
+    [
+     "Xanh lá mạ",
+     "#8DB255"
+    ],
+    [
+     "Xanh non",
+     "#C9DDA0"
+    ],
+    [
+     "Kem",
+     "#F5F1E3"
+    ]
+   ],
+   "source": "Áo lính cũ, sơ mi xanh lá, áo thun xanh non"
+  },
+  {
+   "id": "keongot",
+   "name": "Kẹo ngọt",
+   "scheme": "Bộ ba pastel (đỏ – vàng – xanh dương nhạt)",
+   "colors": [
+    [
+     "Hồng đào",
+     "#F2A7A0"
+    ],
+    [
+     "Vàng bơ",
+     "#F4D58D"
+    ],
+    [
+     "Xanh da trời",
+     "#A9CBEA"
+    ],
+    [
+     "Trắng",
+     "#FFFFFF"
+    ]
+   ],
+   "source": "Đồ ngủ trẻ em, áo thun pastel"
+  }
+ ],
+ "color_codes": [
+  {
+   "color": "Xanh lá",
+   "hex": "#4F9A57",
+   "zone": "Bếp, bàn ăn",
+   "items": "Bàn bếp, bàn ăn, tủ lạnh, lò vi sóng"
+  },
+  {
+   "color": "Xanh dương",
+   "hex": "#3E74B8",
+   "zone": "Phòng khách, phòng ngủ",
+   "items": "Bàn làm việc, kính, gương, đồ gỗ, đồ điện tử"
+  },
+  {
+   "color": "Vàng",
+   "hex": "#E8B931",
+   "zone": "Phòng tắm (trừ bồn cầu)",
+   "items": "Lavabo, vòi nước, gạch ốp, vách kính tắm"
+  },
+  {
+   "color": "Đỏ",
+   "hex": "#CF3F37",
+   "zone": "Bồn cầu",
+   "items": "Bồn cầu, bồn tiểu, sàn quanh bồn cầu"
+  },
+  {
+   "color": "Xám / tối",
+   "hex": "#5B6167",
+   "zone": "Sàn nhà, ngoài trời",
+   "items": "Sàn nhà, giày dép, xe máy, xe đạp"
+  }
+ ],
+ "machine": [
+  {
+   "job": "May ráp cotton, lanh, flannel",
+   "stitch": "Thẳng",
+   "len": "2,5",
+   "wid": "–",
+   "needle": "80/12"
+  },
+  {
+   "job": "May ráp khăn bông, nhiều lớp",
+   "stitch": "Thẳng",
+   "len": "3",
+   "wid": "–",
+   "needle": "90/14"
+  },
+  {
+   "job": "May jeans, kaki, canvas",
+   "stitch": "Thẳng",
+   "len": "3",
+   "wid": "–",
+   "needle": "100/16 (kim jeans)"
+  },
+  {
+   "job": "Diễu mép, chần giữ lớp",
+   "stitch": "Thẳng",
+   "len": "3–3,5",
+   "wid": "–",
+   "needle": "Theo loại vải"
+  },
+  {
+   "job": "Khóa mép thay vắt sổ",
+   "stitch": "Zigzag",
+   "len": "1,5–2",
+   "wid": "4–5",
+   "needle": "Theo loại vải"
+  },
+  {
+   "job": "May vải thun",
+   "stitch": "Zigzag hẹp",
+   "len": "2,5",
+   "wid": "1–1,5",
+   "needle": "75/11–80/12 đầu tròn"
+  }
+ ],
+ "standard_sizes": [
+  {
+   "item": "Giẻ rửa chén, lau bếp nhỏ",
+   "range": "20 × 20 – 25 × 25"
+  },
+  {
+   "item": "Khăn lau bàn, khăn đa năng",
+   "range": "30 × 30 – 35 × 35"
+  },
+  {
+   "item": "Khăn lau kính, lau ly",
+   "range": "30 × 30 – 40 × 40"
+  },
+  {
+   "item": "Khăn lau tay, khăn bếp treo",
+   "range": "35 × 50 – 45 × 70"
+  },
+  {
+   "item": "Khăn lau nhà bằng tay",
+   "range": "30 × 40 – 40 × 60"
+  },
+  {
+   "item": "Vỏ bọc bàn lau nhà dẹt",
+   "range": "Đo theo bàn lau (thường 33–45 × 11–14)"
+  }
+ ],
+ "products": {
+  "m1": {
+   "name": "Giẻ áo thun không cần may",
+   "short": "Giẻ áo thun",
+   "use": "Lau bụi, lau kính, màn hình",
+   "method": "cut_only",
+   "finished": [
+    24,
+    24
+   ],
+   "level": 1,
+   "time": "10 phút",
+   "overlock": "Không cần",
+   "fabrics": [
+    "thun_cotton"
+   ]
+  },
+  "m2": {
+   "name": "Khăn lau bàn 2 lớp may lộn",
+   "short": "Khăn lau bàn",
+   "use": "Lau bàn ăn, bàn bếp, đa năng",
+   "method": "bag",
+   "finished": [
+    30,
+    30
+   ],
+   "opening": 8,
+   "opening_thick": 10,
+   "level": 2,
+   "time": "25–30 phút",
+   "overlock": "Không cần",
+   "quilt": "X",
+   "fabrics": [
+    "cotton_det_thoi",
+    "khan_bong",
+    "thun_cotton",
+    "flannel"
+   ],
+   "variants": [
+    20,
+    25,
+    30,
+    35
+   ]
+  },
+  "m3": {
+   "name": "Khăn bếp treo gấp mép đôi",
+   "short": "Khăn bếp treo",
+   "use": "Lau tay, lau chén, lót khay",
+   "method": "double_hem",
+   "finished": [
+    35,
+    50
+   ],
+   "hem": [
+    1,
+    1
+   ],
+   "loop_strip": [
+    5,
+    14
+   ],
+   "loop_tuck": 1,
+   "level": 2,
+   "time": "40 phút",
+   "overlock": "Không cần",
+   "fabrics": [
+    "cotton_det_thoi",
+    "lanh"
+   ]
+  },
+  "m4": {
+   "name": "Khăn ghép mảnh vải vụn",
+   "short": "Khăn ghép mảnh",
+   "use": "Lau bàn, lót nồi, trang trí",
+   "method": "patch_bag",
+   "finished": [
+    30,
+    30
+   ],
+   "grid": 3,
+   "grid_options": [
+    2,
+    3,
+    4,
+    5
+   ],
+   "opening": 8,
+   "level": 3,
+   "time": "60–75 phút",
+   "overlock": "Không cần",
+   "fabrics": [
+    "cotton_det_thoi",
+    "lanh",
+    "flannel"
+   ],
+   "strip_min": 4
+  },
+  "m5": {
+   "name": "Khăn lau nhà 3 lớp bo viền",
+   "short": "Khăn lau nhà",
+   "use": "Lau sàn bằng tay, lau nước đổ",
+   "method": "bind",
+   "finished": [
+    30,
+    40
+   ],
+   "binding_b": 1,
+   "thickness": 0.5,
+   "binding_tail": 2,
+   "quilt_grid": 10,
+   "jeans_strips": 2,
+   "level": 3,
+   "time": "60 phút",
+   "overlock": "Không cần (có bước zigzag giữ lớp)",
+   "fabrics": [
+    "khan_bong",
+    "thun_cotton",
+    "jeans"
+   ]
+  },
+  "m6": {
+   "name": "Vỏ bọc bàn lau nhà dẹt",
+   "short": "Vỏ bàn lau",
+   "use": "Lắp vào cây lau nhà dẹt",
+   "method": "mop",
+   "plate": [
+    40,
+    12
+   ],
+   "plate_thick": 1.5,
+   "ease_len": 2,
+   "ease_w": 2,
+   "ease_w_thick": 1,
+   "thick_limit": 2,
+   "pocket_ratio": 0.25,
+   "pocket_min": 8,
+   "opening": 10,
+   "plate_examples": [
+    [
+     33,
+     11,
+     1.5
+    ],
+    [
+     38,
+     12,
+     1.5
+    ],
+    [
+     40,
+     12,
+     1.5
+    ],
+    [
+     42,
+     13,
+     2.5
+    ],
+    [
+     45,
+     14,
+     2
+    ]
+   ],
+   "level": 3,
+   "time": "45 phút",
+   "overlock": "Không cần",
+   "fabrics": [
+    "khan_bong",
+    "microfiber",
+    "jeans"
+   ]
+  }
+ },
+ "layouts": [
+  {
+   "id": "somi_back",
+   "garment": "somi",
+   "piece": "than_sau",
+   "title": "Thân sau áo sơ mi 50 × 55",
+   "items": [
+    {
+     "label": "Mặt khăn lau bàn",
+     "ref": "m2.cut",
+     "x": 0,
+     "y": 0,
+     "w": 32,
+     "h": 32
+    },
+    {
+     "label": "Ô ghép",
+     "ref": "m4.square",
+     "x": 32,
+     "y": 0,
+     "w": 12,
+     "h": 12
+    },
+    {
+     "label": "Ô ghép",
+     "ref": "m4.square",
+     "x": 32,
+     "y": 12,
+     "w": 12,
+     "h": 12
+    },
+    {
+     "label": "Ô ghép",
+     "ref": "m4.square",
+     "x": 32,
+     "y": 24,
+     "w": 12,
+     "h": 12
+    },
+    {
+     "label": "Ô ghép",
+     "ref": "m4.square",
+     "x": 32,
+     "y": 36,
+     "w": 12,
+     "h": 12
+    },
+    {
+     "label": "Ô ghép",
+     "ref": "m4.square",
+     "x": 0,
+     "y": 32,
+     "w": 12,
+     "h": 12
+    },
+    {
+     "label": "Ô ghép",
+     "ref": "m4.square",
+     "x": 12,
+     "y": 32,
+     "w": 12,
+     "h": 12
+    }
+   ]
+  },
+  {
+   "id": "somi_back_m3",
+   "garment": "somi",
+   "piece": "than_sau",
+   "title": "Hoặc: 1 khăn bếp treo",
+   "items": [
+    {
+     "label": "Khăn bếp treo",
+     "ref": "m3.cut",
+     "x": 0,
+     "y": 0,
+     "w": 39,
+     "h": 54
+    },
+    {
+     "label": "Dải quai",
+     "ref": "m3.loop",
+     "x": 39,
+     "y": 0,
+     "w": 5,
+     "h": 14
+    }
+   ]
+  },
+  {
+   "id": "thun_front",
+   "garment": "aothun",
+   "piece": "than_truoc",
+   "title": "Thân trước áo thun 48 × 45",
+   "items": [
+    {
+     "label": "Giẻ áo thun",
+     "ref": "m1.cut",
+     "x": 0,
+     "y": 0,
+     "w": 24,
+     "h": 24
+    },
+    {
+     "label": "Giẻ áo thun",
+     "ref": "m1.cut",
+     "x": 24,
+     "y": 0,
+     "w": 24,
+     "h": 24
+    },
+    {
+     "label": "Dải bo viền",
+     "ref": "m5.binding_w",
+     "x": 0,
+     "y": 24,
+     "w": 48,
+     "h": 7
+    },
+    {
+     "label": "Dải bo viền",
+     "ref": "m5.binding_w",
+     "x": 0,
+     "y": 31,
+     "w": 48,
+     "h": 7
+    },
+    {
+     "label": "Dải bo viền",
+     "ref": "m5.binding_w",
+     "x": 0,
+     "y": 38,
+     "w": 48,
+     "h": 7
+    }
+   ]
+  },
+  {
+   "id": "jeans_leg",
+   "garment": "jeans",
+   "piece": "ong",
+   "title": "1 mảnh ống jeans 20 × 70",
+   "items": [
+    {
+     "label": "Lưng vỏ bàn lau",
+     "ref": "m6.cut_main",
+     "x": 2,
+     "y": 0,
+     "w": 16,
+     "h": 44
+    },
+    {
+     "label": "Túi vỏ bàn lau",
+     "ref": "m6.cut_pocket",
+     "x": 2,
+     "y": 46,
+     "w": 16,
+     "h": 22
+    }
+   ]
+  },
+  {
+   "id": "towel",
+   "garment": "khantam",
+   "piece": "than",
+   "title": "Khăn tắm cũ 66 × 125",
+   "items": [
+    {
+     "label": "Mặt thấm khăn lau nhà",
+     "ref": "m5.cut_A",
+     "x": 0,
+     "y": 0,
+     "w": 30,
+     "h": 40
+    },
+    {
+     "label": "Mặt thấm khăn lau nhà",
+     "ref": "m5.cut_A",
+     "x": 30,
+     "y": 0,
+     "w": 30,
+     "h": 40
+    },
+    {
+     "label": "Mặt thấm khăn lau nhà",
+     "ref": "m5.cut_A",
+     "x": 0,
+     "y": 40,
+     "w": 30,
+     "h": 40
+    },
+    {
+     "label": "Mặt thấm khăn lau nhà",
+     "ref": "m5.cut_A",
+     "x": 30,
+     "y": 40,
+     "w": 30,
+     "h": 40
+    },
+    {
+     "label": "Mặt lau vỏ bàn lau",
+     "ref": "m6.cut_main",
+     "x": 0,
+     "y": 80,
+     "w": 44,
+     "h": 16
+    },
+    {
+     "label": "Mặt lau vỏ bàn lau",
+     "ref": "m6.cut_main",
+     "x": 0,
+     "y": 96,
+     "w": 44,
+     "h": 16
+    },
+    {
+     "label": "Khăn lau bàn 20 × 20",
+     "ref": "m2.v20",
+     "x": 44,
+     "y": 80,
+     "w": 22,
+     "h": 22
+    }
+   ]
+  }
+ ],
+ "troubleshooting": [
+  {
+   "p": "Góc khăn bị tròn, cộm",
+   "c": "Chưa cắt góc, xoay góc không đúng 1 cm, vải dày",
+   "f": "Cắt xéo góc cách đường may 2–3 mm; vải dày tỉa đường may còn 0,5 cm; đẩy góc bằng que đầu tù"
+  },
+  {
+   "p": "Hai lớp bị lệch, nhăn khi diễu",
+   "c": "Ghim thưa, chưa ủi, chân vịt ép lớp trên trôi",
+   "f": "Kẹp mỗi 8–10 cm, ủi kỹ trước khi diễu, may chậm; chần từ giữa ra ngoài"
+  },
+  {
+   "p": "Khăn bị xéo, vặn sau khi giặt",
+   "c": "Cắt lệch canh sợi, vải chưa giặt co",
+   "f": "Giặt co trước khi cắt; cắt theo canh sợi dọc; kiểm tra 2 đường chéo bằng nhau"
+  },
+  {
+   "p": "Mép bị tưa sợi sau vài lần giặt",
+   "c": "Mép cắt để hở, gấp mép đơn không khóa mép",
+   "f": "Zigzag hoặc vắt sổ mép; hoặc đổi sang gấp mép đôi, may lộn, bo viền"
+  },
+  {
+   "p": "Máy bỏ mũi, gãy kim ở chỗ dày",
+   "c": "Kim nhỏ, may nhanh qua chỗ 4–6 lớp",
+   "f": "Dùng kim 90/14–100/16, quay tay qua chỗ dày, kê bìa gấp dưới gót chân vịt, mũi dài 3–3,5"
+  },
+  {
+   "p": "Vải thun bị dợn sóng, giãn",
+   "c": "Kéo vải khi may, mũi thẳng quá ngắn",
+   "f": "Không kéo vải; zigzag hẹp; kim đầu tròn; lót giấy mỏng dưới vải rồi xé bỏ"
+  },
+  {
+   "p": "Giao điểm các ô ghép bị lệch",
+   "c": "Ô cắt không đều, đường may không đều 1 cm",
+   "f": "Cắt bằng rập bìa; ủi đường may xen kẽ để khóa khớp; ghim đúng giao điểm"
+  },
+  {
+   "p": "Khăn khó thấm, lau bị trượt",
+   "c": "Có sợi polyester, còn hồ vải mới, dùng nước xả vải",
+   "f": "Giặt nóng 2–3 lần, không dùng nước xả; đổi mặt lau sang cotton hoặc khăn bông"
+  },
+  {
+   "p": "Chỗ khe lộn bị nhăn, lộ mép",
+   "c": "Chưa gấp khe vào đúng 1 cm trước khi diễu",
+   "f": "Gấp mép khe vào 1 cm, ủi, kẹp; diễu đều 0,5 cm qua khe"
+  }
+ ]
+}

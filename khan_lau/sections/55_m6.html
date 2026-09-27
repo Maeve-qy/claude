@@ -1,0 +1,92 @@
+<style>
+.steps2{ display:grid; grid-template-columns:1fr 1fr; gap:3mm; }
+.mat td{ font-size:10.6px; vertical-align:middle; }
+.mat td.c{ white-space:nowrap; }
+.calc{ display:grid; grid-template-columns:auto 1fr auto; gap:1mm 3mm; font-size:11px; align-items:baseline; }
+.calc .e{ font:800 12px 'Nunito'; color:var(--dim); }
+.calc .r{ font:800 13px 'Nunito'; color:var(--denim-900); text-align:right; }
+</style>
+<section class="page k-make-page" data-group="make" data-badge="Mẫu 6" data-title="Vỏ bọc bàn lau nhà dẹt">
+  <div class="runhead">Khăn lau từ vải cũ · <b>Mẫu 6 · Vỏ bàn lau</b></div>
+  <header class="ph">
+    <div class="kicker k-make"><span class="badge">Mẫu 6</span> May theo số đo</div>
+    <h1 class="title">Vỏ bọc bàn lau <em>nhà dẹt</em></h1>
+    <p class="lead">Thay tấm lau microfiber mua sẵn bằng vỏ tự may có 2 túi ở 2 đầu — lắp vào cây lau nhà dẹt có bàn lau gập được. Mỗi cây lau một cỡ, nên mẫu này <b>tính theo số đo bàn lau của bạn</b>.</p>
+  </header>
+  <div class="content">
+    {{blk:spec_m6}}
+    <div class="cols al-start">
+      <figure class="fig">{{fig:m6_measure}}<figcaption><b>Đo bàn lau</b> (không tính khớp nối cán): dài L, rộng W, dày h. Ví dụ trong sổ tay: {{m6.L}} × {{m6.W}}, dày {{m6.h}} cm.</figcaption></figure>
+      <div class="card">
+        <h2>Tính kích thước (ví dụ {{m6.L}} × {{m6.W}})</h2>
+        <div class="calc">
+          <span>Dài vỏ</span><span class="e">L + {{m6.ease_len}}</span><span class="r">{{m6.Lp}}</span>
+          <span>Rộng vỏ</span><span class="e">W + {{m6.ease_w}} (dày &gt; {{m6.thick_limit}} cm: + 1)</span><span class="r">{{m6.Wp}}</span>
+          <span>Sâu túi P</span><span class="e">L ÷ 4, tối thiểu {{m6.pocket_min}}</span><span class="r">{{m6.P}}</span>
+          <span>Cắt A, B</span><span class="e">(dài + 2) × (rộng + 2)</span><span class="r">{{m6.cut_main}}</span>
+          <span>Cắt 2 túi</span><span class="e">(rộng + 2) × (2P + 2)</span><span class="r">{{m6.cut_pocket}}</span>
+          <span>Chỗ khe lộn</span><span class="e">dài vỏ − 2P ≥ khe + 4</span><span class="r">{{m6.free_len}}</span>
+        </div>
+      </div>
+    </div>
+    <figure class="fig">{{fig:m6_pieces}}<figcaption><b>Sơ đồ cắt</b> cho bàn lau {{m6.L}} × {{m6.W}}. A là mặt chạm sàn (khăn bông hoặc microfiber cũ); B và 2 túi là vải dày (jeans: 1 mảnh ống quần đủ cho B + 1 túi).</figcaption></figure>
+    <h2>Bảng tính sẵn cho các cỡ bàn lau thường gặp (cm)</h2>
+    {{blk:m6_examples}}
+  </div>
+</section>
+
+<section class="page k-make-page" data-group="make" data-badge="Mẫu 6" data-title="Các bước may vỏ bàn lau">
+  <div class="runhead">Khăn lau từ vải cũ · <b>Mẫu 6 · Vỏ bàn lau</b></div>
+  <header class="ph">
+    <div class="kicker k-make"><span class="badge">Mẫu 6</span> Các bước may · 1–4</div>
+    <h1 class="title">Túi gấp đôi <em>&amp; may lộn</em></h1>
+  </header>
+  <div class="content">
+    <div class="steps2">
+      <div class="stepcard"><div class="sh"><span class="sn">1</span><h3>Gấp đôi 2 túi, ủi</h3></div>{{fig:m6_s2}}
+        <p>Gấp đôi miếng túi {{m6.cut_pocket}} theo chiều cao, mặt trái vào trong → {{m6.pocket_folded}}. Mép gấp là miệng túi — <b>không cần viền</b>. (Tùy chọn) diễu mép gấp 0,5 cm cho chắc.</p></div>
+      <div class="stepcard"><div class="sh"><span class="sn">2</span><h3>Đặt túi lên lớp B, lược giữ</h3></div>{{fig:m6_s3}}
+        <p>B mặt phải lên. Đặt 2 túi ở 2 đầu, <b>mép thô túi trùng mép đầu B</b>, mép gấp quay vào giữa. Lược cách mép 0,5 cm quanh 3 cạnh mỗi túi.</p></div>
+      <div class="stepcard"><div class="sh"><span class="sn">3</span><h3>Úp lớp A, may quanh chừa khe</h3></div>{{fig:m6_s4}}
+        <p>Úp A lên (mặt phải A xuống, chạm túi và B). Kẹp dày. Chừa khe <b>{{m6.opening}} cm</b> ở giữa 1 cạnh dài — vùng không có túi. May quanh cách mép {{sa}} cm.</p></div>
+      <div class="stepcard"><div class="sh"><span class="sn">4</span><h3>Cắt góc, lộn</h3></div>{{fig:m6_s5}}
+        <p>Cắt xéo 4 góc (góc có túi dày 5 lớp — cắt gần hơn, cách 2 mm). Tỉa phần chừa khăn bông. Lộn qua khe: 2 túi sẽ nằm ở mặt lưng B.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="page k-make-page" data-group="make" data-badge="Mẫu 6" data-title="Hoàn thiện &amp; lắp vào bàn lau">
+  <div class="runhead">Khăn lau từ vải cũ · <b>Mẫu 6 · Vỏ bàn lau</b></div>
+  <header class="ph">
+    <div class="kicker k-make"><span class="badge">Mẫu 6</span> Các bước may · 5–6</div>
+    <h1 class="title">Diễu mép <em>&amp; lắp vào bàn lau</em></h1>
+  </header>
+  <div class="content">
+    <div class="steps2">
+      <div class="stepcard"><div class="sh"><span class="sn">5</span><h3>Ủi, diễu quanh {{ts}} cm</h3></div>{{fig:m6_s6}}
+        <p>Đẩy góc, ủi (khăn bông: ủi hơi nước nhẹ). Gấp mép khe vào 1 cm, diễu quanh cách mép {{ts}} cm — đóng khe và giữ chặt 2 cạnh túi.</p></div>
+      <div class="stepcard"><div class="sh"><span class="sn">6</span><h3>Lắp vào bàn lau</h3></div>{{fig:m6_s8}}
+        <p>Gập bàn lau ở khớp giữa, nhét 2 đầu vào 2 túi, duỗi thẳng. Bàn lau cứng không gập được: nhét 1 đầu trước, uốn vải để lồng đầu kia — nếu quá chật, may lại với dài vỏ = L + 3.</p></div>
+    </div>
+    <div class="note ovl"><div class="nt">Có cần vắt sổ không? Bàn lau dán gai dính thì sao?</div><p><b>Không cần vắt sổ</b>: mọi mép thô nằm kín sau khi lộn, miệng túi là nếp gấp. Bàn lau loại <b>dán gai dính</b> (không có khớp gập): bỏ 2 túi, may 1 tấm 2 lớp như Mẫu 2, cỡ thành phẩm = (L + 1) × (W + 1), mặt lưng là khăn bông hoặc microfiber để gai dính bám được.</p></div>
+    <div class="cols al-start">
+      <div class="card soft">
+        <h2>Nên may 2–3 vỏ một lượt</h2>
+        <ul class="ok small">
+          <li>Luân phiên: 1 vỏ đang dùng, 1 vỏ đang giặt, 1 vỏ dự phòng.</li>
+          <li>Mặt A khác nhau cho từng việc: khăn bông lau ướt; flannel hoặc nỉ lau bụi khô.</li>
+          <li>Đánh dấu bằng màu túi (xem mã màu ở Phần 2): ví dụ túi xám cho sàn nhà, túi vàng cho phòng tắm.</li>
+        </ul>
+      </div>
+      <div class="card soft">
+        <h2>Nếu vỏ quá lỏng hoặc quá chật</h2>
+        <ul class="ok small">
+          <li><b>Lỏng, trượt khi lau:</b> may thêm 1 đường ngang ở mỗi đầu, cách miệng túi 1 cm vào trong, để thu ngắn túi.</li>
+          <li><b>Chật, khó lắp:</b> tháo diễu 1 đầu, nới túi; lần sau cộng thêm 1 cm vào dài vỏ.</li>
+          <li>Đo lại: bàn lau có đệm mút thì đo cả đệm.</li>
+        </ul>
+      </div>
+    </div>
+    <figure class="fig cream">{{fig:m6_gallery}}<figcaption><b>Một bộ 3 vỏ</b> cho cùng một cây lau: hàng trên là mặt lưng có 2 túi, hàng dưới là mặt lau. Chọn vải mặt lau theo việc (Phần 1).</figcaption></figure>
+  </div>
+</section>

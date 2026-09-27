@@ -1,0 +1,68 @@
+<style>
+.fgrid{ display:grid; grid-template-columns:1fr 1fr; gap:3mm; }
+.fcard{ display:grid; grid-template-columns:37mm 1fr; gap:2.6mm; background:#fff; border:1px solid var(--line); border-radius:12px; padding:2.6mm 3mm; align-items:center; }
+.fcard svg{ width:100%; height:auto; display:block; }
+.fcard h3{ font-family:'Lora',serif; font-size:13.6px; color:var(--denim-900); margin:0 0 1mm; }
+.fcard .f{ font:800 11.6px/1.45 'Nunito','Be Vietnam Pro',sans-serif; color:var(--dim); background:var(--denim-100); border-radius:8px; padding:1.2mm 2mm; margin-bottom:1.2mm; }
+.fcard .ex{ font-size:10.6px; line-height:1.45; color:var(--ink-2); }
+.fcard .ex b{ color:var(--dim); }
+.ytbl td, .ytbl th{ text-align:center; }
+.ytbl td:first-child, .ytbl th:first-child{ text-align:left; }
+.ytbl td.na{ color:#C9C2B1; }
+.ytbl td.y{ font:800 13px 'Nunito'; color:var(--denim-900); }
+</style>
+<section class="page" data-group="prep" data-badge="Phần 4" data-title="Công thức tính kích thước cắt">
+  <div class="runhead">Khăn lau từ vải cũ · <b>Phần 4 · Công thức &amp; kích thước</b></div>
+  <header class="ph">
+    <div class="kicker"><span class="badge">Phần 4</span> Công thức &amp; kích thước</div>
+    <h1 class="title">Công thức tính <em>kích thước cắt</em></h1>
+    <p class="lead">TP = kích thước <b>thành phẩm</b> (khăn may xong), ĐM = <b>đường may</b> = {{sa}} cm. Nắm các công thức dưới đây là tự đổi được mọi cỡ khăn; ví dụ đi kèm là số của các mẫu trong sổ tay.</p>
+  </header>
+  <div class="content">
+    <div class="fgrid">
+      <div class="fcard">{{fig:f_bag}}<div><h3>1 · May lộn 2 lớp</h3><div class="f">Cắt = TP + 2 × ĐM</div>
+        <div class="ex">Khăn lau bàn TP {{m2.fin}}: {{m2.fin.0}} + 2 × {{sa}} = <b>{{m2.cut.0}}</b> → cắt 2 miếng <b>{{m2.cut}}</b>. Dùng cho Mẫu 2, 4, 6.</div></div></div>
+      <div class="fcard">{{fig:f_hem}}<div><h3>2 · Gấp mép đôi</h3><div class="f">Cắt = TP + 2 × (g1 + g2)</div>
+        <div class="ex">g1, g2 = bề rộng lần gấp 1 và 2 (g1 ≤ g2). Khăn bếp TP {{m3.fin}}, gấp {{m3.g1}} + {{m3.g2}}: {{m3.fin.0}} + {{m3.add}} = <b>{{m3.cut.0}}</b>; {{m3.fin.1}} + {{m3.add}} = <b>{{m3.cut.1}}</b>.</div></div></div>
+      <div class="fcard">{{fig:f_patch}}<div><h3>3 · Ghép n × n ô</h3><div class="f">Ô cắt = TP ÷ n + 2 × ĐM</div>
+        <div class="ex">Khăn {{m4.fin}}, n = {{m4.n}}: {{m4.fin.0}} ÷ {{m4.n}} + 2 = <b>{{m4.sq_cut}}</b>. Kiểm tra: hàng {{m4.n}} ô ráp xong dài <b>{{m4.row_len}}</b> = TP + 2 × ĐM — vừa đúng để may lộn với lớp sau {{m4.back}}.</div></div></div>
+      <div class="fcard">{{fig:f_bind}}<div><h3>4 · Dải bo viền (kiểu Pháp)</h3><div class="f">Rộng dải = 6 × b + 2 × t</div>
+        <div class="ex">Làm tròn lên 0,5 cm. Khăn lau nhà: b = {{m5.b}}, t = {{m5.t}} → 6 + 1 = <b>{{m5.binding_w}}</b>. Khăn mỏng 2 lớp (t ≈ 0,2): dải {{m5.thin_example_w}} cm. Dài dải = cạnh + 2 cm; cạnh bọc đầu thì + 2 × {{m5.tail}} cm.</div></div></div>
+      <div class="fcard">{{fig:f_mop}}<div><h3>5 · Vỏ bàn lau (đo bàn lau L × W)</h3><div class="f">Thân = (L + 4) × (W + 4) · Túi = (W + 4) × (2P + 2)</div>
+        <div class="ex">P = sâu túi = L ÷ 4 (làm tròn, tối thiểu {{m6.pocket_min}}). Bàn lau dày hơn {{m6.thick_limit}} cm: cộng thêm 1 vào W. Bàn {{m6.L}} × {{m6.W}}: thân <b>{{m6.cut_main}}</b>, túi <b>{{m6.cut_pocket}}</b>.</div></div></div>
+      <div class="fcard">{{fig:f_loop}}<div><h3>6 · Quai treo gấp 4</h3><div class="f">Rộng quai = rộng dải ÷ 4</div>
+        <div class="ex">Dải {{m3.loop}}: quai rộng <b>{{m3.loop_quarter}}</b> cm. Phần quai lộ ra = (dài dải − 2 × {{m3.loop_tuck}} cm giấu trong gấu) ÷ 2 = <b>{{m3.loop_visible}}</b> cm.</div></div></div>
+      <div class="fcard">{{fig:f_gap}}<div><h3>7 · Khe lộn</h3><div class="f">Khe lộn = {{m2.opening}} cm (vải dày: {{m2.opening_thick}} cm)</div>
+        <div class="ex">Đủ rộng để luồn tay lộn khăn. Đặt ở giữa 1 cạnh, cách góc ít nhất 5 cm. Mép khe gấp vào đúng {{sa}} cm; đường diễu {{ts}} cm sẽ đóng kín khe.</div></div></div>
+      <div class="fcard" style="grid-template-columns:1fr"><div><h3>8 · Kiểm tra &amp; đổi cỡ</h3><div class="f">Đường chéo d = √(ngang² + dọc²)</div>
+        <div class="ex">Miếng cắt vuông góc khi 2 đường chéo bằng nhau và bằng d (ví dụ {{m2.cut}} → <b>{{m2.diag}}</b>).<br><b>Đổi cỡ:</b> chỉ thay số TP vào công thức 1–5, <b>không</b> thay đường may. Vải chưa giặt co thì giặt trước, không cộng thêm vào cỡ cắt.</div></div></div>
+    </div>
+    <div class="note warn"><div class="nt">Lỗi hay gặp khi tính</div><p>Quên nhân 2 (đường may có ở <b>cả 2 mép</b> đối diện); dùng ĐM 1,5 cm như may quần áo trong khi công thức tính 1 cm; ghép ô mà không cộng đường may cho từng ô.</p></div>
+  </div>
+</section>
+
+<section class="page" data-group="prep" data-badge="Phần 4" data-title="Kích thước chuẩn &amp; số miếng cắt được">
+  <div class="runhead">Khăn lau từ vải cũ · <b>Phần 4 · Công thức &amp; kích thước</b></div>
+  <header class="ph">
+    <div class="kicker"><span class="badge">Phần 4</span> Công thức &amp; kích thước</div>
+    <h1 class="title">Kích thước chuẩn <em>&amp; số miếng cắt được</em></h1>
+    <p class="lead">Chọn cỡ khăn theo việc dùng, rồi tra xem một món đồ cũ cắt được bao nhiêu miếng. Mọi con số trong các bảng dưới đây đều được tính bằng công thức ở trang trước.</p>
+  </header>
+  <div class="content">
+    <div class="cols al-start">
+      <div class="stack">
+        <h2>Cỡ thành phẩm thông dụng (cm)</h2>
+        {{blk:sizes_table}}
+      </div>
+      <div class="stack">
+        <h2>Đổi cỡ khăn may lộn (Mẫu 2)</h2>
+        {{blk:m2_variants}}
+        <h2>Chia ô cho khăn ghép {{m4.fin}}</h2>
+        {{blk:m4_options}}
+      </div>
+    </div>
+    <h2>Một món đồ cũ cắt được bao nhiêu miếng?</h2>
+    {{blk:yield_table}}
+    <p class="tiny muted" style="margin:0">Tính cho mảnh dùng được ước tính cỡ M–L (trang Tận dụng quần áo cũ), cắt thẳng xuyên tấm, được xoay miếng. Ô “–”: loại vải không hợp với mẫu đó. Mỗi món đồ tính riêng cho từng mẫu (không cộng dồn các cột).</p>
+  </div>
+</section>

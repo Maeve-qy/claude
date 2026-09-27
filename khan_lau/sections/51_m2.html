@@ -1,0 +1,100 @@
+<style>
+.steps2{ display:grid; grid-template-columns:1fr 1fr; gap:3.2mm; }
+.mat td{ font-size:10.6px; vertical-align:middle; }
+.pair3{ display:grid; grid-template-columns:repeat(3,1fr); gap:2.4mm; }
+.pair3 div{ background:var(--cream-100); border-radius:10px; padding:2mm 2.4mm; font-size:10.4px; line-height:1.4; }
+.pair3 b{ display:block; color:var(--terra-700); font-size:11px; }
+</style>
+<section class="page k-make-page" data-group="make" data-badge="Mẫu 2" data-title="Khăn lau bàn 2 lớp may lộn">
+  <div class="runhead">Khăn lau từ vải cũ · <b>Mẫu 2 · Khăn lau bàn</b></div>
+  <header class="ph">
+    <div class="kicker k-make"><span class="badge">Mẫu 2</span> Kỹ thuật may lộn</div>
+    <h1 class="title">Khăn lau bàn <em>2 lớp may lộn</em></h1>
+    <p class="lead">Mẫu nền tảng: 2 miếng vải vuông, may quanh, lộn ra, diễu mép. Mép vải được giấu kín nên <b>không cần vắt sổ</b>. Học xong mẫu này là làm được Mẫu 4 và Mẫu 6.</p>
+  </header>
+  <div class="content">
+    {{blk:spec_m2}}
+    <div class="cols al-center">
+      <figure class="fig cream">{{fig:m2_hero}}</figure>
+      <div class="stack">
+        <h2>Vật liệu</h2>
+        <table class="tbl mat">
+          <tr><th>Phần</th><th>Vải gợi ý</th><th class="c">Cắt</th></tr>
+          <tr><td><b>Lớp A</b> · mặt lau</td><td>Cotton sơ mi, vỏ gối, lanh</td><td class="c"><b>1 × {{m2.cut}}</b></td></tr>
+          <tr><td><b>Lớp B</b> · mặt sau</td><td>Khăn bông, thun cotton, flannel</td><td class="c"><b>1 × {{m2.cut}}</b></td></tr>
+          <tr><td><b>Chỉ</b></td><td colspan="2">Polyester 40/2, màu theo lớp A</td></tr>
+          <tr><td><b>Kim</b></td><td colspan="2">80/12; lớp B là khăn bông: 90/14</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="cols-7-5 al-start">
+      <figure class="fig">{{fig:m2_cut}}<figcaption><b>Sơ đồ cắt.</b> Cắt đúng canh sợi, 2 miếng bằng nhau tuyệt đối — dùng chung 1 rập bìa {{m2.cut}}.</figcaption></figure>
+      <div class="stack">
+        <h2>Ghép cặp lớp A + B</h2>
+        <div class="pair3" style="grid-template-columns:1fr">
+          <div><b>Sơ mi + khăn bông</b>1 mặt lau khô, 1 mặt thấm nước. Dùng nhiều nhất.</div>
+          <div><b>Sơ mi + sơ mi</b>Mỏng, nhanh khô, lau kính và bàn gỗ.</div>
+          <div><b>Sơ mi + flannel</b>Mềm, bắt bụi — lau đồ gỗ, đồ điện tử.</div>
+        </div>
+      </div>
+    </div>
+    <div class="cols al-start">
+      <div class="note tip"><div class="nt">May dây chuyền 6 khăn một lượt</div><p>Cắt hết 12 miếng → kẹp hết 6 cặp → may quanh liền mạch từ cặp này sang cặp kia (không cắt chỉ giữa các cặp) → cắt góc → lộn → ủi → diễu. Nhanh gấp đôi so với làm từng chiếc, và các khăn đều nhau.</p></div>
+      <div class="note info"><div class="nt">Lấy vải từ đâu</div><p>Lớp A: thân sau 1 áo sơ mi ({{m2.cut}}, trang Tận dụng áo sơ mi). Lớp B: 1 khăn tắm cũ cắt được <b>{{yields.3.cells.1.n}}</b> miếng {{m2.cut}}; khăn mặt cũ 34 × 34 cắt được 1 miếng.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="page k-make-page" data-group="make" data-badge="Mẫu 2" data-title="Các bước may 1–4">
+  <div class="runhead">Khăn lau từ vải cũ · <b>Mẫu 2 · Khăn lau bàn</b></div>
+  <header class="ph">
+    <div class="kicker k-make"><span class="badge">Mẫu 2</span> Các bước may · 1–4</div>
+    <h1 class="title">Cắt, ghép <em>&amp; may quanh</em></h1>
+  </header>
+  <div class="content">
+    <div class="steps2">
+      <div class="stepcard"><div class="sh"><span class="sn">1</span><h3>Cắt 2 miếng {{m2.cut}}</h3></div>{{fig:m2_s1}}
+        <p>Đặt rập bìa theo canh sợi, vẽ phấn, cắt. Đo 2 đường chéo mỗi miếng: <b>{{m2.diag}} cm</b>. Nếu lớp B là khăn bông, zigzag ngay mép để bông không rụng khi thao tác.</p></div>
+      <div class="stepcard"><div class="sh"><span class="sn">2</span><h3>Úp 2 mặt phải vào nhau, kẹp</h3></div>{{fig:m2_s2}}
+        <p>Lớp B nằm dưới, mặt phải lên; lớp A úp lên, mặt phải xuống. Vuốt phẳng, cho 4 mép trùng nhau, kẹp 4 góc và giữa mỗi cạnh. <b>Lớp dày (khăn bông) để dưới</b> — răng cưa máy kéo đều hơn.</p></div>
+      <div class="stepcard"><div class="sh"><span class="sn">3</span><h3>May quanh, chừa khe lộn {{m2.opening}} cm</h3></div>{{fig:m2_s3}}
+        <p>Vạch 2 dấu phấn cách nhau <b>{{m2.opening}} cm</b> ở giữa 1 cạnh (vải dày: {{m2.opening_thick}} cm). Bắt đầu may ở 1 dấu, lại mũi, may cách mép <b>{{sa}} cm</b>, xoay 4 góc, dừng ở dấu kia, lại mũi.</p></div>
+      <div class="stepcard"><div class="sh"><span class="sn">4</span><h3>Cắt 4 góc</h3></div>{{fig:m2_s4}}
+        <p>Cắt xéo phần chừa ở 4 góc, cách điểm xoay góc 2–3 mm; không cắt đứt chỉ. Lớp B là khăn bông: tỉa phần chừa khăn bông còn 0,5 cm (trừ đoạn khe lộn — giữ nguyên 1 cm để gấp vào).</p></div>
+    </div>
+    <div class="cols al-start">
+      <div class="note tip"><div class="nt">Vì sao bắt đầu may ở khe lộn?</div><p>Đường may chạy một vòng liền từ mép khe này sang mép khe kia; 2 chỗ lại mũi nằm đúng 2 đầu khe — nơi chịu lực kéo mạnh nhất khi lộn khăn.</p></div>
+      <div class="note warn"><div class="nt">Nếu gặp</div><p><b>Lớp trên dài hơn lớp dưới ở cuối cạnh:</b> kẹp dày hơn, may chậm, dùng que đẩy nhẹ lớp dưới tới. <b>Đường may lượn sóng:</b> mắt nhìn mép vải chạm băng keo 1 cm, không nhìn kim.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="page k-make-page" data-group="make" data-badge="Mẫu 2" data-title="Các bước may 5–8">
+  <div class="runhead">Khăn lau từ vải cũ · <b>Mẫu 2 · Khăn lau bàn</b></div>
+  <header class="ph">
+    <div class="kicker k-make"><span class="badge">Mẫu 2</span> Các bước may · 5–8</div>
+    <h1 class="title">Lộn, ủi, diễu <em>&amp; chần</em></h1>
+  </header>
+  <div class="content">
+    <div class="steps2">
+      <div class="stepcard"><div class="sh"><span class="sn">5</span><h3>Lộn khăn qua khe, đẩy góc</h3></div>{{fig:m2_s5}}
+        <p>Luồn tay vào khe, kéo từng góc ra. Dùng que đầu tù đẩy nhẹ từng góc cho nhọn.</p></div>
+      <div class="stepcard"><div class="sh"><span class="sn">6</span><h3>Ủi phẳng, gấp mép khe</h3></div>{{fig:m2_s6}}
+        <p>Lăn đường may ra đúng mép rồi ủi. Ở khe lộn: gấp 2 mép vào trong đúng <b>{{sa}} cm</b>, thẳng hàng với mép khăn, ủi, kẹp.</p></div>
+      <div class="stepcard"><div class="sh"><span class="sn">7</span><h3>Diễu quanh cách mép {{ts}} cm</h3></div>{{fig:m2_s7}}
+        <p>Mặt A lên trên. Bắt đầu ở giữa 1 cạnh, may quanh cách mép <b>{{ts}} cm</b>, xoay góc, lại mũi. Đường diễu kẹp chặt phần chừa và <b>đóng luôn khe lộn</b>.</p></div>
+      <div class="stepcard"><div class="sh"><span class="sn">8</span><h3>Chần giữ 2 lớp</h3></div>{{fig:m2_s8}}
+        <p>Kẻ phấn 2 đường chéo, may từ góc này sang góc kia (hoặc lưới 2 × 2 đường cách nhau {{m2.quilt_third}} cm). Cắt chỉ thừa. Xong!</p></div>
+    </div>
+    <div class="cols al-start">
+      <div class="card soft">
+        <h2>Biến tấu</h2>
+        <ul class="ok small">
+          <li><b>Giẻ rửa chén 20 × 20:</b> cắt 2 miếng {{m2.v20}}, kẹp thêm 1 lớp thun ở giữa (cắt cùng cỡ), khe lộn 8 cm; chần lưới 2 đường mỗi chiều cho chắc.</li>
+          <li><b>Có quai treo:</b> kẹp 1 vòng dải vải vào góc giữa 2 lớp ở bước 2, vòng quay vào trong.</li>
+        </ul>
+      </div>
+      <div class="note ovl"><div class="nt">Có cần vắt sổ không?</div><p><b>Không.</b> Sau khi lộn, mép thô của cả 2 lớp nằm kín bên trong; đường diễu {{ts}} cm giữ chặt phần chừa {{sa}} cm. Chỉ nên zigzag trước khi ráp nếu vải tưa rất mạnh (lanh thưa, khăn bông mỏng).</p></div>
+    </div>
+  </div>
+</section>

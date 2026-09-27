@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["meta", "garments", "fabrics", "avoid", "palettes", "color_codes", "machine", "standard_sizes", "products", "layouts", "troubleshooting"],
+  "definitions": {
+    "pos": {"type": "number", "exclusiveMinimum": 0},
+    "size2": {"type": "array", "items": {"type": "number", "exclusiveMinimum": 0}, "minItems": 2, "maxItems": 2},
+    "rating": {"type": "integer", "minimum": 1, "maximum": 5},
+    "hex": {"type": "string", "pattern": "^#[0-9A-Fa-f]{6}$"},
+    "nonempty": {"type": "string", "minLength": 2}
+  },
+  "properties": {
+    "meta": {"type": "object", "required": ["title", "seam_allowance", "topstitch"],
+             "properties": {"seam_allowance": {"$ref": "#/definitions/pos"}, "topstitch": {"$ref": "#/definitions/pos"}}},
+    "garments": {"type": "array", "minItems": 3, "items": {"type": "object", "required": ["id", "name", "fabric", "pieces"],
+      "properties": {"pieces": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["id", "name", "w", "h", "qty"],
+        "properties": {"w": {"$ref": "#/definitions/pos"}, "h": {"$ref": "#/definitions/pos"}, "qty": {"type": "integer", "minimum": 1}}}}}}},
+    "fabrics": {"type": "array", "minItems": 6, "items": {"type": "object",
+      "required": ["id", "name", "from", "absorb", "durable", "dry", "fray", "fray_level", "best", "note", "swatch"],
+      "properties": {"absorb": {"$ref": "#/definitions/rating"}, "durable": {"$ref": "#/definitions/rating"}, "dry": {"$ref": "#/definitions/rating"},
+                     "fray_level": {"type": "integer", "minimum": 0, "maximum": 3}, "name": {"$ref": "#/definitions/nonempty"}}}},
+    "avoid": {"type": "array", "minItems": 4, "items": {"type": "object", "required": ["name", "why"]}},
+    "palettes": {"type": "array", "minItems": 6, "maxItems": 6, "items": {"type": "object", "required": ["id", "name", "scheme", "colors", "source"],
+      "properties": {"colors": {"type": "array", "minItems": 4, "maxItems": 4, "items": {"type": "array", "prefixItems": [{"type": "string"}, {"$ref": "#/definitions/hex"}], "minItems": 2, "maxItems": 2}}}}},
+    "color_codes": {"type": "array", "minItems": 5, "items": {"type": "object", "required": ["color", "hex", "zone", "items"],
+      "properties": {"hex": {"$ref": "#/definitions/hex"}}}},
+    "machine": {"type": "array", "minItems": 5, "items": {"type": "object", "required": ["job", "stitch", "len", "wid", "needle"]}},
+    "standard_sizes": {"type": "array", "minItems": 5, "items": {"type": "object", "required": ["item", "range"]}},
+    "products": {"type": "object", "required": ["m1", "m2", "m3", "m4", "m5", "m6"],
+      "additionalProperties": {"type": "object", "required": ["name", "short", "use", "method", "level", "time", "overlock", "fabrics"],
+        "properties": {"level": {"type": "integer", "minimum": 1, "maximum": 4},
+                       "method": {"enum": ["cut_only", "bag", "double_hem", "patch_bag", "bind", "mop"]},
+                       "finished": {"$ref": "#/definitions/size2"}}}},
+    "layouts": {"type": "array", "items": {"type": "object", "required": ["id", "garment", "piece", "title", "items"],
+      "properties": {"items": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["label", "ref", "x", "y", "w", "h"]}}}}},
+    "troubleshooting": {"type": "array", "minItems": 6, "items": {"type": "object", "required": ["p", "c", "f"]}}
+  }
+}

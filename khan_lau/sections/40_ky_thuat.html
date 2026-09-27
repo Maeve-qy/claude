@@ -1,0 +1,109 @@
+<style>
+.tools{ display:grid; grid-template-columns:repeat(3,1fr); gap:2.2mm 3mm; }
+.tl{ display:flex; gap:2.2mm; align-items:center; background:#fff; border:1px solid var(--line); border-radius:11px; padding:1.3mm 2mm; }
+.tl .tla{ flex:none; width:21mm; background:var(--cream-100); border-radius:8px; }
+.tl .tla svg{ display:block; width:100%; height:auto; }
+.tl b{ font-size:11.2px; display:block; color:var(--ink); line-height:1.25; }
+.tl .chip{ font-size:8.8px; padding:0 6px; line-height:1.55; margin-top:.4mm; }
+.tl p{ font-size:9.7px; line-height:1.3; color:var(--ink-2); margin:.4mm 0 0; }
+.edges{ display:grid; grid-template-columns:repeat(4,1fr); gap:2.4mm; }
+.edge{ background:#fff; border:1px solid var(--line); border-radius:11px; padding:1.4mm; }
+.edge svg{ display:block; width:100%; height:auto; }
+.dtbl td{ font-size:10.3px; padding:1.2mm 2mm; }
+</style>
+<section class="page" data-group="prep" data-badge="Phần 3" data-title="Dụng cụ &amp; cài đặt máy may">
+  <div class="runhead">Khăn lau từ vải cũ · <b>Phần 3 · Dụng cụ &amp; kỹ thuật</b></div>
+  <header class="ph">
+    <div class="kicker"><span class="badge">Phần 3</span> Dụng cụ &amp; kỹ thuật</div>
+    <h1 class="title">Dụng cụ <em>&amp; cài đặt máy may</em></h1>
+    <p class="lead">Không cần máy vắt sổ hay máy công nghiệp. Máy may gia đình có mũi thẳng và zigzag, cộng với <b>bàn ủi</b> và <b>kẹp vải</b>, là đủ cho cả 6 mẫu.</p>
+  </header>
+  <div class="content">
+    {{blk:tools_grid}}
+    <h2>Cài đặt máy cho từng việc</h2>
+    {{blk:machine_table}}
+    <div class="cols">
+      <div class="note tip"><div class="nt">May thử trước</div><p>May thử trên mẩu vải <b>cùng loại, cùng số lớp</b>. Thấy chỉ dưới nổi lên mặt trên: giảm sức căng chỉ trên; ngược lại thì tăng.</p></div>
+      <div class="note warn"><div class="nt">Thay kim</div><p>Kim cùn gây bỏ mũi, xước vải. Thay kim sau khoảng 8 giờ may, hoặc khi may jeans nhiều lớp nghe tiếng “lộp bộp”.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="page" data-group="prep" data-badge="Phần 3" data-title="Đo, cắt &amp; may đường thẳng đều">
+  <div class="runhead">Khăn lau từ vải cũ · <b>Phần 3 · Dụng cụ &amp; kỹ thuật</b></div>
+  <header class="ph">
+    <div class="kicker"><span class="badge">Phần 3</span> Kỹ thuật cơ bản</div>
+    <h1 class="title">Đo, cắt <em>&amp; may đường thẳng đều</em></h1>
+    <p class="lead">Khăn đẹp hay xấu quyết định từ lúc cắt: miếng vải vuông góc, đúng cỡ, rồi may cách mép đều <b>{{sa}} cm</b>. Bốn kỹ thuật dưới đây dùng cho mọi mẫu trong sổ tay.</p>
+  </header>
+  <div class="content">
+    <div class="cols al-start">
+      <figure class="fig">{{fig:template_trace}}<figcaption><span class="figno">A</span><b>Cắt bằng rập bìa.</b> Làm 1 rập bìa cứng đúng cỡ cắt cho mỗi mẫu. Đặt rập theo canh sợi, vẽ quanh bằng phấn, cắt ngay trên nét phấn. Muốn cắt 2 lớp cùng lúc: chồng 2 lớp, kẹp 4 góc, cắt bằng kéo bén.</figcaption></figure>
+      <figure class="fig">{{fig:diag_check}}<figcaption><span class="figno">B</span><b>Kiểm tra vuông bằng đường chéo.</b> Đo 2 đường chéo: bằng nhau là vuông góc. Đường chéo tính bằng <b>d = √(ngang² + dọc²)</b>; bảng bên dưới đã tính sẵn cho mọi cỡ cắt.</figcaption></figure>
+    </div>
+    <div class="cols al-start">
+      <figure class="fig">{{fig:seam_guide}}<figcaption><span class="figno">C</span><b>Đường may đều {{sa}} cm.</b> Dán 1 dải băng keo giấy lên bàn máy, cách kim đúng 1 cm (dùng vạch số 1 trên tấm kim hoặc đo bằng thước). Khi may, mắt nhìn <b>mép vải chạm băng keo</b>, không nhìn kim.</figcaption></figure>
+      <figure class="fig">{{fig:pivot_corner}}<figcaption><span class="figno">D</span><b>Xoay góc đúng 1 cm.</b> Đánh dấu điểm cách 2 mép 1 cm bằng phấn. May tới điểm đó thì dừng với kim cắm xuống. <b>Lại mũi</b>: đầu và cuối mỗi đường may, may lùi 3–4 mũi rồi may tới.</figcaption></figure>
+    </div>
+    <div class="cols al-start">
+      <figure class="fig">{{fig:backtack}}</figure>
+      <figure class="fig">{{fig:pin_clip}}</figure>
+    </div>
+    <h2>Bảng đường chéo kiểm tra (cm)</h2>
+    {{blk:diag_table}}
+  </div>
+</section>
+
+<section class="page" data-group="prep" data-badge="Phần 3" data-title="May lộn, cắt góc, diễu &amp; chần">
+  <div class="runhead">Khăn lau từ vải cũ · <b>Phần 3 · Dụng cụ &amp; kỹ thuật</b></div>
+  <header class="ph">
+    <div class="kicker"><span class="badge">Phần 3</span> Kỹ thuật cơ bản</div>
+    <h1 class="title">Góc vuông, mép phẳng <em>khi may lộn</em></h1>
+    <p class="lead">May lộn là kỹ thuật chính của Mẫu 2, 4 và 6. Bốn chi tiết nhỏ dưới đây quyết định khăn có góc vuông, mép phẳng hay không.</p>
+  </header>
+  <div class="content">
+    <figure class="fig">{{fig:corner_clip}}<figcaption><span class="figno">E</span><b>Cắt góc</b> trước khi lộn: cắt bỏ tam giác phần chừa ở góc, <b>cách điểm xoay góc 2–3 mm</b>. Không cắt thì góc cộm tròn; cắt vào sát đường may thì góc bị thủng.</figcaption></figure>
+    <div class="cols al-start">
+      <figure class="fig">{{fig:grading}}<figcaption><span class="figno">F</span><b>Tỉa so le</b> khi ráp khăn bông với vải mỏng: bớt dày ở mép và góc.</figcaption></figure>
+      <figure class="fig">{{fig:push_corner}}<figcaption><span class="figno">G</span><b>Đẩy góc</b> sau khi lộn: đẩy nhẹ từ trong ra bằng que đầu tù.</figcaption></figure>
+    </div>
+    <div class="cols al-start">
+      <figure class="fig">{{fig:press_edge}}<figcaption><span class="figno">H</span><b>Ủi mép</b> trước khi diễu; gấp mép khe lộn vào trong đúng 1 cm, ủi, kẹp.</figcaption></figure>
+      <div class="card soft">
+        <h2>Diễu mép đều {{ts}} cm</h2>
+        <ul class="ok small">
+          <li>Dùng <b>mép chân vịt</b> làm cữ: mép khăn chạy dọc mép phải chân vịt (đa số chân vịt cách kim khoảng 0,5–0,7 cm — may thử để biết).</li>
+          <li>Bắt đầu ở giữa 1 cạnh; tới góc thì xoay góc như hình D.</li>
+          <li>Đường diễu đi qua khe lộn sẽ đóng kín khe — không cần khâu tay.</li>
+        </ul>
+      </div>
+    </div>
+    <h2>Các kiểu đường chần giữ lớp</h2>
+    <figure class="fig">{{fig:quilt_patterns}}<figcaption><span class="figno">I</span><b>Chần</b> giữ các lớp không xô lệch khi giặt, vắt: 2 đường chần cách nhau <b>không quá 10–12 cm</b>; may từ giữa khăn ra ngoài.</figcaption></figure>
+  </div>
+</section>
+
+<section class="page" data-group="prep" data-badge="Phần 3" data-title="Vắt sổ: khi nào cần, khi nào không">
+  <div class="runhead">Khăn lau từ vải cũ · <b>Phần 3 · Xử lý mép</b></div>
+  <header class="ph">
+    <div class="kicker"><span class="badge">Phần 3</span> Xử lý mép vải</div>
+    <h1 class="title">Vắt sổ: <em>khi nào cần, khi nào không?</em></h1>
+    <p class="lead">Vắt sổ chỉ là <b>một</b> trong nhiều cách giữ mép vải không tưa. Nguyên tắc: mép thô <b>đã được giấu kín</b> thì không cần vắt sổ; mép thô <b>còn hở</b> trên vải dệt thoi, khăn bông thì bắt buộc phải khóa lại.</p>
+  </header>
+  <div class="content">
+    <figure class="fig">{{fig:overlock_flow}}</figure>
+    <h2>8 cách xử lý mép — không cần máy vắt sổ vẫn làm được 7 cách</h2>
+    {{fig:edge_finishes}}
+    <table class="tbl dtbl terrahead">
+      <tr><th style="width:36mm">Mẫu</th><th>Mép vải được xử lý thế nào</th><th style="width:34mm">Vắt sổ?</th></tr>
+      <tr><td><b>1 · Giẻ áo thun</b></td><td>Để mép cắt (thun không tưa); gấu áo may sẵn giữ nguyên.</td><td>Không cần. Zigzag nếu muốn mép gọn.</td></tr>
+      <tr><td><b>2 · Khăn lau bàn</b></td><td>May lộn: mép thô nằm giữa 2 lớp, diễu {{ts}} cm kẹp chặt.</td><td><b>Không cần.</b></td></tr>
+      <tr><td><b>3 · Khăn bếp treo</b></td><td>Gấp mép đôi {{m3.g1}} + {{m3.g2}} cm: mép thô cuộn kín trong nếp gấp.</td><td><b>Không cần.</b></td></tr>
+      <tr><td><b>4 · Khăn ghép mảnh</b></td><td>Đường ghép các ô nằm kín giữa mặt ghép và lớp sau; mép ngoài may lộn.</td><td><b>Không cần.</b></td></tr>
+      <tr><td><b>5 · Khăn lau nhà</b></td><td>Zigzag giữ 3 lớp sát mép, rồi bo viền bọc kín.</td><td>Không cần (zigzag đã thay).</td></tr>
+      <tr><td><b>6 · Vỏ bàn lau</b></td><td>May lộn; túi là vải gấp đôi nên mép túi là nếp gấp, không có mép thô.</td><td><b>Không cần.</b></td></tr>
+      <tr><td><b>Giẻ 1 lớp cắt nhanh</b></td><td>Cotton, jeans, khăn bông cắt vuông, không gấp mép.</td><td style="color:var(--terra-700)"><b>Cần</b> vắt sổ hoặc zigzag quanh 4 cạnh.</td></tr>
+      <tr><td><b>Vải thưa, tưa rất mạnh</b></td><td>Lanh dệt thưa, khăn bông mỏng: dù may lộn vẫn nên zigzag mép từng miếng <b>trước khi ráp</b>, để phần chừa bên trong không tưa lan qua đường may sau nhiều lần giặt.</td><td style="color:var(--mustard-700)"><b>Nên</b> zigzag trước.</td></tr>
+    </table>
+  </div>
+</section>

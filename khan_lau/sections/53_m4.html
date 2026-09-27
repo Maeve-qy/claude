@@ -1,0 +1,84 @@
+<style>
+.steps2{ display:grid; grid-template-columns:1fr 1fr; gap:3mm; }
+.mat td{ font-size:10.6px; vertical-align:middle; }
+</style>
+<section class="page k-make-page" data-group="make" data-badge="Mẫu 4" data-title="Khăn ghép mảnh vải vụn">
+  <div class="runhead">Khăn lau từ vải cũ · <b>Mẫu 4 · Khăn ghép mảnh</b></div>
+  <header class="ph">
+    <div class="kicker k-make"><span class="badge">Mẫu 4</span> Kỹ thuật ghép mảnh</div>
+    <h1 class="title">Khăn ghép <em>mảnh vải vụn</em></h1>
+    <p class="lead">Dùng hết các mảnh 12 cm trong hộp vải thừa: ghép {{m4.count}} ô thành mặt khăn {{m4.top}}, rồi may lộn với lớp sau như Mẫu 2. Các đường ghép nằm kín giữa 2 lớp nên <b>không cần vắt sổ</b>.</p>
+  </header>
+  <div class="content">
+    {{blk:spec_m4}}
+    <div class="cols al-center">
+      <figure class="fig cream">{{fig:m4_hero}}</figure>
+      <div class="stack">
+        <h2>Vật liệu</h2>
+        <table class="tbl mat">
+          <tr><th>Phần</th><th>Vải gợi ý</th><th class="c">Cắt</th></tr>
+          <tr><td><b>Mặt ghép</b></td><td>Cotton, lanh, flannel — cùng độ dày</td><td class="c"><b>{{m4.count}} × {{m4.square}}</b></td></tr>
+          <tr><td><b>Lớp sau</b></td><td>Khăn bông, cotton, thun</td><td class="c"><b>1 × {{m4.back}}</b></td></tr>
+          <tr><td><b>Chỉ · kim</b></td><td colspan="2">Màu trung tính (be, xám nhạt) · 80/12</td></tr>
+        </table>
+        <div class="formula"><div class="f">Ô cắt = {{m4.fin.0}} ÷ {{m4.n}} + 2 × {{sa}} = {{m4.sq_cut}}</div><div class="ex">Muốn ô nhỏ hơn (4 × 4, 5 × 5): xem bảng chia ô ở Phần 4.</div></div>
+      </div>
+    </div>
+    <div class="cols al-start">
+      <figure class="fig">{{fig:m4_cut}}<figcaption><b>Sơ đồ cắt.</b> Mọi ô cắt bằng 1 rập bìa {{m4.square}} (đường chéo {{m4.diag_sq}} cm). Các ô phải cùng canh sợi: đặt rập thẳng theo sọc/caro của vải.</figcaption></figure>
+      <figure class="fig">{{fig:m4_layouts}}<figcaption><b>3 bố cục 9 ô.</b> Dùng 2 màu tương phản cho bàn cờ và chữ thập; quy tắc 60 – 30 – 10 cho 3 màu (Phần 2). Chụp ảnh đen trắng để kiểm tra độ đậm nhạt.</figcaption></figure>
+    </div>
+    <div class="note warn"><div class="nt">Chọn mảnh cùng độ dày</div><p>Ghép vải mỏng với vải dày (lanh với jeans) làm mặt khăn gồ ghề và đường ghép bị kéo lệch. Để các vải dày cho lớp sau hoặc cho Mẫu 5.</p></div>
+  </div>
+</section>
+
+<section class="page k-make-page" data-group="make" data-badge="Mẫu 4" data-title="Ghép 9 ô thành mặt khăn">
+  <div class="runhead">Khăn lau từ vải cũ · <b>Mẫu 4 · Khăn ghép mảnh</b></div>
+  <header class="ph">
+    <div class="kicker k-make"><span class="badge">Mẫu 4</span> Các bước may · 1–4</div>
+    <h1 class="title">Ghép 9 ô <em>thành mặt khăn</em></h1>
+  </header>
+  <div class="content">
+    <div class="steps2">
+      <div class="stepcard"><div class="sh"><span class="sn">1</span><h3>May từng hàng 3 ô</h3></div>{{fig:m4_rows}}
+        <p>Xếp 9 ô theo bố cục, chụp ảnh để nhớ thứ tự. Úp ô 1 lên ô 2 (mặt phải vào nhau), may cách mép <b>{{sa}} cm</b>; thêm ô 3. Mỗi đường ghép làm hàng ngắn đi 2 cm → hàng dài <b>{{m4.row_len}} cm</b>.</p></div>
+      <div class="stepcard"><div class="sh"><span class="sn">2</span><h3>Ủi đường ghép xen kẽ</h3></div>{{fig:m4_press}}
+        <p>Ủi phần chừa của hàng 1 và 3 về bên trái, hàng 2 về bên phải. Khi ráp các hàng, 2 đường ghép nằm ngược chiều sẽ <b>khóa vào nhau</b> — giao điểm các ô tự khớp.</p></div>
+      <div class="stepcard"><div class="sh"><span class="sn">3</span><h3>Ráp 3 hàng, khớp giao điểm</h3></div>{{fig:m4_join}}
+        <p>Úp hàng 1 lên hàng 2, đẩy 2 đường ghép sát vào nhau, ghim ngay tại giao điểm. May {{sa}} cm, rồi thêm hàng 3. Ủi 2 đường ráp dài về một phía.</p></div>
+      <div class="stepcard"><div class="sh"><span class="sn">4</span><h3>Đo kiểm mặt ghép</h3></div>{{fig:m4_check}}
+        <p>Mặt ghép phải được <b>{{m4.top}} cm</b>, đúng bằng lớp sau. Lệch dưới 0,5 cm: cắt lớp sau theo đúng cỡ mặt ghép. Lớn hơn: xén đều 4 cạnh. Nhỏ hơn 1 cm trở lên: đường may đã quá 1 cm — xem lại bước 1.</p></div>
+    </div>
+    <div class="cols al-start">
+      <div class="note tip"><div class="nt">Ủi sau mỗi đường ghép</div><p>Ủi ngay sau khi may mỗi đường, trước khi may đường tiếp theo. Ủi bằng cách <b>ấn</b> bàn ủi xuống, không miết qua lại — miết làm ô vuông bị kéo xéo.</p></div>
+      <div class="note info"><div class="nt">May dây chuyền</div><p>May liền các cặp ô 1+2 của cả 3 hàng không cắt chỉ, rồi mới thêm ô 3. Nhanh hơn và thứ tự ô không bị lẫn.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="page k-make-page" data-group="make" data-badge="Mẫu 4" data-title="May lộn, diễu &amp; chần lọt khe">
+  <div class="runhead">Khăn lau từ vải cũ · <b>Mẫu 4 · Khăn ghép mảnh</b></div>
+  <header class="ph">
+    <div class="kicker k-make"><span class="badge">Mẫu 4</span> Các bước may · 5–8</div>
+    <h1 class="title">May lộn, diễu <em>&amp; chần lọt khe</em></h1>
+  </header>
+  <div class="content">
+    <div class="steps2">
+      <div class="stepcard"><div class="sh"><span class="sn">5</span><h3>Úp mặt ghép lên lớp sau</h3></div>{{fig:m4_s5}}
+        <p>Lớp sau mặt phải lên; mặt ghép úp xuống (mặt phải vào nhau). Kẹp 4 góc và giữa mỗi cạnh.</p></div>
+      <div class="stepcard"><div class="sh"><span class="sn">6</span><h3>May quanh, chừa khe lộn {{m4.opening}} cm</h3></div>{{fig:m4_s6}}
+        <p>Như Mẫu 2 bước 3–6: may cách mép {{sa}} cm, chừa khe {{m4.opening}} cm ở giữa 1 ô cạnh, cắt 4 góc, lộn, đẩy góc, ủi, gấp mép khe vào 1 cm.</p></div>
+      <div class="stepcard"><div class="sh"><span class="sn">7</span><h3>Diễu quanh {{ts}} cm</h3></div>{{fig:m4_s7}}
+        <p>Diễu quanh mép cách {{ts}} cm, đóng khe lộn. Đường diễu cũng khóa luôn 2 đầu của các đường ghép ô.</p></div>
+      <div class="stepcard"><div class="sh"><span class="sn">8</span><h3>Chần lọt khe 4 đường ghép</h3></div>{{fig:m4_s8}}
+        <p>May đúng vào rãnh của 4 đường ghép (“lọt khe”): đường chần gần như vô hình ở mặt ghép mà vẫn giữ chặt 2 lớp.</p></div>
+    </div>
+    <div class="cols al-center">
+      <figure class="fig">{{fig:m4_strips}}</figure>
+      <div class="stack">
+        <div class="card soft"><h2>Biến tấu: ghép dải</h2><p class="small" style="margin:0">Dải vải dài, rộng từ <b>{{m4.strip_min}} cm</b> trở lên (hiện ra {{m4.strip_min_fin}} cm): may nối các dải theo cạnh dài, ĐM {{sa}} cm, tới khi tấm ghép rộng hơn {{m4.top.0}} cm. Ủi, rồi cắt lại thành {{m4.top}} bằng rập.</p></div>
+        <div class="note ovl"><div class="nt">Có cần vắt sổ không?</div><p><b>Không.</b> Đường ghép các ô nằm kín giữa mặt ghép và lớp sau; mép ngoài được may lộn và diễu.</p></div>
+      </div>
+    </div>
+  </div>
+</section>

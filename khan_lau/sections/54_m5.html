@@ -1,0 +1,77 @@
+<style>
+.steps2{ display:grid; grid-template-columns:1fr 1fr; gap:3mm; }
+.mat td{ font-size:10.6px; vertical-align:middle; }
+.mat td.c{ white-space:nowrap; }
+</style>
+<section class="page k-make-page" data-group="make" data-badge="Mẫu 5" data-title="Khăn lau nhà 3 lớp bo viền">
+  <div class="runhead">Khăn lau từ vải cũ · <b>Mẫu 5 · Khăn lau nhà</b></div>
+  <header class="ph">
+    <div class="kicker k-make"><span class="badge">Mẫu 5</span> Kỹ thuật bo viền</div>
+    <h1 class="title">Khăn lau nhà <em>3 lớp bo viền</em></h1>
+    <p class="lead">Mặt khăn bông thấm nước, mặt jeans để chà vết bẩn, lớp thun ở giữa cho khăn dày. 3 lớp dày nên không may lộn mà <b>bo viền</b>: một dải vải gấp đôi bọc kín mép — bền nhất khi vắt mạnh hằng ngày.</p>
+  </header>
+  <div class="content">
+    {{blk:spec_m5}}
+    <div class="cols al-center">
+      <figure class="fig cream">{{fig:m5_hero}}</figure>
+      <div class="stack">
+        <h2>Vật liệu</h2>
+        <table class="tbl mat">
+          <tr><th>Phần</th><th>Vải</th><th class="c">Cắt</th></tr>
+          <tr><td><b>A</b> · mặt thấm</td><td>Khăn tắm cũ</td><td class="c"><b>1 × {{m5.cut_A}}</b></td></tr>
+          <tr><td><b>C</b> · lớp ruột</td><td>Áo thun cotton</td><td class="c"><b>1 × {{m5.cut_C}}</b></td></tr>
+          <tr><td><b>B</b> · mặt chà</td><td>Jeans (hoặc 1 miếng kaki, canvas {{m5.cut_B}})</td><td class="c"><b>{{m5.jeans_n}} × {{m5.jeans_strip}}</b></td></tr>
+          <tr><td><b>Dải bo</b></td><td>Thun hoặc cotton, cắt ngang thân áo</td><td class="c"><b>2 × {{m5.bind_long}}<br>2 × {{m5.bind_short}}</b></td></tr>
+          <tr><td><b>Kim</b></td><td colspan="2">100/16 (jeans), mũi dài 3–3,5</td></tr>
+        </table>
+      </div>
+    </div>
+    <figure class="fig">{{fig:m5_cut}}<figcaption><b>Sơ đồ cắt.</b> Cả 3 lớp cắt đúng bằng thành phẩm {{m5.fin}} — với bo viền, mép khăn chính là mép vải cắt, dải bo bọc ra ngoài. Tổng dải bo {{m5.bind_total}} cm (chu vi {{m5.perimeter}} cm + phần xén và đuôi).</figcaption></figure>
+    <div class="formula"><div class="f">Rộng dải = 6 × b + 2 × t = 6 × {{m5.b}} + 2 × {{m5.t}} = {{m5.binding_w}} cm</div><div class="ex">b = bề rộng viền nhìn thấy mỗi mặt ({{m5.b}} cm = đúng đường may 1 cm); t = độ dày khăn 3 lớp đã chần (khoảng {{m5.t}} cm). Khăn dày hơn thì đo t bằng thước rồi tính lại.</div></div>
+  </div>
+</section>
+
+<section class="page k-make-page" data-group="make" data-badge="Mẫu 5" data-title="Ghép lớp, zigzag &amp; chần">
+  <div class="runhead">Khăn lau từ vải cũ · <b>Mẫu 5 · Khăn lau nhà</b></div>
+  <header class="ph">
+    <div class="kicker k-make"><span class="badge">Mẫu 5</span> Các bước may · 1–4</div>
+    <h1 class="title">Ghép lớp, zigzag <em>&amp; chần lưới</em></h1>
+  </header>
+  <div class="content">
+    <div class="steps2">
+      <div class="stepcard"><div class="sh"><span class="sn">1</span><h3>Nối 2 dải jeans thành lớp B</h3></div>{{fig:m5_join}}
+        <p>Úp 2 dải {{m5.jeans_strip}} mặt phải vào nhau, may cạnh dài cách mép {{sa}} cm → tấm rộng {{m5.fin.0}} cm. Ủi rẽ phần chừa ra 2 bên cho phẳng (phần chừa sẽ nằm kín bên trong).</p></div>
+      <div class="stepcard"><div class="sh"><span class="sn">2</span><h3>Xếp 3 lớp</h3></div>{{fig:m5_stack}}
+        <p>Dưới cùng: <b>B</b>, mặt phải úp xuống bàn. Giữa: <b>C</b>. Trên cùng: <b>A</b>, mặt phải lên. Vuốt phẳng từng lớp, cho 4 mép trùng nhau.</p></div>
+      <div class="stepcard"><div class="sh"><span class="sn">3</span><h3>Zigzag giữ lớp quanh mép</h3></div>{{fig:m5_zig}}
+        <p>Kẹp dày 4 cạnh. Zigzag (rộng 5, dài 2,5) quanh 4 cạnh, cách mép 0,5 cm: giữ 3 lớp không trượt và <b>khóa luôn mép khăn bông</b> không rụng xơ. Xén cho các lớp bằng nhau.</p></div>
+      <div class="stepcard"><div class="sh"><span class="sn">4</span><h3>Chần lưới {{m5.grid}} cm, từ giữa ra</h3></div>{{fig:m5_quilt}}
+        <p>Kẻ phấn {{m5.n_lines}} đường: dọc ở {{m5.grid_x.0}} và {{m5.grid_x.1}} cm, ngang ở {{m5.grid_y.0}}, {{m5.grid_y.1}}, {{m5.grid_y.2}} cm → {{m5.cells}} ô {{m5.grid}} × {{m5.grid}}. May theo thứ tự số: đường giữa trước, vuốt vải ra ngoài trước mỗi đường.</p></div>
+    </div>
+    <div class="note warn"><div class="nt">May qua nhiều lớp dày</div><p>Giảm tốc, dùng tay quay qua chỗ nối jeans. Nếu máy bỏ mũi: thay kim 100/16 mới, tăng mũi lên 3,5 mm, kê một miếng bìa gấp đôi dưới gót chân vịt khi bắt đầu đường may ở mép dày.</p></div>
+  </div>
+</section>
+
+<section class="page k-make-page" data-group="make" data-badge="Mẫu 5" data-title="Bo viền 4 cạnh">
+  <div class="runhead">Khăn lau từ vải cũ · <b>Mẫu 5 · Khăn lau nhà</b></div>
+  <header class="ph">
+    <div class="kicker k-make"><span class="badge">Mẫu 5</span> Các bước may · 5–8</div>
+    <h1 class="title">Bo viền <em>4 cạnh</em></h1>
+  </header>
+  <div class="content">
+    <div class="steps2">
+      <div class="stepcard"><div class="sh"><span class="sn">5</span><h3>Gấp đôi dải bo, ủi</h3></div>{{fig:m5_fold}}
+        <p>Gấp đôi 4 dải theo chiều dài, mặt trái vào trong, ủi phẳng → dải rộng {{m5.binding_half}} cm, 1 mép gấp và 1 mép thô 2 lớp.</p></div>
+      <div class="stepcard"><div class="sh"><span class="sn">6</span><h3>May dải vào 2 cạnh dài (mặt A)</h3></div>{{fig:m5_s6}}
+        <p>Đặt dải dài {{m5.bind_long.1}} cm lên mặt A, <b>mép thô dải trùng mép khăn</b>, dư 1 cm mỗi đầu. May cách mép <b>{{m5.b}} cm</b>, không kéo dải.</p></div>
+      <div class="stepcard"><div class="sh"><span class="sn">7</span><h3>Lật dải sang mặt B, may</h3></div>{{fig:m5_s7}}
+        <p>Lật dải ôm qua mép sang mặt B; mép gấp phủ qua đường may vừa rồi 1–2 mm, kẹp. Từ mặt B, may sát mép gấp 2 mm. Xén 2 đầu dải bằng mép khăn. Làm tương tự cạnh dài kia.</p></div>
+      <div class="stepcard"><div class="sh"><span class="sn">8</span><h3>2 cạnh ngắn: gấp đuôi bọc đầu</h3></div>{{fig:m5_short}}
+        <p>Dải ngắn {{m5.bind_short.1}} cm đặt dư <b>{{m5.tail}} cm</b> mỗi đầu. May như bước 6. Trước khi lật, gấp phần đuôi {{m5.tail}} cm vào trong bọc kín đầu mép; lật, kẹp, may như bước 7. Khâu tay vài mũi ở góc nếu còn hở.</p></div>
+    </div>
+    <div class="cols al-start">
+      <div class="note ovl"><div class="nt">Có cần vắt sổ không?</div><p><b>Không.</b> Bước 3 đã zigzag khóa mép khăn bông, và dải bo bọc kín toàn bộ mép. Dải bo cắt từ áo thun cũng không tưa.</p></div>
+      <div class="note tip"><div class="nt">Dùng &amp; giặt</div><p>Mặt khăn bông thấm nước đổ, mặt jeans chà vết bẩn bám. Vắt bằng cách cuộn khăn theo chiều dài rồi xoắn. Giặt riêng với khăn bếp, phơi nắng.</p></div>
+    </div>
+  </div>
+</section>
