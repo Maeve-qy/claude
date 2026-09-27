@@ -219,6 +219,8 @@ def render(names, dpi=90, force=False, quiet=False, browser=None, ctx=None):
             page.evaluate("Promise.all([document.fonts.load('800 12px Nunito'), document.fonts.load('700 12px Lora'), document.fonts.load('700 12px \"Be Vietnam Pro\"')]).then(() => document.fonts.ready).then(() => true)")
             page.wait_for_timeout(200)
             chk = page.evaluate(CHECK_JS)
+            full_h = page.evaluate('document.documentElement.scrollHeight')
+            page.set_viewport_size({'width': 794, 'height': int(full_h) + 10})  # elementsFromPoint cần mọi trang nằm trong viewport
             chk['halos'] = page.evaluate(HALO_JS)
             chk['expandedPatterns'] = page.evaluate(EXPAND_PATTERNS_JS)
             page.evaluate(BAND_JS)

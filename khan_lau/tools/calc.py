@@ -109,7 +109,7 @@ def derive(spec):
     m5 = P['m5']
     fin = m5['finished']
     b, t = m5['binding_b'], m5['thickness']
-    bw_raw = 6 * b + 2 * t
+    bw_raw = 6 * b + 2 * t + m5.get('binding_extra', 0)
     bw = ceil_half(bw_raw)
     tail = m5['binding_tail']
     long_len = fin[1] + 2 * sa           # dư 1 cm mỗi đầu, xén sau
@@ -122,26 +122,30 @@ def derive(spec):
                'tail': tail, 'bind_total': 2 * long_len + 2 * short_len, 'perimeter': 2 * (fin[0] + fin[1]),
                'jeans_strip': [jw if jw != int(jw) else int(jw), fin[1]], 'jeans_n': js,
                'grid': g, 'grid_x': [x for x in range(g, fin[0], g)], 'grid_y': [y for y in range(g, fin[1], g)],
-               'cells': (fin[0] // g) * (fin[1] // g), 'thin_example_w': ceil_half(6 * b + 2 * 0.2)}
+               'cells': (fin[0] // g) * (fin[1] // g), 'thin_example_w': ceil_half(6 * b + 2 * 0.2 + m5.get('binding_extra', 0)),
+               'extra': m5.get('binding_extra', 0), 'one_strip': 2 * (fin[0] + fin[1]) + 20}
     d['m5']['n_lines'] = len(d['m5']['grid_x']) + len(d['m5']['grid_y'])
 
     # M6 — vỏ bàn lau có 2 túi, tính theo số đo bàn lau
     m6 = P['m6']
 
     def mop(L, W, h):
-        Lp = L + m6['ease_len']
-        Wp = W + m6['ease_w'] + (m6['ease_w_thick'] if h > m6['thick_limit'] else 0)
+        # túi phải ôm được cả độ dày h của bàn lau; đường diễu 0,5 cm 2 bên ăn mất 1 cm -> cộng thêm 'ease'
+        Lp = ceil_half(L + h + m6['ease'])
+        Wp = ceil_half(W + h + m6['ease'])
+        Lp = int(Lp) if float(Lp).is_integer() else Lp
+        Wp = int(Wp) if float(Wp).is_integer() else Wp
         Pk = max(m6['pocket_min'], rhu(L * m6['pocket_ratio']))
         return {'L': L, 'W': W, 'h': h, 'Lp': Lp, 'Wp': Wp, 'P': Pk, 'fin': [Lp, Wp],
                 'cut_main': [Lp + 2 * sa, Wp + 2 * sa], 'cut_pocket': [Wp + 2 * sa, 2 * Pk + 2 * sa],
                 'pocket_folded': [Wp + 2 * sa, Pk + sa], 'free_len': Lp - 2 * Pk,
-                'free_margin': (Lp - 2 * Pk - m6['opening']) / 2}
+                'free_margin': (Lp - 2 * Pk - m6['opening']) / 2,
+                'perim_pocket': 2 * (Wp - 2 * ts), 'perim_plate': 2 * (W + h)}
 
     ex = mop(*m6['plate'], m6['plate_thick'])
     d['m6'] = dict(ex)
     d['m6'].update({'opening': m6['opening'], 'examples': [mop(*e) for e in m6['plate_examples']],
-                    'ease_len': m6['ease_len'], 'ease_w': m6['ease_w'], 'ease_w_thick': m6['ease_w_thick'],
-                    'thick_limit': m6['thick_limit'], 'pocket_min': m6['pocket_min'], 'pocket_pct': int(m6['pocket_ratio'] * 100)})
+                    'ease': m6['ease'], 'pocket_min': m6['pocket_min'], 'pocket_pct': int(m6['pocket_ratio'] * 100)})
 
     cut32 = d['m2']['cut'][0]
     d['shrink'] = {'pct': 5, 'cut': cut32, 'after': round(cut32 * (1 - 0.05), 1), 'loss': round(cut32 * 0.05, 1)}
@@ -158,7 +162,11 @@ def derive(spec):
         row = {'garment': g_['id'], 'name': g_['name'], 'fabric': g_['fabric'], 'cells': []}
         for pid, label, size, ok in targets:
             total = sum(pc['qty'] * pack(pc['w'], pc['h'], size[0], size[1]) for pc in g_['pieces'])
-            row['cells'].append({'pid': pid, 'label': label, 'size': size, 'n': total, 'suitable': g_['fabric'] in ok})
+            cell = {'pid': pid, 'label': label, 'size': size, 'n': total, 'suitable': g_['fabric'] in ok}
+            if pid == 'm5' and g_['fabric'] == 'jeans':  # mặt chà B ghép từ dải jeans
+                strips = sum(pc['qty'] * pack(pc['w'], pc['h'], *d['m5']['jeans_strip']) for pc in g_['pieces'])
+                cell.update({'n': strips // d['m5']['jeans_n'], 'suitable': True, 'note': 'jeans'})
+            row['cells'].append(cell)
         yields.append(row)
     d['yields'] = yields
     # Tổ hợp thực tế cho câu chữ: 1 áo sơ mi = 1 mặt khăn lau bàn (thân sau) + các ô ghép còn lại
@@ -168,6 +176,10 @@ def derive(spec):
     o_back = sum(1 for it in lay['somi_back']['items'] if it['ref'] == 'm4.square')
     o_rest = sum(pc['qty'] * pack(pc['w'], pc['h'], *sq) for k, pc in somi.items() if k != 'than_sau')
     ytab = {r['garment']: {c['pid']: c['n'] for c in r['cells']} for r in yields}
+    thun = next(g_ for g_ in spec['garments'] if g_['id'] == 'aothun')['pieces'][0]
+    strips_per_panel = int((thun['h'] - d['m1']['cut'][1]) // d['m5']['binding_w'])
+    d['combo_thun'] = {'strips_panel': strips_per_panel, 'strips_total': 2 * strips_per_panel, 'strip_len': thun['w'],
+                       'binding_ok': 2 * strips_per_panel >= 4 and thun['w'] >= d['m5']['bind_long'][1]}
     d['combo'] = {'somi_o': o_back + o_rest, 'somi_o_back': o_back, 'somi_khan_ghep': (o_back + o_rest) // d['m4']['count'],
                   'khantam_m5': ytab['khantam']['m5'], 'somi_o_rest': o_rest, 'thun_m1': ytab['aothun']['m1'], 'somi_o_all': ytab['somi']['m4']}
     d['yield_targets'] = [{'pid': p, 'label': l, 'size': s} for p, l, s, _ in targets]

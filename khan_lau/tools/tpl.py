@@ -23,6 +23,8 @@ class Ctx:
         self.spec = json.loads((ROOT / 'data' / 'spec.json').read_text(encoding='utf-8'))
         import calc
         self.d = calc.derive(self.spec)
+        pm = ROOT / 'build' / 'pagemap.json'
+        self.pagemap = json.loads(pm.read_text()) if pm.exists() else {}
 
     def get(self, path):
         cur = self.d
@@ -54,6 +56,8 @@ def fill(src, ctx, figs=None, blocks=None):
         try:
             if key.startswith('fig:'):
                 return getattr(figs, key[4:])(ctx)
+            if key.startswith('pg:'):
+                return str(ctx.pagemap[key[3:]])
             if key.startswith('icon:'):
                 return art.icon(key[5:])
             if key.startswith('blk:'):
@@ -62,5 +66,10 @@ def fill(src, ctx, figs=None, blocks=None):
         except (KeyError, AttributeError, IndexError, ValueError) as e:
             missing.append(f'{key} ({type(e).__name__}: {e})')
             return f'⟦{key}⟧'
-    out = PH.sub(rep, src)
+    out = src
+    for _ in range(3):  # khối/hình sinh ra có thể chứa {{...}} lồng
+        new = PH.sub(rep, out)
+        if new == out:
+            break
+        out = new
     return out, missing

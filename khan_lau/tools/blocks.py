@@ -84,14 +84,14 @@ TOOLS = [
     ('kep', 'Kẹp vải & ghim', 'Kẹp tốt hơn ghim cho khăn bông, jeans, nhiều lớp.', 'Bắt buộc'),
     ('maymay', 'Máy may gia đình', 'Chỉ cần mũi thẳng và zigzag.', 'Bắt buộc'),
     ('kim', 'Kim máy các cỡ', '80/12 vải mỏng · 90/14 khăn bông · 100/16 jeans.', 'Bắt buộc'),
-    ('chi', 'Chỉ polyester 40/2', 'Bền, chịu giặt nóng. Chọn màu theo trang Phối màu.', 'Bắt buộc'),
+    ('chi', 'Chỉ polyester 40/2', 'Bền, chịu giặt nóng. Chọn màu chỉ: trang {{pg:30_phoi_mau.2}}.', 'Bắt buộc'),
     ('banui', 'Bàn ủi + bình xịt', 'Ủi phẳng, ủi mép — quyết định khăn đẹp hay không.', 'Bắt buộc'),
     ('bia', 'Bìa cứng làm rập', 'Rập đúng cỡ cắt: vẽ nhanh, miếng nào cũng bằng nhau.', 'Nên có'),
     ('que', 'Que đẩy góc', 'Đũa tre đầu tù hoặc dụng cụ đẩy góc bằng nhựa.', 'Nên có'),
     ('daoxoay', 'Dao cắt xoay + thảm cắt', 'Cắt nhanh, thẳng, nhiều lớp cùng lúc.', 'Tùy chọn'),
     ('keobam', 'Kéo bấm chỉ', 'Cắt chỉ thừa sát mặt vải.', 'Nên có'),
     ('keoraxang', 'Kéo răng cưa', 'Cắt mép giảm tưa cho vải ít tưa.', 'Tùy chọn'),
-    ('kimtay', 'Kim khâu tay + đê', 'Khâu kín khe lộn, khâu góc bo viền.', 'Nên có'),
+    ('kimtay', 'Kim khâu tay + đê', 'Khâu góc bo viền, góc vát; khâu khe lộn khi không diễu.', 'Nên có'),
 ]
 
 
@@ -142,9 +142,10 @@ def yield_table(ctx):
     head = ''.join(f'<th>M{t["pid"][1]} · {escape(t["label"])}<br><span style="font-weight:400;opacity:.85">{dims(*t["size"])}</span></th>' for t in tg)
     rows = ''
     for r in ctx.d['yields']:
-        cells = ''.join(f'<td class="y">{c["n"]}</td>' if c['suitable'] else '<td class="na">–</td>' for c in r['cells'])
+        cells = ''.join((f'<td class="y">{c["n"]}*</td>' if c.get('note') else f'<td class="y">{c["n"]}</td>') if c['suitable'] else '<td class="na">–</td>' for c in r['cells'])
         rows += f'<tr><td><b>{escape(r["name"])}</b></td>{cells}</tr>'
-    return f'<table class="tbl ytbl" style="font-size:10.4px"><tr><th>Món đồ</th>{head}</tr>{rows}</table>'
+    return (f'<table class="tbl ytbl" style="font-size:10.4px"><tr><th>Món đồ</th>{head}</tr>{rows}</table>'
+            f'<p class="tiny muted" style="margin:1mm 0 0">* Jeans: số mặt chà B, mỗi mặt ghép từ {ctx.d["m5"]["jeans_n"]} dải {dims(*ctx.d["m5"]["jeans_strip"])}.</p>')
 
 
 def _spec_bar(ctx, k, cut_txt):

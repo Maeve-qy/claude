@@ -20,13 +20,14 @@
       <div class="card">
         <h2>Tính kích thước (ví dụ {{m6.L}} × {{m6.W}})</h2>
         <div class="calc">
-          <span>Dài vỏ</span><span class="e">L + {{m6.ease_len}}</span><span class="r">{{m6.Lp}}</span>
-          <span>Rộng vỏ</span><span class="e">W + {{m6.ease_w}} (dày &gt; {{m6.thick_limit}} cm: + 1)</span><span class="r">{{m6.Wp}}</span>
+          <span>Dài vỏ</span><span class="e">L + h + {{m6.ease}}</span><span class="r">{{m6.Lp}}</span>
+          <span>Rộng vỏ</span><span class="e">W + h + {{m6.ease}}</span><span class="r">{{m6.Wp}}</span>
           <span>Sâu túi P</span><span class="e">L ÷ 4, tối thiểu {{m6.pocket_min}}</span><span class="r">{{m6.P}}</span>
           <span>Cắt A, B</span><span class="e">(dài + 2) × (rộng + 2)</span><span class="r">{{m6.cut_main}}</span>
           <span>Cắt 2 túi</span><span class="e">(rộng + 2) × (2P + 2)</span><span class="r">{{m6.cut_pocket}}</span>
           <span>Chỗ khe lộn</span><span class="e">dài vỏ − 2P ≥ khe + 4</span><span class="r">{{m6.free_len}}</span>
         </div>
+        <p class="tiny" style="margin:1.6mm 0 0">Cộng <b>h</b> vì túi phải ôm cả bề dày bàn lau; <b>{{m6.ease}} cm</b> = 1 cm cho 2 đường diễu 0,5 cm + 0,5 cm cho bề dày vải. Làm tròn lên 0,5 cm.</p>
       </div>
     </div>
     <figure class="fig">{{fig:m6_pieces}}<figcaption><b>Sơ đồ cắt</b> cho bàn lau {{m6.L}} × {{m6.W}}. A là mặt chạm sàn (khăn bông hoặc microfiber cũ); B và 2 túi là vải dày (jeans: 1 mảnh ống quần đủ cho B + 1 túi).</figcaption></figure>
@@ -50,8 +51,9 @@
       <div class="stepcard"><div class="sh"><span class="sn">3</span><h3>Úp lớp A, may quanh chừa khe</h3></div>{{fig:m6_s4}}
         <p>Úp A lên (mặt phải A xuống, chạm túi và B). Kẹp dày. Chừa khe <b>{{m6.opening}} cm</b> ở giữa 1 cạnh dài — vùng không có túi. May quanh cách mép {{sa}} cm.</p></div>
       <div class="stepcard"><div class="sh"><span class="sn">4</span><h3>Cắt góc, lộn</h3></div>{{fig:m6_s5}}
-        <p>Cắt xéo 4 góc (góc có túi dày 5 lớp — cắt gần hơn, cách 2 mm). Tỉa phần chừa khăn bông. Lộn qua khe: 2 túi sẽ nằm ở mặt lưng B.</p></div>
+        <p>Cắt xéo 4 góc (góc có túi dày 4 lớp — cắt gần hơn, cách 2 mm). Tỉa so le phần chừa (khăn bông và túi ngắn hơn). Lộn qua khe: 2 túi sẽ nằm ở mặt lưng B. Hai đầu vỏ dày: kim 100/16, mũi 3–3,5 mm, quay tay chậm.</p></div>
     </div>
+    <figure class="fig">{{fig:m6_xsec}}<figcaption><b>Vì sao rộng vỏ = W + h + {{m6.ease}}?</b> Mặt cắt ngang một đầu vỏ khi đã lồng bàn lau: túi và mặt lau phải ôm quanh cả bề rộng lẫn bề dày bàn lau.</figcaption></figure>
   </div>
 </section>
 
@@ -66,7 +68,7 @@
       <div class="stepcard"><div class="sh"><span class="sn">5</span><h3>Ủi, diễu quanh {{ts}} cm</h3></div>{{fig:m6_s6}}
         <p>Đẩy góc, ủi (khăn bông: ủi hơi nước nhẹ). Gấp mép khe vào 1 cm, diễu quanh cách mép {{ts}} cm — đóng khe và giữ chặt 2 cạnh túi.</p></div>
       <div class="stepcard"><div class="sh"><span class="sn">6</span><h3>Lắp vào bàn lau</h3></div>{{fig:m6_s8}}
-        <p>Gập bàn lau ở khớp giữa, nhét 2 đầu vào 2 túi, duỗi thẳng. Bàn lau cứng không gập được: nhét 1 đầu trước, uốn vải để lồng đầu kia — nếu quá chật, may lại với dài vỏ = L + 3.</p></div>
+        <p>Gập bàn lau ở khớp giữa, nhét 2 đầu vào 2 túi, duỗi thẳng. Bàn lau cứng không gập được: nhét 1 đầu trước, uốn vải để lồng đầu kia; loại này nên cộng thêm 1 cm vào dài vỏ.</p></div>
     </div>
     <div class="note ovl"><div class="nt">Có cần vắt sổ không? Bàn lau dán gai dính thì sao?</div><p><b>Không cần vắt sổ</b>: mọi mép thô nằm kín sau khi lộn, miệng túi là nếp gấp. Bàn lau loại <b>dán gai dính</b> (không có khớp gập): bỏ 2 túi, may 1 tấm 2 lớp như Mẫu 2, cỡ thành phẩm = (L + 1) × (W + 1), mặt lưng là khăn bông hoặc microfiber để gai dính bám được.</p></div>
     <div class="cols al-start">
@@ -81,7 +83,7 @@
       <div class="card soft">
         <h2>Nếu vỏ quá lỏng hoặc quá chật</h2>
         <ul class="ok small">
-          <li><b>Lỏng, trượt khi lau:</b> may thêm 1 đường ngang ở mỗi đầu, cách miệng túi 1 cm vào trong, để thu ngắn túi.</li>
+          <li><b>Lỏng, trượt khi lau:</b> may thêm 1 đường ngang ở mỗi đầu, cách đường diễu đầu vỏ 0,5 cm về phía giữa (xuyên túi và thân): vỏ ngắn lại khoảng 1 cm. Vẫn lỏng thì may thêm 1 đường nữa.</li>
           <li><b>Chật, khó lắp:</b> tháo diễu 1 đầu, nới túi; lần sau cộng thêm 1 cm vào dài vỏ.</li>
           <li>Đo lại: bàn lau có đệm mút thì đo cả đệm.</li>
         </ul>

@@ -70,7 +70,7 @@ def prod_m6(ctx): return _prod(ctx, 'm6')
 
 LEGEND = [
     ('cut', 'Đường cắt', 'Mép vải; cắt đúng theo nét này'),
-    ('seam', 'Đường may ráp', 'Cách mép 1 cm (đường may chừa)'),
+    ('seam', 'Đường may ráp', 'Cách mép 1 cm (phần chừa 1 cm)'),
     ('top', 'Đường diễu / chần', 'May ở mặt phải, thấy được'),
     ('fold', 'Nếp gấp', 'Gấp vải theo nét này, không cắt'),
     ('mark', 'Nét phấn đánh dấu', 'Vẽ bằng phấn / bút bay màu'),
@@ -210,10 +210,10 @@ def pieces_shirt(ctx):
         xx = 10 + i * (sl['h'] + 8) * s_
         m3 = CM(xx, y3, s_)
         # tay mở phẳng: hình thang nằm ngang
-        tr = [('M', (0, 0)), ('L', (sl['h'] + 6, 3)), ('L', (sl['h'] + 6, sl['w'] - 3)), ('L', (0, sl['w'] + 4)), ('Z',)]
+        tr = [('M', (0, -3)), ('L', (sl['h'] + 4, 0)), ('L', (sl['h'] + 4, sl['w'])), ('L', (0, sl['w'] + 3)), ('Z',)]
         b += garment_shape(m3.d(tr), 'gingham-sky')
-        b += zone(m3, 2, 1.5, sl['h'], sl['w'] - 2 if sl['w'] > 22 else sl['w'], None)
-        cx, cy = m3.P(2 + sl['h'] / 2, 1.5 + (sl['w'] - 2) / 2)
+        b += zone(m3, 1.5, 0.3, sl['h'], sl['w'] - 0.6, None)
+        cx, cy = m3.P(1.5 + sl['h'] / 2, sl['w'] / 2)
         b += txt(cx, cy - 3, 'Tay áo', 't-lbl t-mid t-bold') + txt(cx, cy + 11, dims(sl['w'], sl['h']), 't-dim t-mid')
     return svg(W, H, b)
 
@@ -241,17 +241,17 @@ def layout_svg(ctx, lid, s_=3.0, W=None, H=None, show_title=False):
         b += rect(x + .8, y + .8, w - 1.6, h - 1.6, extra=f'fill="none" stroke="{col}" stroke-width="1.6"')
         cx, cy = x + w / 2, y + h / 2
         code = 'M' + it['ref'][1]
-        dd = dims(it['w'], it['h'])
+        dd = dims(max(it['w'], it['h']), min(it['w'], it['h'])) if it['ref'].startswith('m6') else dims(it['w'], it['h'])
         tw = len(dd) * 6.2
         if h >= 30 and w >= max(tw, 26):
-            b += txt(cx, cy - 2, code, 't-lbl t-mid t-bold', extra=f'style="fill:{col}"')
+            b += txt(cx, cy - 2, code, 't-lbl t-mid t-bold')
             b += txt(cx, cy + 11, dd, 't-dim t-mid')
         elif w >= tw + 22 and h >= 14:
             b += txt(cx, cy + 4, code + '  ' + dd, 't-dim t-mid')
         elif h >= tw + 22 and w >= 14:
             b += f'<text x="{f(cx + 4)}" y="{f(cy)}" class="t-dim t-mid" transform="rotate(-90 {f(cx + 4)} {f(cy)})">{code}  {dd}</text>'
-        elif w >= 16 and h >= 16:
-            b += txt(cx, cy + 4, code, 't-lbl t-mid t-bold t-sm', extra=f'style="fill:{col}"')
+        elif w >= 26 and h >= 16:
+            b += txt(cx, cy + 4, code, 't-lbl t-mid t-bold t-sm')
     return svg(W, H, b)
 
 
@@ -374,25 +374,25 @@ def garment_tshirt(ctx):
 
 
 def garment_jeans(ctx):
-    W, H = 200, 300
+    W, H = 200, 304
     m = CM(100 - 20 * 2.55, 14, 2.55)
     b = jeans_front(m)
     for x0 in (-1.5, 20.5):
         b += zone(m, x0, 31, 19 if x0 < 0 else 19, 70)
-    cx, cy = m.P(8, 66)
-    b += f'<text x="{f(cx)}" y="{f(cy)}" class="t-lbl t-mid t-bold t-sm" transform="rotate(-90 {f(cx)} {f(cy)})">Ống trước 20 × 70</text>'
-    cx, cy = m.P(31, 66)
-    b += f'<text x="{f(cx)}" y="{f(cy)}" class="t-lbl t-mid t-bold t-sm" transform="rotate(-90 {f(cx)} {f(cy)})">+ 2 ống sau ở mặt kia</text>'
+    for xx in (8, 31):
+        cx, cy = m.P(xx, 66)
+        b += f'<text x="{f(cx)}" y="{f(cy)}" class="t-lbl t-mid t-bold t-sm" transform="rotate(-90 {f(cx)} {f(cy)})">Ống trước 20 × 70</text>'
+    b += txt(100, 296, '(2 ống sau ở mặt kia)', 't-lbl t-mid t-sm')
     return svg(W, H, b)
 
 
 def garment_towel(ctx):
-    W, H = 190, 330
-    m = CM(95 - 35 * 2.15, 14, 2.15)
+    W, H = 190, 328
+    m = CM(95 - 35 * 2.1, 24, 2.1)
     b = bath_towel(m)
     b += zone(m, 2, 11, 66, 118, 'Phần dùng được', '66 × 125')
-    cx, cy = m.P(35, 7)
-    b += txt(cx, cy + 3.5, 'viền dệt: bỏ', 't-lbl t-mid t-bold', extra='style="font-size:10.6px"')
+    cx, cy = m.P(35, -2)
+    b += txt(cx, cy, 'viền dệt 2 đầu: bỏ', 't-lbl t-mid t-bold', extra='style="font-size:12px"')
     return svg(W, H, b)
 
 
@@ -509,15 +509,15 @@ def square_up_scrap(ctx):
     b += poly([(x + 3, y + 4) for x, y in shape], fill='#23313A', extra='opacity=".12"')
     b += poly(shape, fill=fab('floral-cream'))
     b += poly(shape, cls='s-edge')
-    rx0, ry0, rw, rh = 36, 34, 148, 92
+    rx0, ry0, rw, rh = 48, 30, 88, 88
     b += rect(rx0, ry0, rw, rh, extra='fill="#fff" opacity=".35"')
     for i, (x1, y1, x2, y2) in enumerate([(rx0, ry0 - 16, rx0, ry0 + rh + 14), (rx0 - 14, ry0 + rh, rx0 + rw + 16, ry0 + rh),
                                           (rx0 + rw, ry0 + rh + 14, rx0 + rw, ry0 - 16), (rx0 + rw + 14, ry0, rx0 - 16, ry0)], 1):
         b += line(x1, y1, x2, y2, extra='stroke="#C4592F" stroke-width="1.8" stroke-dasharray="7 4"')
     for i, (x, y) in enumerate([(rx0 - 10, ry0 + 20), (rx0 + 30, ry0 + rh + 10), (rx0 + rw + 10, ry0 + rh - 20), (rx0 + rw - 30, ry0 - 10)], 1):
         b += badge(x, y, i, r=8)
-    b += line(rx0 + rw / 2 + 30, ry0 + 12, rx0 + rw / 2 + 30, ry0 + rh - 12, cls='s-grain')
-    b += txt(rx0 + rw / 2, ry0 + rh / 2 + 4, 'miếng vuông', 't-lbl t-mid t-bold')
+    b += line(rx0 + rw - 14, ry0 + 12, rx0 + rw - 14, ry0 + rh - 12, cls='s-grain')
+    b += txt(rx0 + rw / 2 - 6, ry0 + rh / 2 + 4, 'miếng vuông', 't-lbl t-mid t-bold')
     # ê-ke
     b += poly([(236, 40), (236, 128), (318, 128)], fill='#F2D78E', extra='opacity=".9"') + poly([(250, 70), (250, 114), (294, 114)], fill='#FFFCF6')
     b += poly([(236, 40), (236, 128), (318, 128)], extra='fill="none" stroke="#9C7212" stroke-width="1.2"')
@@ -653,10 +653,12 @@ def rule_603010(ctx):
         r, c = divmod(k, 3)
         _, _, col, ov = shares[ci]
         b += rect(c * cw, 10 + r * cw, cw + .3, cw + .3, fill=col) + rect(c * cw, 10 + r * cw, cw + .3, cw + .3, fill=fab(ov))
+    for k in (1, 2):
+        b += line(k * cw, 10, k * cw, 10 + size, extra='stroke="#fff" stroke-width="1.4"') + line(0, 10 + k * cw, size, 10 + k * cw, extra='stroke="#fff" stroke-width="1.4"')
     b += rect(0, 10, size, size, extra='fill="none" stroke="#23313A" stroke-opacity=".3"')
-    x = 118
+    x = 112
     for i, (nm, p, col, ov) in enumerate(shares):
-        wbar = 170 * p
+        wbar = 80 * p
         y = 18 + i * 32
         b += rect(x, y, wbar, 18, fill=col, rx=3) + rect(x, y, wbar, 18, fill=fab(ov), rx=3)
         b += txt(x + wbar + 6, y + 13, f'{int(p * 100)}% màu {nm} = {cnt[i]} ô', 't-lbl t-sm t-bold')
@@ -794,48 +796,43 @@ def diag_check(ctx):
 
 
 def seam_guide(ctx):
-    W, H = 300, 170
-    b = rect(0, 0, 300, 170, fill='#DDE2E5', rx=10)
-    b += rect(0, 0, 300, 170, rx=10, extra='fill="none" stroke="#8A9499"')
-    # tấm kim + vạch
-    b += rect(120, 20, 150, 130, fill='#C7CED2', rx=6, extra='stroke="#8A9499"')
+    W, H = 300, 172
+    b = rect(0, 0, 300, 172, fill='#DDE2E5', rx=10)
+    b += rect(0, 0, 300, 172, rx=10, extra='fill="none" stroke="#8A9499"')
+    b += rect(120, 12, 150, 150, fill='#C7CED2', rx=6, extra='stroke="#8A9499"')
     for k, lab in enumerate(['0,5', '1', '1,5']):
         x = 150 + (k + 1) * 19.2
-        b += line(x, 26, x, 144, extra='stroke="#6F7F88" stroke-width="1.2"')
-        b += txt(x, 158, lab, 't-lbl t-mid t-sm t-bold')
-    # răng cưa
-    for k in range(3):
-        b += rect(128 + k * 10, 56, 5, 46, fill='#9AA5AB', rx=2)
-    # chân vịt + kim
-    b += rect(122, 50, 56, 58, fill='#EEF1F3', rx=8, extra='stroke="#6F7F88" stroke-width="1.2" opacity=".95"')
-    b += '<circle cx="150" cy="79" r="3.2" fill="#23313A"/>'
-    b += txt(150, 42, 'kim', 't-lbl t-mid t-sm t-bold')
-    # băng keo giấy ở vạch 1 cm
-    b += rect(188.4, 24, 16, 122, fill='#F2D78E', extra='opacity=".85"')
-    # vải
-    b += rect(8, 60, 180.4, 70, fill=fab('floral-cream'))
-    b += rect(8, 60, 180.4, 70, cls='s-edge')
-    b += line(12, 79, 150, 79, cls='s-seam')
-    b += dim_h(150, 188.4, 118, '1 cm', dy=4)
-    b += txt(242, 94, 'băng keo', 't-lbl t-mid t-sm t-bold')
-    b += txt(242, 107, 'cách kim 1 cm', 't-lbl t-mid t-sm')
-    b += txt(60, 146, 'mép vải chạm băng keo', 't-lbl t-mid t-sm t-bold')
+        b += line(x, 18, x, 150, extra='stroke="#6F7F88" stroke-width="1.2"')
+        b += txt(x, 168, lab, 't-lbl t-mid t-sm t-bold')
+    b += rect(188.4, 14, 16, 146, fill='#F2D78E', extra='opacity=".9"')
+    # vải chạy từ trước ra sau (dọc), mép phải chạm băng keo
+    b += rect(14, 8, 174.4, 160, fill=fab('floral-cream'))
+    b += rect(14, 8, 174.4, 160, cls='s-edge')
+    b += line(150, 12, 150, 164, cls='s-seam')
+    b += rect(122, 56, 56, 58, fill='#EEF1F3', rx=8, extra='stroke="#6F7F88" stroke-width="1.2" opacity=".95"')
+    b += '<circle cx="150" cy="85" r="3.2" fill="#23313A"/>'
+    b += txt(150, 50, 'kim', 't-lbl t-mid t-sm t-bold')
+    b += dim_h(150, 188.4, 134, '1 cm', dy=-4)
+    b += txt(246, 86, 'băng keo', 't-lbl t-mid t-sm t-bold') + txt(246, 99, 'cách kim 1 cm', 't-lbl t-mid t-sm')
+    b += path('M60 150 V120', cls='s-flow') + txt(66, 158, 'vải chạy vào máy', 't-lbl t-sm t-bold')
+    b += txt(60, 40, 'mép vải', 't-lbl t-mid t-sm t-bold') + txt(60, 53, 'chạm băng keo →', 't-lbl t-mid t-sm')
     return svg(W, H, b)
 
 
 def pivot_corner(ctx):
     W, H = 300, 170
-    b = piece(20, 40, 180, 120, 'dots-terra', side='wrong')
-    b += txt(60, 150, 'mặt trái', 't-lbl t-sm t-muted')
-    sx, sy = 200 - 16, 40 + 16
-    b += line(24, sy, sx, sy, cls='s-seam') + line(sx, sy, sx, 156, extra='class="s-seam" opacity=".35"')
+    b = piece(14, 44, 170, 116, 'dots-terra', side='wrong')
+    b += txt(20, 154, 'mặt trái', 't-lbl t-sm t-bold')
+    sx, sy = 184 - 16, 44 + 16
+    b += line(18, sy, sx, sy, cls='s-seam') + line(sx, sy, sx, 160, extra='class="s-seam" opacity=".35"')
     b += f'<circle cx="{sx}" cy="{sy}" r="5" fill="none" stroke="#23313A" stroke-width="1.6"/><circle cx="{sx}" cy="{sy}" r="1.8" fill="#23313A"/>'
-    b += dim_h(sx, 200, 26, '1 cm') + line(sx, 30, sx, sy - 6, cls='s-ext') + line(200, 30, 200, 40, cls='s-ext')
-    b += dim_v(214, 40, sy, '1 cm', side='right') + line(202, sy, 212, sy, cls='s-ext')
-    b += hand_arrow_turn(sx, sy, 30, 200, 290, cls='s-move')
-    b += txt(sx - 40, sy + 58, 'xoay 90°', 't-lbl t-sm t-bold t-terra t-end')
-    lines_ = ['1. Dừng máy, kim', 'cắm xuống vải', '2. Nâng chân vịt', '3. Xoay vải 90°', '4. Hạ chân vịt,', 'may tiếp']
-    b += txt_lines(232, 70, lines_, 't-lbl t-sm', lh=14)
+    b += line(sx, 20, sx, sy - 6, cls='s-ext') + line(184, 20, 184, 44, cls='s-ext')
+    b += dim_h(sx, 184, 24, '1 cm')
+    b += line(186, sy, 200, sy, cls='s-ext') + dim_v(196, 44, sy, '1 cm', side='right')
+    b += hand_arrow_turn(sx - 26, sy + 30, 22, 200, 320, cls='s-move')
+    b += txt(sx - 52, sy + 60, 'xoay 90°', 't-lbl t-sm t-bold t-terra t-end')
+    lines_ = ['1. Dừng máy,', 'kim cắm xuống', '2. Nâng chân vịt', '3. Xoay vải 90°', '4. Hạ chân vịt,', 'may tiếp']
+    b += txt_lines(214, 92, lines_, 't-lbl t-sm', lh=14)
     return svg(W, H, b)
 
 
@@ -874,20 +871,20 @@ def corner_clip(ctx):
 
 
 def grading(ctx):
-    W, H = 300, 104
+    W, H = 300, 112
     u = 70
-    S = 170  # vị trí đường may
-    b = txt(8, 11, 'Mặt cắt trước khi lộn', 't-lbl t-sm t-bold')
-    b += line(8, 40, S + u, 40, extra='stroke="#6FA2D6" stroke-width="7"')          # vải mỏng: giữ 1 cm
-    b += line(8, 53, S + u * .5, 53, extra='stroke="#E6D9BF" stroke-width="12"')    # khăn bông: tỉa còn 0,5
-    b += line(S + u * .5, 53, S + u, 53, extra='stroke="#E6D9BF" stroke-width="12" stroke-dasharray="3 3" opacity=".45"')
-    b += line(S, 30, S, 64, extra='stroke="#D6336C" stroke-width="3"')
-    b += txt(S - 4, 76, 'đường may', 't-lbl t-sm t-seam t-bold t-end')
-    b += txt(10, 76, 'vải mỏng (trên) · khăn bông (dưới)', 't-lbl t-sm')
-    b += dim_h(S, S + u, 26, '1 cm')
-    b += dim_h(S, S + u * .5, 72, '0,5', above=False, dy=14)
-    b += scissors(S + u * .5 + 14, 66, s=.8, rot=-90)
-    b += txt(S + u + 4, 98, 'phần tỉa bỏ', 't-lbl t-sm t-muted t-end')
+    S = 176  # vị trí đường may
+    b = txt(4, 12, 'Mặt cắt trước khi lộn', 't-lbl t-sm t-bold')
+    b += txt(4, 47, 'vải mỏng', 't-lbl t-sm t-bold') + txt(4, 71, 'khăn bông', 't-lbl t-sm t-bold')
+    b += line(64, 44, S + u, 44, extra='stroke="#6FA2D6" stroke-width="7"')
+    b += line(64, 58, S + u * .5, 58, extra='stroke="#E6D9BF" stroke-width="12"')
+    b += line(S + u * .5, 58, S + u, 58, extra='stroke="#E6D9BF" stroke-width="12" stroke-dasharray="3 3" opacity=".45"')
+    b += line(S, 36, S, 68, extra='stroke="#D6336C" stroke-width="3"')
+    b += txt(S - 6, 30, 'đường may', 't-lbl t-sm t-seam t-bold t-end')
+    b += dim_h(S, S + u, 30, '1 cm')
+    b += line(S + u * .5, 66, S + u * .5, 84, cls='s-ext') + line(S, 70, S, 84, cls='s-ext')
+    b += dim_h(S, S + u * .5, 80, '0,5 cm', above=False, dy=14)
+    b += txt(S + u * .5 + 4, 104, 'phần tỉa bỏ', 't-lbl t-sm t-muted')
     return svg(W, H, b)
 
 
@@ -999,6 +996,7 @@ def _edge_tile(kind):
             pts += [(E - (4 if (k // 6) % 2 else 0), Y + k)]
         pts += [(E, Y + h), (X, Y + h)]
         b += poly(pts, fill=fab('floral-cream'))
+        b += poly(pts[1:-1], close=False, extra='fill="none" stroke="#A8482A" stroke-width="1.6" stroke-linejoin="miter"')
         t1, t2 = 'Kéo răng cưa', 'Chỉ giảm tưa, vải ít tưa'
     elif kind == 'double':
         b += rect(X, Y, w, h, fill=fab('gingham-blue'))
@@ -1021,7 +1019,8 @@ def _edge_tile(kind):
         b += rect(X, Y, w, h, fill=fab('jersey-teal'))
         b += rect(E - 3, Y, 3, h, fill='#23313A', extra='opacity=".2"')
         t1, t2 = 'Để mép cắt', 'Thun, nỉ: không tưa'
-    b += rect(X, Y, w, h, extra='fill="none" stroke="#23313A" stroke-opacity=".2"')
+    if kind != 'pinking':
+        b += rect(X, Y, w, h, extra='fill="none" stroke="#23313A" stroke-opacity=".2"')
     b += txt(W / 2, 84, t1, 't-lbl t-mid t-bold t-sm') + txt(W / 2, 96, t2, 't-lbl t-mid t-sm')
     return svg(W, H, b)
 
@@ -1056,7 +1055,7 @@ def overlock_flow(ctx):
 
 
 def backtack(ctx):
-    W, H = 300, 110
+    W, H = 300, 106
     b = piece(10, 20, 280, 60, 'linen-white')
     y = 50
     b += path(f'M40 {y - 4} H70', extra='stroke="#D6336C" stroke-width="2" marker-end="url(#arr-terra)" fill="none"')
@@ -1065,21 +1064,19 @@ def backtack(ctx):
     b += path(f'M222 {y + 8} H250', extra='stroke="#D6336C" stroke-width="2" fill="none"') + path(f'M250 {y + 12} H222', extra='stroke="#D6336C" stroke-width="2" marker-end="url(#arr-terra)" fill="none"')
     b += txt(56, 36, 'tới 3 mũi', 't-lbl t-sm t-mid t-bold') + txt(56, 72, 'lùi 3 mũi', 't-lbl t-sm t-mid t-bold')
     b += txt(236, 78, 'cuối: lùi 3 mũi', 't-lbl t-sm t-mid t-bold')
-    b += txt(150, 102, 'Lại mũi ở đầu và cuối mọi đường may', 't-lbl t-mid t-sm t-bold')
+    b += txt(150, 100, 'Lại mũi ở đầu và cuối mọi đường may', 't-lbl t-mid t-sm t-bold')
     return svg(W, H, b)
 
 
 def pin_clip(ctx):
-    W, H = 300, 110
-    b = piece(10, 16, 280, 64, 'terry-sage') + piece(10, 12, 280, 60, 'gingham-blue', shadow=False)
+    W, H = 300, 106
+    b = piece(10, 22, 280, 60, 'terry-sage') + piece(10, 18, 280, 60, 'gingham-blue', shadow=False)
     for x in (40, 110, 180, 250):
-        b += clip(x, 72, rot=0, c='#E3B23C')
-    b += pin(60, 30, rot=90) + pin(150, 30, rot=90, head='#3E74B8')
-    b += txt(150, 102, 'Kẹp mỗi 8–10 cm; ghim vuông góc mép, đầu ghim quay ra ngoài', 't-lbl t-mid t-sm t-bold')
+        b += clip(x, 78, rot=0, c='#E3B23C')
+    b += pin(70, 8, rot=90) + pin(150, 8, rot=90, head='#3E74B8')
+    b += txt(150, 100, 'Kẹp mỗi 8–10 cm; ghim vuông góc mép, đầu ghim ra ngoài', 't-lbl t-mid t-sm t-bold')
     return svg(W, H, b)
 
-
-# ================================================================ PHẦN 4 — CÔNG THỨC
 
 def f_bag(ctx):
     d = ctx.d['m2']
@@ -1245,11 +1242,11 @@ def bag_step(ctx, k, A='gingham-blue', B='terry-white', cut=None, opening=None, 
         b += seam_rect(X + u, Y + u, w - 2 * u, h - 2 * u, gap=('b', g1 - u, g2 - u))
         for cx, cy in ((X + u, Y + u), (X + w - u, Y + u), (X + u, Y + h - u), (X + w - u, Y + h - u)):
             b += f'<circle cx="{f(cx)}" cy="{f(cy)}" r="3" fill="#23313A"/>'
-        b += dim_h(X + g1, X + g2, Y + h + 18, f'khe {art_vn(opening)} cm', above=False, dy=12)
+        b += dim_h(X + g1, X + g2, Y + h + 22, f'khe {art_vn(opening)} cm', above=False, dy=12)
         b += dim_v(X + w + 8, Y, Y + u, '1 cm', side='right')
-        b += path(f'M{f(X + g2 + 16)} {f(Y + h - u - 10)} h14', cls='s-move')
-        b += txt(X + g2 + 34, Y + h - u - 6, 'bắt đầu', 't-lbl t-sm t-terra t-bold')
-        b += txt(X - 8, Y + h - u - 6, 'kết thúc', 't-lbl t-sm t-terra t-bold t-end')
+        b += path(f'M{f(X + g2)} {f(Y + h - u)} h22', cls='s-move')
+        b += txt(X + g2 + 4, Y + h + 12, 'bắt đầu', 't-lbl t-sm t-terra t-bold')
+        b += txt(X + g1 - 4, Y + h + 12, 'kết thúc', 't-lbl t-sm t-terra t-bold t-end')
     elif k == 'clip':
         b += piece(X, Y, w, h, A, side='wrong')
         g1 = w / 2 - opening / 2 * u
@@ -1257,7 +1254,7 @@ def bag_step(ctx, k, A='gingham-blue', B='terry-white', cut=None, opening=None, 
         b += seam_rect(X + u, Y + u, w - 2 * u, h - 2 * u, gap=('b', g1 - u, g2 - u))
         b += corner_clips(X, Y, w, h, u)
         b += scissors(X + w + 14, Y - 2, s=1, rot=135)
-        b += txt(X + w + 12, Y + h / 2, 'cách điểm', 't-lbl t-sm') + txt(X + w + 12, Y + h / 2 + 13, 'xoay 2–3 mm', 't-lbl t-sm')
+        b += txt(X + w / 2, Y + h + 16, 'cắt xéo, cách điểm xoay góc 2–3 mm', 't-lbl t-mid t-sm t-bold')
     elif k == 'turn':
         # nửa đã lộn: hình chữ nhật với khe mở, mặt phải trồi ra
         b += piece(X, Y, w, h, A, side='wrong')
@@ -1266,7 +1263,7 @@ def bag_step(ctx, k, A='gingham-blue', B='terry-white', cut=None, opening=None, 
         b += f'<path d="M{f(X + g1 - 4)} {f(Y + h)} C{f(X + g1 - 40)} {f(Y + h + 34)} {f(X + g2 + 40)} {f(Y + h + 34)} {f(X + g2 + 4)} {f(Y + h)} Z" fill="{fab(A)}" stroke="#23313A" stroke-opacity=".35"/>'
         b += path(f'M{f(X + w / 2)} {f(Y + h * .3)} C{f(X + w / 2 + 30)} {f(Y + h * .6)} {f(X + w / 2 + 10)} {f(Y + h + 6)} {f(X + w / 2)} {f(Y + h + 24)}', cls='s-move')
         b += txt(X - 8, Y + h - 16, 'mặt phải', 't-lbl t-sm t-bold t-end') + txt(X - 8, Y + h - 3, 'trồi ra', 't-lbl t-sm t-end')
-        b += stick(X + w - 10, Y + 10, X + w + 22, Y + h - 30)
+        b += stick(X + w - 3, Y + 3, X + w + 26, Y + h - 30)
         b += txt(X + w + 10, Y + h - 14, 'đẩy góc', 't-lbl t-sm t-bold')
     elif k == 'press':
         b += piece(X, Y, w, h, A)
@@ -1307,6 +1304,7 @@ def m2_cut(ctx):
     b += dim_h(X, X + w, Y - 8, f'{art_vn(d["cut"][0])} cm')
     b += dim_v(X - 8, Y, Y + w, f'{art_vn(d["cut"][1])}')
     b += dim_h(X + s_, X + w - s_, Y + w / 2 - 12, f'thành phẩm {art_vn(d["fin"][0])}', dy=-4)
+    b += line(X, Y, X + w, Y + w, extra='stroke="#2B6CB0" stroke-width="1" stroke-dasharray="4 3" opacity=".8"')
     b += grain(X + w - 20, Y + 20, Y + w - 30)
     b += txt(X + w + 14, Y + 20, '× 2 miếng', 't-lbl t-bold t-lg')
     b += txt(X + w + 14, Y + 38, '1 lớp A', 't-lbl t-sm') + txt(X + w + 14, Y + 51, '1 lớp B', 't-lbl t-sm')
@@ -1355,7 +1353,7 @@ def m1_s2(ctx):
         b += txt(x0 + 48 * s_ * .95 / 2, 24, 'Thân trước' if i == 0 else 'Thân sau', 't-lbl t-mid t-bold')
     b += dim_h(20, 20 + 48 * s_ * .95, 164, '48 cm', above=False, dy=14)
     b += txt(150, 196, '', 't-lbl')
-    b += txt(20 + 48 * s_ * .95 + 4, 34 + 45 * s_ * .95 + 2, 'gấu', 't-lbl t-sm t-bold')
+    b += txt(20 + 24 * s_ * .95, 34 + 45 * s_ * .95 + 14, 'mép gấu áo', 't-lbl t-mid t-sm t-bold')
     return svg(W, H, b)
 
 
@@ -1373,7 +1371,7 @@ def m1_s3(ctx):
     b += dim_h(X, X + c, Y + 45 * s_ + 12, art_vn(d['cut'][0]), above=False, dy=12)
     b += dim_h(X + c, X + 2 * c, Y + 45 * s_ + 12, art_vn(d['cut'][0]), above=False, dy=12)
     b += dim_v(X + 48 * s_ + 8, Y + 45 * s_ - c, Y + 45 * s_, art_vn(d['cut'][1]), side='right')
-    b += txt(X + c / 2, Y + 45 * s_ - 12, 'gấu áo làm cạnh chuẩn', 't-lbl t-mid t-sm')
+    b += txt(X + c, Y + 45 * s_ - 8, 'gấu áo = cạnh chuẩn', 't-lbl t-mid t-sm t-bold')
     return svg(W, H, b)
 
 
@@ -1405,29 +1403,31 @@ def m3_hero(ctx):
 
 def m3_cut(ctx):
     d = ctx.d['m3']
-    W, H = 330, 230
-    s_ = 3.6
-    X, Y = 40, 22
+    W, H = 330, 262
+    s_ = 4.3
+    X, Y = 34, 22
     w, h = d['cut'][0] * s_, d['cut'][1] * s_
     b = piece(X, Y, w, h, 'linen-white')
     for k in (d['g1'], d['g1'] + d['g2']):
-        b += rect(X + k * s_, Y + k * s_, w - 2 * k * s_, h - 2 * k * s_, cls='s-fold')
+        b += rect(X + k * s_, Y + k * s_, w - 2 * k * s_, h - 2 * k * s_, extra='fill="none" stroke="#4B5A63" stroke-width="1.3" stroke-dasharray="9 3 2 3"')
     b += dim_h(X, X + w, Y - 8, f'{art_vn(d["cut"][0])} cm')
     b += dim_v(X - 8, Y, Y + h, art_vn(d['cut'][1]))
     c = (d['g1'] + d['g2']) * s_
-    b += dim_h(X + c, X + w - c, Y + h / 2, f'TP {art_vn(d["fin"][0])}', dy=-4)
-    b += dim_v(X + w - c - 22, Y + c, Y + h - c, f'TP {art_vn(d["fin"][1])}', side='left')
-    b += grain(X + w * .3, Y + 40, Y + h - 40)
-    # dải quai
-    lx, ly = X + w + 34, Y + 10
+    b += dim_h(X + c, X + w - c, Y + h * .28, f'TP {art_vn(d["fin"][0])}')
+    b += line(X + w * .62, Y + c, X + w * .62, Y + h - c, cls='s-dim')
+    b += f'<text x="{f(X + w * .62 - 6)}" y="{f(Y + h * .6)}" class="t-dim t-mid" transform="rotate(-90 {f(X + w * .62 - 6)} {f(Y + h * .6)})">TP {art_vn(d["fin"][1])}</text>'
+    b += grain(X + w * .3, Y + h * .4, Y + h - 30)
+    b += txt(X + w * .3 + 8, Y + h * .4 + 14, 'canh dọc', 't-lbl t-sm')
+    lx, ly = X + w + 30, Y + 10
     lw, lh = d['loop'][0] * s_, d['loop'][1] * s_
     b += piece(lx, ly, lw, lh, 'jersey-terra')
     for k in (1, 2, 3):
         b += line(lx + lw * k / 4, ly, lx + lw * k / 4, ly + lh, cls='s-fold')
     b += dim_h(lx, lx + lw, ly - 6, art_vn(d['loop'][0])) + dim_v(lx + lw + 6, ly, ly + lh, art_vn(d['loop'][1]), side='right')
     b += txt(lx + lw / 2, ly + lh + 16, 'dải quai', 't-lbl t-mid t-sm t-bold')
-    b += txt(lx - 6, ly + lh + 44, 'nếp gấp', 't-lbl t-sm') + line(lx - 6, ly + lh + 52, lx + 40, ly + lh + 52, cls='s-fold')
-    b += txt(lx - 6, ly + lh + 70, '1 cm + 1 cm', 't-dim')
+    b += line(lx - 6, ly + lh + 44, lx + 40, ly + lh + 44, extra='stroke="#4B5A63" stroke-width="1.3" stroke-dasharray="9 3 2 3"')
+    b += txt(lx - 6, ly + lh + 36, 'nếp gấp', 't-lbl t-sm')
+    b += txt(lx - 6, ly + lh + 60, 'cách mép', 't-lbl t-sm') + txt(lx - 6, ly + lh + 74, '1 cm và 2 cm', 't-dim')
     return svg(W, H, b)
 
 
@@ -1504,10 +1504,10 @@ def m3_miter(ctx):
             b += pg(x0, y0, [(-2 * g1, L), (-g1, L), (-g1, -g1), (-2 * g1, -g1)], fill=fab('gingham-sky'))
             b += pg(x0, y0, [(L, -2 * g1), (-g1, -2 * g1), (-g1, -g1), (L, -g1)], fill=fab('gingham-sky'))
             b += pg(x0, y0, [(-2 * g1, L), (-2 * g1, -2 * g1), (L, -2 * g1)], cls='s-edge', close=False)
-            b += line(*P(x0, y0, -c, L), *P(x0, y0, -c, -g1), cls='s-fold') + line(*P(x0, y0, L, -c), *P(x0, y0, -g1, -c), cls='s-fold')
+            b += line(*P(x0, y0, -c, L), *P(x0, y0, -c, -g1), extra='stroke="#1C3553" stroke-width="1.7" stroke-dasharray="9 3 2 3" fill="none"') + line(*P(x0, y0, L, -c), *P(x0, y0, -g1, -c), extra='stroke="#1C3553" stroke-width="1.7" stroke-dasharray="9 3 2 3" fill="none"')
             if i == 2:
                 k = -2 * c
-                b += line(*P(x0, y0, k + g1, -g1), *P(x0, y0, -g1, k + g1), cls='s-fold')
+                b += line(*P(x0, y0, k + g1, -g1), *P(x0, y0, -g1, k + g1), extra='stroke="#1C3553" stroke-width="1.7" stroke-dasharray="9 3 2 3" fill="none"')
                 kc = k + tr * m_.sqrt(2)
                 a1, a2 = P(x0, y0, kc + g1, -g1), P(x0, y0, -g1, kc + g1)
                 b += poly([a1, P(x0, y0, -g1, -g1), a2], cls='f-discard')
@@ -1520,7 +1520,7 @@ def m3_miter(ctx):
             b += pg(x0, y0, body, fill=fab('gingham-sky')) + pg(x0, y0, body, fill='#fff', extra='opacity=".55"')
             b += pg(x0, y0, [(-2 * g1, L), (-g1, L), F2, (-2 * g1, -2 * g1 - (0))], fill=fab('gingham-sky'))
             b += pg(x0, y0, [(L, -2 * g1), (L, -g1), F1, (-2 * g1, -2 * g1)], fill=fab('gingham-sky'))
-            b += line(*P(x0, y0, -c, L), *P(x0, y0, -c, -c), cls='s-fold') + line(*P(x0, y0, L, -c), *P(x0, y0, -c, -c), cls='s-fold')
+            b += line(*P(x0, y0, -c, L), *P(x0, y0, -c, -c), extra='stroke="#1C3553" stroke-width="1.7" stroke-dasharray="9 3 2 3" fill="none"') + line(*P(x0, y0, L, -c), *P(x0, y0, -c, -c), extra='stroke="#1C3553" stroke-width="1.7" stroke-dasharray="9 3 2 3" fill="none"')
             b += pg(x0, y0, [F1, F2, Rr], fill='#23313A', extra='opacity=".15" transform="translate(2 3)"')
             b += pg(x0, y0, [F1, F2, Rr], fill=fab('gingham-sky'))
             b += pg(x0, y0, [F1, F2, Rr], extra='fill="none" stroke="#23313A" stroke-opacity=".4"')
@@ -1769,17 +1769,16 @@ def m4_check(ctx):
     b = rect(X + 3, Y + 4, t, t, fill='#23313A', extra='opacity=".12"') + _m4_front()(X, Y, t, t) + rect(X, Y, t, t, cls='s-edge')
     b += dim_h(X, X + t, Y - 7, f'{art_vn(d["top"][0])} cm')
     b += dim_v(X + t + 8, Y, Y + t, f'{art_vn(d["top"][1])}', side='right')
-    b += txt(X + t + 8, Y + t - 30, '= lớp sau', 't-lbl t-sm t-bold')
-    b += txt(X + t + 8, Y + t - 17, f'{dims(*d["back"])}', 't-dim')
+    b += txt(X + t / 2, Y + t + 18, f'= đúng bằng lớp sau {dims(*d["back"])}', 't-lbl t-mid t-sm t-bold')
     return svg(W, H, b)
 
 
 def m4_strips(ctx):
     W, H = 300, 180
-    widths = [5, 8, 4, 6, 9, 7]
+    widths = [6, 9, 5, 7, 10, 8]
     pids = ['gingham-terra', 'floral-cream', 'dots-terra', 'linen', 'flannel-terra', 'stripe-terra-h']
     b = ''
-    X, Y, s_ = 20, 20, 3.4
+    X, Y, s_ = 14, 16, 3.3
     x = X
     for w_, pid in zip(widths, pids):
         b += rect(x, Y, w_ * s_, 40 * s_, fill=fab(pid)) + rect(x, Y, w_ * s_, 40 * s_, cls='s-edge')
@@ -1919,7 +1918,7 @@ def m5_quilt(ctx):
 
 def _bind_xsec(stage):
     """mặt cắt mép khăn + dải bo (stage 1: may vào mặt A; 2: lật sang mặt B và may)"""
-    W, H = 300, 160
+    W, H = 300, 150
     u = 30  # px / cm
     b = ''
     E = 196
@@ -1954,11 +1953,11 @@ def m5_fold(ctx):
     d = ctx.d['m5']
     W, H = 300, 150
     s_ = 7
-    b = piece(20, 30, 250, d['binding_w'] * s_ * .9, 'jersey-terra')
-    b += line(20, 30 + d['binding_w'] * s_ * .45, 270, 30 + d['binding_w'] * s_ * .45, cls='s-fold')
-    b += dim_v(282, 30, 30 + d['binding_w'] * s_ * .9, f'{art_vn(d["binding_w"])}', side='right')
+    b = piece(20, 30, 236, d['binding_w'] * s_ * .9, 'jersey-terra')
+    b += line(20, 30 + d['binding_w'] * s_ * .45, 256, 30 + d['binding_w'] * s_ * .45, cls='s-fold')
+    b += dim_v(264, 30, 30 + d['binding_w'] * s_ * .9, f'{art_vn(d["binding_w"])}', side='right')
     b += path('M140 108 v18', cls='s-flow')
-    b += piece(20, 132 - 6, 250, d['binding_half'] * s_ * .5, 'jersey-terra', shadow=False)
+    b += piece(20, 132 - 6, 236, d['binding_half'] * s_ * .5, 'jersey-terra', shadow=False)
     b += txt(150, 20, f'gấp đôi theo chiều dài (mặt trái vào trong), ủi → {art_vn(d["binding_half"])} cm', 't-lbl t-mid t-sm t-bold')
     return svg(W, H, b)
 
@@ -1969,24 +1968,23 @@ def m5_s7(ctx): return _bind_xsec(2)
 
 def m5_short(ctx):
     d = ctx.d['m5']
-    W, H = 300, 150
+    W, H = 300, 160
     b = ''
-    X, Y = 20, 40
-    b += rect(X, Y, 200, 90, fill=fab('terry-sky'))
-    b += rect(X + 200 - 18, Y, 18, 90, fill=fab('jersey-terra'))
-    b += rect(X + 200 - 18, Y, 18, 90, cls='s-edge')
-    # dải cạnh ngắn với đuôi 2 cm
-    b += rect(X, Y - 18, 200 + 26, 18, fill=fab('jersey-terra'), extra='opacity=".9"')
-    b += rect(X, Y - 18, 200 + 26, 18, cls='s-edge')
-    b += line(X + 200, Y - 22, X + 200, Y + 4, cls='s-ext')
-    b += dim_h(X + 200, X + 226, Y - 24, f'{art_vn(d["tail"])} cm')
-    b += path(f'M{X + 240} {Y - 4} C{X + 262} {Y + 10} {X + 250} {Y + 30} {X + 226} {Y + 28}', cls='s-move')
-    b += txt(X + 236, Y + 60, 'gấp đuôi', 't-lbl t-sm t-bold t-terra') + txt(X + 236, Y + 73, 'bọc đầu', 't-lbl t-sm')
-    b += txt(X + 100, Y + 60, 'cạnh dài đã bo xong', 't-lbl t-mid t-sm')
+    X, Y, w = 40, 52, 200
+    b += rect(X, Y, w, 96, fill=fab('terry-sky'))
+    for x0 in (X, X + w - 16):
+        b += rect(x0, Y, 16, 96, fill=fab('jersey-terra')) + rect(x0, Y, 16, 96, cls='s-edge')
+    b += txt(X + w / 2, Y + 60, 'khăn: 2 cạnh dài đã bo xong', 't-lbl t-mid t-sm')
+    t = d['tail'] * 11
+    b += rect(X - t, Y - 18, w + 2 * t, 18, fill=fab('jersey-terra')) + rect(X - t, Y - 18, w + 2 * t, 18, cls='s-edge')
+    b += txt(X + w / 2, Y - 24, f'dải cạnh ngắn {art_vn(d["bind_short"][1])} cm', 't-lbl t-mid t-sm t-bold')
+    for sx, x0 in ((-1, X), (1, X + w)):
+        b += line(x0, Y - 22, x0, Y + 4, cls='s-ext')
+        b += path(f'M{x0 + sx * (t + 6)} {Y - 6} C{x0 + sx * (t + 20)} {Y + 8} {x0 + sx * 12} {Y + 26} {x0 + sx * 2} {Y + 20}', cls='s-move')
+    b += dim_h(X + w, X + w + t, Y - 44, f'{art_vn(d["tail"])} cm', dy=14)
+    b += txt(X + w / 2, Y + 84, 'gấp 2 đuôi bọc kín đầu mép, rồi lật dải', 't-lbl t-mid t-sm t-bold t-terra')
     return svg(W, H, b)
 
-
-# ================================================================ MẪU 6 — VỎ BÀN LAU NHÀ
 
 def m6_measure(ctx):
     d = ctx.d['m6']
@@ -2012,14 +2010,14 @@ def m6_measure(ctx):
 
 def m6_pieces(ctx):
     d = ctx.d['m6']
-    W, H = 640, 190
+    W, H = 640, 200
     s_ = 4.6
     L, Wd = d['cut_main'][0] * s_, d['cut_main'][1] * s_
     X, Y = 30, 24
     b = piece(X, Y, L, Wd, 'terry-mint') + txt(X + L / 2, Y + Wd / 2 + 4, 'A · mặt lau (khăn bông)', 't-lbl t-mid t-bold')
     b += piece(X, Y + Wd + 26, L, Wd, 'denim') + txt(X + L / 2, Y + Wd * 1.5 + 30, 'B · lưng (jeans, cotton dày)', 't-lbl t-mid t-bold')
     b += dim_h(X, X + L, Y - 7, f'{art_vn(d["cut_main"][0])} cm') + dim_v(X - 7, Y, Y + Wd, art_vn(d['cut_main'][1]))
-    b += grain(X + L - 16, Y + 8, Y + Wd - 8) + grain(X + L - 16, Y + Wd + 34, Y + 2 * Wd + 18)
+    b += line(X + 14, Y + Wd - 10, X + 80, Y + Wd - 10, cls='s-grain') + line(X + 14, Y + 2 * Wd + 16, X + 80, Y + 2 * Wd + 16, cls='s-grain')
     px = X + L + 40
     pw, ph = d['cut_pocket'][0] * s_, d['cut_pocket'][1] * s_
     for k in range(2):
@@ -2140,7 +2138,7 @@ def m6_gallery(ctx):
     P = d['P'] * s_
     items = [('terry-mint', 'denim', 'khăn bông · lau ướt'), ('flannel-red', 'denim-dark', 'flannel · lau bụi khô'), ('micro-blue', 'gingham-navy', 'microfiber · lau kính, gạch')]
     for i, (face, back, lab) in enumerate(items):
-        x, y = 16 + i * 206, 24 + (i % 2) * 10
+        x, y = 16 + i * 206, 24
         b += piece(x, y, L, Wd, back) + rect(x, y, P, Wd, fill='#fff', extra='opacity=".18"') + rect(x + L - P, y, P, Wd, fill='#fff', extra='opacity=".18"')
         b += line(x + P, y, x + P, y + Wd, extra='stroke="#fff" stroke-width="1.6"') + line(x + L - P, y, x + L - P, y + Wd, extra='stroke="#fff" stroke-width="1.6"')
         b += piece(x + 8, y + Wd + 14, L, Wd, face)
@@ -2150,7 +2148,7 @@ def m6_gallery(ctx):
 
 
 def storage_basket(ctx):
-    W, H = 320, 150
+    W, H = 320, 166
     b = basket(40, 70, 240, 72)
     cols = [('#4F9A57', 'gingham-green'), ('#3E74B8', 'gingham-sky'), ('#E8B931', 'terry-mustard'), ('#CF3F37', 'gingham-red'), ('#5B6167', 'denim-dark')]
     for i, (c, pid) in enumerate(cols):
@@ -2158,5 +2156,34 @@ def storage_basket(ctx):
         b += rolled(cx, 58, 21, pid)
         b += f'<circle cx="{cx}" cy="58" r="21" fill="none" stroke="{c}" stroke-width="3.2"/>'
     b += '<rect x="33" y="65" width="254" height="10" rx="5" fill="#8A6A45"/>'
-    b += txt(160, 146, 'Cuộn tròn, xếp theo mã màu — viền màu cho biết khăn của khu vực nào', 't-lbl t-mid t-sm')
+    b += txt(160, 162, 'Cuộn tròn, xếp theo mã màu của từng khu vực', 't-lbl t-mid t-sm')
+    return svg(W, H, b)
+
+
+def m6_xsec(ctx):
+    d = ctx.d['m6']
+    W, H = 640, 150
+    u = 14
+    pw, ph = d['W'] * u, d['h'] * u
+    cx, cy = 200, 76
+    x0, x1 = cx - pw / 2, cx + pw / 2
+    y0, y1 = cy - ph / 2, cy + ph / 2
+    b = rect(x0, y0, pw, ph, fill='#B8C0C4', rx=3, extra='stroke="#6F7F88"')
+    b += txt(cx, cy + 4, f'bàn lau {art_vn(d["W"])} × {art_vn(d["h"])}', 't-lbl t-mid t-sm t-bold t-nost')
+    g = 5
+    # thân (dưới) + túi (trên), nối ở 2 mép, có đường diễu 0,5 cm
+    for sgn, col in ((1, '#6FC0AE'), (-1, '#3B5F8A')):
+        yy = y1 + g if sgn > 0 else y0 - g
+        b += path(f'M{x0 - 16} {cy} Q{x0 - 16} {yy} {x0 + 6} {yy} H{x1 - 6} Q{x1 + 16} {yy} {x1 + 16} {cy}', extra=f'fill="none" stroke="{col}" stroke-width="5"')
+    for xx in (x0 - 16, x1 + 16):
+        b += line(xx, cy - 5, xx, cy + 5, extra='stroke="#D6336C" stroke-width="3"')
+        b += line(xx + (6 if xx < cx else -6), cy - 9, xx + (6 if xx < cx else -6), cy + 9, extra='stroke="#0E8C8C" stroke-width="2.4" stroke-dasharray="3 2"')
+    b += txt(x0 - 22, cy - 12, 'mép vỏ', 't-lbl t-sm t-end')
+    b += txt(cx, y0 - g - 10, 'túi (jeans)', 't-lbl t-mid t-sm t-bold') + txt(cx, y1 + g + 20, 'mặt lau (khăn bông)', 't-lbl t-mid t-sm t-bold')
+    tx = 400
+    b += txt(tx, 40, f'Chu vi túi sau khi diễu = 2 × ({art_vn(d["Wp"])} − 1) = {art_vn(d["perim_pocket"])} cm', 't-lbl t-bold')
+    b += txt(tx, 62, f'Chu vi bàn lau = 2 × ({art_vn(d["W"])} + {art_vn(d["h"])}) = {art_vn(d["perim_plate"])} cm', 't-lbl t-bold')
+    b += txt(tx, 88, 'Phần dư còn lại cho bề dày 2 lớp vải.', 't-lbl t-sm')
+    b += txt(tx, 104, 'Nếu chỉ cộng W + 2 (bỏ quên h), túi hụt', 't-lbl t-sm')
+    b += txt(tx, 118, 'và không lồng được bàn lau vào.', 't-lbl t-sm')
     return svg(W, H, b)

@@ -28,8 +28,8 @@ Repo gồm 2 tài liệu PDF, mỗi tài liệu có thư mục mã nguồn riên
 - Khăn lau bàn 30 × 30 → cắt 2 × **32 × 32**, khe lộn 8 cm.
 - Khăn bếp treo 35 × 50, gấp mép 1 + 1 cm → cắt **39 × 54**; quai 5 × 14.
 - Khăn ghép 3 × 3 ô → ô **12 × 12**, lớp sau 32 × 32.
-- Khăn lau nhà 30 × 40, 3 lớp → cắt đúng TP; dải bo **7 cm** (= 6b + 2t).
-- Vỏ bàn lau (bàn 40 × 12) → thân **44 × 16**, 2 túi **16 × 22**.
+- Khăn lau nhà 30 × 40, 3 lớp → cắt đúng TP; dải bo **7,5 cm** (= 6b + 2t + 0,5).
+- Vỏ bàn lau (bàn 40 × 12, dày 1,5) → vỏ (L + h + 1,5) × (W + h + 1,5) = 43 × 15, cắt thân **45 × 17**, 2 túi **17 × 22**.
 
 ## Dựng lại PDF
 ```bash

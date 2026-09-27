@@ -754,8 +754,7 @@ def topstitch_rect(x, y, w, h, inset, cls='s-top'):
 def iron(x, y, s_=1.0, rot=0):
     b = ('<path d="M-30 12 Q-26 -8 2 -10 H26 V12 Z" fill="#9DB7D5" stroke="#2B4C74" stroke-width="1.3"/>'
          '<path d="M-33 12 H29 V16 H-33 Z" fill="#C7CED2" stroke="#8A9499" stroke-width=".8"/>'
-         '<path d="M0 -10 Q2 -20 12 -20 H22 Q26 -20 26 -15 V-10" fill="none" stroke="#2B4C74" stroke-width="4" stroke-linecap="round"/>'
-         '<path d="M-38 -2 q-3 -4 0 -8 M-44 0 q-3 -4 0 -8" stroke="#9AA5AB" stroke-width="1.3" fill="none"/>')
+         '<path d="M0 -10 Q2 -20 12 -20 H22 Q26 -20 26 -15 V-10" fill="none" stroke="#2B4C74" stroke-width="4" stroke-linecap="round"/>')
     return g(b, tr=f'translate({f(x)} {f(y)}) rotate({rot}) scale({s_})')
 
 

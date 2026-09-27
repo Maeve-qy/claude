@@ -33,13 +33,23 @@ FONT_NUM = str(ROOT / 'fonts' / 'Nunito-800-latin.ttf')
 FONT_TXT = str(ROOT / 'fonts' / 'BeVietnamPro-400-latin.ttf')
 
 
-def page_meta(name):
+def page_meta(name, ctx=None):
+    """(nhóm, nhãn chương, tiêu đề) cho mỗi trang; tiêu đề lấy đúng chữ của <h1> trên trang
+    (sau khi ghép số liệu) để mục lục/bookmark luôn khớp tiêu đề thật."""
     src = (R.SECT / f'{name}.html').read_text(encoding='utf-8')
     out = []
-    for m in re.finditer(r'<section\b([^>]*)class="[^"]*\bpage\b[^"]*"([^>]*)>', src):
-        attrs = m.group(1) + m.group(2)
+    parts = re.split(r'(<section\b[^>]*class="[^"]*\bpage\b[^"]*"[^>]*>)', src)
+    for i in range(1, len(parts), 2):
+        attrs, body = parts[i], parts[i + 1]
         get = lambda k: html.unescape(re.search(rf'data-{k}="([^"]*)"', attrs).group(1)) if re.search(rf'data-{k}="', attrs) else ''
-        out.append({'group': get('group'), 'badge': get('badge'), 'title': get('title')})
+        h = re.search(r'<h1[^>]*>(.*?)</h1>', body, re.S)
+        title = get('title')
+        if h:
+            t = h.group(1)
+            if ctx is not None:
+                t = tpl.fill(t, ctx)[0]
+            title = re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', '', t))).strip()
+        out.append({'group': get('group'), 'badge': get('badge'), 'title': title})
     return out
 
 
@@ -90,7 +100,7 @@ def toc_html(entries):
     <div class="spacer"></div>
     <div class="cols" style="margin-top:2mm">
       <div class="note tip"><div class="nt">Người mới bắt đầu</div><p>Đọc Mở đầu → Phần 1 → may <b>Mẫu 1</b> rồi <b>Mẫu 2</b>. Phần 3 (kỹ thuật) tra khi cần.</p></div>
-      <div class="note info"><div class="nt">Nên in ra</div><p>Trang <b>Bảng tổng hợp kích thước cắt</b> và <b>Bảng kiểm</b> ở cuối sổ — dán cạnh bàn máy.</p></div>
+      <div class="note info"><div class="nt">Nên in ra</div><p>Trang <b>Bảng tổng hợp kích thước cắt</b> và <b>Bảng kiểm</b> ở cuối sổ — dán cạnh chỗ may.</p></div>
     </div>
   </div>
 </section>'''
@@ -121,7 +131,20 @@ def main():
     ctx = tpl.Ctx()
     # 2. render các phần (trừ mục lục)
     content = [n for n in ORDER if n != '01_muc_luc']
-    res = R.render(content, dpi=60, quiet=True, ctx=ctx)
+    pm_f = ROOT / 'build' / 'pagemap.json'
+    for it in range(4):  # tham chiếu trang {{pg:...}}: render -> đánh số -> render lại tới khi ổn định
+        res = R.render(content, dpi=60, quiet=True, ctx=ctx)
+        pm, pg_no = {}, 3
+        for n in content[1:]:
+            for k in range(res[n]['pdf_pages']):
+                pm[f'{n}.{k + 1}'] = pg_no
+                pg_no += 1
+        if pm == ctx.pagemap:
+            break
+        pm_f.write_text(json.dumps(pm))
+        ctx.pagemap = pm
+    else:
+        sys.exit('DỪNG: số trang không ổn định')
     bad = {n: R.problems(res[n]) for n in content if R.problems(res[n])}
     if bad:
         for n, p in bad.items():
@@ -130,7 +153,7 @@ def main():
     # 3. mục lục
     entries, page = [], 3
     for n in content[1:]:
-        metas = page_meta(n)
+        metas = page_meta(n, ctx)
         assert len(metas) == res[n]['pdf_pages'], (n, len(metas), res[n]['pdf_pages'])
         for m in metas:
             entries.append(dict(m, page=page, section=n))

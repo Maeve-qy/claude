@@ -293,7 +293,7 @@
   {
    "id": "bacha",
    "name": "Chanh bạc hà",
-   "scheme": "Tương đồng (màu mát)",
+   "scheme": "Tương đồng (màu lạnh)",
    "colors": [
     [
      "Bạc hà",
@@ -608,7 +608,8 @@
     "khan_bong",
     "thun_cotton",
     "jeans"
-   ]
+   ],
+   "binding_extra": 0.5
   },
   "m6": {
    "name": "Vỏ bọc bàn lau nhà dẹt",
@@ -620,10 +621,6 @@
     12
    ],
    "plate_thick": 1.5,
-   "ease_len": 2,
-   "ease_w": 2,
-   "ease_w_thick": 1,
-   "thick_limit": 2,
    "pocket_ratio": 0.25,
    "pocket_min": 8,
    "opening": 10,
@@ -661,7 +658,9 @@
     "khan_bong",
     "microfiber",
     "jeans"
-   ]
+   ],
+   "ease": 1.5,
+   "topstitch_note": "đường diễu 0,5 cm ở 2 mép làm hẹp túi 1 cm"
   }
  },
  "layouts": [
@@ -781,23 +780,15 @@
      "x": 0,
      "y": 24,
      "w": 48,
-     "h": 7
+     "h": 7.5
     },
     {
      "label": "Dải bo viền",
      "ref": "m5.binding_w",
      "x": 0,
-     "y": 31,
+     "y": 31.5,
      "w": 48,
-     "h": 7
-    },
-    {
-     "label": "Dải bo viền",
-     "ref": "m5.binding_w",
-     "x": 0,
-     "y": 38,
-     "w": 48,
-     "h": 7
+     "h": 7.5
     }
    ]
   },
@@ -810,17 +801,17 @@
     {
      "label": "Lưng vỏ bàn lau",
      "ref": "m6.cut_main",
-     "x": 2,
+     "x": 1.5,
      "y": 0,
-     "w": 16,
-     "h": 44
+     "w": 17,
+     "h": 45
     },
     {
      "label": "Túi vỏ bàn lau",
      "ref": "m6.cut_pocket",
-     "x": 2,
+     "x": 1.5,
      "y": 46,
-     "w": 16,
+     "w": 17,
      "h": 22
     }
    ]
@@ -868,22 +859,30 @@
      "ref": "m6.cut_main",
      "x": 0,
      "y": 80,
-     "w": 44,
-     "h": 16
+     "w": 17,
+     "h": 45
     },
     {
      "label": "Mặt lau vỏ bàn lau",
      "ref": "m6.cut_main",
-     "x": 0,
-     "y": 96,
-     "w": 44,
-     "h": 16
+     "x": 17,
+     "y": 80,
+     "w": 17,
+     "h": 45
     },
     {
      "label": "Khăn lau bàn 20 × 20",
      "ref": "m2.v20",
-     "x": 44,
+     "x": 34,
      "y": 80,
+     "w": 22,
+     "h": 22
+    },
+    {
+     "label": "Khăn lau bàn 20 × 20",
+     "ref": "m2.v20",
+     "x": 34,
+     "y": 102,
      "w": 22,
      "h": 22
     }
@@ -894,7 +893,7 @@
   {
    "p": "Góc khăn bị tròn, cộm",
    "c": "Chưa cắt góc, xoay góc không đúng 1 cm, vải dày",
-   "f": "Cắt xéo góc cách đường may 2–3 mm; vải dày tỉa đường may còn 0,5 cm; đẩy góc bằng que đầu tù"
+   "f": "Cắt xéo góc cách đường may 2–3 mm; vải dày tỉa phần chừa còn 0,5 cm; đẩy góc bằng que đầu tù"
   },
   {
    "p": "Hai lớp bị lệch, nhăn khi diễu",
@@ -923,8 +922,8 @@
   },
   {
    "p": "Giao điểm các ô ghép bị lệch",
-   "c": "Ô cắt không đều, đường may không đều 1 cm",
-   "f": "Cắt bằng rập bìa; ủi đường may xen kẽ để khóa khớp; ghim đúng giao điểm"
+   "c": "Ô cắt không đều, phần chừa không đều 1 cm",
+   "f": "Cắt bằng rập bìa; ủi phần chừa xen kẽ để khóa khớp; ghim đúng giao điểm"
   },
   {
    "p": "Khăn khó thấm, lau bị trượt",

@@ -43,7 +43,7 @@ def check(spec, d):
     if m4['top'] != m4['back']: E('M4: mặt ghép khác lớp sau')
     if m4['strip_min_fin'] < 1.5: E('M4: dải ghép quá hẹp')
     m5 = d['m5']
-    if m5['binding_w'] < 6 * m5['b'] + 2 * m5['t']: E('M5: dải bo viền hẹp hơn 6b + 2t')
+    if m5['binding_w'] < 6 * m5['b'] + 2 * m5['t'] + m5['extra']: E('M5: dải bo viền hẹp hơn 6b + 2t + 0,5')
     if m5['bind_long'][1] < m5['fin'][1]: E('M5: dải cạnh dài ngắn hơn cạnh')
     if m5['bind_short'][1] < m5['fin'][0] + 2 * 1.5: E('M5: dải cạnh ngắn không đủ đuôi bọc đầu')
     if m5['bind_total'] < m5['perimeter']: E('M5: tổng dải < chu vi')
@@ -53,7 +53,9 @@ def check(spec, d):
         tag = f"M6 {ex['L']}×{ex['W']}"
         if ex['free_margin'] < 2: E(f'{tag}: không đủ chỗ cho khe lộn giữa 2 túi')
         if ex['P'] < spec['products']['m6']['pocket_min']: E(f'{tag}: túi nông')
-        if ex['Lp'] <= ex['L'] or ex['Wp'] <= ex['W']: E(f'{tag}: không có độ dư')
+        ts = spec['meta']['topstitch']
+        if ex['Lp'] - 2 * ts < ex['L'] + ex['h']: E(f'{tag}: dài vỏ không đủ ôm bàn lau (tính cả độ dày và đường diễu)')
+        if 2 * (ex['Wp'] - 2 * ts) < 2 * (ex['W'] + ex['h']): E(f'{tag}: chu vi túi nhỏ hơn chu vi bàn lau')
         if ex['cut_pocket'][0] != ex['cut_main'][1]: E(f'{tag}: túi không bằng bề rộng thân')
     # --- palette / mã màu ---
     for p in spec['palettes']:

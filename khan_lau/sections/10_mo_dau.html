@@ -1,7 +1,7 @@
 <style>
 .gallery{ display:grid; grid-template-columns:repeat(3,1fr); gap:3.4mm; }
 .gcard{ background:#fff; border:1px solid var(--line); border-radius:13px; overflow:hidden; display:flex; flex-direction:column; }
-.gart{ position:relative; background:#F8F2E6; height:36mm; display:flex; align-items:center; justify-content:center; }
+.gart{ position:relative; background:#F8F2E6; height:33mm; display:flex; align-items:center; justify-content:center; }
 .gart svg{ width:100%; height:100%; }
 .gno{ position:absolute; top:2.2mm; left:2.2mm; background:var(--terra-600); color:#fff; font:800 10px/1 'Nunito'; padding:4px 8px; border-radius:10px; letter-spacing:.04em; }
 .gbody{ padding:2.4mm 3mm 2.8mm; }
@@ -23,7 +23,7 @@ dl.gl dt{ font-weight:700; color:var(--terra-700); } dl.gl dd{ margin:0; color:v
 .road .rs svg{ display:block; margin:0 auto 1mm; }
 .road .rs b{ display:block; font-size:11px; line-height:1.25; color:var(--denim-900); }
 .road .rs span{ display:block; font-size:9.6px; color:var(--muted); margin-top:.6mm; font-weight:600; letter-spacing:.04em; text-transform:uppercase; }
-.road .rs:not(:last-child)::after{ content:"›"; position:absolute; right:-2.9mm; top:40%; font:800 16px/1 'Nunito'; color:var(--terra-500); }
+.road .rs:not(:last-child)::after{ content:"›"; position:absolute; right:-3.1mm; top:36%; font:800 24px/1 'Nunito'; color:var(--terra-600); }
 </style>
 <section class="page" data-group="intro" data-badge="Mở đầu" data-title="6 mẫu khăn trong sổ tay">
   <div class="runhead">Khăn lau từ vải cũ · <b>Mở đầu</b></div>
@@ -36,7 +36,7 @@ dl.gl dt{ font-weight:700; color:var(--terra-700); } dl.gl dd{ margin:0; color:v
     {{blk:gallery}}
     <h2>Đọc sổ tay theo thứ tự</h2>
     <div class="road">
-      <div class="rs">{{icon:shirt}}<b>Chọn &amp; sơ chế vải</b><span>Phần 1</span></div>
+      <div class="rs">{{icon:shirt}}<b>Chọn vải &amp; tận dụng đồ cũ</b><span>Phần 1</span></div>
       <div class="rs">{{icon:palette}}<b>Phối màu</b><span>Phần 2</span></div>
       <div class="rs">{{icon:tools}}<b>Dụng cụ &amp; kỹ thuật</b><span>Phần 3</span></div>
       <div class="rs">{{icon:formula}}<b>Công thức &amp; kích thước</b><span>Phần 4</span></div>
@@ -44,8 +44,8 @@ dl.gl dt{ font-weight:700; color:var(--terra-700); } dl.gl dd{ margin:0; color:v
       <div class="rs">{{icon:wash}}<b>Giặt, bảo quản, sửa lỗi</b><span>Hoàn thiện</span></div>
     </div>
     <div class="why">
-      <div><b>Tiết kiệm</b>1 áo sơ mi cũ cho 1 khăn lau bàn và {{combo.somi_o}} ô ghép 12 cm; 1 khăn tắm cũ cho {{combo.khantam_m5}} mặt khăn lau nhà.</div>
-      <div><b>Bền hơn khăn mua</b>Vải cotton đã giặt nhiều lần không co, không ra màu, càng dùng càng mềm và thấm.</div>
+      <div><b>Tiết kiệm</b>1 áo sơ mi cũ cho 1 mặt khăn lau bàn và {{combo.somi_o}} ô ghép {{m4.square}} cm; 1 khăn tắm cũ cho tối đa {{combo.khantam_m5}} mặt thấm khăn lau nhà.</div>
+      <div><b>Ổn định hơn vải mới</b>Vải cotton đã giặt nhiều lần không co, không ra màu, càng dùng càng mềm và thấm.</div>
       <div><b>Đúng việc</b>Mỗi loại vải hợp một việc: khăn bông thấm nước, jeans để chà, vải lanh lau kính không để xơ.</div>
       <div><b>Ít rác</b>Cả vải vụn 8–12 cm vẫn dùng được: ghép thành khăn, làm lớp ruột.</div>
     </div>
@@ -66,7 +66,7 @@ dl.gl dt{ font-weight:700; color:var(--terra-700); } dl.gl dd{ margin:0; color:v
         <dl class="gl">
           <dt>Mặt phải / mặt trái</dt><dd>Mặt phải là mặt đẹp, quay ra ngoài; mặt trái là mặt trong, thường nhạt màu hơn.</dd>
           <dt>Canh sợi dọc</dt><dd>Chiều sợi chạy song song với biên vải, ít giãn nhất. Trên áo: chạy từ vai xuống gấu.</dd>
-          <dt>Đường may (chừa)</dt><dd>Khoảng cách từ mép vải đến đường may. Trong sổ tay này <b>luôn là {{sa}} cm</b>.</dd>
+          <dt>Phần chừa (đường may chừa)</dt><dd>Dải vải từ mép cắt đến đường may. Trong sổ tay này <b>luôn là {{sa}} cm</b>.</dd>
           <dt>Thành phẩm</dt><dd>Kích thước khăn sau khi may xong.</dd>
           <dt>May lộn</dt><dd>Úp 2 mặt phải vào nhau, may quanh, lộn ra để giấu mép vải vào trong.</dd>
           <dt>Khe lộn</dt><dd>Đoạn chừa không may để lộn khăn ra mặt phải.</dd>
