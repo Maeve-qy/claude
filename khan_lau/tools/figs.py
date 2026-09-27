@@ -241,7 +241,7 @@ def layout_svg(ctx, lid, s_=3.0, W=None, H=None, show_title=False):
         b += rect(x + .8, y + .8, w - 1.6, h - 1.6, extra=f'fill="none" stroke="{col}" stroke-width="1.6"')
         cx, cy = x + w / 2, y + h / 2
         code = 'M' + it['ref'][1]
-        dd = dims(max(it['w'], it['h']), min(it['w'], it['h'])) if it['ref'].startswith('m6') else dims(it['w'], it['h'])
+        dd = dims(max(it['w'], it['h']), min(it['w'], it['h'])) if it['ref'] == 'm6.cut_main' else dims(it['w'], it['h'])
         tw = len(dd) * 6.2
         if h >= 30 and w >= max(tw, 26):
             b += txt(cx, cy - 2, code, 't-lbl t-mid t-bold')
@@ -2184,6 +2184,6 @@ def m6_xsec(ctx):
     b += txt(tx, 40, f'Chu vi túi sau khi diễu = 2 × ({art_vn(d["Wp"])} − 1) = {art_vn(d["perim_pocket"])} cm', 't-lbl t-bold')
     b += txt(tx, 62, f'Chu vi bàn lau = 2 × ({art_vn(d["W"])} + {art_vn(d["h"])}) = {art_vn(d["perim_plate"])} cm', 't-lbl t-bold')
     b += txt(tx, 88, 'Phần dư còn lại cho bề dày 2 lớp vải.', 't-lbl t-sm')
-    b += txt(tx, 104, 'Nếu chỉ cộng W + 2 (bỏ quên h), túi hụt', 't-lbl t-sm')
-    b += txt(tx, 118, 'và không lồng được bàn lau vào.', 't-lbl t-sm')
+    b += txt(tx, 104, f'Nếu bỏ quên h (rộng vỏ {art_vn(d["Wp_noh"])}): chu vi túi {art_vn(d["perim_noh"])} cm', 't-lbl t-sm')
+    b += txt(tx, 118, f'< {art_vn(d["perim_plate"])} cm — không lồng được bàn lau vào.', 't-lbl t-sm')
     return svg(W, H, b)

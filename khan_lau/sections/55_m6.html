@@ -22,12 +22,12 @@
         <div class="calc">
           <span>Dài vỏ</span><span class="e">L + h + {{m6.ease}}</span><span class="r">{{m6.Lp}}</span>
           <span>Rộng vỏ</span><span class="e">W + h + {{m6.ease}}</span><span class="r">{{m6.Wp}}</span>
-          <span>Sâu túi P</span><span class="e">L ÷ 4, tối thiểu {{m6.pocket_min}}</span><span class="r">{{m6.P}}</span>
+          <span>Sâu túi P</span><span class="e">L ÷ 4, tròn đến cm, tối thiểu {{m6.pocket_min}}</span><span class="r">{{m6.P}}</span>
           <span>Cắt A, B</span><span class="e">(dài + 2) × (rộng + 2)</span><span class="r">{{m6.cut_main}}</span>
           <span>Cắt 2 túi</span><span class="e">(rộng + 2) × (2P + 2)</span><span class="r">{{m6.cut_pocket}}</span>
           <span>Chỗ khe lộn</span><span class="e">dài vỏ − 2P ≥ khe + 4</span><span class="r">{{m6.free_len}}</span>
         </div>
-        <p class="tiny" style="margin:1.6mm 0 0">Cộng <b>h</b> vì túi phải ôm cả bề dày bàn lau; <b>{{m6.ease}} cm</b> = 1 cm cho 2 đường diễu 0,5 cm + 0,5 cm cho bề dày vải. Làm tròn lên 0,5 cm.</p>
+        <p class="tiny" style="margin:1.6mm 0 0">Cộng <b>h</b> vì túi phải ôm cả bề dày bàn lau; <b>{{m6.ease}} cm</b> = 1 cm cho 2 đường diễu 0,5 cm + 0,5 cm cho bề dày vải. Dài, rộng vỏ làm tròn lên 0,5 cm; P làm tròn đến cm gần nhất (0,5 làm tròn lên).</p>
       </div>
     </div>
     <figure class="fig">{{fig:m6_pieces}}<figcaption><b>Sơ đồ cắt</b> cho bàn lau {{m6.L}} × {{m6.W}}. A là mặt chạm sàn (khăn bông hoặc microfiber cũ); B và 2 túi là vải dày (jeans: 1 mảnh ống quần đủ cho B + 1 túi).</figcaption></figure>

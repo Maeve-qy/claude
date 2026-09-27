@@ -1,0 +1,114 @@
+{
+ "00_bia": {
+  "status": "passed",
+  "text_sha": "0cf30db4034f33b8",
+  "spec_sha": "fd13a38cfc23af26",
+  "date": "2026-09-27",
+  "note": "QC vòng 1 (kỹ thuật may, tiếng Việt, trình bày) + vòng 2 có mục tiêu: ĐẠT; đã sửa 9 mục còn sót"
+ },
+ "01_muc_luc": {
+  "status": "passed",
+  "text_sha": "df1246b85fb66e2c",
+  "spec_sha": "fd13a38cfc23af26",
+  "date": "2026-09-27",
+  "note": "QC vòng 1 (kỹ thuật may, tiếng Việt, trình bày) + vòng 2 có mục tiêu: ĐẠT; đã sửa 9 mục còn sót"
+ },
+ "10_mo_dau": {
+  "status": "passed",
+  "text_sha": "cd8141092b1fa541",
+  "spec_sha": "fd13a38cfc23af26",
+  "date": "2026-09-27",
+  "note": "QC vòng 1 (kỹ thuật may, tiếng Việt, trình bày) + vòng 2 có mục tiêu: ĐẠT; đã sửa 9 mục còn sót"
+ },
+ "20_chon_vai": {
+  "status": "passed",
+  "text_sha": "33b545713562dd01",
+  "spec_sha": "fd13a38cfc23af26",
+  "date": "2026-09-27",
+  "note": "QC vòng 1 (kỹ thuật may, tiếng Việt, trình bày) + vòng 2 có mục tiêu: ĐẠT; đã sửa 9 mục còn sót"
+ },
+ "21_tan_dung": {
+  "status": "passed",
+  "text_sha": "173a63b237267fda",
+  "spec_sha": "fd13a38cfc23af26",
+  "date": "2026-09-27",
+  "note": "QC vòng 1 (kỹ thuật may, tiếng Việt, trình bày) + vòng 2 có mục tiêu: ĐẠT; đã sửa 9 mục còn sót"
+ },
+ "22_so_che": {
+  "status": "passed",
+  "text_sha": "5bd6bde1bda27860",
+  "spec_sha": "fd13a38cfc23af26",
+  "date": "2026-09-27",
+  "note": "QC vòng 1 (kỹ thuật may, tiếng Việt, trình bày) + vòng 2 có mục tiêu: ĐẠT; đã sửa 9 mục còn sót"
+ },
+ "30_phoi_mau": {
+  "status": "passed",
+  "text_sha": "43b4b4a5b2ddbb31",
+  "spec_sha": "fd13a38cfc23af26",
+  "date": "2026-09-27",
+  "note": "QC vòng 1 (kỹ thuật may, tiếng Việt, trình bày) + vòng 2 có mục tiêu: ĐẠT; đã sửa 9 mục còn sót"
+ },
+ "40_ky_thuat": {
+  "status": "passed",
+  "text_sha": "c3a2eeda2dce10b8",
+  "spec_sha": "fd13a38cfc23af26",
+  "date": "2026-09-27",
+  "note": "QC vòng 1 (kỹ thuật may, tiếng Việt, trình bày) + vòng 2 có mục tiêu: ĐẠT; đã sửa 9 mục còn sót"
+ },
+ "45_cong_thuc": {
+  "status": "passed",
+  "text_sha": "83d2374605828a83",
+  "spec_sha": "fd13a38cfc23af26",
+  "date": "2026-09-27",
+  "note": "QC vòng 1 (kỹ thuật may, tiếng Việt, trình bày) + vòng 2 có mục tiêu: ĐẠT; đã sửa 9 mục còn sót"
+ },
+ "50_m1": {
+  "status": "passed",
+  "text_sha": "15b13f6cf2d86f63",
+  "spec_sha": "fd13a38cfc23af26",
+  "date": "2026-09-27",
+  "note": "QC vòng 1 (kỹ thuật may, tiếng Việt, trình bày) + vòng 2 có mục tiêu: ĐẠT; đã sửa 9 mục còn sót"
+ },
+ "51_m2": {
+  "status": "passed",
+  "text_sha": "9ec755398b629fd0",
+  "spec_sha": "fd13a38cfc23af26",
+  "date": "2026-09-27",
+  "note": "QC vòng 1 (kỹ thuật may, tiếng Việt, trình bày) + vòng 2 có mục tiêu: ĐẠT; đã sửa 9 mục còn sót"
+ },
+ "52_m3": {
+  "status": "passed",
+  "text_sha": "7061bc511b6defc3",
+  "spec_sha": "fd13a38cfc23af26",
+  "date": "2026-09-27",
+  "note": "QC vòng 1 (kỹ thuật may, tiếng Việt, trình bày) + vòng 2 có mục tiêu: ĐẠT; đã sửa 9 mục còn sót"
+ },
+ "53_m4": {
+  "status": "passed",
+  "text_sha": "35e16fe68fe46244",
+  "spec_sha": "fd13a38cfc23af26",
+  "date": "2026-09-27",
+  "note": "QC vòng 1 (kỹ thuật may, tiếng Việt, trình bày) + vòng 2 có mục tiêu: ĐẠT; đã sửa 9 mục còn sót"
+ },
+ "54_m5": {
+  "status": "passed",
+  "text_sha": "e8d220948a77f47d",
+  "spec_sha": "fd13a38cfc23af26",
+  "date": "2026-09-27",
+  "note": "QC vòng 1 (kỹ thuật may, tiếng Việt, trình bày) + vòng 2 có mục tiêu: ĐẠT; đã sửa 9 mục còn sót"
+ },
+ "55_m6": {
+  "status": "passed",
+  "text_sha": "7a7bc17576cfb689",
+  "spec_sha": "fd13a38cfc23af26",
+  "date": "2026-09-27",
+  "note": "QC vòng 1 (kỹ thuật may, tiếng Việt, trình bày) + vòng 2 có mục tiêu: ĐẠT; đã sửa 9 mục còn sót"
+ },
+ "90_hoan_thien": {
+  "status": "passed",
+  "text_sha": "2f37d540aeedbf96",
+  "spec_sha": "fd13a38cfc23af26",
+  "date": "2026-09-27",
+  "note": "QC vòng 1 (kỹ thuật may, tiếng Việt, trình bày) + vòng 2 có mục tiêu: ĐẠT; đã sửa 9 mục còn sót"
+ }
+}

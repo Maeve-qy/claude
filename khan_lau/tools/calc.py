@@ -140,7 +140,8 @@ def derive(spec):
                 'cut_main': [Lp + 2 * sa, Wp + 2 * sa], 'cut_pocket': [Wp + 2 * sa, 2 * Pk + 2 * sa],
                 'pocket_folded': [Wp + 2 * sa, Pk + sa], 'free_len': Lp - 2 * Pk,
                 'free_margin': (Lp - 2 * Pk - m6['opening']) / 2,
-                'perim_pocket': 2 * (Wp - 2 * ts), 'perim_plate': 2 * (W + h)}
+                'perim_pocket': 2 * (Wp - 2 * ts), 'perim_plate': 2 * (W + h),
+                'Wp_noh': ceil_half(W + m6['ease']), 'perim_noh': 2 * (ceil_half(W + m6['ease']) - 2 * ts)}
 
     ex = mop(*m6['plate'], m6['plate_thick'])
     d['m6'] = dict(ex)
