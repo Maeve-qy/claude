@@ -1,0 +1,63 @@
+{
+ "gates": {
+  "G1": "PASS",
+  "G3": "PASS",
+  "G4": "PASS",
+  "G5": "PASS",
+  "G6": "PASS",
+  "G7_geometry": "PASS"
+ },
+ "errors": [],
+ "warnings": [
+  "decorative mascot partially covered by panels: ['PN05', 'PN08', 'PN24']",
+  "2番 printed options covered during the dialogue (not during 質問1/2) by panels: 16"
+ ],
+ "counts": {
+  "comment_kinds": {
+   "PROJECT": 1,
+   "ENTITY": 1,
+   "RELATION": 1,
+   "SOURCE": 38,
+   "BILINGUAL": 83,
+   "ITEM": 60,
+   "MANIFEST": 60,
+   "LEDGER_EXCLUDED": 40,
+   "QC": 1
+  },
+  "N_pairs": 83,
+  "N_JA": 83,
+  "N_VI": 83,
+  "N_JA_basic": 83,
+  "N_VI_basic": 83,
+  "missing_JA_ids": [],
+  "missing_VI_ids": [],
+  "mismatched_pair_ids": [],
+  "utterances_not_rebuilt": [],
+  "caption_time_overlaps": [],
+  "items_expected": 60,
+  "items_serialized_complete": 60,
+  "item_problems": [],
+  "vocab_required": 43,
+  "grammar_required": 17,
+  "kanji_items": 50,
+  "kana_only_items": 10,
+  "ledger_excluded_rows": 40,
+  "pairs_rendered": 83,
+  "items_rendered": 60,
+  "item_component_fail": [],
+  "ruby_fail": [],
+  "component_overlap": [],
+  "collisions": [],
+  "protected_zone_hits": []
+ },
+ "files": {
+  "2026.07.vi.ass": {
+   "bytes": 62568,
+   "sha256": "63da6969d240b4cb689462d4e37bcabc3d34d406df069547446bcda023c2ba71"
+  },
+  "2026.07.vi-ja-study.ass": {
+   "bytes": 283444,
+   "sha256": "574c4e3c056de134a6cd05b675a7a55754f6451dbab920be6f64401b82310e37"
+  }
+ }
+}
